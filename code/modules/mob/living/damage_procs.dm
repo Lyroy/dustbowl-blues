@@ -70,6 +70,8 @@
 			Paralyse(effect)
 		if(IRRADIATE)
 			var/rad_protection = check_protection ? getarmor(null, ARMOR_RAD) / 100 : 0
+			if(CE_ANTIRADIATION in chem_effects)
+				rad_protection += chem_effects[CE_ANTIRADIATION] / 100
 			radiation += max((1 - rad_protection) * effect, 0)//Rads auto check armor
 		if(STUTTER)
 			if(status_flags & CANSTUN) // stun is usually associated with stutter
