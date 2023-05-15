@@ -12,7 +12,7 @@
 	holder.stats.changeStat(STAT_ROB, -10)
 	holder.stats.changeStat(STAT_VIG, -10)
 
-/datum/perk/rezsickness/remove()
+/datum/perk/superstim_sickness/remove()
 	holder.stats.changeStat(STAT_ROB, 10)
 	holder.stats.changeStat(STAT_VIG, 10)
 	..()
