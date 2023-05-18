@@ -25,7 +25,11 @@
 #define SPECIES_STATIONXENO     "Xenomorph Hybrid"
 #define SPECIES_CUSTOM			"Custom Species"
 
+// Dustbowl species
 #define SPECIES_ANTHRO			"Anthro"
+#define SPECIES_AQUATIC			"Aquatic"
+#define SPECIES_BUG				"Insectoid"
+#define SPECIES_GHOUL			"Ghoul"
 
 // Monkey and alien monkeys.
 #define SPECIES_MONKEY			"Monkey"
@@ -58,6 +62,7 @@
 // Forms for the Appearances
 #define FORM_HUMAN				"Human"
 #define FORM_ANTHRO				"Anthro"
+#define FORM_GHOUL				"Ghoul"
 #define FORM_EXALT_HUMAN		"Exalt Human"
 #define FORM_CANINE				"Canine"
 #define FORM_FELINE				"Feline"
