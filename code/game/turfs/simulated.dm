@@ -18,10 +18,8 @@
 
 /turf/simulated/New()
 	..()
-	/*
 	if(istype(loc, /area/nadezhda/absolutism))
 		holy = 1
-	*/
 	levelupdate()
 
 

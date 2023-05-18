@@ -2,6 +2,9 @@
 "ab" = (
 /turf/simulated/wall,
 /area/space)
+"ac" = (
+/turf/simulated/floor,
+/area/space)
 "ad" = (
 /obj/machinery/shieldwallgen,
 /obj/structure/cable{
@@ -10,21 +13,40 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/space)
+"ae" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/simulated/floor,
+/area/space)
+"af" = (
+/obj/structure/multiz/ladder{
+	icon_state = "ladderup"
+	},
+/turf/simulated/floor,
+/area/testing/first)
+"ag" = (
+/obj/structure/multiz/ladder,
+/turf/simulated/floor,
+/area/testing/first)
 "aj" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "ak" = (
 /obj/machinery/autolathe/excelsior,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "al" = (
 /obj/machinery/complant_maker,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "am" = (
 /obj/structure/cable{
 	d2 = 2;
@@ -33,28 +55,28 @@
 	},
 /mob/living/carbon/human/dummy,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "ao" = (
 /obj/item/implantcase/excelsior,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "ap" = (
 /obj/item/implant/adrenaline,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "aq" = (
 /obj/item/implant/compressed,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "ar" = (
 /obj/item/robot_parts/l_leg,
 /obj/item/robot_parts/robot_component/actuator,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "as" = (
 /obj/item/prosthesis/l_arm,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "at" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -63,23 +85,23 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "au" = (
 /obj/item/implanter/excelsior,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "av" = (
 /obj/landmark/join/late,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "aw" = (
 /obj/landmark/join/observer,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "ax" = (
 /obj/landmark/join/start,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "ay" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -92,11 +114,29 @@
 	},
 /obj/structure/cable,
 /obj/structure/cable{
-	d2 = 4;
-	icon_state = "0-4"
+	icon_state = "0-4";
+	d2 = 4
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
+"az" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/simulated/wall,
+/area/space)
+"aA" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/simulated/floor,
+/area/space)
 "aB" = (
 /obj/machinery/shieldwallgen,
 /obj/structure/cable{
@@ -110,7 +150,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/space)
 "aC" = (
 /obj/machinery/shieldwallgen,
 /obj/structure/cable{
@@ -131,84 +171,100 @@
 	},
 /obj/structure/cable,
 /turf/simulated/floor,
-/area/testmap)
+/area/space)
 "aD" = (
 /obj/item/mine,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "aE" = (
 /obj/item/implanter,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "aF" = (
 /mob/living/carbon/human/dummy,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "aG" = (
 /obj/item/stack/material/glass{
 	amount = 50
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "aH" = (
 /obj/machinery/optable,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "aI" = (
 /obj/item/stack/material/steel{
 	amount = 50
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
+"aJ" = (
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor,
+/area/testing/first)
 "aK" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	icon_state = "tube1";
+	dir = 8
 	},
 /obj/item/mine,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "aM" = (
 /obj/item/mine,
 /mob/living/carbon/human/dummy,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "aN" = (
 /obj/item/reagent_containers/glass/beaker/tungsten,
 /obj/item/tool/screwdriver,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "aO" = (
 /obj/item/stock_parts/scanning_module/adv,
 /obj/item/stock_parts/scanning_module/phasic,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "aP" = (
 /obj/item/stock_parts/micro_laser/ultra,
 /obj/item/stock_parts/micro_laser/ultra,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "aQ" = (
 /obj/item/stock_parts/micro_laser/high,
 /obj/item/stock_parts/micro_laser/high,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "aR" = (
 /obj/item/grenade/frag,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
+"aT" = (
+/turf/simulated/floor,
+/area/testing/first)
 "aU" = (
 /obj/item/reagent_containers/glass/beaker/water,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "aV" = (
 /obj/machinery/power/smes/magical,
 /obj/structure/cable{
-	d2 = 4;
-	icon_state = "0-4"
+	icon_state = "0-4";
+	d2 = 4
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
+"aW" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/simulated/floor,
+/area/testing/first)
 "aX" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -217,7 +273,7 @@
 	pixel_x = 0
 	},
 /turf/simulated/wall,
-/area/testmap)
+/area/testing/first)
 "aY" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -225,12 +281,12 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/wall,
-/area/testmap)
+/area/testing/first)
 "aZ" = (
 /obj/item/device/assembly/timer,
 /obj/item/device/assembly/signaler,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "ba" = (
 /obj/machinery/light,
 /obj/item/device/assembly/signaler,
@@ -238,37 +294,37 @@
 /obj/item/device/assembly/igniter,
 /obj/item/device/assembly/igniter,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "bb" = (
 /obj/machinery/autolathe,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "bc" = (
 /obj/landmark/storyevent/midgame_stash_spawn,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/first)
 "bd" = (
 /obj/machinery/shieldwallgen,
 /obj/structure/cable,
 /turf/simulated/floor,
-/area/testmap)
+/area/space)
 "be" = (
 /turf/space,
 /area/space)
 "bf" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 6;
+	tag = "icon-intact (SOUTHEAST)";
 	icon_state = "intact";
-	tag = "icon-intact (SOUTHEAST)"
+	dir = 6
 	},
 /obj/structure/lattice,
 /turf/space,
 /area/space)
 "bg" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 10;
+	tag = "icon-intact (SOUTHWEST)";
 	icon_state = "intact";
-	tag = "icon-intact (SOUTHWEST)"
+	dir = 10
 	},
 /obj/structure/lattice,
 /turf/space,
@@ -280,9 +336,9 @@
 /area/space)
 "bi" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
-	dir = 1;
+	tag = "icon-intact (NORTH)";
 	icon_state = "intact";
-	tag = "icon-intact (NORTH)"
+	dir = 1
 	},
 /obj/structure/lattice,
 /turf/space,
@@ -296,9 +352,9 @@
 /area/space)
 "bk" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 9;
+	tag = "icon-intact (NORTHWEST)";
 	icon_state = "intact";
-	tag = "icon-intact (NORTHWEST)"
+	dir = 9
 	},
 /obj/structure/lattice,
 /turf/space,
@@ -315,80 +371,80 @@
 "bn" = (
 /obj/structure/multiz/ladder,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bo" = (
 /obj/structure/multiz/ladder{
 	icon_state = "ladderup"
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bp" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 5;
+	tag = "icon-intact (NORTHEAST)";
 	icon_state = "intact";
-	tag = "icon-intact (NORTHEAST)"
+	dir = 5
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bq" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 4;
+	tag = "icon-intact (EAST)";
 	icon_state = "intact";
-	tag = "icon-intact (EAST)"
+	dir = 4
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "br" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
-	dir = 1;
+	tag = "icon-map (NORTH)";
 	icon_state = "map";
-	tag = "icon-map (NORTH)"
+	dir = 1
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bs" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 4;
+	tag = "icon-intact (EAST)";
 	icon_state = "intact";
-	tag = "icon-intact (EAST)"
+	dir = 4
 	},
 /obj/machinery/meter,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bt" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 4;
+	tag = "icon-intact (EAST)";
 	icon_state = "intact";
-	tag = "icon-intact (EAST)"
+	dir = 4
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bu" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 9;
+	tag = "icon-intact (NORTHWEST)";
 	icon_state = "intact";
-	tag = "icon-intact (NORTHWEST)"
+	dir = 9
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bv" = (
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bw" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bx" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6;
+	tag = "icon-intact (SOUTHEAST)";
 	icon_state = "intact";
-	tag = "icon-intact (SOUTHEAST)"
+	dir = 6
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "by" = (
 /obj/structure/window/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -400,35 +456,35 @@
 /area/space)
 "bz" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
-	dir = 4;
+	tag = "icon-intact (EAST)";
 	icon_state = "intact";
-	tag = "icon-intact (EAST)"
+	dir = 4
 	},
 /turf/simulated/floor/hull,
 /area/space)
 "bA" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 8;
+	tag = "icon-intact (WEST)";
 	icon_state = "intact";
-	tag = "icon-intact (WEST)"
+	dir = 8
 	},
 /turf/simulated/floor/hull,
 /area/space)
 "bB" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 10;
+	tag = "icon-intact (SOUTHWEST)";
 	icon_state = "intact";
-	tag = "icon-intact (SOUTHWEST)"
+	dir = 10
 	},
 /turf/simulated/floor/hull,
 /area/space)
 "bC" = (
 /obj/structure/cable{
-	d2 = 4;
-	icon_state = "0-4"
+	icon_state = "0-4";
+	d2 = 4
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bD" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -437,7 +493,7 @@
 	pixel_x = 0
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bE" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -449,7 +505,7 @@
 	dir = 1
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bF" = (
 /obj/machinery/power/smes/magical,
 /obj/structure/cable{
@@ -457,24 +513,24 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bG" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bH" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 6;
+	tag = "icon-intact (SOUTHEAST)";
 	icon_state = "intact";
-	tag = "icon-intact (SOUTHEAST)"
+	dir = 6
 	},
 /turf/simulated/floor/hull,
 /area/space)
 "bI" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 9;
+	tag = "icon-intact (NORTHWEST)";
 	icon_state = "intact";
-	tag = "icon-intact (NORTHWEST)"
+	dir = 9
 	},
 /turf/simulated/floor/hull,
 /area/space)
@@ -483,17 +539,17 @@
 	dir = 8
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bK" = (
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bL" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bM" = (
 /obj/machinery/light{
 	dir = 4
@@ -501,7 +557,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /obj/machinery/meter,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bN" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
@@ -513,37 +569,37 @@
 	dir = 4
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bP" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 4
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bQ" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	dir = 4;
+	tag = "icon-map (EAST)";
 	icon_state = "map";
-	tag = "icon-map (EAST)"
+	dir = 4
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bR" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bS" = (
 /obj/machinery/light,
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bT" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 5;
+	tag = "icon-intact (NORTHEAST)";
 	icon_state = "intact";
-	tag = "icon-intact (NORTHEAST)"
+	dir = 5
 	},
 /turf/simulated/floor,
-/area/testmap)
+/area/testing/second)
 "bU" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
@@ -557,18 +613,7 @@
 /obj/item/book/ritual,
 /obj/landmark/join/late/cryo,
 /turf/simulated/floor,
-/area/testmap)
-"rR" = (
-/obj/map_data/testmap,
-/turf/space,
-/area/space)
-"UQ" = (
-/obj/item/stash_spawner,
-/turf/simulated/floor,
-/area/testmap)
-"WB" = (
-/turf/simulated/wall,
-/area/testmap)
+/area/testing/first)
 
 (1,1,1) = {"
 be
@@ -670,7 +715,7 @@ be
 be
 be
 be
-rR
+be
 "}
 (2,1,1) = {"
 be
@@ -1272,8 +1317,8 @@ be
 be
 be
 ab
-bo
-bv
+af
+aT
 ao
 aD
 aK
@@ -1374,13 +1419,13 @@ be
 be
 be
 ab
-bn
+ag
 ao
 ao
 aE
-bv
-bv
-bv
+aT
+aT
+aT
 ab
 be
 be
@@ -1476,12 +1521,12 @@ be
 be
 be
 ab
-bv
-bv
+aT
+aT
 au
 aF
 aM
-bv
+aT
 aZ
 ab
 be
@@ -1578,7 +1623,7 @@ be
 be
 be
 ab
-bv
+aT
 ap
 bW
 aG
@@ -1787,8 +1832,8 @@ ar
 aw
 aI
 aP
-bD
-bv
+aW
+aT
 ab
 be
 be
@@ -1887,10 +1932,10 @@ ab
 al
 as
 ax
-bK
+aJ
 aQ
 aX
-UQ
+aT
 ab
 be
 be
@@ -2088,13 +2133,13 @@ ab
 ab
 ab
 ab
-WB
-bv
-aX
-bv
-WB
-WB
-WB
+ab
+ac
+az
+ac
+ab
+ab
+ab
 ab
 be
 be
@@ -2185,18 +2230,18 @@ be
 be
 be
 ab
-bv
-bv
-bv
-bv
-bv
-bv
-bv
-bD
-bv
-bv
-bv
-bv
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+aA
+ac
+ac
+ac
+ac
 ab
 be
 be
@@ -2287,18 +2332,18 @@ be
 be
 be
 ab
-bv
-bv
-bv
-bv
-bv
-bv
-bv
+ac
+ac
+ac
+ac
+ac
+ac
+ac
 aB
-bv
-bv
-bv
-bv
+ac
+ac
+ac
+ac
 ab
 be
 be
@@ -2389,18 +2434,18 @@ be
 be
 be
 ab
-bv
-bv
-bv
-bv
-bv
-bv
-bv
-bD
-bv
-bv
-bv
-bv
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+aA
+ac
+ac
+ac
+ac
 ab
 be
 be
@@ -2491,18 +2536,18 @@ be
 be
 be
 ab
-bv
-bv
-bv
-bv
-bv
-bv
-bv
-bD
-bv
-bv
-bv
-bv
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+aA
+ac
+ac
+ac
+ac
 ab
 be
 be
@@ -2593,17 +2638,17 @@ be
 be
 be
 ab
-bv
-bv
+ac
+ac
 ad
-at
-at
-at
-at
+ae
+ae
+ae
+ae
 aC
-at
-at
-at
+ae
+ae
+ae
 bd
 ab
 be
@@ -2695,18 +2740,18 @@ be
 be
 be
 ab
-bv
-bv
-bv
-bv
-bv
-bv
-bv
-bD
-bv
-bv
-bv
-bv
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+aA
+ac
+ac
+ac
+ac
 ab
 be
 be
@@ -2797,18 +2842,18 @@ be
 be
 be
 ab
-bv
-bv
-bv
-bv
-bv
-bv
-bv
-bD
-bv
-bv
-bv
-bv
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+aA
+ac
+ac
+ac
+ac
 ab
 be
 be
@@ -2899,18 +2944,18 @@ be
 be
 be
 ab
-bv
-bv
-bv
-bv
-bv
-bv
-bv
+ac
+ac
+ac
+ac
+ac
+ac
+ac
 aB
-bv
-bv
-bv
-bv
+ac
+ac
+ac
+ac
 ab
 be
 be
@@ -3001,18 +3046,18 @@ be
 be
 be
 ab
-bv
-bv
-bv
-bv
-bv
-bv
-bv
-bv
-bv
-bv
-bv
-bv
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
 ab
 be
 be
