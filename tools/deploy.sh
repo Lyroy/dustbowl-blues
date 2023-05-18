@@ -21,7 +21,7 @@ if [ -d ".git" ]; then
   cp -r .git/logs/* $1/.git/logs/
 fi
 
-cp sojourn-station.dmb sojourn-station.rsc $1/
+cp dustbowl-blues.dmb dustbowl-blues.rsc $1/
 cp -r maps/* $1/maps/
 cp -r strings/* $1/strings/
 cp -r config/names $1/config/

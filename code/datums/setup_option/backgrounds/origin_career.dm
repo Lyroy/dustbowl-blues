@@ -105,8 +105,6 @@
 	to serve their nation. Some individuals may come from their own planetary defense forces, serving as a combination of planetary guard and soldier. Military training has the benefit \
 	of physical conditioning and marksmanship training, but the stamping out of the individual makes most lose their creativity."
 
-	perks = list(PERK_SURVIVOR)
-
 	stat_modifiers = list(
 		STAT_ROB = 2,
 		STAT_TGH = 4,

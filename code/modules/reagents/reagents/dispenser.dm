@@ -124,7 +124,7 @@
 	var/adj_temp = 0
 	var/targ_temp = 310
 	var/halluci = 0
-	sanity_gain_ingest = 0.5
+	var/sanity_gain_ingest = 0.5
 	common = TRUE //All alchoholic reagents can be ID'd pretty easily
 
 	glass_icon_state = "glass_clear"
@@ -193,9 +193,6 @@
 
 	if(halluci)
 		M.adjust_hallucination(halluci, halluci)
-
-	apply_sanity_effect(M, effect_multiplier)
-	LEGACY_SEND_SIGNAL(M, COMSIG_CARBON_HAPPY, src, ON_MOB_DRUG)
 
 	var/mob/living/carbon/human/H = M
 	if(istype(H))

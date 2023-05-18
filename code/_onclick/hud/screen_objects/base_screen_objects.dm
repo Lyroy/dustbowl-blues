@@ -455,14 +455,10 @@
 	add_overlay( ovrls["sanity0"])
 
 /obj/screen/sanity/Click()
-	if(!..())
-		return
-	if(!ishuman(parentmob))
-		return FALSE
 	var/mob/living/carbon/human/H = parentmob
-	H.nano_ui_interact(H)
+	if(!istype(H))
+		return
 	H.sanity.print_desires()
-	return	TRUE
 
 //--------------------------------------------------sanity end---------------------------------------------------------
 //--------------------------------------------------nsa---------------------------------------------------------

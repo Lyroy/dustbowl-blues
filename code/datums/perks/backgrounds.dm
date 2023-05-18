@@ -17,6 +17,11 @@ This is NOT for racial-specific perks, but rather specifically for general backg
 	desc = "For whatever reason, be it natural evolution or simply spending too much time in space or low oxygen worlds your lungs are adapted to surviving with less oxygen."
 	//icon_state = "lungs" // https://game-icons.net/1x1/lorc/one-eyed.html
 
+/datum/perk/blood_of_lead
+	name = "Lead Blood"
+	desc = "Maybe you grew up on a world with a toxic atmosphere, maybe solar radiation was common, or maybe its just genetics but you're adapted well to dealing with toxins."
+	//icon_state = "liver" // https://game-icons.net
+
 /datum/perk/space_asshole
 	name = "Rough Life"
 	desc = "Your past life has been one of turmoil and extremes and as a result has toughened you up severely. Environmental damage from falling or explosives have less of an effect on your toughened body."
@@ -26,12 +31,10 @@ This is NOT for racial-specific perks, but rather specifically for general backg
 	..()
 	holder.mob_bomb_defense += 25
 	holder.falls_mod -= 0.4
-	holder.sanity.view_damage_threshold += 20
 
 /datum/perk/space_asshole/remove()
 	holder.mob_bomb_defense -= 25
 	holder.falls_mod += 0.4
-	holder.sanity.view_damage_threshold -= 20
 	..()
 
 /datum/perk/linguist
@@ -60,7 +63,7 @@ This is NOT for racial-specific perks, but rather specifically for general backg
 	var/choice = input(M,"Which language do you know?","Linguist Choice") as null|anything in options
 	if(src && choice)
 		M.add_language(choice)
-		M.stats.removePerk(PERK_LINGUIST)
+		M.stats.removePerk(/datum/perk/linguist)
 	anti_cheat = FALSE
 	return TRUE
 
@@ -105,92 +108,6 @@ This is NOT for racial-specific perks, but rather specifically for general backg
 	..()
 	var/obj/item/device/scanner/V = virtual_scanner
 	V.is_virtual = TRUE
-
-/datum/perk/nihilist
-	name = "Nihilist"
-	desc = 	"You simply ran out of fucks to give at some point in your life. \
-			This increases chance of positive breakdowns by 10% and negative breakdowns by 20%. Seeing someone die has a random effect on you: \
-			sometimes you won’t take any sanity loss and you can even gain back sanity, or get a boost to your cognition."
-	icon_state = "eye" //https://game-icons.net/1x1/lorc/tear-tracks.html
-
-/datum/perk/nihilist/assign(mob/living/carbon/human/H)
-	if(..())
-		holder.sanity.positive_prob += 10
-		holder.sanity.negative_prob += 20
-
-/datum/perk/nihilist/remove()
-	if(holder)
-		holder.sanity.positive_prob -= 10
-		holder.sanity.negative_prob -= 20
-		holder.stats.removeTempStat(STAT_COG, "Fate Nihilist")
-	..()
-
-/datum/perk/idealist
-	name = "Idealist"
-	//icon_state = "moralist" //https://game-icons.net/
-	desc = "A day may come when the courage of men fails, when we forsake our friends and break all bonds of fellowship. \
-			But it is not this day. This day you fight! \
-			Your Insight gain is faster when you are around sane people and they will recover sanity when around you. \
-			When you are around people that are low on health or sanity, you will take sanity damage."
-
-/datum/perk/noble
-	name = "Wealthy Upbringing"
-	//icon_state = "family" //https://game-icons.net
-	desc = "You came from a wealthy family of high stature, able to achieve a high education and spent most of your life capable of relaxing. \
-			Start with an heirloom weapon, higher chance to be on contractor contracts and removed sanity cap. Stay clear of filth and danger."
-
-/datum/perk/noble/assign(mob/living/carbon/human/H)
-	if(!..())
-		return
-	holder.sanity.environment_cap_coeff -= 1
-	if(!holder.name)
-		holder.stats.removePerk(src.type)
-		return
-	var/turf/T = get_turf(holder)
-	var/obj/item/W
-	if(is_neotheology_disciple(holder) && prob(50))
-		W = pickweight(list(
-				/obj/item/tool/sword/nt/longsword = 0.5,
-				/obj/item/tool/sword/nt/shortsword = 0.5,
-				/obj/item/tool/sword/nt/scourge = 0.1,
-				/obj/item/tool/knife/dagger/nt = 0.5,
-				/obj/item/gun/projectile/mk58 = 0.4,
-				/obj/item/gun/projectile/mk58/wood = 0.1))
-	else
-		W = pickweight(list(
-				/obj/item/tool/hammer/mace = 0.2,
-				/obj/item/tool/knife/ritual = 0.5,
-				/obj/item/material/butterfly/switchblade = 0.5,
-				/obj/item/tool/sword/saber = 0.2,
-				/obj/item/tool/sword/katana = 0.2,
-				/obj/item/tool/knife/dagger = 0.5,
-				/obj/item/gun/projectile/colt = 0.2,
-				/obj/item/gun/projectile/revolver/detective = 0.1,
-				/obj/item/tool/knife/dagger/ceremonial = 0.4,
-				/obj/item/gun/projectile/revolver/rev10 = 0.4))
-	holder.sanity.valid_inspirations += W
-	W = new W(T)
-	W.desc += " It has been inscribed with the \"[holder.name]\" family name."
-	W.name = "[W] of [holder.name]"
-	var/oddities = rand(2,4)
-	var/list/stats = ALL_STATS
-	var/list/final_oddity = list()
-	for(var/i = 0 to oddities)
-		var/stat = pick(stats)
-		stats.Remove(stat)
-		final_oddity += stat
-		final_oddity[stat] = rand(1,7)
-	W.AddComponent(/datum/component/inspiration, final_oddity, get_oddity_perk())
-	W.AddComponent(/datum/component/atom_sanity, 1, "") //sanity gain by area
-	W.sanity_damage -= 1 //damage by view
-	W.price_tag += rand(1000, 2500)
-	spawn(1)
-		holder.equip_to_storage_or_drop(W)
-
-/datum/perk/noble/remove()
-	if(holder)
-		holder.sanity.environment_cap_coeff += 1
-	..()
 
 /datum/perk/addict
 	name = "Chem Addict"

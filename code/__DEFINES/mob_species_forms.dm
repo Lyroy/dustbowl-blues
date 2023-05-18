@@ -25,6 +25,8 @@
 #define SPECIES_STATIONXENO     "Xenomorph Hybrid"
 #define SPECIES_CUSTOM			"Custom Species"
 
+#define SPECIES_ANTHRO			"Anthro"
+
 // Monkey and alien monkeys.
 #define SPECIES_MONKEY			"Monkey"
 #define SPECIES_MONKEY_TAJ		"Farwa"
@@ -55,6 +57,7 @@
 
 // Forms for the Appearances
 #define FORM_HUMAN				"Human"
+#define FORM_ANTHRO				"Anthro"
 #define FORM_EXALT_HUMAN		"Exalt Human"
 #define FORM_CANINE				"Canine"
 #define FORM_FELINE				"Feline"

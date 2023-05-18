@@ -338,7 +338,7 @@
 	icon = 'icons/obj/burrows.dmi'
 	icon_state = "maint_hole"
 
-
+/*
 /obj/structure/multiz/ladder/up/deepmaint
 	name = "maintenance ladder"
 
@@ -358,3 +358,4 @@
 		my_burrow.collapse()
 
 	..()
+*/

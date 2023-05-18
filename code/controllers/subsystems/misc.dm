@@ -15,5 +15,8 @@ GLOBAL_LIST_INIT(cursor_icons, list()) //list of icon files, which point to list
 		make_cursor_icon('icons/obj/gun_cursors/standard/standard.dmi', i)
 
 /datum/controller/subsystem/misc/proc/build_junk_field()
+	/*
 	var/obj/jtb_generator/jtb_gen = locate(/obj/jtb_generator)
 	jtb_gen.generate_junk_field()
+	*/
+	return

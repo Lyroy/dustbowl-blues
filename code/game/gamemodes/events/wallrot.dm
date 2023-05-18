@@ -33,10 +33,12 @@
 		var/turf/candidate = locate(rand(1, world.maxx), rand(1, world.maxy), pick(GLOB.maps_data.station_levels))
 		if(istype(candidate, /turf/simulated/wall))
 			center = candidate //If necessary we'll settle for any wall
+			/*
 			var/area/A = get_area(center)
 			if (!istype(A, /area/nadezhda/maintenance)) //But ideally we want a wall that's not in maintenance, so players are likely to see it
 				//We'll keep going til we find a wall that isnt in maint
 				break
+			*/
 
 	if(center)
 		// Make sure at least one piece of wall rots!

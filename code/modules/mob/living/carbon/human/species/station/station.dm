@@ -2,6 +2,7 @@
 	name = "Human"
 	name_plural = "Humans"
 	default_form = FORM_HUMAN
+	obligate_form = TRUE
 	obligate_name = FALSE
 	unarmed_types = list(/datum/unarmed_attack/punch, /datum/unarmed_attack/stomp,  /datum/unarmed_attack/kick, /datum/unarmed_attack/bite)
 	blurb = "Humanity originated in the Sol system, and over the last five centuries has spread \
@@ -91,7 +92,7 @@
 		OP_EYES         = /obj/item/organ/internal/eyes
 	)
 
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 
 /datum/species/exalt_human/get_bodytype()
 	return "Exalt Human"
@@ -139,7 +140,7 @@
 		"You shiver suddenly.",
 		"Your chilly flesh stands out in goosebumps."
 		)
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 
 	stat_modifiers = list(
 		STAT_ROB = 5,
@@ -203,7 +204,7 @@
 		"You shiver suddenly.",
 		"Your chilly flesh stands out in goosebumps."
 		)
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 
 	stat_modifiers = list(
 		STAT_BIO = 10,
@@ -257,7 +258,7 @@
 	dark_color = "#ff0000"
 	light_color = "#990000"
 
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 
 	stat_modifiers = list(
 		STAT_TGH = 5,
@@ -323,7 +324,7 @@
 		"You shiver suddenly.",
 		"Your chilly flesh stands out in goosebumps."
 		)
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 
 	dark_color = "#0000ff"
 	light_color = "#0000ff"
@@ -356,7 +357,7 @@
 	blurb = "no."
 	darksight = 2
 
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 
 	stat_modifiers = list(
 		STAT_TGH = 10,
@@ -393,7 +394,7 @@
 	poison_type = "oxygen"                        // Poisonous air.
 	exhale_type = "carbon_dioxide"
 	siemens_coefficient = 0.5
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 	hunger_factor = 0.5
 
 	stat_modifiers = list(
@@ -432,7 +433,7 @@
 	max_age = 120
 	blurb = "no."
 	flags = NO_PAIN
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 	taste_sensitivity = TASTE_HYPERSENSITIVE
 	darksight = 4
 
@@ -520,7 +521,7 @@
 	name_language = null
 	min_age = 18
 	max_age = 90
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 	total_health = 130                    // Burn damage multiplier.
 	radiation_mod = 0
 	darksight = 3
@@ -638,7 +639,7 @@
 		STAT_VIG = 10
 	)
 
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 
 /datum/species/folken/get_bodytype()
 	return "Folken"
@@ -690,7 +691,7 @@
 		STAT_VIG = 0
 	)
 
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 
 /datum/species/mycus/get_bodytype()
 	return "Mycus"
@@ -740,7 +741,7 @@
 		"System analysis reports dangerous levels of cold!."
 		)
 
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 
 /datum/species/full_body_prosthetic/get_bodytype()
 	return "Full Body Prosthetic"
@@ -790,7 +791,7 @@
 		"System analysis reports dangerous levels of cold!."
 		)
 
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 
 /datum/species/unbranded_synth/get_bodytype()
 	return "Unbranded Full Body Prosthetic"
@@ -854,7 +855,7 @@
 		STAT_MEC = 5
 	)
 
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 
 /datum/species/soteria_synthetic/get_bodytype()
 	return "Soteria Synthetic"
@@ -916,7 +917,7 @@
 		STAT_MEC = 10
 	)
 
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 
 /datum/species/artificer_guild_synthetic/get_bodytype()
 	return "Artificer Guild Synthetic"
@@ -976,7 +977,7 @@
 		STAT_TGH = 10
 	)
 
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 
 /datum/species/blackshield_synthetic/get_bodytype()
 	return "Blackshield Synthetic"
@@ -1037,7 +1038,7 @@
 		STAT_BIO = 10
 	)
 
-	spawn_flags = CAN_JOIN
+	spawn_flags = IS_RESTRICTED
 
 /datum/species/church_synthetic/get_bodytype()
 	return "Absolute Synthetic"
@@ -1149,3 +1150,47 @@
 		if(H)
 			H.gib()
 
+// Dustbowl species start here
+
+/datum/species/human/anthro
+	name = "Anthro"
+	name_plural = "Anthros"
+	default_form = FORM_ANTHRO
+	obligate_form = FALSE
+	blurb = "A blank slate for you to make your own species. Go wild!"
+	permitted_forms = list(FORM_ANTHRO, FORM_CANINE, FORM_VULPINE, FORM_FENNEC, FORM_SABLEKYNE, FORM_KRIOSAN, FORM_NARAMAD)
+
+/datum/species/human/aquatic
+	name = "Aquatic"
+	name_plural = "Aquatics"
+	default_form = FORM_SHARK
+	obligate_form = FALSE
+	blurb = "A blank slate for you to make your own species. Go wild!"
+	permitted_forms = list(FORM_SHARK, FORM_SUDAK, FORM_AXOLOTL)
+
+/*
+/datum/species/human/avian
+	name = "Avian"
+	name_plural = "Avians"
+	default_form = FORM_AVIAN
+	obligate_form = TRUE
+	blurb = "A blank slate for you to make your own species. Go wild!"
+*/
+
+/datum/species/human/lizard
+	name = "Lizard"
+	name_plural = "Lizards"
+	default_form = FORM_LIZARD
+	obligate_form = FALSE
+	blurb = "A blank slate for you to make your own species. Go wild!"
+	permitted_forms = list(FORM_LIZARD, FORM_LIZARD_TGSMOOTH, FORM_LIZARD_TGSHARP)
+
+/datum/species/human/bug
+	name = "Insectoid"
+	name_plural = "Insectoids"
+	default_form = FORM_MOTH_WHITE
+	obligate_form = FALSE
+	blurb = "A blank slate for you to make your own species. Go wild!"
+	permitted_forms = list(FORM_SPIDER, FORM_MOTH, FORM_MOTH_WHITE)
+
+// todo: voxes and teshari, their forms are in the code already

@@ -1,10 +1,10 @@
 /datum/species_form/human
 	name = FORM_HUMAN
 //	name_plural = "Humans"
-	base = 'icons/mob/human_races/r_human_white.dmi'
-	deform = 'icons/mob/human_races/r_def_human_white.dmi'
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_SKIN_COLOR | DEFAULT_APPEARANCE_FLAGS
-	playable = TRUE
+	base = 'icons/mob/human_races/r_human_tone.dmi'
+	deform = 'icons/mob/human_races/r_def_human.dmi'
+	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_SKIN_TONE | DEFAULT_APPEARANCE_FLAGS
+	playable = FALSE
 
 	//No changes.
 
@@ -32,6 +32,13 @@
 	blood_mask*/
 /datum/species_form/exalt
 	name = FORM_EXALT_HUMAN
+	base = 'icons/mob/human_races/r_human_white.dmi'
+	deform = 'icons/mob/human_races/r_def_human_white.dmi'
+	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_SKIN_COLOR | DEFAULT_APPEARANCE_FLAGS
+	playable = FALSE
+
+/datum/species_form/anthro
+	name = FORM_ANTHRO
 	base = 'icons/mob/human_races/r_human_white.dmi'
 	deform = 'icons/mob/human_races/r_def_human_white.dmi'
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_SKIN_COLOR | DEFAULT_APPEARANCE_FLAGS
@@ -149,7 +156,7 @@
 	deform = 'icons/mob/human_races/xenos/r_xenos_sentinel.dmi'
 
 /datum/species_form/sablekyne
-	playable = FALSE
+	playable = TRUE
 	name = FORM_SABLEKYNE
 	base = 'icons/mob/human_races/r_sablekyne_white.dmi'
 	deform = 'icons/mob/human_races/r_def_sablekyne_white.dmi'
@@ -163,21 +170,21 @@
 	appearance_flags = HAS_HAIR_COLOR | HAS_EYE_COLOR | HAS_SKIN_COLOR | HAS_UNDERWEAR | DEFAULT_APPEARANCE_FLAGS
 
 /datum/species_form/kriosan
-	playable = FALSE
+	playable = TRUE
 	name = FORM_KRIOSAN
 	base = 'icons/mob/human_races/r_vulpkanin.dmi'
 	deform = null	//TODO: White vulp deformed sprites. There aren't even regular ones here.
 	appearance_flags = HAS_HAIR_COLOR | HAS_EYE_COLOR | HAS_SKIN_COLOR | HAS_UNDERWEAR | DEFAULT_APPEARANCE_FLAGS
 
 /datum/species_form/akula
-	playable = FALSE
+	playable = TRUE
 	name = FORM_AKULA
 	base = 'icons/mob/human_races/r_akula.dmi'
 	deform = 'icons/mob/human_races/r_def_akula.dmi'
 	appearance_flags = HAS_HAIR_COLOR | HAS_EYE_COLOR | HAS_SKIN_COLOR | HAS_UNDERWEAR | DEFAULT_APPEARANCE_FLAGS
 
 /datum/species_form/naramad
-	playable = FALSE
+	playable = TRUE
 	name = FORM_NARAMAD
 	base = 'icons/mob/human_races/r_sergal.dmi'
 	deform = 'icons/mob/human_races/r_def_sergal.dmi'

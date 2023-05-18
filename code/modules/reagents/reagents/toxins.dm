@@ -9,7 +9,6 @@
 	reagent_state = LIQUID
 	color = "#CF3600"
 	metabolism = REM * 0.05 // 0.01 by default. They last a while and slowly kill you.
-	var/sanityloss = 0
 	var/strength = 1		// Base CE_TOXIN magnitude, multiplied by effect multiplier
 	reagent_type = "Toxin"
 	scannable = TRUE
@@ -20,13 +19,8 @@
 		//var/multi = effect_multiplier
 		/*if(issmall(M))  // Small bodymass, more effect from lower volume.
 			multi *= 2
-		M.adjustToxLoss(strength * multi)
-		if(sanityloss && ishuman(M))
-			var/mob/living/carbon/human/H = M
-			H.sanity.onToxin(src, effect_multiplier)
 			M.sanity.onToxin(src, multi)*/
 		M.add_chemical_effect(CE_TOXIN, strength)
-
 
 /datum/reagent/toxin/overdose(mob/living/carbon/M, alien)
 	if(strength)

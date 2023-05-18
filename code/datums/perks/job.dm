@@ -108,13 +108,14 @@
 	lose_text = "You no longer feel the protection of an obelisk."
 	//icon_state = "sanityboost" // https://game-icons.net/1x1/lorc/templar-eye.html
 
-/datum/perk/active_sanityboost/assign(mob/living/carbon/human/H)
-	if(..())
-		holder.sanity.sanity_passive_gain_multiplier *= 1.5
+/datum/perk/sanityboost/assign(mob/living/carbon/human/H)
+	..()
+	holder.maxHealth += 40
+	holder.health += 40
 
-/datum/perk/active_sanityboost/remove()
-	if(holder)
-		holder.sanity.sanity_passive_gain_multiplier /= 1.5
+/datum/perk/sanityboost/remove()
+	holder.maxHealth -= 40
+	holder.health -= 40
 	..()
 
 /datum/perk/ear_of_quicksilver
@@ -446,19 +447,9 @@
 
 /datum/perk/neat
 	name = "Humble Cleanser"
-	desc = "You're used to see blood and filth in all its forms. Your motto: a clean colony is a happy colony. \
-			This perk reduces the total sanity damage you can take from what is happening around you. \
-			You can regain sanity by cleaning."
+	desc = "You're used to seeing filth in all its forms. Your motto: a clean colony and workspace is the \
+			first step to enlightenment. The simple act of such humble work as cleaning grants you inspiration."
 	//icon_state = "neat" // https://game-icons.net/1x1/delapouite/broom.html
-
-/datum/perk/neat/assign(mob/living/carbon/human/H)
-	if(..())
-		holder.sanity.view_damage_threshold += 20
-
-/datum/perk/neat/remove()
-	if(holder)
-		holder.sanity.view_damage_threshold -= 20
-	..()
 
 /datum/perk/channeling
 	name = "Channeling"

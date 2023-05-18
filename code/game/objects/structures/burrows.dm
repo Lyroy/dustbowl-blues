@@ -609,6 +609,7 @@ percentage is a value in the range 0..1 that determines what portion of this mob
 /obj/structure/burrow/proc/collapse(var/clean = FALSE)
 	if(!clean)
 		spawn_rubble(loc, 0, 100)
+	/*
 	if(deepmaint_entry_point)
 		if(free_deepmaint_ladders.len > 0)
 			var/obj/structure/multiz/ladder/up/my_ladder = pick(free_deepmaint_ladders)
@@ -619,6 +620,7 @@ percentage is a value in the range 0..1 that determines what portion of this mob
 			my_ladder.target = my_hole
 			qdel(src)
 			return
+	*/
 	isSealed = TRUE
 	icon_state = initial(icon_state)
 	name = initial(name)

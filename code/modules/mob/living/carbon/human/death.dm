@@ -43,9 +43,6 @@
 			SPAN_DANGER("Warning: user death event. Mobility control passed to integrated intelligence system.")
 		)
 
-	if(stats.getPerk(PERK_TERRIBLE_FATE))
-		visible_message(SPAN_WARNING("their inert body emits a strange sensation and a cold invades your body. Their screams before dying recount in your mind."))
-
 	. = ..(gibbed,form.death_message)
 	if(!gibbed)
 

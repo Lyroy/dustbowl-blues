@@ -936,11 +936,6 @@
 	maximum_temperature = 12.7
 	minimum_temperature = 7.7
 
-/datum/chemical_reaction/mindwipe
-	result = "mindwipe"
-	required_reagents = list("mindbreaker" = 1, "psilocybin" = 1, "sanguinum" = 1 , "anti_toxin" = 1, "ethanol" = 1)
-	result_amount = 5
-
 /* FBP "medicine" */
 
 /datum/chemical_reaction/fbp_repair
