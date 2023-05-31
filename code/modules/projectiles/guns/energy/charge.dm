@@ -117,7 +117,7 @@
 	return
 
 /obj/item/gun/proc/get_overcharge_add(var/mob/living/user)
-	return overcharge_rate+user.stats.getStat(STAT_VIG)*VIG_OVERCHARGE_GEN
+	return overcharge_rate+user.stats.getStat(used_skill)*VIG_OVERCHARGE_GEN
 
 /obj/item/gun/proc/overcharge_level_to_mult()
 	return overcharge_level/10

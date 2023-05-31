@@ -249,11 +249,6 @@
 	build_path = /obj/item/circuitboard/pacman/camp
 	category = CAT_POWER
 
-/datum/design/research/circuit/diesel
-	name = "diesel-type generator"
-	build_path = /obj/item/circuitboard/diesel
-	category = CAT_POWER
-
 /datum/design/research/circuit/hydrogen_gen
 	name = "hydrogen-type generator"
 	build_path = /obj/item/circuitboard/hydrogen_gen

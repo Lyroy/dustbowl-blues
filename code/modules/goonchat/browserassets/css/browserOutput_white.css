@@ -326,6 +326,8 @@ h1.alert, h2.alert		{color: #000000;}
 .nicegreen				{color: #14a833;}
 .shadowling				{color: #3b2769;}
 .cult					{color: #960000;}
+.foblock				{color: #00dd00; font-weight: bold; border-style: solid; background-color: #000900;
+						padding: 5px; display: inline-block; font-family: 'Share Tech Mono', monospace;}
 
 .cultitalic				{color: #960000;	font-style: italic;}
 .cultbold				{color: #960000; font-style: italic; font-weight: bold;}

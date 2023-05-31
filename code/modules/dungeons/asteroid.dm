@@ -153,7 +153,6 @@
 		spot_add(1,3,type_under)
 		spot_add(2,1,type_under)
 		spot_add(2,2,type_under) //Center floor
-		spot_add(2,2,/obj/rogue/teleporter)
 		spot_add(2,2,/obj/crawler/teleport_marker)
 		spot_add(2,3,type_under)
 		spot_add(3,1,type_under)

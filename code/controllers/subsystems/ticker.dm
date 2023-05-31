@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(ticker)
 	flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME
 
-	var/const/restart_timeout = 600
+	var/const/restart_timeout = 1200
 	var/current_state = GAME_STATE_STARTUP
 	// If true, there is no lobby phase, the game starts immediately.
 	var/start_immediately = FALSE
@@ -228,7 +228,6 @@ SUBSYSTEM_DEF(ticker)
 	GLOB.storyteller.announce()
 
 	setup_economy()
-	setup_nanite_mailer()
 	newscaster_announcements = pick(newscaster_standard_feeds)
 
 	create_characters() //Create player characters and transfer them
@@ -269,9 +268,6 @@ SUBSYSTEM_DEF(ticker)
 		N.new_player_panel_proc()
 
 	generate_contracts(min(6 + round(minds.len / 5), 12))
-	generate_excel_contracts(min(6 + round(minds.len / 5), 12))
-	generate_blackshield_contracts(min(6 + round(minds.len / 5), 12))
-	excel_check()
 	//blackshield_check() - does nothing FOR NOWWWW!!!! - likely ever
 	addtimer(CALLBACK(src, .proc/contract_tick), 15 MINUTES)
 
@@ -382,7 +378,7 @@ SUBSYSTEM_DEF(ticker)
 	if(quotes.len)
 		message = pick(quotes)
 	if(message)
-		to_chat(world, SPAN_NOTICE("<font color='purple'><b>Quote of the round: [html_encode(message)]</b></font>"))
+		to_chat(world, SPAN_FOBLOCK("Quote of the round:<br>[html_encode(message)]"))
 
 /datum/controller/subsystem/ticker/proc/create_characters()
 	for(var/mob/new_player/player in GLOB.player_list)
@@ -403,7 +399,7 @@ SUBSYSTEM_DEF(ticker)
 			SSticker.minds |= player.mind
 
 /datum/controller/subsystem/ticker/proc/generate_contracts(count)
-	var/list/candidates = (subtypesof(/datum/antag_contract) - typesof(/datum/antag_contract/excel) - typesof(/datum/antag_contract/blackshield))
+	var/list/candidates = (subtypesof(/datum/antag_contract))
 	while(count--)
 		while(candidates.len)
 			var/contract_type = pick(candidates)
@@ -416,70 +412,9 @@ SUBSYSTEM_DEF(ticker)
 			if(C.unique)
 				candidates -= contract_type
 			break
-
-/datum/controller/subsystem/ticker/proc/generate_blackshield_contracts(count)
-	var/list/candidates = subtypesof(/datum/antag_contract/blackshield)
-	while(count--)
-		while(candidates.len)
-			var/contract_type = pick(candidates)
-			var/datum/antag_contract/C = new contract_type
-			if(!C.can_place())
-				candidates -= contract_type
-				qdel(C)
-				continue
-			C.place()
-			if(C.unique)
-				candidates -= contract_type
-			break
-
-///datum/controller/subsystem/ticker/proc/blackshield_check()
-
-//	addtimer(CALLBACK(src, .proc/blackshield_check), 3 MINUTES)
-
-/datum/controller/subsystem/ticker/proc/generate_excel_contracts(count)
-	var/list/candidates = subtypesof(/datum/antag_contract/excel)
-	while(count--)
-		while(candidates.len)
-			var/contract_type = pick(candidates)
-			var/datum/antag_contract/C = new contract_type
-			if(!C.can_place())
-				candidates -= contract_type
-				qdel(C)
-				continue
-			C.place()
-			if(C.unique)
-				candidates -= contract_type
-			break
-
-/datum/controller/subsystem/ticker/proc/excel_check()
-
-	for(var/datum/antag_contract/excel/targeted/overthrow/M in GLOB.excel_antag_contracts)
-		var/mob/living/carbon/human/H = M.target_mind.current
-		if (H.stat == DEAD || is_excelsior(H))
-			M.complete()
-
-	for(var/datum/antag_contract/excel/targeted/liberate/M in GLOB.excel_antag_contracts)
-		var/mob/living/carbon/human/H = M.target_mind.current
-		if (is_excelsior(H))
-			M.complete()
-
-	for(var/datum/antag_contract/excel/propaganda/M in GLOB.excel_antag_contracts)
-		var/list/area/targets = M.targets
-		var/marked_areas = 0
-		if(M.completed)
-			return
-		for (var/obj/item/device/propaganda_chip/C in ship_areas)
-			if (C.active)
-				if (get_area(C) in targets)
-					marked_areas += 1
-		if (marked_areas >= 3)
-			M.complete()
-	addtimer(CALLBACK(src, .proc/excel_check), 3 MINUTES)
 
 /datum/controller/subsystem/ticker/proc/contract_tick()
 	generate_contracts(1)
-	generate_blackshield_contracts(1)
-	generate_excel_contracts(1)
 	addtimer(CALLBACK(src, .proc/contract_tick), 15 MINUTES)
 
 /datum/controller/subsystem/ticker/proc/equip_characters()
@@ -503,6 +438,12 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/declare_completion()
+	//We pick an end song and then play it
+	var/end_song = pick(END_MUSIC)
+	GLOB.lobbyScreen.musicTrack = end_song
+	for(var/client/C in clients)
+		GLOB.lobbyScreen.play_music(C)
+
 	to_chat(world, "<br><br><br><H1>A round has ended!</H1>")
 	for(var/mob/Player in GLOB.player_list)
 		if(Player.mind && !isnewplayer(Player))

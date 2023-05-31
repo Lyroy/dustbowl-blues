@@ -277,7 +277,7 @@ GLOBAL_LIST_INIT(turret_channels, new/list(5))
 						qdel(src) // qdel
 					return TRUE //No whacking the turret with tools on help intent
 				else
-					if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_HARD, required_stat = STAT_MEC))
+					if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_HARD, required_stat = SKILL_REP))
 						to_chat(user, SPAN_NOTICE("You remove the components of \the [src] with [I]."))
 						dismantle()
 
@@ -312,7 +312,7 @@ GLOBAL_LIST_INIT(turret_channels, new/list(5))
 
 			if(QUALITY_SCREW_DRIVING)
 				var/used_sound = panel_open ? 'sound/machines/Custom_screwdriveropen.ogg' :  'sound/machines/Custom_screwdriverclose.ogg'
-				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC, instant_finish_tier = 30, forced_sound = used_sound))
+				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP, instant_finish_tier = 30, forced_sound = used_sound))
 					if(panel_open)
 						panel_open = FALSE
 						to_chat(user, SPAN_NOTICE("You carefully shut the secondary maintenance hatch and screw it back into place."))
@@ -323,13 +323,13 @@ GLOBAL_LIST_INIT(turret_channels, new/list(5))
 
 			if(QUALITY_WIRE_CUTTING)
 				if(overridden)
-					if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC, instant_finish_tier = 30))
+					if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP, instant_finish_tier = 30))
 						overridden = FALSE
 						shock_net.current_access_list = initial(shock_net.current_access_list)
 						shock_net.update_turrets()
 						to_chat(user, SPAN_WARNING("You reconnect the turret network's security protocol override."))
 				else
-					switch(I.use_tool_extended(user, src, WORKTIME_NORMAL, QUALITY_WIRE_CUTTING, FAILCHANCE_VERY_HARD,  required_stat = STAT_MEC))
+					switch(I.use_tool_extended(user, src, WORKTIME_NORMAL, QUALITY_WIRE_CUTTING, FAILCHANCE_VERY_HARD,  required_stat = SKILL_REP))
 						if(TOOL_USE_SUCCESS)
 							to_chat(user, SPAN_NOTICE("You disconnect the turret network's security protocol override!"))
 							overridden = TRUE
@@ -348,13 +348,13 @@ GLOBAL_LIST_INIT(turret_channels, new/list(5))
 
 			if(QUALITY_PULSING)
 				if(panel_open)
-					if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_PULSING, FAILCHANCE_NORMAL,  required_stat = STAT_COG))
+					if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_PULSING, FAILCHANCE_NORMAL,  required_stat = SKILL_SCI))
 						shock_net.registered_names.Cut()
 						shock_net.registered_names = list()
 						to_chat(user, SPAN_NOTICE("You access the debug board and reset the turret network's access list."))
 						return TRUE //No whacking the turret with tools on help intent
 				else
-					if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC, instant_finish_tier = 30))
+					if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP, instant_finish_tier = 30))
 						shock_net.turrets -= src
 						var/new_channel_num = (shock_net.channel > 4) ? 1 : (shock_net.channel +1)
 
@@ -367,7 +367,7 @@ GLOBAL_LIST_INIT(turret_channels, new/list(5))
 						channel_sync()
 
 			if(QUALITY_WELDING)
-				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP))
 					health = min(health+40, maxHealth)
 					user.visible_message(SPAN_NOTICE("\The [user] repairs the tesla turret."), SPAN_NOTICE("You repair the tesla turret."))
 
@@ -375,7 +375,7 @@ GLOBAL_LIST_INIT(turret_channels, new/list(5))
 				return
 
 	else if(QUALITY_PULSING in I.tool_qualities && user.a_intent != I_HURT)
-		if(I.use_tool(user, src, WORKTIME_LONG, QUALITY_PULSING, FAILCHANCE_HARD,  required_stat = STAT_COG))
+		if(I.use_tool(user, src, WORKTIME_LONG, QUALITY_PULSING, FAILCHANCE_HARD,  required_stat = SKILL_SCI))
 			if((TOOL_USE_SUCCESS) && (isLocked(user)))
 				locked = FALSE
 				to_chat(user, SPAN_NOTICE("You manage to hack the ID reader, unlocking the access panel with a satisfying click."))
@@ -384,7 +384,7 @@ GLOBAL_LIST_INIT(turret_channels, new/list(5))
 				locked = TRUE
 				to_chat(user, SPAN_NOTICE("You manage to hack the ID reader and the access panel's locking lugs snap shut."))
 				updateUsrDialog()
-			else if((TOOL_USE_FAIL) && (!overridden) && (min(prob(35 - STAT_COG), 5)))
+			else if((TOOL_USE_FAIL) && (!overridden) && (min(prob(35 - SKILL_SCI), 5)))
 				enabled = TRUE
 				hackfail = TRUE
 				user.visible_message(

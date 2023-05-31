@@ -1,7 +1,7 @@
 /datum/craft_recipe/weapon
 	category = "Weapons"
 	time = 60
-	related_stats = list(STAT_COG)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/weapon/baseballbat
 	name = "baseball bat"
@@ -94,7 +94,6 @@
 		list(/obj/item/grenade/chem_grenade, 1),
 		list(/obj/item/clothing/head/space/void/riggedvoidsuit, 1),
 		list(/obj/item/computer_hardware/processor_unit, 1),
-		list(/obj/item/oddity, 1), //For the soul!
 		list(/obj/item/stack/cable_coil, 4),
 		list(/obj/item/clothing/suit/hooded/cloak/simple, 1),
 		list(/obj/item/scrap_lump, 1),
@@ -215,6 +214,7 @@
 		list(QUALITY_BOLT_TURNING, 10, 70),
 		list(/obj/item/stack/cable_coil, 2, "time" = 10)
 	)
+	related_stats = list(SKILL_REP, SKILL_EXP)
 
 /datum/craft_recipe/weapon/knife
 	name = "kitchen knife"
@@ -245,6 +245,7 @@
 		list(/obj/item/stack/cable_coil, 10, "time" = 5),
 		list(QUALITY_ADHESIVE, 15, 70)
 	)
+	related_stats = list(SKILL_REP, SKILL_SCI)
 
 /datum/craft_recipe/weapon/laser_dagger
 	name = "laser dagger"
@@ -260,6 +261,7 @@
 		list(/obj/item/stack/cable_coil, 5, "time" = 5),
 		list(QUALITY_ADHESIVE, 15, 70)
 	)
+	related_stats = list(SKILL_REP, SKILL_SCI)
 
 /datum/craft_recipe/weapon/mace
 	name = "makeshift mace"
@@ -369,6 +371,7 @@
 		list(/obj/item/stack/cable_coil, 10, "time" = 5),
 		list(QUALITY_WIRE_CUTTING, 15, 5)
 	)
+	related_stats = list(SKILL_REP, SKILL_SCI)
 
 /datum/craft_recipe/weapon/improvised_maul
 	name = "toolbox maul"
@@ -416,6 +419,7 @@
 		list(/obj/item/device/assembly/igniter, 1),
 		list(QUALITY_SCREW_DRIVING, 10, "time" = 30),
 		list(/obj/item/stack/cable_coil, 5))
+	related_stats = list(SKILL_REP, SKILL_EXP)
 
 /datum/craft_recipe/weapon/spoon
 	name = "spoon"

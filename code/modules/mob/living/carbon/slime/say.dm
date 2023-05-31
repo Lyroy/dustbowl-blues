@@ -8,15 +8,17 @@
 		return emote(copytext(message,2))
 
 	if(stat)
-		var/last_symbol = copytext(message, length(message))
+		//var/last_symbol = copytext(message, length(message))
 		if(stat == DEAD)
 			return say_dead(message)
+		/*
 		else if(last_symbol=="@")
 			if(src.stats.getPerk(PERK_CODESPEAK))
 				return
 			else
 				to_chat(src, "You don't know the codes, pal.")
 				return
+		*/
 		return
 
 	return ..(message, null, verb)

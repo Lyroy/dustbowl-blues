@@ -356,20 +356,6 @@
 	do_sting(target,thrown)
 	do_thorns(target,thrown)
 
-	// Bluespace tomato code copied over from grown.dm.
-	if(get_trait(TRAIT_TELEPORTING))
-
-		//Plant potency determines radius of teleport.
-		var/outer_teleport_radius = get_trait(TRAIT_POTENCY)/5
-		var/inner_teleport_radius = get_trait(TRAIT_POTENCY)/15
-
-		var/turf/TLoc = get_turf(target)
-		var/turf/picked = get_random_turf_in_range(TLoc, outer_teleport_radius, inner_teleport_radius)
-
-		if(picked)
-			go_to_bluespace(TLoc, 2, TRUE, target, picked)
-			impact = 1
-
 	return impact
 
 //Creates a random seed. MAKE SURE THE LINE HAS DIVERGED BEFORE THIS IS CALLED.
@@ -728,11 +714,13 @@
 	else
 		if(istype(user)) to_chat(user, "You [harvest_sample ? "take a sample" : "harvest"] from the [display_name].")
 
+		/*
 		// Users with green thumb perk gain sanity when harvesting plants
 		if(ishuman(user) && user.stats && user.stats.getPerk(PERK_GREENTHUMB) && !harvest_sample)
 			var/mob/living/carbon/human/H = user
 			if(H.sanity)
 				H.sanity.changeLevel(2.5)
+		*/
 
 		//This may be a new line. Update the global if it is.
 		if(name == "new line" || !(name in plant_controller.seeds))
@@ -756,14 +744,16 @@
 					total_yield = get_trait(TRAIT_YIELD)
 				else
 					total_yield = get_trait(TRAIT_YIELD) + rand(yield_mod)
-				if(prob(user.stats.getStat(STAT_BIO)))
+				if(prob(user.stats.getStat(SKILL_SUR)))
 					total_yield += 1
 					to_chat(user, SPAN_NOTICE("You have managed to harvest more!"))
 				total_yield = max(1,total_yield)
 
+				/*
 				if(user.stats.getPerk(PERK_MASTER_HERBALIST))
 					total_yield += 2
 					to_chat(user, SPAN_NOTICE("Thanks to your folken herbalistic teachings, you managed to harvest even more!"))
+				*/
 				total_yield = max(2,total_yield)
 
 		for(var/i = 0;i<total_yield;i++)

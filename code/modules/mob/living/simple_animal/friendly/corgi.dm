@@ -21,7 +21,6 @@
 	seek_speed = 6
 	possession_candidate = 1
 	holder_type = /obj/item/holder/corgi
-	sanity_damage = -1
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
 	colony_friend = TRUE
@@ -47,7 +46,6 @@
 	colony_friend = TRUE
 	friendly_to_colony = TRUE
 	befriend_job = "Premier"
-	sanity_damage = -2 // ery cute , gives people a reason to carry him
 
 /mob/living/simple_animal/corgi/Life()
 	..()
@@ -277,7 +275,7 @@
 
 		if(QUALITY_WELDING in T?.tool_qualities)
 			if(health < maxHealth)
-				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = STAT_MEC))
+				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = SKILL_REP))
 					health = maxHealth
 					to_chat(user, "You repair the damage to [src].")
 					return

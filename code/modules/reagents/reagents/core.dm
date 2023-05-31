@@ -102,11 +102,6 @@
 	common = TRUE //You know what water is.
 
 /datum/reagent/water/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
-	if(M.stats.getPerk(PERK_STAY_HYDRATED))
-		M.adjustOxyLoss(-0.6 * effect_multiplier)
-		M.heal_organ_damage(0.3 * effect_multiplier, 0.3 * effect_multiplier)
-		M.add_chemical_effect(CE_ANTITOX, 0.3 * effect_multiplier)
-		M.add_chemical_effect(CE_BLOODCLOT, 0.1)
 	if(!ishuman(M))
 		M.adjustHalLoss(-0.5)
 
@@ -143,15 +138,6 @@
 	description = "A ubiquitous chemical substance that is composed of hydrogen and oxygen with the blessings of faith."
 	fire_suppression_effect = 1.1 //When your hopeful this works...
 	id = "holywater"
-
-/datum/reagent/water/holywater/affect_ingest(mob/living/carbon/human/M, alien, effect_multiplier)
-	var/obj/item/implant/core_implant/I = M.get_core_implant(/obj/item/implant/core_implant/cruciform)
-	if(!I && !I.wearer) //Do we have a core implant?
-		return
-	if(!I.active) //Is it active?
-		return
-	M.heal_organ_damage(0, 0.2 * effect_multiplier, 0, 3 * effect_multiplier)
-	..()
 
 /datum/reagent/water/holywater/touch_turf(turf/T)
 	..()

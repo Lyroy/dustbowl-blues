@@ -4,6 +4,7 @@
 	var/actual_leather_amount = max(0,(leather_amount/2))
 	var/actual_bones_amount = max(0,(bones_amount/2))
 
+	/*
 	if(user.stats.getPerk(PERK_BUTCHER)) // Master Butcher will now give full amounts defined in the creature's variables. Otherwise, it's only half, and no special items.
 		actual_leather_amount = max(0,(leather_amount))
 		actual_meat_amount = max(1,(meat_amount))
@@ -11,7 +12,7 @@
 		if(has_special_parts)
 			for(var/animal_part in special_parts)
 				new animal_part(get_turf(src))
-
+	*/
 	if(actual_leather_amount > 0 && (stat == DEAD))
 		for(var/i=0;i<actual_leather_amount;i++)
 			new /obj/item/stack/material/leather(get_turf(src))
@@ -36,6 +37,7 @@
 			blood_effect.update_icon()
 			qdel(src)
 		else
+			/*
 			if(user.stats.getPerk(PERK_BUTCHER))
 				user.visible_message(SPAN_DANGER("[user] butchers \the [src] cleanly!"))
 				var/obj/effect/decal/cleanable/blood/blood_effect = new/obj/effect/decal/cleanable/blood/splatter(get_turf(src))
@@ -43,8 +45,10 @@
 				blood_effect.update_icon()
 				qdel(src)
 			else
-				user.visible_message(SPAN_DANGER("[user] butchers \the [src] messily!"))
-				gib()
+			*/
+			user.visible_message(SPAN_DANGER("[user] butchers \the [src] messily!"))
+			gib()
+
 
 /mob/living/carbon/superior_animal/update_lying_buckled_and_verb_status()
 	lying_prev = lying
@@ -67,7 +71,7 @@
 /mob/living/carbon/superior_animal/attackby(obj/item/I, mob/living/user, params)
 	activate_ai() //If were attacked by something and havent woken up yet. Were awake now >:T
 	if (meat_type && (stat == DEAD) && (QUALITY_CUTTING in I.tool_qualities) && user.a_intent ==  I_HELP)
-		if (I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_CUTTING, FAILCHANCE_NORMAL, required_stat = STAT_BIO))
+		if (I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_CUTTING, FAILCHANCE_NORMAL, required_stat = SKILL_SUR))
 			harvest(user)
 	else
 
@@ -119,7 +123,7 @@
 			return TRUE
 
 		if (I_DISARM)
-			if (!weakened && (prob(30 + (H.stats.getStat(STAT_ROB) * 0.1))))
+			if (!weakened && (prob(30 + (H.stats.getStat(SKILL_UNA) * 0.1))))
 				M.visible_message("\red [M] has knocked \the [src] over!")
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				Weaken(3)
@@ -139,7 +143,7 @@
 				M.visible_message("\red [M] missed \the [src]")
 			else
 				if (istype(H))
-					damage += max(0, (H.stats.getStat(STAT_ROB) / 10))
+					damage += max(0, (H.stats.getStat(SKILL_UNA) / 10))
 					if (HULK in H.mutations)
 						damage *= 2
 

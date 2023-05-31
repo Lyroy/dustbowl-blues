@@ -15,14 +15,16 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/assistant
 
+/*
 	stat_modifiers = list(
-		STAT_ROB = 8,
-		STAT_TGH = 8,
-		STAT_BIO = 8,
-		STAT_MEC = 8,
-		STAT_VIG = 8,
-		STAT_COG = 8
+		SKILL_ATH = SKILL_LEVEL_BASIC,
+		SKILL_LOC = SKILL_LEVEL_BASIC,
+		SKILL_MED = SKILL_LEVEL_BASIC,
+		SKILL_REP = SKILL_LEVEL_BASIC,
+		SKILL_SCI = SKILL_LEVEL_BASIC,
+		SKILL_SUR = SKILL_LEVEL_BASIC
 	)
+	*/
 
 	description = "The ideal newcomer role. You have no official position within the colony or are simply off duty. You will not be paid a wage.<br>\
 Where did you come from? Why are you here? These things are up to you.<br>\

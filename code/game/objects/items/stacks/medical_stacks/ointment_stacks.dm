@@ -18,30 +18,14 @@
 	if(amount < 1)
 		return
 
-	var/holy_healer = FALSE
-	var/holy_healing = FALSE
-
-	if(ishuman(user) && care_about_faith)
-		holy_healer = check_faith_of_healer(user)
-
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-
-		if(care_about_faith)
-			holy_healing = check_faith_of_healing(M)
 
 		var/obj/item/organ/external/affecting = H.get_organ(user.targeted_organ)
 
 		if(!affecting)
 			to_chat(user, SPAN_WARNING("What [user.targeted_organ]?"))
 			return TRUE
-
-		var/healed_by_faith
-		if(care_about_faith && (holy_healer || holy_healing))
-			if(holy_healer)
-				healed_by_faith += heal_burn
-			if(holy_healing)
-				healed_by_faith += heal_burn
 
 		if(affecting.open == 0)
 			if(affecting.is_salved())
@@ -111,10 +95,9 @@
 	splittable = FALSE	// Is the stack capable of being splitted?
 	preloaded_reagents = list("silicon" = 4, "ethanol" = 10, "mercury" = 4)
 	w_class = ITEM_SIZE_SMALL
-	perk_required = TRUE
-	needed_perk = PERK_MEDICAL_EXPERT
-	needed_perk_alt = PERK_SURGICAL_MASTER
-	bio_requirement = 25
+	skill_required = TRUE
+	needed_skill = SKILL_MED
+	needed_skill_level = SKILL_LEVEL_ADEPT
 	stacktype_alt = /obj/item/stack/medical/ointment/advanced
 	disinfectant  = TRUE
 	fancy_icon = FALSE
@@ -138,9 +121,9 @@
 	matter = list(MATERIAL_BIOMATTER = 2.5)
 	natural_remedy = TRUE
 	fancy_icon = FALSE
-	perk_required = TRUE
-	needed_perk = PERK_BUTCHER
-	bio_requirement = 10 // So simple a tribal can do it, still has a small check to use.
+	skill_required = TRUE
+	needed_skill = SKILL_SUR
+	needed_skill_level = SKILL_LEVEL_BASIC
 	stacktype_alt = null
 
 /obj/item/stack/medical/ointment/advanced/regenerative_ichor
@@ -153,9 +136,7 @@
 	matter = list(MATERIAL_BIOMATTER = 2.5)
 	natural_remedy = TRUE
 	fancy_icon = FALSE
-	perk_required = FALSE
-	needed_perk = null
-	bio_requirement = 0
+	skill_required = FALSE
 	stacktype_alt = null
 
 /obj/item/stack/medical/ointment/advanced/nt
@@ -169,11 +150,10 @@
 	origin_tech = list(TECH_BIO = 4)
 	fancy_icon = TRUE
 	w_class = ITEM_SIZE_SMALL
-	perk_required = TRUE
-	needed_perk = PERK_MEDICAL_EXPERT
-	bio_requirement = 15
+	skill_required = TRUE
+	needed_skill = SKILL_MED
+	needed_skill_level = SKILL_LEVEL_ADEPT
 	stacktype_alt = null
-	care_about_faith = TRUE
 
 /obj/item/stack/medical/ointment/advanced/nt/update_icon()
 	if(fancy_icon)

@@ -39,12 +39,12 @@
 	qdel(src)
 
 /obj/item/mine_old/attackby(obj/item/I, mob/user)
-	if(QUALITY_PULSING in I.tool_qualities)
+	if(QUALITY_WIRE_CUTTING in I.tool_qualities)
 		user.visible_message(
 		SPAN_DANGER("[user] starts to carefully disarm \the [src]."),
 		SPAN_DANGER("You begin to carefully disarm \the [src].")
 		)
-	if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PULSING, FAILCHANCE_NORMAL,  required_stat = STAT_COG)) //disarming a mine with a multitool should be for smarties
+	if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WIRE_CUTTING, FAILCHANCE_NORMAL,  required_stat = SKILL_EXP)) //disarming a mine with a multitool should be for smarties
 		user.visible_message(
 			SPAN_DANGER("[user] has disarmed \the [src] and it falls apart."),
 			SPAN_DANGER("You have disarmed \the [src] and it falls apart!")

@@ -176,7 +176,7 @@ It focuses on spawning large numbers of moderate-to-weak monsters, and includes 
 			chosen_verb = "have burrowed into"
 			chosen_mob_classification[/obj/effect/spider/spiderling] = 1
 			chosen_mob_classification[/obj/effect/spider/eggcluster] = 0.2
-			chosen_mob_classification[/obj/structure/spider_nest] = 0.1
+			//chosen_mob_classification[/obj/structure/spider_nest] = 0.1
 		if(INFESTATION_SPIDERS)
 			event_name = "Spider Infestation"
 			chosen_verb = "have burrowed into"

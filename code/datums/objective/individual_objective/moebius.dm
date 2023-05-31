@@ -1,13 +1,14 @@
+/*
 /datum/individual_objective/big_brain
 	name = "The Biggest Brain"
 	req_department = list(DEPARTMENT_SCIENCE, DEPARTMENT_MEDICAL)
-	var/target_stat = STAT_COG
+	var/target_stat = SKILL_SCI
 	var/target_val
 	var/delta = 10
 
 /datum/individual_objective/big_brain/assign()
 	..()
-	target_val = mind_holder.stats.getStat(STAT_COG) + delta
+	target_val = mind_holder.stats.getStat(SKILL_SCI) + delta
 	desc = "Ensure that your cognition rises to [target_val]. Progress at any cost."
 	RegisterSignal(mind_holder, COMSIG_STAT, .proc/task_completed)
 
@@ -40,7 +41,7 @@
 	if(completed) return
 	UnregisterSignal(mind_holder, COMSING_NSA)
 	..()
-/*
+
 /datum/individual_objective/derail
 	name = "Observe a Derail"
 	req_department = list(DEPARTMENT_SCIENCE, DEPARTMENT_MEDICAL)

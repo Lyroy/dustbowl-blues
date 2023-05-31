@@ -25,35 +25,59 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 	for(var/datum/category_item/player_setup_item/PI in items)
 		. += "[PI.content(user)]<br>"
 
+/datum/category_group/player_setup_category/skills
+	name = "Skills"
+	sort_order = 4
+	category_item_type = /datum/category_item/player_setup_item/skills
+
+/datum/category_group/player_setup_category/skills/content(var/mob/user)
+	. = ""
+	var/current = 0
+	var/halfway = 3
+	for(var/datum/category_item/player_setup_item/PI in items)
+		current++
+		if(halfway && current >= halfway)
+			halfway = 0
+			. += "</td><td></td><td style='width:50%'>"
+		. += "[PI.content(user)]<br>"
+		if(current == 1) // the first item should take up the whole width, everything after should only take up half the width
+			. += "<table style='width:100%'><tr style='vertical-align:top'><td style='width:50%'>"
+	. += "</td></tr></table>"
+
+/datum/category_group/player_setup_category/perk_preferences
+	name = "Perk"
+	sort_order = 5
+	category_item_type = /datum/category_item/player_setup_item/perks
+
 /datum/category_group/player_setup_category/occupation_preferences
 	name = "Occupation"
-	sort_order = 4
+	sort_order = 6
 	category_item_type = /datum/category_item/player_setup_item/occupation
 
 /datum/category_group/player_setup_category/appearance_preferences
 	name = "Roles"
-	sort_order = 5
+	sort_order = 7
 	category_item_type = /datum/category_item/player_setup_item/antagonism
 
 /datum/category_group/player_setup_category/relations_preferences
 	name = "Matchmaking"
-	sort_order = 6
+	sort_order = 8
 	category_item_type = /datum/category_item/player_setup_item/relations
 
 /datum/category_group/player_setup_category/loadout_preferences
 	name = "Loadout"
 	update_preview_icon = TRUE
-	sort_order = 7
+	sort_order = 9
 	category_item_type = /datum/category_item/player_setup_item/loadout
 
 /datum/category_group/player_setup_category/global_preferences
 	name = "Global"
-	sort_order = 8
+	sort_order = 10
 	category_item_type = /datum/category_item/player_setup_item/player_global
 
 /datum/category_group/player_setup_category/law_pref
 	name = "Laws"
-	sort_order = 9
+	sort_order = 11
 	category_item_type = /datum/category_item/player_setup_item/law_pref
 
 

@@ -1,7 +1,7 @@
 //Named origin because /datum/category_item/player_setup_item/background/background looks awful
 /datum/category_item/player_setup_item/background/origin
 	name = "Background Setup"
-	sort_order = 6
+	sort_order = 4
 
 /datum/category_item/player_setup_item/background/origin/load_character(savefile/S)
 	for(var/datum/category_group/setup_option_category/background/BG in SScharacter_setup.setup_options.categories)

@@ -132,10 +132,12 @@ var/datum/xenomorph/xenomorph_ai
 
 		if (I_GRAB)
 			if(!weakened && stat == CONSCIOUS)
+				/*
 				if(M.stats.getPerk(PERK_ASS_OF_CONCRETE) || M.stats.getPerk(PERK_BRAWN))
 					M.visible_message("\red [src] breaks the grapple and impales [M] with it's armor-piercing tail! [M] manages to stay standing!")
 					M.adjustBruteLoss(50)
 					return TRUE
+				*/
 				M.visible_message("\red The [src] breaks the grapple and impales [M] with it's armor-piercing tail!")
 				M.adjustBruteLoss(50)
 				M.Weaken(3)
@@ -165,17 +167,19 @@ var/datum/xenomorph/xenomorph_ai
 				return TRUE
 
 		if (I_DISARM)
-			if (!weakened && (prob(10 + (H.stats.getStat(STAT_ROB) * 0.1))))
+			if (!weakened && (prob(10 + (H.stats.getStat(SKILL_UNA) * 0.1))))
 				M.visible_message("\red [M] has knocked \the [src] over!")
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				Weaken(3)
 
 				return TRUE
 			else if(!weakened && stat == CONSCIOUS)
+				/*
 				if(M.stats.getPerk(PERK_ASS_OF_CONCRETE) || M.stats.getPerk(PERK_BRAWN))
 					M.visible_message("\red [src] breaks the grapple and impales [M] with it's armor-piercing tail! [M] manages to stay standing!")
 					M.adjustBruteLoss(50)
 					return TRUE
+				*/
 				M.visible_message("\red [M] gets impaled by \the [src]'s armor-piercing tail!")
 				M.adjustBruteLoss(50)
 				M.Weaken(3)
@@ -190,7 +194,7 @@ var/datum/xenomorph/xenomorph_ai
 				M.visible_message("\red [M] missed \the [src]")
 			else
 				if (istype(H))
-					damage += max(0, (H.stats.getStat(STAT_ROB) / 10))
+					damage += max(0, (H.stats.getStat(SPECIAL_S)))
 					if (HULK in H.mutations)
 						damage *= 2
 

@@ -18,15 +18,6 @@
 	anchored = 1
 	var/list/can_hold = list(
 		/obj/item/book,
-		/obj/item/oddity/common/blueprint,
-		/obj/item/oddity/common/book_eyes,
-		/obj/item/oddity/common/book_omega,
-		/obj/item/oddity/common/book_bible,
-		/obj/item/oddity/common/book_log,
-		/obj/item/oddity/common/book_unholy,
-		/obj/item/oddity/chem_book,
-		/obj/item/oddity/code_book,
-		/obj/item/oddity/ls/manual,
 		/obj/item/paper,
 		/obj/item/folder,
 		/obj/item/photo,
@@ -59,7 +50,7 @@
 		flick("[initial(icon_state)]-open",src)
 		updateUsrDialog()
 	else if(I.get_tool_type(usr, list(QUALITY_BOLT_TURNING), src))
-		if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
+		if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP))
 			anchored = !anchored
 			to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 	else

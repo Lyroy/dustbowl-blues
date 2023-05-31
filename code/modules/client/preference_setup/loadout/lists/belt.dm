@@ -15,18 +15,6 @@
 	path = /obj/item/storage/belt/utility/handmade
 	cost = 2
 
-/datum/gear/belt/nt_belt
-	display_name = "Absolutism utility belt"
-	path = /obj/item/storage/belt/utility/neotheology
-	allowed_roles = list("Prime","Vector")
-	cost = 2
-
-/datum/gear/belt/nt_belt_tactical
-	display_name = "Absolutism tactical belt"
-	path = /obj/item/storage/belt/security/neotheology
-	allowed_roles = list("Prime","Vector")
-	cost = 3
-
 
 /datum/gear/belt/medbelt
 	display_name = "Medical belt, Selection EMT / Doctor"

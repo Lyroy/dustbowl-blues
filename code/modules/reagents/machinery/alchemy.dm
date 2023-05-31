@@ -27,7 +27,7 @@
 	set name = "Start Alchemical Reaction"
 	set src in view(1)
 
-	if (usr.stat || usr.restrained() || !usr.stats.getPerk(PERK_ALCHEMY))
+	if (usr.stat || usr.restrained())
 		to_chat(usr, SPAN_NOTICE("You are incapable of operating this, either out of impossibility or lack of knowledge on Alchemy."))
 		return
 
@@ -102,7 +102,7 @@
 		detach_beaker()
 
 /obj/structure/alchemy/CtrlShiftClick(mob/user)
-	if(!usr.stat && !usr.restrained() && !anchored && usr.stats.getPerk(PERK_ALCHEMY))
+	if(!usr.stat && !usr.restrained() && !anchored)
 		do_mixing()
 		sleep(30) // Prevents spamming this so that we can't turn the flasks into reactive beakers
 

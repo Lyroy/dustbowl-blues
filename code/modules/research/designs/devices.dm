@@ -38,12 +38,6 @@
 	build_path = /obj/item/modular_computer/tablet/moebius
 	category = "Medical"
 
-/datum/design/research/item/cogenhancer
-	name = "Cognitive Enhancer Implanter"
-	desc = "A device used to install Cognitive Enhancer."
-	build_path = /obj/item/device/hardware_imprinter/cogenhance
-	category = "Medical"
-
 //Bluespace stuff
 
 /datum/design/research/item/ano_scanner
@@ -104,10 +98,4 @@
 	name = "'Ore satchel of Holding'"
 	desc = "Using localized pockets of bluespace this ore satchel prototype offers incredible storage capacity with the contents weighting nothing."
 	build_path = /obj/item/storage/bag/ore/holding
-	category = "Bluespace Telecoms"
-
-/datum/design/research/item/si_bluespace_scanner
-	name = "Bluespace Tuning Device"
-	desc = "A tool used by SI to stablize and get readings of bluespace entropy."
-	build_path = /obj/item/oddity/si_bluespace_scanner
 	category = "Bluespace Telecoms"

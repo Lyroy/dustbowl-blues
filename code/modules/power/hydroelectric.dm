@@ -47,7 +47,7 @@
 	var/list/usable_qualities = list(QUALITY_PRYING,QUALITY_PULSING)
 	var/tool_type = I.get_tool_type(user, usable_qualities, src)
 	if(tool_type == QUALITY_PRYING && malfstate == DEBRISMALFUNCTION)
-		if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+		if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP))
 			malfstate = 0
 			desc = "A hydroelectric generator able to store water and then release it to generate electricity. This one seems to be important to the structural integrity around and is attached directly to the dam's frame."
 			user.visible_message("[user] pried the debris from the generator's turbine.", "You pry away the blocking debris and dump trash which was in the way.")
@@ -56,7 +56,7 @@
 			control.malfturbines = control.malfturbines - 1
 			return
 	if(tool_type == QUALITY_PULSING && malfstate == STALLMALFUNCTION)
-		if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+		if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 			malfstate = 0
 			desc = "A hydroelectric generator able to store water and then release it to generate electricity. This one seems to be important to the structural integrity around and is attached directly to the dam's frame."
 			user.visible_message("[user] reset the generator's turbine.", "You reset the generator's turbine to its default working state.")

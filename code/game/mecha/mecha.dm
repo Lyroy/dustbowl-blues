@@ -1052,17 +1052,17 @@ assassination method if you time it right*/
 	switch(tool_type)
 
 		if(QUALITY_BOLT_TURNING)
-			if(!user.stat_check(STAT_MEC, STAT_LEVEL_ADEPT))
+			if(!user.stat_check(SKILL_REP, SKILL_LEVEL_ADEPT))
 				to_chat(usr, SPAN_WARNING("You lack the mechanical knowledge to do this!"))
 				return
 			if(state == 1)
-				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You undo the securing bolts and deploy the rollers."))
 					state = 2
 					anchored = 0
 					return
 			if(state == 2)
-				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You tighten the securing bolts and undeploy the rollers."))
 					state = 1
 					anchored = 1
@@ -1071,76 +1071,76 @@ assassination method if you time it right*/
 
 		if(QUALITY_WELDING)
 			if(user.a_intent != I_HURT)
-				if(!user.stat_check(STAT_MEC, STAT_LEVEL_ADEPT))
+				if(!user.stat_check(SKILL_REP, SKILL_LEVEL_ADEPT))
 					to_chat(usr, SPAN_WARNING("You lack the mechanical knowledge to do this!"))
 					return
 				if(src.health >= initial(src.health))
 					to_chat(user, SPAN_NOTICE("The [src.name] is at full integrity"))
-				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					if (hasInternalDamage(MECHA_INT_TANK_BREACH))
 						clearInternalDamage(MECHA_INT_TANK_BREACH)
 						to_chat(user, SPAN_NOTICE("You repair the damaged gas tank."))
 					if(src.health<initial(src.health))
 						var/missing_health = initial(src.health) - src.health
 						user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-						var/user_mec = max(0, user.stats.getStat(STAT_MEC))
+						var/user_mec = max(0, user.stats.getStat(SKILL_REP))
 						if(state == 3)
 							to_chat(user, SPAN_NOTICE("You are able to repair more damage to [src.name] from the inside."))
 							src.health += min(initial(src.health) * (user_mec / 100), missing_health)
 						else
 							to_chat(user, SPAN_NOTICE("You repair some damage to [src.name]."))
-							src.health += min(user.stats.getStat(STAT_MEC) * 2, missing_health)
+							src.health += min(user.stats.getStat(SKILL_REP) * 2, missing_health)
 					return
 			return
 
 		if(QUALITY_PRYING)
-			if(!user.stat_check(STAT_MEC, STAT_LEVEL_ADEPT))
+			if(!user.stat_check(SKILL_REP, SKILL_LEVEL_ADEPT))
 				to_chat(usr, SPAN_WARNING("You lack the mechanical knowledge to do this!"))
 				return
 			if(state == 2)
-				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You open the hatch to the power unit."))
 					state = 3
 					if(!cell)
 						state = 4
 					return
 			if(state == 3)
-				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You close the hatch to the power unit"))
 					state = 2
 					return
 			return
 
 		if(QUALITY_SCREW_DRIVING)
-			if(!user.stat_check(STAT_MEC, STAT_LEVEL_ADEPT))
+			if(!user.stat_check(SKILL_REP, SKILL_LEVEL_ADEPT))
 				to_chat(usr, SPAN_WARNING("You lack the mechanical knowledge to do this!"))
 				return
 			if(hasInternalDamage(MECHA_INT_TEMP_CONTROL))
-				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You repair the damaged temperature controller."))
 					clearInternalDamage(MECHA_INT_TEMP_CONTROL)
 					return
 			if(state == 3 && src.cell)
-				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You unscrew and pry out the powercell."))
 					src.cell.forceMove(src.loc)
 					src.cell = null
 					state = 4
 					src.log_message("Powercell removed.")
 			if(state == 4 && src.cell)
-				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You screw the cell in place."))
 					state = 3
 					return
 			return
 
 		if(QUALITY_PULSING)
-			if(!user.stat_check(STAT_MEC, STAT_LEVEL_ADEPT))
+			if(!user.stat_check(SKILL_REP, SKILL_LEVEL_ADEPT))
 				to_chat(usr, SPAN_WARNING("You lack the mechanical knowledge to do this!"))
 				return
 			if(state >= 3 && src.occupant)
 				to_chat(user, "You attempt to eject the pilot using the maintenance controls.")
-				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					if(src.occupant.stat)
 						src.go_out()
 						src.log_message("[src.occupant] was ejected using the maintenance controls.")
@@ -1150,7 +1150,7 @@ assassination method if you time it right*/
 						src.log_message("Eject attempt made using maintenance controls - rejected.")
 					return
 			if(src.dna)
-				if(I.use_tool(user, src, WORKTIME_LONG, tool_type, FAILCHANCE_VERY_HARD, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_LONG, tool_type, FAILCHANCE_VERY_HARD, required_stat = SKILL_REP))
 					src.dna = null
 					to_chat(user, SPAN_WARNING("You have reset the mech's DNA lock forcefuly."))
 					src.log_message("DNA lock was forcefuly removed.")
@@ -1163,7 +1163,7 @@ assassination method if you time it right*/
 			return
 
 	if(istype(I, /obj/item/mecha_parts/mecha_equipment))
-		if(!user.stat_check(STAT_MEC, STAT_LEVEL_ADEPT))
+		if(!user.stat_check(SKILL_REP, SKILL_LEVEL_ADEPT))
 			to_chat(usr, SPAN_WARNING("You lack the mechanical knowledge to do this!"))
 			return
 
@@ -1189,7 +1189,7 @@ assassination method if you time it right*/
 			to_chat(user, SPAN_WARNING("Maintenance protocols disabled by operator."))
 
 	else if(istype(I, /obj/item/stack/cable_coil))
-		if(!user.stat_check(STAT_MEC, STAT_LEVEL_ADEPT))
+		if(!user.stat_check(SKILL_REP, SKILL_LEVEL_ADEPT))
 			to_chat(usr, SPAN_WARNING("You lack the mechanical knowledge to do this!"))
 			return
 

@@ -250,7 +250,7 @@
 								O.forceMove(C)
 
 							for(var/mob/living/M in targetTurf)
-								if((M.stat == CONSCIOUS) || is_carrion(M)) //We do eat are own
+								if((M.stat == CONSCIOUS)) //We do eat are own
 									continue
 								large_cocoon = 1
 								fed += 1 //we get half what we need to leg an egg

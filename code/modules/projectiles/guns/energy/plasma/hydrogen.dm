@@ -90,7 +90,7 @@ Securing and unsecuring the flask is a long and hard task, and a failure when un
 		var/obj/item/tool/T = W // To use tool-only checks
 		if(QUALITY_SCREW_DRIVING in T.tool_qualities)
 			if((flask) && !(connected) && !(istype(W, /obj/item/hydrogen_fuel_cell/backpack)))
-				if(T.use_tool(user, src, WORKTIME_LONG, QUALITY_SCREW_DRIVING, FAILCHANCE_NORMAL, required_stat = STAT_MEC)) // Skill check. Long to do, requires at least a professional to do it.
+				if(T.use_tool(user, src, WORKTIME_LONG, QUALITY_SCREW_DRIVING, FAILCHANCE_NORMAL, required_stat = SKILL_ENE)) // Skill check. Long to do, requires at least a professional to do it.
 					if(secured)
 						user.visible_message(
 												SPAN_NOTICE("[user] unsecure the plasma flask."),

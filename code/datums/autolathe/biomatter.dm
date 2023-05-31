@@ -104,10 +104,6 @@
 	name = "Utility belt"
 	build_path = /obj/item/storage/belt/utility
 
-/datum/design/bioprinter/belt/utility/neotheology
-	name = "Absolutism utility belt"
-	build_path = /obj/item/storage/belt/utility/neotheology
-
 /datum/design/bioprinter/belt/medical
 	name = "Medical belt"
 	build_path = /obj/item/storage/belt/medical
@@ -115,10 +111,6 @@
 /datum/design/bioprinter/belt/security
 	name = "Tactical belt"
 	build_path = /obj/item/storage/belt/security
-
-/datum/design/bioprinter/belt/security/neotheology
-	name = "Absolutism tactical belt"
-	build_path = /obj/item/storage/belt/security/neotheology
 
 /datum/design/bioprinter/belt/medical/emt
 	name = "EMT belt"
@@ -192,59 +184,6 @@
 	materials = list(MATERIAL_BIOMATTER = 100, MATERIAL_GOLD = 10, MATERIAL_SILVER = 10, MATERIAL_PLASTEEL = 100)
 	build_path = /obj/item/rig/combat/knight
 
-//[MELEE]
-/datum/design/autolathe/sword/nt_sword
-	name = "NT Short Sword"
-	build_path = /obj/item/tool/sword/nt/shortsword
-
-/datum/design/autolathe/sword/nt_longsword
-	name = "NT Longsword"
-	build_path = /obj/item/tool/sword/nt/longsword
-
-/datum/design/autolathe/sword/nt_dagger
-	name = "NT Dagger"
-	build_path = /obj/item/tool/knife/dagger/nt
-
-/datum/design/autolathe/sword/nt_halberd
-	name = "NT Halberd"
-	build_path = /obj/item/tool/spear/halberd
-
-/datum/design/autolathe/sword/nt_spear
-	name = "NT Spear"
-	build_path = /obj/item/tool/sword/nt/spear
-
-/datum/design/autolathe/sword/nt_scourge
-	name = "NT Scourge"
-	build_path = /obj/item/tool/sword/nt/scourge
-
-/datum/design/autolathe/shield/nt_shield
-	name = "NT Shield"
-	build_path = /obj/item/shield/riot/nt
-
-/datum/design/autolathe/nt/shield/nt_buckler
-	name = "NT Buckler"
-	build_path = /obj/item/shield/buckler/nt
-
-/datum/design/autolathe/nt/sword/nt_verutum
-	name = "OT Javelin"
-	build_path = /obj/item/stack/thrown/nt/verutum
-
-/datum/design/autolathe/tool_upgrade/sanctifier
-	name = "NT Sanctifier"
-	build_path = /obj/item/tool_upgrade/augment/sanctifier
-
-/datum/design/autolathe/sword/nt_warhammer
-	name = "NT Warhammer"
-	build_path = /obj/item/tool/sword/nt/warhammer
-
-/datum/design/autolathe/sword/nt_flanged
-	name = "NT Flanged Mace"
-	build_path = /obj/item/tool/sword/nt/flanged
-
-/datum/design/autolathe/sword/nt_power
-	name = "NT Forceblade"
-	build_path = /obj/item/tool/sword/nt/power
-
 //[GRENADES]
 /datum/design/autolathe/grenade/nt_heatwave
 	name = "NT HG \"Inferno\""
@@ -257,10 +196,6 @@
 /datum/design/autolathe/grenade/nt_frag
 	name = "NT DFG \"Holy Thunder\""
 	build_path = /obj/item/grenade/frag/nt
-
-/datum/design/autolathe/grenade/nt_flashbang
-	name = "NT FBG \"Holy Light\""
-	build_path = /obj/item/grenade/flashbang/nt
 
 /datum/design/autolathe/grenade/nt_explosive
 	name = "NT OBG \"Holy Grail\""
@@ -329,35 +264,6 @@
 /datum/design/bioprinter/bioimplant/omuscle
 	name = "Organic muscle implant"
 	build_path = /obj/item/biogoop/muscle
-
-//[/CRUCIFORM UPGRAED]
-
-/datum/design/autolathe/cruciform_upgrade
-	build_path = /obj/item/cruciform_upgrade
-
-/datum/design/autolathe/cruciform_upgrade/natures_blessing
-	name = "Natures blessing"
-	build_path = /obj/item/cruciform_upgrade/natures_blessing
-
-/datum/design/autolathe/cruciform_upgrade/faiths_shield
-	name = "Faiths shield"
-	build_path = /obj/item/cruciform_upgrade/faiths_shield
-
-/datum/design/autolathe/cruciform_upgrade/cleansing_presence
-	name = "Cleansing presence"
-	build_path = /obj/item/cruciform_upgrade/cleansing_presence
-
-/datum/design/autolathe/cruciform_upgrade/martyr_gift
-	name = "Martyr gift"
-	build_path = /obj/item/cruciform_upgrade/martyr_gift
-
-/datum/design/autolathe/cruciform_upgrade/wrath_of_god
-	name = "Wrath of god"
-	build_path = /obj/item/cruciform_upgrade/wrath_of_god
-
-/datum/design/autolathe/cruciform_upgrade/speed_of_the_chosen
-	name = "Speed of the chosen"
-	build_path = /obj/item/cruciform_upgrade/speed_of_the_chosen
 
 //[/POUCHES]
 /datum/design/bioprinter/pouch/ammo

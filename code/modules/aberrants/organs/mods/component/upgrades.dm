@@ -1,7 +1,7 @@
 /datum/component/modification/organ/stromal
 	apply_to_types = list(/obj/item/organ/internal)
 	examine_msg = "Can be attached to internal organs."
-	examine_difficulty = STAT_LEVEL_BASIC
+	examine_difficulty = SKILL_LEVEL_BASIC
 
 /datum/component/modification/organ/stromal/try_modify()
 	return
@@ -78,7 +78,7 @@
 /datum/component/modification/organ/parenchymal
 	apply_to_types = list(/obj/item/organ/internal)
 	examine_msg = "Can be attached to internal organs."
-	examine_difficulty = STAT_LEVEL_BASIC
+	examine_difficulty = SKILL_LEVEL_BASIC
 	adjustable = TRUE
 
 /datum/component/modification/organ/parenchymal/modify(obj/item/I, mob/living/user)

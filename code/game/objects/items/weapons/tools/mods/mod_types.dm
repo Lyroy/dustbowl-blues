@@ -657,7 +657,6 @@
 	I.prefix = "holding"
 	I.req_fuel_cell = REQ_FUEL
 	item_flags |= BLUESPACE
-	bluespace_entropy(5, get_turf(src))
 
 //Penalises the tool, but unlocks several more augment slots.
 /obj/item/tool_upgrade/augment/expansion
@@ -980,7 +979,6 @@
 	UPGRADE_COLOR = "#3366ff"
 	)
 	I.prefix = "theoretical"
-	bluespace_entropy(1, get_turf(src))
 
 /obj/item/tool_upgrade/artwork_tool_mod
 	name = "Weird Revolver"

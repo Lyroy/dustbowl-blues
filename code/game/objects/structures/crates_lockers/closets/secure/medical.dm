@@ -186,7 +186,6 @@
 	new /obj/item/computer_hardware/hard_drive/portable/design/xenobio/rd(src)
 	new /obj/item/device/defib_kit/compact/combat/adv/loaded/cbo(src)
 	new /obj/item/circuitboard/sleeper/hyper(src)
-	new /obj/item/oddity/chem_book(src)
 	new /obj/item/storage/hcases/med(src)
 
 /obj/structure/closet/secure_closet/animal

@@ -123,7 +123,7 @@
 	var/new_time = time // for reqed_type or raw materials
 	if(reqed_type || !reqed_quality)
 		if(recipe.related_stats)
-			var/mastery_factor = min(user.stats.getAvgStat(recipe.related_stats)/STAT_LEVEL_PROF, 1) //we will assume that STAT_LEVEL_PROF is highest value of mastery
+			var/mastery_factor = min(user.stats.getAvgStat(recipe.related_stats)/SKILL_LEVEL_PROF, 1) //we will assume that SKILL_LEVEL_PROF is highest value of mastery
 			mastery_factor *= 0.66 //	we want cut no more than 2/3 of time
 			var/time_reduction_factor = max(0, 1 - mastery_factor)
 			new_time *= time_reduction_factor
@@ -164,7 +164,7 @@
 			return
 		if(target)
 			announce_action(start_msg, user, I, target)
-		if(!I.use_tool(user, target || user, time, reqed_quality, FAILCHANCE_NORMAL, list(STAT_MEC, STAT_COG))) //FIXME: up here we pass a list down to getStat, which expects no list
+		if(!I.use_tool(user, target || user, time, reqed_quality, FAILCHANCE_NORMAL, list(SKILL_REP, SKILL_SCI))) //FIXME: up here we pass a list down to getStat, which expects no list
 			to_chat(user, SPAN_WARNING("Work aborted"))
 			building = FALSE
 			return

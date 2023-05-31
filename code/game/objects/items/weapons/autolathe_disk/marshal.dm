@@ -64,7 +64,6 @@
 		/datum/design/autolathe/sec/riot,
 		/datum/design/autolathe/device/landmine = 0,
 		/datum/design/autolathe/container/ammocan_ih = 0,
-		/datum/design/autolathe/device/smartlink = 3,
 		)
 
 /obj/item/computer_hardware/hard_drive/portable/design/security/marshal_ammo

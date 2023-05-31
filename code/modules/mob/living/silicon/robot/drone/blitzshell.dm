@@ -54,13 +54,7 @@
 	hide_on_manifest = TRUE
 	power_efficiency = 1.5 //Antag
 
-	stat_modifiers = list(
-		STAT_ROB = 120,
-		STAT_TGH = 120,
-		STAT_BIO = 75,
-		STAT_COG = 120,
-		STAT_MEC = 60
-	)
+	stat_modifiers = list()
 
 /obj/item/robot_module/blitzshell/New(mob/living/silicon/robot/R)
 	//modules += new /obj/item/gun/energy/laser/mounted/blitz(src) //Deemed too strong for initial loadout
@@ -81,9 +75,9 @@
 	modules += new /obj/item/device/nanite_container(src) //For self repair. Get more charges via the contract system
 
 	//We are stronk so we get less no knockdowns
-	R.stats.addPerk(PERK_ASS_OF_CONCRETE)
+	/*R.stats.addPerk(PERK_ASS_OF_CONCRETE)
 	//So we cant be escaped as quickly
-	R.stats.addPerk(PERK_PARKOUR)
+	R.stats.addPerk(PERK_PARKOUR)*/
 
 	..()
 
@@ -98,7 +92,6 @@
 		/obj/item/spacecash,
 		/obj/item/device/mind_fryer,
 		/obj/item/organ/external/head,
-		/obj/item/oddity/secdocs,
 		/obj/item/stack/telecrystal //To reload the uplink
 		)
 

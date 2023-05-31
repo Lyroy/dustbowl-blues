@@ -96,7 +96,7 @@
 		else if((QUALITY_SCREW_DRIVING in T.tool_qualities) && !(panel_locked))
 
 			// Skill check to open or close the panel.
-			if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_SCREW_DRIVING, FAILCHANCE_EASY, required_stat = STAT_MEC))
+			if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_SCREW_DRIVING, FAILCHANCE_EASY, required_stat = SKILL_REP))
 
 				// If the panel is already open, close it.
 				if(panel_open)
@@ -216,7 +216,7 @@
 					return
 
 				// Skill check.
-				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PRYING, FAILCHANCE_EASY, required_stat = STAT_MEC))
+				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PRYING, FAILCHANCE_EASY, required_stat = SKILL_REP))
 					armored.forceMove(src.loc) // Spawn the armor plating on the ground.
 					armored = null // Remove the armor plating from the roomba
 					armor = default_armor // Give the roomba back its default armor values.
@@ -236,7 +236,7 @@
 					return
 
 				// Skill Check.
-				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PRYING, FAILCHANCE_EASY, required_stat = STAT_MEC))
+				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PRYING, FAILCHANCE_EASY, required_stat = SKILL_REP))
 					weaponry.forceMove(src.loc) // Spawn the weapon the roomba had.
 
 					// Was the weapon the knife ?

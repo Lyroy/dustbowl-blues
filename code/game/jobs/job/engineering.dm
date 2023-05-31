@@ -1,3 +1,4 @@
+/*
 /datum/job/chief_engineer
 	title = "Guild Master"
 	flag = GUILDMASTER
@@ -118,3 +119,4 @@ Do not let outsiders, even Command Staff, interfere with the duties of the Guild
 	name = "Guild Adept"
 	icon_state = "player-orange"
 	join_tag = /datum/job/technomancer
+*/

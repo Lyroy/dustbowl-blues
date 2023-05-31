@@ -31,15 +31,17 @@ I was too lazy to put the friendly roombas with the handmade drones, so now they
 
 		if(QUALITY_WELDING in T.tool_qualities)
 			if(health < maxHealth)
-				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = STAT_MEC))
+				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = SKILL_REP))
 					user.visible_message(
-										SPAN_NOTICE("[user] [user.stats.getPerk(PERK_ROBOTICS_EXPERT) ? "expertly" : ""] repair the damage to [src.name]."),
-										SPAN_NOTICE("You [user.stats.getPerk(PERK_ROBOTICS_EXPERT) ? "expertly" : ""] repair the damage to [src.name].")
+										SPAN_NOTICE("[user] repairs the damage to [src.name]."),
+										SPAN_NOTICE("You repair the damage to [src.name].")
 										)
+					/*
 					if(user.stats.getPerk(PERK_ROBOTICS_EXPERT))
 						heal_overall_damage(50, 50)
 					else
-						heal_overall_damage(rand(30, 50), rand(30, 50))
+					*/
+					heal_overall_damage(rand(30, 50), rand(30, 50))
 					return
 				return
 			to_chat(user, "[src] doesn't need repairs.")
@@ -72,15 +74,17 @@ I was too lazy to put the friendly roombas with the handmade drones, so now they
 
 		if(QUALITY_WELDING in T.tool_qualities)
 			if(health < maxHealth)
-				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = STAT_MEC))
+				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = SKILL_REP))
 					user.visible_message(
-										SPAN_NOTICE("[user] [user.stats.getPerk(PERK_ROBOTICS_EXPERT) ? "expertly" : ""] repair the damage to [src.name]."),
-										SPAN_NOTICE("You [user.stats.getPerk(PERK_ROBOTICS_EXPERT) ? "expertly" : ""] repair the damage to [src.name].")
+										SPAN_NOTICE("[user] repairs the damage to [src.name]."),
+										SPAN_NOTICE("You repair the damage to [src.name].")
 										)
+					/*
 					if(user.stats.getPerk(PERK_ROBOTICS_EXPERT))
 						heal_overall_damage(50, 50)
 					else
-						heal_overall_damage(rand(30, 50), rand(30, 50))
+					*/
+					heal_overall_damage(rand(30, 50), rand(30, 50))
 					return
 				return
 			to_chat(user, "[src] doesn't need repairs.")
@@ -122,15 +126,17 @@ I was too lazy to put the friendly roombas with the handmade drones, so now they
 		if (!isnull(T))
 			if(QUALITY_WELDING in T.tool_qualities)
 				if(health < maxHealth)
-					if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = STAT_MEC))
+					if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = SKILL_REP))
 						user.visible_message(
-											SPAN_NOTICE("[user] [user.stats.getPerk(PERK_ROBOTICS_EXPERT) ? "expertly" : ""] repair the damage to [src.name]."),
-											SPAN_NOTICE("You [user.stats.getPerk(PERK_ROBOTICS_EXPERT) ? "expertly" : ""] repair the damage to [src.name].")
-											)
+										SPAN_NOTICE("[user] repairs the damage to [src.name]."),
+										SPAN_NOTICE("You repair the damage to [src.name].")
+										)
+						/*
 						if(user.stats.getPerk(PERK_ROBOTICS_EXPERT))
 							heal_overall_damage(50, 50)
 						else
-							heal_overall_damage(rand(30, 50), rand(30, 50))
+						*/
+						heal_overall_damage(rand(30, 50), rand(30, 50))
 						return
 					return
 				to_chat(user, "[src] doesn't need repairs.")

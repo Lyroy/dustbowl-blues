@@ -21,14 +21,11 @@
 	w_class = 1
 	origin_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 3)
 	matter = list(MATERIAL_GOLD = 10, MATERIAL_DIAMOND = 15, MATERIAL_PLASMA = 10)
-	var/blink_range = 8 // The teleport range when crushed/thrown at someone.
-	var/entropy_value = 2
 
 /obj/item/bluespace_crystal/New()
 	..()
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
-	bluespace_entropy(entropy_value, get_turf(src), TRUE)
 	item_flags |= BLUESPACE
 //	create_reagents(10)
 //	reagents.add_reagent("bluespace_dust", blink_range)
@@ -40,14 +37,8 @@
 	sparks.set_up(5, 0, get_turf(user))
 	sparks.start()
 	playsound(src.loc, "sparks", 50, 1)
-	playsound(src.loc, 'sound/effects/phasein.ogg', 25, 1)
-	blink_mob(user)
 	user.unEquip(src)
 	qdel(src)
-
-/obj/item/bluespace_crystal/proc/blink_mob(mob/living/L)
-	var/turf/T = get_random_turf_in_range(L, blink_range, 1)
-	go_to_bluespace(get_turf(L), entropy_value, TRUE, L, T)
 
 /obj/item/bluespace_crystal/throw_impact(atom/hit_atom)
 	if(!..()) // not caught in mid-air
@@ -57,9 +48,6 @@
 		sparks.set_up(5, 0, T)
 		sparks.start()
 		playsound(src.loc, "sparks", 50, 1)
-		if(isliving(hit_atom))
-			blink_mob(hit_atom)
-			playsound(T, 'sound/effects/phasein.ogg', 25, 1)
 		qdel(src)
 
 // Artifical bluespace crystal, doesn't give you much research.
@@ -69,4 +57,3 @@
 	desc = "An artificially made bluespace crystal, it looks delicate."
 	matter = list(MATERIAL_GOLD = 30, MATERIAL_DIAMOND = 35, MATERIAL_PLASMA = 30)
 	origin_tech = list(TECH_BLUESPACE = 2)
-	blink_range = 4 // Not as good as the organic stuff!

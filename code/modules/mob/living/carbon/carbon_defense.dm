@@ -25,7 +25,7 @@
 		weapon_edge = 0
 
 	hit_impact(effective_force, get_step(user, src))
-	damage_through_armor(effective_force, I.damtype, hit_zone, ARMOR_MELEE, armour_pen = I.armor_penetration + (user.stats.getStat(STAT_ROB) * 0.25), used_weapon = I, sharp = weapon_sharp, edge = weapon_edge, post_pen_mult = I.post_penetration_dammult)
+	damage_through_armor(effective_force, I.damtype, hit_zone, ARMOR_MELEE, armour_pen = I.armor_penetration + (user.stats.getStat(SKILL_MEL) * 0.25), used_weapon = I, sharp = weapon_sharp, edge = weapon_edge, post_pen_mult = I.post_penetration_dammult)
 
 /*Its entirely possible that we were gibbed or dusted by the above. Check if we still exist before
 continuing. Being gibbed or dusted has a 1.5 second delay, during which it sets the transforming var to
@@ -42,11 +42,15 @@ true, and the mob is not yet deleted, so we need to check that as well*/
 		var/embed_threshold = weapon_sharp? 5*I.w_class : 15*I.w_class
 
 		//The user's robustness stat adds to the threshold, allowing you to use more powerful weapons without embedding risk
-		embed_threshold += user.stats.getStat(STAT_ROB)
+		embed_threshold += user.stats.getStat(SKILL_MEL)
 		var/embed_chance = (damage - embed_threshold)*I.embed_mult
+		/*
 		if(user.stats.getPerk(PERK_BORN_WARRIOR))
 			return TRUE
 		if (embed_chance > 0 && prob(embed_chance) && !src.stats.getPerk(PERK_IRON_FLESH))
+			src.embed(I, hit_zone)
+		*/
+		if (embed_chance > 0 && prob(embed_chance))
 			src.embed(I, hit_zone)
 
 	return TRUE

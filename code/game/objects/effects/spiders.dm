@@ -149,7 +149,7 @@
 	var/tool_type = I.get_tool_type(user, usable_qualities, src)
 	if(tool_type==QUALITY_WEAVING)
 		to_chat(user, SPAN_NOTICE("You started to collecting the sticky webs into a ball of silk."))
-		if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_COG))
+		if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_VERY_EASY, required_stat = SKILL_SUR))
 		//Hard to mess up but takes some time
 			new /obj/item/stack/material/silk(get_turf(src), 1 ? 1 : 2)
 			to_chat(user, SPAN_NOTICE("You bundle up a ball of spider silk."))
@@ -170,9 +170,7 @@
 		if(M.faction == "spiders")
 			return 1
 	if(isliving(mover))
-		var/mob/living/carbon/human/H = mover
-		if(H.stats.getPerk(PERK_SPIDER_FRIEND))
-			return 1
+		//var/mob/living/carbon/human/H = mover
 		if(prob(50))
 			to_chat(mover, SPAN_WARNING("You get stuck in \the [src] for a moment."))
 			return 0

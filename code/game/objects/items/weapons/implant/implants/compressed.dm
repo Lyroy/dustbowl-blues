@@ -16,7 +16,6 @@
 
 	if(emote == activation_emote)
 		to_chat(source, "The air glows as \the [scanned.name] uncompresses.")
-		bluespace_entropy(entropy_value, get_turf(src))
 		log_and_message_admins(" - [scanned.name] teleported form a compressed matter implant at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[source]") //So we can go to it
 
 		activate()

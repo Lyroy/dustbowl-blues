@@ -1,4 +1,4 @@
-/obj/item/organ/internal/scaffold/aberrant/dependent
+/*/obj/item/organ/internal/scaffold/aberrant/dependent
 	max_upgrades = 4
 	price_tag = 350
 	spawn_tags = SPAWN_TAG_ABERRANT_ORGAN_RARE		// Rare because 4 upgrade slots
@@ -127,7 +127,7 @@
 	output_pool = list(OP_KIDNEYS)
 	special_info = list(STAT_COG, 10)
 
-	
+
 /obj/item/organ/internal/scaffold/aberrant/dependent/exmercenary
 	desc = "A masterfully engineered organ for the really big guns."
 	specific_input_type_pool = list(
@@ -242,3 +242,4 @@
 	special_info = list(STAT_BIO, 10)
 
 // Soj uses Viv (NSA stat, "addict") and Anatomy (health stat, "bodybuilder")
+*/

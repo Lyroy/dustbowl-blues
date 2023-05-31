@@ -58,7 +58,6 @@
 		)
 	)
 	offer_types = list(
-		/obj/item/oddity/techno = offer_data("unknown technological part", 1600, 2),
 		/obj/item/tool/crowbar/onestar = offer_data("greyson crowbar", 1500, 3),
 		/obj/item/tool/pickaxe/onestar = offer_data("greyson pickaxe", 1500, 3),
 		/obj/item/tool/pickaxe/jackhammer/onestar = offer_data("greyson jackhammer", 1500, 3),

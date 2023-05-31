@@ -57,16 +57,6 @@
 		new /obj/item/reagent_containers/syringe/stim/turbo(src)
 		new /obj/item/reagent_containers/syringe/stim/boxer(src)
 		new /obj/item/reagent_containers/syringe/stim/violence_ultra(src)
-	if(prob(15))
-		new /obj/item/oddity/common/old_money(src)
-	if(prob(15))
-		new /obj/item/oddity/common/old_id(src)
-	if(prob(15))
-		new /obj/item/oddity/common/old_newspaper(src)
-	if(prob(15))
-		new /obj/item/oddity/common/old_pda(src)
-	if(prob(15))
-		new /obj/item/oddity/common/old_radio(src)
 	new /obj/item/clothing/accessory/armband/cargo(src)
 
 /obj/structure/closet/secure_closet/reinforced/quartermaster
@@ -91,7 +81,6 @@
 	new /obj/item/ammo_magazine/ammobox/pistol_35(src)
 	new /obj/item/ammo_magazine/ammobox/pistol_35/rubber(src)
 	new /obj/item/stack/os_cash/random(src)
-	new /obj/item/direct_line(src)
 
 //Prospector gear, you'll notice it is immensely heavily randomized, this is intentional to add some replayibility to prospector starts.
 //To anyone editing this, I advise using if statements over switch to better have control of what loot spawns, it rolls each in order of success so you can better set the odds.
@@ -656,7 +645,6 @@
 	new /obj/item/clothing/glasses/artist(src)
 	new /obj/item/clothing/mask/gas/artist_hat(src)
 	new /obj/item/device/radio/headset/headset_cargo(src)
-	new /obj/item/circuitboard/artist_bench(src)
 	new /obj/item/storage/pouch/grow_a_gun(src)
 	new /obj/item/toy/badtothebone(src) // They should be able to use this just as much.
 

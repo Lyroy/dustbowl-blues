@@ -779,7 +779,7 @@ var/datum/feed_network/news_network = new /datum/feed_network     //The global n
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 100, 1)
 		for (var/mob/O in hearers(5, src.loc))
 			O.show_message("<EM>[user.name]</EM> further abuses the shattered [src.name].")
-	if(istype(I, /obj/item/newspaper) || istype(I, /obj/item/oddity/common/old_newspaper))
+	if(istype(I, /obj/item/newspaper))
 		qdel(I)
 		ping()
 		src.paper_remaining += 1

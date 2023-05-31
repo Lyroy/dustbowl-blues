@@ -1,5 +1,5 @@
 /* Common reactions */
-
+/*
 /datum/chemical_reaction/inaprovaline
 	result = "inaprovaline"
 	required_reagents = list("acetone" = 1, "carbon" = 1, "sugar" = 1)
@@ -190,23 +190,6 @@
 	result = "hyperzine"
 	required_reagents = list("sugar" = 1, "blattedin" = 1, "sulfur" = 1)
 	result_amount = 3
-
-/datum/chemical_reaction/psi_juice
-	result = "psi_juice"
-	required_reagents = list("psilocybin" = 1, "synaptizine" = 1, "cryptobiolin" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/psi_juice_inhaler
-	result = null
-	required_reagents = list("psi_juice" = 30, "water" = 30, "silicon" = 30)
-	result_amount = 1
-	blacklist_containers = list(/mob, /obj/machinery/microwave)
-	mix_message = "The solution solidifies into a cerebrix inhaler!"
-
-/datum/chemical_reaction/psi_juice_inhaler/on_reaction(var/datum/reagents/holder, var/created_volume)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/psi_injector(location)
 
 /datum/chemical_reaction/ryetalyn
 	result = "ryetalyn"
@@ -936,11 +919,6 @@
 	maximum_temperature = 12.7
 	minimum_temperature = 7.7
 
-/datum/chemical_reaction/mindwipe
-	result = "mindwipe"
-	required_reagents = list("mindbreaker" = 1, "psilocybin" = 1, "sanguinum" = 1 , "anti_toxin" = 1, "ethanol" = 1)
-	result_amount = 5
-
 /* FBP "medicine" */
 
 /datum/chemical_reaction/fbp_repair
@@ -953,4 +931,5 @@
 	result = "fbp_replenish"
 	required_reagents = list("nanites" = 1, "oil" = 1)
 	result_amount = 2
+*/
 */

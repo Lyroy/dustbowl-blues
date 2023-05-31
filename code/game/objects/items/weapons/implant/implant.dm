@@ -84,13 +84,6 @@
 	for(var/mob/living/carbon/human/H in viewers(target))
 		LEGACY_SEND_SIGNAL(H, COMSIG_HUMAN_INSTALL_IMPLANT, target, src)
 
-
-	if(ishuman(target) && is_metal)
-		var/mob/living/carbon/human/H = target
-		var/obj/item/organ/internal/psionic_tumor/installed_tumor = H.random_organ_by_process(BP_PSION)
-		if(installed_tumor)
-			installed_tumor.remove_implanted(src)
-
 	return TRUE
 
 /obj/item/implant/proc/can_install(var/mob/living/target, var/obj/item/organ/external/E)

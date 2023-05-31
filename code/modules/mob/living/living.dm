@@ -605,7 +605,7 @@ default behaviour is:
 	if(resting)
 		is_busy = TRUE
 
-		if(do_after(src, (stats.getPerk(PERK_PARKOUR) ? 0.2 SECONDS : 0.4 SECONDS), null, 0, 1, INCAPACITATION_DEFAULT, immobile = 0))
+		if(do_after(src, 0.4 SECONDS, null, 0, 1, INCAPACITATION_DEFAULT, immobile = 0))
 			resting = FALSE
 			to_chat(src, SPAN_NOTICE("You are now getting up."))
 			update_lying_buckled_and_verb_status()

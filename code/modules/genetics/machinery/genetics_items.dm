@@ -424,7 +424,7 @@ A holder for items we make with Genetics. Helps add a visceral element to object
 		qdel(src)
 
 	if(QUALITY_CUTTING in I.tool_qualities)
-		if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_CUTTING, FAILCHANCE_EASY, required_stat = STAT_BIO))
+		if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_CUTTING, FAILCHANCE_EASY, required_stat = SKILL_MED))
 			playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
 			new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
 			user.visible_message(SPAN_NOTICE("[user] rips open the [src] in a shower of gore!"))

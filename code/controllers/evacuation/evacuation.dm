@@ -83,9 +83,11 @@ var/datum/evacuation_controller/evacuation_controller
 	state = EVAC_PREPPING
 
 	if(emergency_evacuation)
+		/*
 		for(var/area/A in GLOB.map_areas)
 			if(istype(A, /area/nadezhda/hallway))
 				A.readyalert()
+		*/
 		if(!skip_announce)
 			evacuation_controller.evac_called.Announce(replacetext(GLOB.maps_data.emergency_shuttle_called_message, "%ETA%", "[round(evacuation_controller.get_eta()/60)] minute\s."))
 	else
@@ -111,9 +113,11 @@ var/datum/evacuation_controller/evacuation_controller
 
 	if(emergency_evacuation)
 		evac_recalled.Announce(GLOB.maps_data.emergency_shuttle_recall_message)
+		/*
 		for(var/area/A in GLOB.map_areas)
 			if(istype(A, /area/nadezhda/hallway))
 				A.readyreset()
+		*/
 		emergency_evacuation = 0
 	else
 		priority_announcement.Announce(GLOB.maps_data.shuttle_recall_message)

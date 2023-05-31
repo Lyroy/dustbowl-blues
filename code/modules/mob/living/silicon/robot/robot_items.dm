@@ -833,4 +833,3 @@
 /obj/item/storage/bag/ore/holding/New()
 	..()
 	item_flags |= BLUESPACE
-	bluespace_entropy(4, get_turf(src))

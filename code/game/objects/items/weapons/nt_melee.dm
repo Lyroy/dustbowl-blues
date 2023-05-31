@@ -1,3 +1,4 @@
+/*
 //Warning! If you change icon_state or item_state, make sure you change path for sneath as well. icons/obj/sneath.dmi
 /obj/item/tool/sword/nt // not supposed to be in the game, had to make the shortsword its own type to prevent fucking up the scourge. sorry.
 	name = "short sword"
@@ -168,7 +169,7 @@
 /obj/item/tool/sword/nt/spear/attackby(obj/item/I, var/mob/user)
 	. = ..()
 	if (I.has_quality(QUALITY_HAMMERING))
-		if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_HAMMERING, FAILCHANCE_EASY, STAT_MEC))
+		if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_HAMMERING, FAILCHANCE_EASY, SKILL_REP))
 			to_chat(user, SPAN_NOTICE("You repair \the damaged spear-tip."))
 			tipbroken = FALSE
 
@@ -472,3 +473,4 @@
 /obj/item/stack/thrown/nt/verutum/launchAt()
 	embed_mult = 600
 	..()
+*/

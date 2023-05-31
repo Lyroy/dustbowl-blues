@@ -1,5 +1,5 @@
 /datum/species_form/bird
-	playable = FALSE
+	playable = TRUE
 	name = FORM_BIRD
 	base = 			'icons/mob/human_races/r_seromi_white.dmi'
 	deform = null
@@ -18,7 +18,7 @@
 	playable = FALSE
 
 /datum/species_form/vox
-	playable =			 FALSE
+	playable =			 TRUE
 	name =				 FORM_VOX
 	variantof =			 FORM_VOX
 	base =				'icons/mob/human_races/r_vox.dmi'

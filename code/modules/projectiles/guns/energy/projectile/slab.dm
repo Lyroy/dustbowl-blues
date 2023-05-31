@@ -26,7 +26,7 @@
 /obj/item/gun/energy/laser/railgun/pistol/slab/attackby(obj/item/I, mob/user)
 	if(I.tool_qualities)
 		var/successful_fix = FALSE
-		var/user_mec = user.stats.getStat(STAT_MEC)
+		var/user_mec = user.stats.getStat(SKILL_ENE)
 		var/charge_bonus = 0 //How much time are we shaving off the recharge?
 		for(var/quality in I.tool_qualities)
 			if(I.tool_qualities[quality] >= 10 && quality == QUALITY_PULSING) //Check for pulsing quality of at least 10

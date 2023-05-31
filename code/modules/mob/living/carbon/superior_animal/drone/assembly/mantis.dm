@@ -89,7 +89,7 @@
 	// Step 6, Wrenching the bolts.
 	else if((QUALITY_BOLT_TURNING) && (build_step == 5))
 		var/obj/item/tool/T = W // New var to use tool-only procs.
-		if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_NORMAL, required_stat = STAT_MEC)) // Skill check.
+		if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_NORMAL, required_stat = SKILL_REP)) // Skill check.
 			build_step++ // Go to the next assembly part.
 			user.visible_message(
 				SPAN_NOTICE("[user] wrenches the frames together on the [src]."),
@@ -100,7 +100,7 @@
 	// Step 7, Securing the screws
 	else if((QUALITY_SCREW_DRIVING) && (build_step == 6))
 		var/obj/item/tool/T = W // New var to use tool-only procs.
-		if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_SCREW_DRIVING, FAILCHANCE_NORMAL, required_stat = STAT_MEC)) // Skill check.
+		if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_SCREW_DRIVING, FAILCHANCE_NORMAL, required_stat = SKILL_REP)) // Skill check.
 			build_step++ // Go to the next assembly part.
 			user.visible_message(
 				SPAN_NOTICE("[user] tightens the screws on the [src]."),
@@ -125,7 +125,7 @@
 	// Step 9, Secure the hydraulics.
 	else if((QUALITY_BOLT_TURNING) && (build_step == 8))
 		var/obj/item/tool/T = W // New var to use tool-only procs.
-		if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_NORMAL, required_stat = STAT_MEC)) // Skill check.
+		if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_NORMAL, required_stat = SKILL_REP)) // Skill check.
 			build_step++ // Go to the next assembly part.
 			user.visible_message(
 				SPAN_NOTICE("[user] secures the hydraulics in the [src]."),
@@ -177,7 +177,7 @@
 	// Step 13, Secure the power cell.
 	else if((QUALITY_SCREW_DRIVING) && (build_step == 12))
 		var/obj/item/tool/T = W // New var to use tool-only procs.
-		if(T.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC)) // Skill check.
+		if(T.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP)) // Skill check.
 			build_step++ // Go to the next assembly part.
 			user.visible_message(
 				SPAN_NOTICE("[user] secures the power cell in the [src]."),
@@ -202,7 +202,7 @@
 	// Step 15, Secure the board
 	else if((QUALITY_SCREW_DRIVING) && (build_step == 14))
 		var/obj/item/tool/T = W // New var to use tool-only procs.
-		if(T.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC)) // Skill check.
+		if(T.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP)) // Skill check.
 			build_step++ // Go to the next assembly part.
 			user.visible_message(
 				SPAN_NOTICE("[user] secures the custom control module inside the [src]."),
@@ -233,7 +233,7 @@
 	// Step 17, Program the drone.
 	else if((QUALITY_PULSING) && (build_step == 16))
 		var/obj/item/tool/T = W // New var to use tool-only procs.
-		if(T.use_tool(user, src, WORKTIME_DELAYED, QUALITY_PULSING, FAILCHANCE_NORMAL, required_stat = STAT_MEC)) // Skill check.
+		if(T.use_tool(user, src, WORKTIME_DELAYED, QUALITY_PULSING, FAILCHANCE_NORMAL, required_stat = SKILL_REP)) // Skill check.
 			build_step++ // Go to the next assembly part.
 			user.visible_message(
 				SPAN_NOTICE("[user] programs the [src]."),
@@ -244,7 +244,7 @@
 	// Step 18, Close the panel.
 	else if((QUALITY_SCREW_DRIVING) && (build_step == 17))
 		var/obj/item/tool/T = W // New var to use tool-only procs.
-		if(T.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC)) // Skill check.
+		if(T.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP)) // Skill check.
 			build_step++ // Go to the next assembly part.
 			user.visible_message(
 				SPAN_NOTICE("[user] screws the maintenance panel on the [src] shut."),
@@ -269,7 +269,7 @@
 	// Step 20, Weld the armor.
 	else if((QUALITY_WELDING) && (build_step == 19))
 		var/obj/item/tool/T = W // New var to use tool-only procs.
-		if(T.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_WELDING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC)) // Skill check.
+		if(T.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_WELDING, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP)) // Skill check.
 			build_step++ // Go to the next assembly part.
 			user.visible_message(
 				SPAN_NOTICE("[user] welds the armor onto the [src]."),

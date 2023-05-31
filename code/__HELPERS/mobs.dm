@@ -300,47 +300,6 @@ Proc for attack log creation, because really why not
 	return FALSE
 
 
-/proc/is_neotheology_disciple(mob/living/L)
-	if(istype(L) && L.get_core_implant(/obj/item/implant/core_implant/cruciform))
-		return TRUE
-	return FALSE
-
-/proc/is_acolyte(mob/living/L)
-	if(!isliving(L))
-		return FALSE
-	var/obj/item/implant/core_implant/cruciform/C = L.get_core_implant(/obj/item/implant/core_implant/cruciform)
-	if(C && C.get_module(CRUCIFORM_COMMON))
-		return TRUE
-	return FALSE
-
-/proc/is_preacher(mob/living/L)
-	if(!isliving(L))
-		return FALSE
-	var/obj/item/implant/core_implant/cruciform/C = L.get_core_implant(/obj/item/implant/core_implant/cruciform)
-	if(C && C.get_module(CRUCIFORM_PRIEST) && C.get_module(CRUCIFORM_REDLIGHT))
-		return TRUE
-	return FALSE
-
-/proc/is_inquisidor(mob/living/L)
-	if(!isliving(L))
-		return FALSE
-	var/obj/item/implant/core_implant/cruciform/C = L.get_core_implant(/obj/item/implant/core_implant/cruciform)
-	if(C && C.get_module(CRUCIFORM_INQUISITOR))
-		return TRUE
-	return FALSE
-
-/proc/is_carrion(mob/living/carbon/human/H)
-	if(istype(H) && (H.organ_list_by_process(BP_SPCORE)).len)
-		return TRUE
-	return FALSE
-
-/proc/is_excelsior(var/mob/M)
-	var/obj/item/implant/excelsior/E = locate(/obj/item/implant/excelsior) in M
-	if (E && E.wearer == M)
-		return TRUE
-
-	return FALSE
-
 /proc/mob_hearers(var/atom/movable/heard_atom, var/range = world.view)
 	. = list()
 

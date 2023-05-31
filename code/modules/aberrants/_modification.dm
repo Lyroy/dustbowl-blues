@@ -6,26 +6,26 @@
 	var/install_start_action = "attaching"
 	var/install_success_action = "attached"
 	var/install_time = WORKTIME_FAST
-	//var/install_tool_quality = null				
+	//var/install_tool_quality = null
 	var/install_difficulty = FAILCHANCE_ZERO
-	var/install_stat = STAT_COG
+	var/install_stat = SKILL_SCI
 	var/install_sound = WORKSOUND_HONK
 
 	var/removal_time = WORKTIME_SLOW
 	var/removal_tool_quality = QUALITY_CLAMPING
 	var/removal_difficulty = FAILCHANCE_CHALLENGING
-	var/removal_stat = STAT_COG
+	var/removal_stat = SKILL_SCI
 
 	var/mod_time = WORKTIME_FAST
-	var/mod_tool_quality = QUALITY_CLAMPING				
+	var/mod_tool_quality = QUALITY_CLAMPING
 	var/mod_difficulty = FAILCHANCE_ZERO
-	var/mod_stat = STAT_COG
+	var/mod_stat = SKILL_SCI
 	var/mod_sound = WORKSOUND_HONK
 
 	var/bypass_perk = null
 
 	var/adjustable = FALSE
-	var/destroy_on_removal = FALSE 
+	var/destroy_on_removal = FALSE
 	var/removable = TRUE
 	var/breakable = FALSE //Some mods are meant to be tamper-resistant and should be removed only in a hard way
 
@@ -36,8 +36,8 @@
 	var/examine_msg = null	// Examine message for the mod, not the item it is attached to
 
 	// Stat-gated details
-	var/examine_stat = STAT_COG
-	var/examine_difficulty = STAT_LEVEL_BASIC
+	var/examine_stat = SKILL_SCI
+	var/examine_difficulty = SKILL_LEVEL_BASIC
 
 	// Trigger
 	var/trigger_signal
@@ -96,7 +96,7 @@
 				if(user)
 					to_chat(user, SPAN_WARNING("\The [parent] can not be attached to \the [I]!"))
 				return FALSE
-	
+
 	return TRUE
 
 /datum/component/modification/proc/apply(obj/item/A, mob/living/user)
@@ -141,7 +141,7 @@
 		if(!I.use_tool(user = user, target = parent, base_time = final_install_time, required_quality = mod_tool_quality, fail_chance = final_install_difficulty, required_stat = mod_stat, forced_sound = mod_sound))
 			return FALSE
 		modify(I, user)
-	
+
 /datum/component/modification/proc/modify(obj/item/I, mob/living/user)
 	return TRUE
 

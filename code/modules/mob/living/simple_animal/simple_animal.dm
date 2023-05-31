@@ -475,7 +475,7 @@
 				M.visible_message("\red [M] missed \the [src]")
 			else
 				if (istype(M))
-					damage += max(0, (M.stats.getStat(STAT_ROB) / 10))
+					damage += max(0, (M.stats.getStat(SPECIAL_S) / 10))
 					if (HULK in M.mutations)
 						damage *= 2
 
@@ -497,7 +497,7 @@
 
 	else if(meat_type && (stat == DEAD))	//if the animal has a meat, and if it is dead.
 		if((QUALITY_CUTTING in O.tool_qualities) && user.a_intent ==  I_HELP)
-			if(O.use_tool(user, src, WORKTIME_NORMAL, QUALITY_CUTTING, FAILCHANCE_NORMAL, required_stat = STAT_BIO))
+			if(O.use_tool(user, src, WORKTIME_NORMAL, QUALITY_CUTTING, FAILCHANCE_NORMAL, required_stat = SKILL_SUR))
 				harvest(user)
 	else
 		O.attack(src, user, user.targeted_organ)
@@ -583,7 +583,7 @@
 /mob/living/simple_animal/proc/harvest(mob/user)
 	var/actual_meat_amount = max(1,(meat_amount/2))
 	drop_embedded()
-	if(user.stats.getPerk(PERK_BUTCHER))
+	if(prob(user.stats.getStat(SKILL_SUR)))
 		var/actual_leather_amount = max(0,(leather_amount/2))
 		if(actual_leather_amount > 0 && (stat == DEAD))
 			for(var/i=0;i<actual_leather_amount;i++)
@@ -612,7 +612,7 @@
 			new blood_from_harvest(get_turf(src))
 			qdel(src)
 		else
-			if(user.stats.getPerk(PERK_BUTCHER))
+			if(prob(user.stats.getStat(SKILL_SUR)))
 				user.visible_message(SPAN_DANGER("[user] butchers \the [src] cleanly!"))
 				new blood_from_harvest(get_turf(src))
 				qdel(src)

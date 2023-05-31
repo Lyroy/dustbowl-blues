@@ -171,7 +171,6 @@
 		ofholding += satchelholding.len
 
 	if(ofholding)
-		GLOB.bluespace_entropy += ofholding
 		precision = max(rand(1, 100)*ofholding, 100)
 		if(isliving(teleatom))
 			var/mob/living/MM = teleatom

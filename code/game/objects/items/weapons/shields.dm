@@ -66,8 +66,8 @@
 	if(I.has_quality(QUALITY_ADHESIVE))
 		if(src.durability)
 			user.visible_message(SPAN_NOTICE("[user] begins repairing \the [src] with the [I]!"))
-			if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_ADHESIVE, FAILCHANCE_EASY, required_stat = STAT_MEC))
-				src.adjustShieldDurability(src.max_durability * 0.8 + (user.stats.getStat(STAT_MEC)*0.2)*0.1, user)
+			if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_ADHESIVE, FAILCHANCE_EASY, required_stat = SKILL_REP))
+				src.adjustShieldDurability(src.max_durability * 0.8 + (user.stats.getStat(SKILL_REP)*0.2)*0.1, user)
 
 /obj/item/shield/examine(mob/user)
 	if(!..(user,2))
@@ -103,7 +103,7 @@
 				defender.visible_message(SPAN_DANGER("\The [defender] is too tired to block!"))
 				return 0
 			else
-				var/damage_received = CLAMP(damage * (CLAMP(100-user.stats.getStat(STAT_TGH)/2,0,100) / 100) - user.stats.getStat(STAT_TGH)/5,1,100)
+				var/damage_received = CLAMP(damage * (CLAMP(100-user.stats.getSpecial(SPECIAL_E)/2,0,100) / 100) - user.stats.getSpecial(SPECIAL_E)/5,1,100)
 				if(damage_received <= 0)
 					damage_received = 1 //Alawys small amount of damage
 				if(istype(attacker, /mob/living/carbon/superior_animal/roach/))

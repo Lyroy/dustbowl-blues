@@ -43,11 +43,11 @@
 	affect_ingest(M, alien, effect_multiplier * 1.2)
 
 /datum/reagent/organic/nutriment/affect_ingest(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	if(ishuman(M))
+	/*if(ishuman(M))
 		if(M.stats.getPerk(PERK_HERBIVORE))
 			nutriment_factor = 7
 		if(M.stats.getPerk(PERK_CARNIVORE))
-			nutriment_factor = 1
+			nutriment_factor = 1*/
 
 	// Small bodymass, more effect from lower volume.
 	M.adjustNutrition(nutriment_factor * (issmall(M) ? effect_multiplier * 2 : effect_multiplier)) // For hunger and fatness
@@ -72,11 +72,11 @@
 	common = TRUE //Protein Shake
 
 /datum/reagent/organic/nutriment/protein/affect_ingest(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	if(ishuman(M))
+	/*if(ishuman(M))
 		if(M.stats.getPerk(PERK_CARNIVORE))
 			nutriment_factor = 7
 		if(M.stats.getPerk(PERK_HERBIVORE))
-			nutriment_factor = 1
+			nutriment_factor = 1*/
 
 	// Small bodymass, more effect from lower volume.
 	M.adjustNutrition(nutriment_factor * (issmall(M) ? effect_multiplier * 2 : effect_multiplier)) // For hunger and fatness
@@ -93,14 +93,6 @@
 	regen_factor = 0.2
 
 /datum/reagent/organic/nutriment/preservatives/affect_ingest(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	if(ishuman(M))
-		if(M.stats.getPerk(PERK_SNACKIVORE))
-			M.adjustNutrition(nutriment_factor * 10)
-			M.adjustOxyLoss(-0.3 * effect_multiplier)
-			M.heal_organ_damage(0.1 * effect_multiplier, 0.1 * effect_multiplier)
-			M.add_chemical_effect(CE_TOXIN, 1)
-			M.add_chemical_effect(CE_BLOODCLOT, 0.1)
-
 	return ..()
 
 /datum/reagent/organic/nutriment/protein/egg
@@ -529,7 +521,7 @@
 	var/adj_drowsy = 0
 	var/adj_sleepy = 0
 	var/adj_temp = 0
-	sanity_gain_ingest = 0.5
+	var/sanity_gain_ingest = 0.5
 	reagent_type = "Drink"
 	common = TRUE //Most drinks are obviously identifiable
 
@@ -2751,27 +2743,6 @@
 	glass_name = "whiskey soda"
 	glass_desc = "Ultimate refreshment."
 	glass_center_of_mass = list("x"=16, "y"=9)
-
-/datum/reagent/ethanol/atomic_vodka
-	name = "Atomic Vodka"
-	id = "atomvodka"
-	description = "Clear distilled alcoholic beverage that originates from Poland and Russia, now with nuclear taste!"
-	taste_description = "strong grain alcohol"
-	color = "#0064C8d0" // rgb: 0, 100, 200
-	strength = 5
-	strength_mod = 10
-	toxicity = 10
-
-	glass_unique_appearance = TRUE
-	glass_icon_state = "ginvodkaglass"
-	glass_name = "atomic vodka"
-	glass_desc = "Booze for true drunkards."
-	glass_center_of_mass = list("x"=16, "y"=12)
-
-/datum/reagent/ethanol/atomic_vodka/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
-	..()
-	if(!M.stats.getTempStat(STAT_TGH, "atomvodka") && M.stats.getPerk(PERK_SOMELLIER))
-		M.stats.addTempStat(STAT_TGH, STAT_LEVEL_ADEPT, 10 MINUTES, "atomvodka")
 
 /datum/reagent/ethanol/specialwhiskey // Previously unobtainable, bar spawns with a keg full of it, and you can't order more. A luxury drink!
 	name = "Special Blend Whiskey"

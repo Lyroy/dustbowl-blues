@@ -19,7 +19,6 @@
 	emote_hear = list("wahs!","chitters.")
 	emote_see = list("trundles around","rears up onto their hind legs and pounces a bug")
 	colony_friend = TRUE
-	sanity_damage = -1
 
 /mob/living/simple_animal/redpanda/fae
 	name = "fae panda"
@@ -51,7 +50,6 @@
 	attacktext = list("pecked")
 	colony_friend = TRUE
 	friendly_to_colony = TRUE
-	sanity_damage = -1
 
 /mob/living/simple_animal/penguin/baby
 	name = "penguin chick"
@@ -65,7 +63,6 @@
 	harm_intent_damage = 10
 	melee_damage_lower = 3
 	melee_damage_upper = 5
-	sanity_damage = -2
 
 /mob/living/simple_animal/goose
 	name = "goose"
@@ -106,7 +103,6 @@
 	possession_candidate = 1
 	seek_speed = 0.75
 	colony_friend = TRUE
-	sanity_damage = -1
 
 /mob/living/simple_animal/lizard/New()
 	..()
@@ -136,7 +132,6 @@
 	inherent_mutations = list(MUTATION_DWARFISM, MUTATION_IMBECILE, MUTATION_TOURETTES)
 	colony_friend = TRUE
 	faction = "pond"
-	sanity_damage = -1
 
 /mob/living/simple_animal/fennec/fennix
 	name = "fennix"

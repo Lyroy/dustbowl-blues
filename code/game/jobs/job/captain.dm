@@ -1,5 +1,5 @@
 var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
-
+/*
 /datum/job/premier
 	title = "Premier"
 	flag = PREMIER
@@ -125,3 +125,4 @@ Treat your command officers with respect, and listen to their council. Try not t
 	name = "Steward"
 	icon_state = "player-gold"
 	join_tag = /datum/job/pg
+*/

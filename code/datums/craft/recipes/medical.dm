@@ -1,6 +1,6 @@
 /datum/craft_recipe/medical
 	category = "Medical"
-	related_stats = list(STAT_COG)
+	related_stats = list(SKILL_MED)
 
 /datum/craft_recipe/medical/bandage
 	name = "bandages"
@@ -88,7 +88,6 @@
 		list(QUALITY_WELDING, 20, 50),
 		list(QUALITY_WIRE_CUTTING, 10, 120)
 	)
-	related_stats = list(STAT_COG, STAT_BIO, STAT_MEC)
 
 /datum/craft_recipe/medical/improsplint
 	name = "improvised splints"
@@ -98,7 +97,7 @@
 		list(/obj/item/stack/cable_coil, 5, "time" = 5),
 		list(QUALITY_WIRE_CUTTING, 10, "time" = 10)
 	)
-	related_stats = list(STAT_BIO, STAT_MEC)
+	related_stats = list(SKILL_MED)
 
 /datum/craft_recipe/medical/makeshift_leg
 	name = "Junktech prosthetic left leg"
@@ -113,7 +112,7 @@
 		list(QUALITY_PULSING, 10, 10),
 		list(/obj/item/reagent_containers/glass/bucket, 1)
 	)
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/medical/makeshift_leg/right
 	name = "Junktech prosthetic right leg"
@@ -132,7 +131,7 @@
 		list(QUALITY_PULSING, 10, 10),
 		list(/obj/item/tool/knife/hook, 1)
 	)
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/medical/makeshift_arm/right
 	name = "Junktech prosthetic right arm"

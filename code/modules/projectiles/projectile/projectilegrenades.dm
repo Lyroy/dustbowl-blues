@@ -129,7 +129,7 @@
 //Checking for protections
 	var/eye_safety = 0
 	var/ear_safety = 0
-	var/stat_def = -STAT_LEVEL_ADEPT
+	var/extra_stat_loss = 0
 	if(iscarbon(M))
 		eye_safety = M.eyecheck()
 		if(ishuman(M))
@@ -139,8 +139,6 @@
 				ear_safety += 1
 			if(istype(M:head, /obj/item/clothing/head/helmet))
 				ear_safety += 1
-			if(M.stats.getPerk(PERK_EAR_OF_QUICKSILVER))
-				stat_def *= 2
 
 //Flashing everyone
 	if(eye_safety < FLASH_PROTECTION_MODERATE)
@@ -151,7 +149,7 @@
 //Now applying sound
 	if((get_dist(M, T) <= 2 || src.loc == M.loc || src.loc == M))
 		if(ear_safety <= 0)
-			stat_def *= 5
+			extra_stat_loss = 3
 			if ((prob(14) || (M == src.loc && prob(70))))
 				M.ear_damage += rand(1, 10)
 				M.confused = max(M.confused,8)
@@ -160,12 +158,12 @@
 				M.ear_deaf = max(M.ear_deaf,15)
 				M.confused = max(M.confused,8)
 		else
-			stat_def *= 2
+			extra_stat_loss = 2
 			M.confused = max(M.confused,4)
 
 	else if(get_dist(M, T) <= 5)
 		if(ear_safety <= 0)
-			stat_def *= 4
+			extra_stat_loss = 3
 			M.ear_damage += rand(0, 3)
 			M.ear_deaf = max(M.ear_deaf,10)
 			M.confused = max(M.confused,6)
@@ -173,7 +171,7 @@
 			M.confused = max(M.confused,2)
 
 	else if(!ear_safety)
-		stat_def *= 2
+		extra_stat_loss = 1
 		M.ear_damage += rand(0, 1)
 		M.ear_deaf = max(M.ear_deaf,5)
 		M.confused = max(M.confused,5)
@@ -189,8 +187,6 @@
 	else
 		if (M.ear_damage >= 5)
 			to_chat(M, SPAN_DANGER("Your ears start to ring!"))
-	M.stats.addTempStat(STAT_VIG, stat_def, 10 SECONDS, "flashbang")
-	M.stats.addTempStat(STAT_COG, stat_def, 10 SECONDS, "flashbang")
-	M.stats.addTempStat(STAT_BIO, stat_def, 10 SECONDS, "flashbang")
-	M.stats.addTempStat(STAT_MEC, stat_def, 10 SECONDS, "flashbang")
+	M.stats.addTempStat(SPECIAL_A, -3 - extra_stat_loss, 10 SECONDS, "flashbang")
+	M.stats.addTempStat(SPECIAL_P, -5 - extra_stat_loss, 10 SECONDS, "flashbang")
 	M.update_icons()

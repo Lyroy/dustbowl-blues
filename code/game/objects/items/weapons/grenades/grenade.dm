@@ -78,7 +78,7 @@
 
 /obj/item/grenade/attackby(obj/item/I, mob/user as mob)
 	if(QUALITY_SCREW_DRIVING in I.tool_qualities)
-		if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_EASY, required_stat = STAT_COG))
+		if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_EASY, required_stat = SKILL_EXP))
 			switch(det_time)
 				if (1)
 					det_time = 30

@@ -46,7 +46,7 @@
 	var/tool_type = I.get_tool_type(user, list(QUALITY_HAMMERING), src)
 	if(tool_type==QUALITY_HAMMERING)
 		to_chat(user, SPAN_NOTICE("Crushing the rocks, turning them to sand..."))
-		if(I.use_tool(user, src, WORKTIME_QUICK, tool_type, FAILCHANCE_ZERO, required_stat = STAT_MEC))
+		if(I.use_tool(user, src, WORKTIME_QUICK, tool_type, FAILCHANCE_ZERO, required_stat = SKILL_SUR))
 			new /obj/item/stack/ore/glass(get_turf(src))
 			if(prob(50))
 				new /obj/random/material_ore_small(get_turf(src))

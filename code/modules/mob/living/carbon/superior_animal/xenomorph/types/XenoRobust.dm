@@ -73,7 +73,7 @@ var/datum/xenomorph/xeno_morph_ai
 
 	var/mob/living/carbon/human/H = target
 	if(istype(H))
-		if(prob(100 - H.stats.getStat(STAT_VIG)))
+		if(prob(100 - H.stats.getStat(SPECIAL_C)))
 			H.Weaken(4)
 			to_chat(H, SPAN_WARNING("A horrifying roar of primal soul-less terror sears through your mind!"))
 		else

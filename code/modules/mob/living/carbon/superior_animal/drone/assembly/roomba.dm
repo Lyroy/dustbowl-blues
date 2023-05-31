@@ -86,7 +86,7 @@
 			SPAN_NOTICE("[user] starts to program the roomba."),
 			SPAN_NOTICE("You start to program the roomba.")
 		)
-		if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PULSING, FAILCHANCE_NORMAL, required_stat = STAT_MEC)) // Skill check.
+		if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PULSING, FAILCHANCE_NORMAL, required_stat = SKILL_REP)) // Skill check.
 			build_step++ // Go to the next assembly part.
 			user.visible_message(
 				SPAN_NOTICE("[user] programs the roomba."),
@@ -98,7 +98,7 @@
 	// Step 6, Close the panel.
 	else if((QUALITY_SCREW_DRIVING) && (build_step == 5))
 		var/obj/item/tool/T = W // New var to use tool-only procs.
-		if(T.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC)) // Skill check.
+		if(T.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP)) // Skill check.
 			build_step++ // Go to the next assembly part.
 			user.visible_message(
 				SPAN_NOTICE("[user] screws the panel on the roomba shut."),
@@ -126,6 +126,6 @@
 		R.friends += user // Make the creator a friend.
 		R.creator += user
 		qdel(src)
-	
+
 	// Change the icon_state based on which build step it is.
 	icon_state = "roomba_frame_[build_step]"

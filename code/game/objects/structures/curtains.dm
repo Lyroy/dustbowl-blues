@@ -28,7 +28,7 @@
 
 /obj/structure/curtain/attackby(obj/item/I, mob/user)
 	if(QUALITY_WIRE_CUTTING in I.tool_qualities)
-		if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_WIRE_CUTTING, FAILCHANCE_EASY,  required_stat = STAT_MEC))
+		if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_WIRE_CUTTING, FAILCHANCE_EASY,  required_stat = SKILL_REP))
 			user.visible_message(SPAN_NOTICE("\The [user] dismantles \the [src]."),SPAN_NOTICE("You dismantle \the [src]."))
 			drop_materials(drop_location())
 			qdel(src)

@@ -144,7 +144,7 @@
 		var/obj/item/tool/T = W // To use tool-only checks
 		if(QUALITY_BOLT_TURNING in T.tool_qualities) // Can we turn bolts with the tool?
 			if(container) // Do we have something to remove?
-				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC)) // Skill check.
+				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_VERY_EASY, required_stat = SKILL_ENE)) // Skill check.
 					to_chat(user, "You remove the [container.name] from the [src.name].")
 					container.forceMove(user.loc) //Move the container to the floor of the user.
 					container = null // We no longer have a container.

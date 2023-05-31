@@ -115,10 +115,6 @@
 	name = "Soteria xenobio baton"
 	build_path = /obj/item/tool/baton/slimebaton
 
-/datum/design/research/item/weapon/bluespace_dagger
-	name = "Soteria \"Displacement Dagger\""
-	build_path = /obj/item/tool/knife/dagger/bluespace
-
 /datum/design/research/item/clothing/medarmor
 	name = "Soteria Medical Void Armor"
 	desc = "A suit of all purpose Soteria medical void armor. Used for operations where oxygen is a rarity and protection is needed."

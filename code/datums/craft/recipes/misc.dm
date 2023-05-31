@@ -4,7 +4,7 @@
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_STEEL)
 	)
-	related_stats = list(STAT_COG)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/tray
 	name = "dinner tray"
@@ -13,14 +13,14 @@
 		list(CRAFT_MATERIAL, 1, MATERIAL_STEEL, "time" = 40),
 		list(QUALITY_WIRE_CUTTING, 10, 120)
 	)
-	related_stats = list(STAT_COG)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/folder
 	name = "folder, black"
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_CARDBOARD)
 	)
-	related_stats = list(STAT_COG)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/folder/blue
 	name = "folder, blue"
@@ -58,7 +58,7 @@
 		list(CRAFT_MATERIAL, 1, MATERIAL_STEEL)
 	)
 	flags = CRAFT_BATCH
-	related_stats = list(STAT_COG)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/pipe
 	name = "Smoking pipe"
@@ -68,7 +68,7 @@
 		list(CRAFT_MATERIAL, 5, MATERIAL_WOOD, "time" = 0),
 		list(QUALITY_CUTTING, 10, 10)
 	)
-	related_stats = list(STAT_COG)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/cloth_stripe
 	name = "salvage cloth"
@@ -101,7 +101,7 @@
 /datum/craft_recipe/consumer
 	category = "Consumer"
 	time = 200
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 	icon_state = "device"
 
 

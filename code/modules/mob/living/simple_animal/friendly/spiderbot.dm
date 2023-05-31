@@ -31,7 +31,6 @@
 	response_help  = "pets"
 	response_disarm = "shoos"
 	response_harm   = "stomps on"
-	sanity_damage = 3
 
 	var/emagged = 0
 	var/obj/item/held_item = null //Storage for single item they can hold.
@@ -92,7 +91,7 @@
 
 	if(QUALITY_WELDING in O.tool_qualities)
 		if(health < maxHealth)
-			if(O.use_tool(user, src, WORKTIME_FAST, QUALITY_WELDING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
+			if(O.use_tool(user, src, WORKTIME_FAST, QUALITY_WELDING, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP))
 				health += pick(1,1,1,2,2,3)
 				if(health > maxHealth)
 					health = maxHealth

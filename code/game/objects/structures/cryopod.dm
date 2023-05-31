@@ -15,8 +15,8 @@ Unused file of cryo pods that on click dont even work, these are not used and ar
 	var/spawn_faction
 	var/outfit_type // The outfit the employee will be dressed in, if any
 	var/stat_modifiers = list(
-		STAT_MEC = 25,
-		STAT_COG = 40,
+		SKILL_REP = 25,
+		SKILL_SCI = 40,
 		STAT_BIO = 25,
 	)
 
@@ -61,8 +61,8 @@ Unused file of cryo pods that on click dont even work, these are not used and ar
 	spawn_role = "Doctor"
 
 	stat_modifiers = list(
-		STAT_MEC = 25,
-		STAT_COG = 40,
+		SKILL_REP = 25,
+		SKILL_SCI = 40,
 		STAT_BIO = 25,
 	)
 
@@ -72,8 +72,8 @@ Unused file of cryo pods that on click dont even work, these are not used and ar
 	spawn_role = "Guild Master"
 
 	stat_modifiers = list(
-		STAT_MEC = 40,
-		STAT_COG = 20,
+		SKILL_REP = 40,
+		SKILL_SCI = 20,
 		STAT_TGH = 15,
 		STAT_VIG = 10,
 	)

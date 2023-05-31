@@ -38,12 +38,6 @@
 	var/lum = source.luminosity
 	source.luminosity = world.view
 	var/list/heard = view(range, source)
-	var/list/extra_heard = view(range+3, source) - heard
-	if(extra_heard.len)
-		for(var/mob/living/carbon/human/H in extra_heard)
-			if(!H.stats.getPerk(PERK_EAR_OF_QUICKSILVER))
-				continue
-			heard += H
 	source.luminosity = lum
 
 	return heard
@@ -55,13 +49,7 @@
 	var/lum = source.luminosity
 	source.luminosity = world.view
 	for (var/atom/movable/AM in view(range+3, source))
-		if ((get_dist(AM, source) > range))
-			if (ishuman(AM))
-				var/mob/living/carbon/human/H = AM
-				if(!H.stats.getPerk(PERK_EAR_OF_QUICKSILVER))
-					continue
-				. += H
-		else
+		if (!(get_dist(AM, source) > range))
 			. += AM
 
 	source.luminosity = lum

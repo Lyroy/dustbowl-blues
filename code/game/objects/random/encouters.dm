@@ -4,7 +4,7 @@
 /obj/random/encouter
 	spawn_nothing_percentage = 0
 	var/list/obj/random/spawner/encouter/encouters = list(/obj/random/spawner/encouter/mine, /obj/random/spawner/encouter/miningbot, /obj/random/spawner/encouter/strangebeacon, \
-	/obj/random/spawner/encouter/satellite, /obj/random/spawner/encouter/coffin, /obj/random/spawner/encouter/omnius)
+	/obj/random/spawner/encouter/coffin, /obj/random/spawner/encouter/omnius)
 
 /obj/random/encouter/item_to_spawn()
 	..()
@@ -39,10 +39,10 @@
 /obj/random/spawner/encouter/cryopod
 	randspawn = list(/obj/structure/cryopod_spawner/ironhammer, /obj/structure/cryopod_spawner/medical, /obj/structure/cryopod_spawner/technomancer, \
 	/obj/structure/cryopod_spawner/serbian)
-*/
+
 /obj/random/spawner/encouter/satellite
 	randspawn = list(/obj/structure/satellite, /obj/structure/satellite/science)
-
+*/
 /obj/random/spawner/encouter/coffin
 	randspawn = list(/obj/structure/closet/coffin/spawnercorpse)
 

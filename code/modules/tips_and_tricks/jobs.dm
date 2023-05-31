@@ -1,14 +1,12 @@
 // This file contains all gameplay tips that didnt fit into other categories
+
 /tipsAndTricks/jobs
     var/list/jobs_list       //list of jobs to which tip can be shown
     textColor = "#22458d"
 
-/tipsAndTricks/jobs/captain_boss
-    jobs_list = list(/datum/job/premier)
-    tipText = "As a premier, you function as an internal affairs agent, lawyer, and mediator."
-
+/*
 /tipsAndTricks/jobs/ironhammer_theft
-    jobs_list = list(/datum/job/smc, /datum/job/swo, /datum/job/supsec, /datum/job/inspector, /datum/job/medspec, /datum/job/trooper, /datum/job/officer, /datum/job/serg)
+    jobs_list = list(/datum/job/supsec, /datum/job/inspector, /datum/job/medspec, /datum/job/trooper, /datum/job/officer, /datum/job/serg)
     tipText = "As a member of security, you have broad access to chase criminals. This does not mean you can take anything you have access to. Taking things from other departments is theft!"
 
 /tipsAndTricks/jobs/plants_are_dieing_gardener
@@ -353,3 +351,4 @@
 /tipsAndTricks/jobs/hunter_allies
     jobs_list = list(/datum/job/off_colony_hunt_master, /datum/job/off_colony_hunter)
     tipText = "The cerberus hounds are far sighted and loyal animals who won't ever attack you, they make great hunting allies by acting as distractions against larger enemies and emitting growls when they spot enemies you haven't."
+*/

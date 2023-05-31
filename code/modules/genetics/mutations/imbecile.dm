@@ -8,14 +8,14 @@
 /datum/genetics/mutation/imbecile/onPlayerImplant()
 	if(!..())
 		return
-	container.holder.stats.changeStat(STAT_COG, -10)
-	container.holder.stats.changeStat(STAT_MEC, -10)
-	container.holder.stats.changeStat(STAT_BIO, -10)
+	//container.holder.stats.changeStat(STAT_COG, -10)
+	//container.holder.stats.changeStat(STAT_MEC, -10)
+	//container.holder.stats.changeStat(STAT_BIO, -10)
 
 /datum/genetics/mutation/imbecile/onPlayerRemove()
 	if(!..())
 		return
-	container.holder.stats.changeStat(STAT_COG, 10)
-	container.holder.stats.changeStat(STAT_MEC, 10)
-	container.holder.stats.changeStat(STAT_BIO, 10)
+	//container.holder.stats.changeStat(STAT_COG, 10)
+	//container.holder.stats.changeStat(STAT_MEC, 10)
+	//container.holder.stats.changeStat(STAT_BIO, 10)
 

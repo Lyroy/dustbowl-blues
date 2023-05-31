@@ -8,7 +8,7 @@
 	steps = list(
 		list(CRAFT_MATERIAL, 10, MATERIAL_WOOD)
 	)
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_SUR)
 
 /datum/craft_recipe/appliance/beehive_frame
 	name = "beehive frame"
@@ -17,7 +17,7 @@
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_WOOD)
 	)
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_SUR)
 
 /datum/craft_recipe/appliance/canister
 	name = "canister"
@@ -26,7 +26,7 @@
 	steps = list(
 		list(CRAFT_MATERIAL, 10, MATERIAL_STEEL)
 	)
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/appliance/cannon_frame
 	name = "cannon frame"
@@ -35,7 +35,7 @@
 	steps = list(
 		list(CRAFT_MATERIAL, 10, MATERIAL_STEEL)
 	)
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 
 //You build a frame from rods, add metal shelves, plastic wheels and handles
 /datum/craft_recipe/appliance/janicart
@@ -50,7 +50,7 @@
 		list(CRAFT_MATERIAL, 10, MATERIAL_PLASTIC, "time" = 40),
 		list(QUALITY_BOLT_TURNING, 10, 60)
 	)
-	related_stats = list(STAT_COG)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/appliance/kitchen_spike
 	name = "meat spike"
@@ -61,7 +61,7 @@
 		list(QUALITY_WELDING, 20, 50)
 	)
 	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 
 //You get some article of clothing and shred it with a blade to make a mophead. Add in some metal rods for a handle
 /datum/craft_recipe/appliance/mop
@@ -73,7 +73,7 @@
 		list(/obj/item/stack/rods, 2),
 		list(QUALITY_BOLT_TURNING, 10, 60)
 	)
-	related_stats = list(STAT_COG)
+	related_stats = list(SKILL_REP)
 
 //Cut variously sized bits of plastic down to size, tape them together, and then use a welder to melt gaps
 //It just works!
@@ -86,7 +86,7 @@
 		list(QUALITY_SEALING, 10, 60),
 		list(QUALITY_WELDING, 10, 60)
 	)
-	related_stats = list(STAT_COG)
+	related_stats = list(SKILL_REP)
 
 // Wheelchairs
 /datum/craft_recipe/appliance/wheelchair
@@ -96,5 +96,5 @@
 		list(CRAFT_MATERIAL, 5, MATERIAL_STEEL),
 	)
 	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 	time = 80

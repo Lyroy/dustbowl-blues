@@ -73,12 +73,12 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 
 /datum/wires/proc/examine(index, mob/user)
 	. = "You aren't sure what this wire does."
-	var/mec_stat = user.stats.getStat(STAT_MEC)
+	var/rep_skill = user.stats.getStat(SKILL_REP)
 
 	var/datum/wire_description/wd = get_description(index)
 	if(!wd)
 		return
-	if(wd.skill_level > mec_stat)
+	if(wd.skill_level > rep_skill)
 		return
 	return wd.description
 
@@ -117,13 +117,13 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 		user = usr
 
 	if(istype(user))
-		user_skill = user.stats.getStat(STAT_MEC)
+		user_skill = user.stats.getStat(SKILL_REP)
 
 	for(var/colour in wires)
 		html += "<tr>"
 		var/datum/wire_description/wd = get_description(GetIndex(colour))
 		if(wd)
-			if(user.stats && user.stats.getPerk(PERK_HANDYMAN) || user_skill && (wd.skill_level <= user_skill))
+			if(user_skill && (wd.skill_level <= user_skill))
 				html += "<td[row_options1]><font color='[colour]'>[wd.description]</font></td>"
 			else
 				html += "<td[row_options1]><font color='[colour]'>[capitalize(colour)]</font></td>"
@@ -184,7 +184,7 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 
 				// Attach
 				else
-					if(istype(I, /obj/item/device/assembly/signaler) || istype(I, /obj/item/implant/carrion_spider/spark))
+					if(istype(I, /obj/item/device/assembly/signaler))
 						L.drop_item()
 						add_log_entry(L, "has attached [I] to the <font color='[colour]'>[capitalize(colour)]</font> wire")
 						Attach(colour, I)
@@ -277,8 +277,7 @@ var/const/POWER = 8
 	return null
 
 /datum/wires/proc/Attach(var/colour, var/obj/item/device/assembly/signaler/S)
-    var/obj/item/implant/carrion_spider/spark/I = S
-    if(istype(S) || istype(I))
+    if(istype(S))
         if(!IsAttached(colour))
             signallers[colour] = S
             S.loc = holder
@@ -288,8 +287,7 @@ var/const/POWER = 8
 /datum/wires/proc/Detach(var/colour)
 	if(colour)
 		var/obj/item/device/assembly/signaler/S = GetAttached(colour)
-		var/obj/item/implant/carrion_spider/spark/I = S
-		if(istype(S) || istype(I))
+		if(istype(S))
 			signallers -= colour
 			S.connected = null
 			S.loc = holder.loc
@@ -297,8 +295,7 @@ var/const/POWER = 8
 
 
 /datum/wires/proc/Pulse(var/obj/item/device/assembly/signaler/S)
-	var/obj/item/implant/carrion_spider/spark/I = S
-	if(istype(S) || istype(I))
+	if(istype(S))
 		for(var/colour in signallers)
 			if(S == signallers[colour])
 				PulseColour(colour)

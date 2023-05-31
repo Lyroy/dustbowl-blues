@@ -15,25 +15,8 @@
 	if(amount < 1)
 		return
 
-	//log_debug("bruise_pack 0, I have started")
-
-	var/holy_healer = FALSE
-	var/holy_healing = FALSE
-
-	if(ishuman(user) && care_about_faith)
-		holy_healer = check_faith_of_healer(user)
-
-
-	//log_debug("bruise_pack 0.5, holy_healer = [holy_healer], holy_healing = [holy_healing]")
-
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-
-		///log_debug("bruise_pack 1, holy_healer = [holy_healer], holy_healing = [holy_healing]")
-
-
-		if(care_about_faith)
-			holy_healing = check_faith_of_healing(M)
 
 		var/obj/item/organ/external/affecting = H.get_organ(user.targeted_organ)
 
@@ -51,14 +34,7 @@
 				SPAN_NOTICE("You start treating [M]'s [affecting.name].")
 			)
 			var/used = 0
-			var/healed_by_faith
-			if(care_about_faith && (holy_healer || holy_healing))
-				if(holy_healer)
-					healed_by_faith += heal_brute
-					if(check_for_healer_plus(user))
-						healed_by_faith += bounce_faith_healer_amount //5 extra if your a tessilate or preists
-				if(holy_healing)
-					healed_by_faith += heal_brute
+
 			for (var/datum/wound/W in affecting.wounds)
 				if(W.internal)
 					continue
@@ -91,7 +67,7 @@
 						SPAN_NOTICE("\The [user] places a bandaid over \a [W.desc] on [M]'s [affecting.name]."),
 						SPAN_NOTICE("You place a bandaid over \a [W.desc] on [M]'s [affecting.name].")
 					)
-				W.heal_damage(heal_brute + healed_by_faith)
+				W.heal_damage(heal_brute)
 				W.bandage()
 				// user's stat check that causing pain if they are amateurs
 				try_to_pain(M, user)
@@ -134,10 +110,9 @@
 	splittable = FALSE	// Is the stack capable of being splitted?
 	preloaded_reagents = list("silicon" = 4, "ethanol" = 10, "lithium" = 4)
 	w_class = ITEM_SIZE_SMALL
-	perk_required = TRUE
-	needed_perk = PERK_MEDICAL_EXPERT
-	needed_perk_alt = PERK_SURGICAL_MASTER
-	bio_requirement = 25
+	skill_required = TRUE
+	needed_skill = SKILL_MED
+	needed_skill_level = SKILL_LEVEL_ADEPT
 	stacktype_alt = /obj/item/stack/medical/bruise_pack/advanced
 	disinfectant  = TRUE
 	fancy_icon = FALSE
@@ -160,9 +135,9 @@
 	consumable = TRUE
 	matter = list(MATERIAL_BIOMATTER = 2.5)
 	natural_remedy = TRUE
-	perk_required = TRUE
-	needed_perk = PERK_BUTCHER
-	bio_requirement = 10 // So simple a tribal can do it, still has a small check to use.
+	skill_required = TRUE
+	needed_skill = SKILL_SUR
+	needed_skill_level = SKILL_LEVEL_BASIC
 	stacktype_alt = null
 
 /obj/item/stack/medical/bruise_pack/advanced/mending_ichor
@@ -175,9 +150,7 @@
 	matter = list(MATERIAL_BIOMATTER = 2.5)
 	natural_remedy = TRUE
 	fancy_icon = FALSE
-	perk_required = FALSE
-	needed_perk = null
-	bio_requirement = 0
+	skill_required = FALSE
 	stacktype_alt = null
 
 /obj/item/stack/medical/bruise_pack/handmade
@@ -211,11 +184,10 @@
 	origin_tech = list(TECH_BIO = 4)
 	fancy_icon = TRUE
 	w_class = ITEM_SIZE_SMALL
-	perk_required = TRUE
-	needed_perk = PERK_MEDICAL_EXPERT
-	bio_requirement = 15
+	skill_required = TRUE
+	needed_skill = SKILL_MED
+	needed_skill_level = SKILL_LEVEL_ADEPT
 	stacktype_alt = null
-	care_about_faith = TRUE
 
 /obj/item/stack/medical/bruise_pack/advanced/nt/update_icon()
 	if(fancy_icon)

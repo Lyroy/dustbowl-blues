@@ -70,7 +70,7 @@
 	icon ='icons/obj/crafts.dmi'
 	icon_state = "gun_frame"
 	matter = list()
-	var/req_sat = STAT_MEC
+	var/req_sat = SKILL_REP
 	var/suitable_part
 	var/view_only = 0
 	var/tags_to_spawn = list()
@@ -129,8 +129,8 @@
 		to_chat(user, SPAN_WARNING("[src] is not yet complete."))
 	else
 		view_only = round(total_items * (1 - user.stats.getMult(req_sat, 100))/2) +1 // 1 choice per 10 stat + 1
-		if(user.stats.getPerk(PERK_GUNSMITH))
-			view_only += 3
+		/*if(user.stats.getPerk(PERK_GUNSMITH))
+			view_only += 3*/
 		ui_interact(user)
 		SSnano.update_uis(src)
 

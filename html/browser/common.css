@@ -19,12 +19,12 @@ body
 
 .danger
 {
-	color: #ff0000;	
+	color: #ff0000;
 	font-weight: bold;
 }
 .warning
 {
-	color: #ff0000;	
+	color: #ff0000;
 	font-style: italic;
 }
 

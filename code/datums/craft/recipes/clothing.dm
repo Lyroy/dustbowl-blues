@@ -2,7 +2,7 @@
 	category = "Clothing"
 	icon_state = "armor_part"
 	time = 50
-	related_stats = list(STAT_COG)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/clothing/armorvest
 	name = "handmade armor vest"
@@ -209,6 +209,7 @@
 	name = "ragged cloak"
 	result = /obj/item/clothing/suit/hooded/cloak/simple
 	icon_state = "clothing"
+	related_stats = list(SKILL_SUR)
 	steps = list(
 		list(/obj/item/clothing, 1, time = 30),
 		list(/obj/item/clothing, 1, time = 30),
@@ -219,6 +220,7 @@
 	name = "wooden sandals"
 	result = /obj/item/clothing/shoes/sandal
 	icon_state = "woodworking"
+	related_stats = list(SKILL_SUR)
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_WOOD)
 	)
@@ -362,6 +364,7 @@
 	name = "wooden armor"
 	result = /obj/item/clothing/suit/armor/vest/handmadewooden
 	icon_state = "woodworking"
+	related_stats = list(SKILL_SUR)
 	steps = list(
 		list(CRAFT_MATERIAL, 10, MATERIAL_WOOD),
 		list(QUALITY_SAWING, 10, 60),
@@ -374,6 +377,7 @@
 	name = "tactical baggy rags"
 	result = /obj/item/clothing/under/outcast
 	icon_state = "clothing"
+	related_stats = list(SKILL_SUR)
 	steps = list(
 		list(/obj/item/clothing, 1, time = 30),
 		list(/obj/item/clothing, 1, time = 30),
@@ -386,6 +390,7 @@
 	name = "outcast's cloak"
 	result = /obj/item/clothing/suit/storage/raggedcape
 	icon_state = "clothing"
+	related_stats = list(SKILL_SUR)
 	steps = list(
 		list(/obj/item/clothing, 1, time = 30),
 		list(/obj/item/clothing, 1, time = 30),
@@ -398,6 +403,7 @@
 	name = "outcast's hood"
 	result = /obj/item/clothing/head/outcasthood
 	icon_state = "clothing"
+	related_stats = list(SKILL_SUR)
 	steps = list(
 		list(/obj/item/clothing, 1, time = 30),
 		list(/obj/item/clothing, 1, time = 30),
@@ -410,6 +416,7 @@
 	name = "outcast's cape"
 	result = /obj/item/clothing/accessory/cape/outsider
 	icon_state = "clothing"
+	related_stats = list(SKILL_SUR)
 	steps = list(
 		list(/obj/item/clothing/suit/storage/raggedcape, 1, "time" = 30),
 		list(QUALITY_CUTTING, 15, 30)
@@ -418,6 +425,7 @@
 	name = "Tribal Hides"
 	result =  /obj/item/clothing/under/tribalhide
 	icon_state = "clothing"
+	related_stats = list(SKILL_SUR)
 	steps = list(
 		list(CRAFT_MATERIAL, 5, MATERIAL_LEATHER, "time" = 60),
 		list(QUALITY_CUTTING, 15, 30),

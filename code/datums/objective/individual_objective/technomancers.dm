@@ -54,26 +54,6 @@
 	UnregisterSignal(mind_holder, COMSING_HUMAN_EQUITP)
 	..()
 
-/datum/individual_objective/oddity
-	name = "Warded"
-	req_department = list(DEPARTMENT_ENGINEERING)
-	units_requested = 5
-
-/datum/individual_objective/oddity/assign()
-	..()
-	desc = "Acquire at least [units_requested] oddities at the same time to be on you."
-	RegisterSignal(mind_holder, COMSING_HUMAN_EQUITP, .proc/task_completed)
-
-/datum/individual_objective/oddity/task_completed(obj/item/W)
-	units_completed = 0
-	for(var/obj/item/I in mind_holder.GetAllContents())
-		if(I.GetComponent(/datum/component/inspiration))
-			..(1)
-
-/datum/individual_objective/oddity/completed()
-	if(completed) return
-	UnregisterSignal(mind_holder, COMSING_HUMAN_EQUITP)
-	..()
 /*
 /datum/individual_objective/tribalism
 	name = "Advanced Tribalism"

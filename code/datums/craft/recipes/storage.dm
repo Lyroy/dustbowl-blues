@@ -1,7 +1,7 @@
 /datum/craft_recipe/storage
 	category = "Storage"
 	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_SUR)
 	time = 80
 
 /datum/craft_recipe/storage/heavytrash
@@ -15,7 +15,6 @@
 		list(/obj/item/storage/bag/trash, 1, "time" = 60),
 		list(QUALITY_CUTTING, 20, "time" = 60)
 	)
-	related_stats = list(STAT_COG)
 
 /datum/craft_recipe/storage/plastic_bag
 	name = "plastic bag"
@@ -24,7 +23,6 @@
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_PLASTIC)
 	)
-	related_stats = list(STAT_COG)
 
 /datum/craft_recipe/storage/plastic_jug
 	name = "plastic jug"
@@ -43,7 +41,6 @@
 		list(CRAFT_MATERIAL, 3, MATERIAL_STEEL, "time" = 60),
 		list(QUALITY_ADHESIVE, 10, "time" = 60)
 	)
-	related_stats = list(STAT_COG)
 
 /datum/craft_recipe/storage/ore_bag
 	name = "ore bag"
@@ -54,7 +51,6 @@
 		list(CRAFT_MATERIAL, 1, MATERIAL_CARDBOARD, "time" = 60),
 		list(QUALITY_ADHESIVE, 10, "time" = 60)
 	)
-	related_stats = list(STAT_COG)
 
 /datum/craft_recipe/storage/plant_bag
 	name = "plant bag"
@@ -64,7 +60,6 @@
 		list(CRAFT_MATERIAL, 1, MATERIAL_CARDBOARD, "time" = 60),
 		list(QUALITY_ADHESIVE, 10, "time" = 60)
 	)
-	related_stats = list(STAT_COG)
 
 /datum/craft_recipe/storage/plant_bag/big
 	name = "big plant bag"
@@ -76,7 +71,6 @@
 		list(QUALITY_CUTTING, 15, 50),
 		list(QUALITY_ADHESIVE, 10, "time" = 60)
 	)
-	related_stats = list(STAT_COG)
 
 /datum/craft_recipe/storage/chem_bag
 	name = "chemistry bag"
@@ -87,7 +81,6 @@
 		list(CRAFT_MATERIAL, 1, MATERIAL_CARDBOARD, "time" = 60),
 		list(QUALITY_ADHESIVE, 10, "time" = 60)
 	)
-	related_stats = list(STAT_COG)
 
 /datum/craft_recipe/storage/quiver
 	name = "arrows quiver"
@@ -121,7 +114,6 @@
 		list(CRAFT_MATERIAL, 10, MATERIAL_LEATHER, "time" = 30),
 		list(QUALITY_ADHESIVE, 10, "time" = 60)
 	)
-	related_stats = list(STAT_COG)
 
 /datum/craft_recipe/storage/leather_backsport
 	name = "leather sport backpack"
@@ -131,7 +123,6 @@
 		list(CRAFT_MATERIAL, 10, MATERIAL_LEATHER, "time" = 30),
 		list(QUALITY_ADHESIVE, 10, "time" = 60)
 	)
-	related_stats = list(STAT_COG)
 
 /datum/craft_recipe/storage/leather_satchel
 	name = "leather satchel"
@@ -141,7 +132,6 @@
 		list(CRAFT_MATERIAL, 5, MATERIAL_LEATHER, "time" = 30),
 		list(QUALITY_ADHESIVE, 10, "time" = 60)
 	)
-	related_stats = list(STAT_COG)
 
 /datum/craft_recipe/storage/leather_duffel
 	name = "leather duffel bag"
@@ -151,7 +141,6 @@
 		list(CRAFT_MATERIAL, 20, MATERIAL_LEATHER, "time" = 30),
 		list(QUALITY_ADHESIVE, 10, "time" = 60)
 	)
-	related_stats = list(STAT_COG)
 
 /datum/craft_recipe/storage/leather_small_pouch
 	name = "small leather pouch"
@@ -179,7 +168,7 @@
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_CARDBOARD)
 	)
-	related_stats = list(STAT_COG)
+	related_stats = list(SKILL_SUR)
 
 /datum/craft_recipe/box/syringes
 	name = "box - syringes"

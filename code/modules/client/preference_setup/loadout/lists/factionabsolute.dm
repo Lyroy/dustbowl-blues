@@ -90,8 +90,4 @@
 	path = /obj/item/clothing/suit/greatcoat/nt_wintercoat
 	cost = 0
 
-/datum/gear/factionabsolute/ritual_book
-	display_name = "absolutism ritual book"
-	path = /obj/item/book/ritual/cruciform
-	cost = 0
 

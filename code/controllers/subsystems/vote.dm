@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(vote)
-	name = "Voting"
+	name = "Vote"
 	wait = 1 SECONDS
 	flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
@@ -26,7 +26,7 @@ SUBSYSTEM_DEF(vote)
 		interface_client(C)
 
 /datum/controller/subsystem/vote/proc/interface_client(client/C)
-	var/datum/browser/panel = new(C.mob, "Vote","Vote", 500, 650)
+	var/datum/browser/panel = new(C.mob, "Vote","Vote", 500, 750)
 	panel.set_content(interface(C))
 	panel.open()
 
@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(vote)
 	vote_start_time = world.time
 
 	for(var/client/C in voters)
-		C << browse(interface(C),"window=vote")
+		C << browse(interface(C),"window=Vote")
 
 	var/text = "[poll.name] vote started by [poll.initiator]."
 	log_vote(text)
@@ -187,7 +187,7 @@ SUBSYSTEM_DEF(vote)
 	if(href_list["close"])
 		if(usr && usr.client)
 			voters.Remove(usr.client)
-			usr.client << browse(null,"window=vote")
+			usr.client << browse(null,"window=Vote")
 			return
 
 	usr.vote()

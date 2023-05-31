@@ -63,7 +63,7 @@
 //Must be called WHENEVER you modify nsa_bonus, nsa_chem_bonus, nsa_mult, or when you change nerve efficiency.
 //calc_nerves: Activates nerve efficiency recalculation, so its not recalculated every time.
 /datum/metabolism_effects/proc/calculate_nsa(calc_nerves = FALSE)
-	nsa_viv = parent.stats.getStat(STAT_VIV)
+	nsa_viv = parent.stats.getSpecial(SPECIAL_C) / 2
 	if(calc_nerves && ishuman(parent))
 		var/mob/living/carbon/human/parent_human = parent
 		nsa_organ_bonus = (parent_human.get_organ_efficiency(OP_NERVE) - 700) / 2
@@ -109,10 +109,10 @@
 /datum/metabolism_effects/proc/nsa_changed()
 	if(get_nsa() > nsa_threshold)
 		var/stat_mod = get_nsa() > 140 ? -20 : -10
-		for(var/stat in ALL_STATS_FOR_LEVEL_UP)
+		for(var/stat in ALL_SKILLS)
 			parent.stats.addTempStat(stat, stat_mod, INFINITY, "nsa_breach")
 	else
-		for(var/stat in ALL_STATS_FOR_LEVEL_UP)
+		for(var/stat in ALL_SKILLS)
 			parent.stats.removeTempStat(stat, "nsa_breach")
 	var/obj/screen/nsa/hud = parent.HUDneed["neural system accumulation"]
 	hud?.update_icon()
@@ -197,7 +197,7 @@
 		var/add_addiction_flag = R.volume >= R.addiction_threshold
 
 		if(!add_addiction_flag && R.addiction_chance)
-			var/percent = ((R.addiction_chance + parent.metabolism_effects.get_nsa()/3) - (R.addiction_chance/2 * parent.stats.getMult(STAT_TGH))) * addiction_chance_multiplier
+			var/percent = ((R.addiction_chance + parent.metabolism_effects.get_nsa()/3) - (R.addiction_chance/2 * parent.stats.getMult(SPECIAL_C))) * addiction_chance_multiplier
 			percent = CLAMP(percent, 1, 100)
 			add_addiction_flag = prob(percent)
 

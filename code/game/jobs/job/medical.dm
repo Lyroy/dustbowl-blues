@@ -1,3 +1,4 @@
+/*
 /datum/job/cmo
 	title = "Chief Biolab Overseer"
 	flag = CBO
@@ -212,3 +213,4 @@
 	name = "Soteria Psychiatrist"
 	icon_state = "player-green"
 	join_tag = /datum/job/psychiatrist
+*/

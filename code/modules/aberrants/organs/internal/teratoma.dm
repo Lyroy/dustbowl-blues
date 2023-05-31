@@ -1,3 +1,4 @@
+/*
 // Flavorful holder object for organoids. Organoids should almost never spawn outside of these.
 /obj/item/organ/internal/scaffold/aberrant/teratoma
 	name = "teratoma"
@@ -546,3 +547,4 @@
 			new /obj/item/organ/internal/scaffold/aberrant/teratoma/random/uncommon(src)
 	if(prob(5))
 		new /obj/item/organ/internal/scaffold/aberrant/teratoma/random/rare(src)
+*/

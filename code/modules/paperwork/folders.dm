@@ -7,7 +7,6 @@
 	/// The background color for tgui in hex (with a `#`)
 	var/bg_color = "#7f7f7f"
 	var/list/allowed_paper_items = list(
-	/obj/item/oddity/ls/manual,
 	/obj/item/folder,
 	/obj/item/paper,
 	/obj/item/paper_bundle,

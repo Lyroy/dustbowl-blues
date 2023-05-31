@@ -95,7 +95,7 @@
 	switch(tool_type)
 		if(QUALITY_HAMMERING)
 			user.visible_message(SPAN_NOTICE("[user] begins scribbling \the [name]'s gun serial number away."), SPAN_NOTICE("You begin removing the serial number from \the [name]."))
-			if(I.use_tool(user, src, WORKTIME_SLOW, QUALITY_HAMMERING, FAILCHANCE_EASY, required_stat = STAT_MEC))
+			if(I.use_tool(user, src, WORKTIME_SLOW, QUALITY_HAMMERING, FAILCHANCE_EASY, required_stat = SKILL_REP))
 				user.visible_message(SPAN_DANGER("[user] removes \the [name]'s gun serial number."), SPAN_NOTICE("You successfully remove the serial number from \the [name]."))
 				serial_type = "INDEX"
 				serial_type += "-[generate_gun_serial(pick(3,4,5,6,7,8))]"
@@ -106,7 +106,7 @@
 			var/obj/item/part/gun/toremove = input("Which part would you like to remove?","Removing parts") in possibles
 			if(!toremove)
 				return
-			if(I.use_tool(user, src, WORKTIME_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_ZERO, required_stat = STAT_MEC))
+			if(I.use_tool(user, src, WORKTIME_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_ZERO, required_stat = SKILL_REP))
 				eject_item(toremove, user)
 				if(istype(toremove, /obj/item/part/gun/grip))
 					InstalledGrip = null
