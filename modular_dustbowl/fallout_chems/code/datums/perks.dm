@@ -9,12 +9,12 @@
 	..()
 	initial_time = world.time
 	cooldown_time = world.time + 10 MINUTES
-	holder.stats.changeStat(STAT_ROB, -10)
-	holder.stats.changeStat(STAT_VIG, -10)
+	holder.stats.changeStat(SPECIAL_S, -1)
+	holder.stats.changeStat(SPECIAL_A, -1)
 
 /datum/perk/superstim_sickness/remove()
-	holder.stats.changeStat(STAT_ROB, 10)
-	holder.stats.changeStat(STAT_VIG, 10)
+	holder.stats.changeStat(SPECIAL_S, 1)
+	holder.stats.changeStat(SPECIAL_A, 1)
 	..()
 
 /datum/perk/superstim_sickness/on_process()

@@ -115,7 +115,8 @@
 	addiction_chance = 20
 
 /datum/reagent/medicine/calmex/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
-	M.stats.addTempStat(STAT_VIG, STAT_LEVEL_ADEPT, STIM_TIME, "calmex")
+	M.stats.addTempStat(SPECIAL_A, 3, STIM_TIME, "calmex")
+	M.stats.addTempStat(SPECIAL_P, 3, STIM_TIME, "calmex")
 
 /datum/reagent/medicine/fixer
 	name = "Fixer"
