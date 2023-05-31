@@ -272,7 +272,7 @@
 					var/success = used_item.use_tool_extended(
 						user, src,
 						160, QUALITY_CUTTING,
-						FAILCHANCE_NORMAL, required_stat = STAT_BIO
+						FAILCHANCE_NORMAL, required_stat = SKILL_MED
 					)
 					switch(success)
 						if(TOOL_USE_SUCCESS)
@@ -288,7 +288,7 @@
 					var/success = used_item.use_tool_extended(
 						user, src,
 						160, QUALITY_CUTTING,
-						FAILCHANCE_NORMAL, required_stat = STAT_BIO
+						FAILCHANCE_NORMAL, required_stat = SKILL_MED
 					)
 					switch(success)
 						if(TOOL_USE_SUCCESS)
@@ -310,7 +310,7 @@
 				var/success = used_item.use_tool_extended(
 					user, src,
 					160, QUALITY_RETRACTING,
-					FAILCHANCE_NORMAL, required_stat = STAT_BIO
+					FAILCHANCE_NORMAL, required_stat = SKILL_MED
 				)
 				switch(success)
 					if(TOOL_USE_SUCCESS)
@@ -328,7 +328,7 @@
 				var/success = used_item.use_tool_extended(
 					user, src,
 					160, QUALITY_CLAMPING,
-					FAILCHANCE_NORMAL, required_stat = STAT_BIO
+					FAILCHANCE_NORMAL, required_stat = SKILL_MED
 				)
 				switch(success)
 					if(TOOL_USE_SUCCESS)
@@ -356,7 +356,7 @@
 				var/success = used_item.use_tool_extended(
 					user, src,
 					160, QUALITY_CAUTERIZING,
-					FAILCHANCE_NORMAL, required_stat = STAT_BIO
+					FAILCHANCE_NORMAL, required_stat = SKILL_MED
 				)
 				switch(success)
 					if(TOOL_USE_SUCCESS)

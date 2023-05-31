@@ -7,14 +7,7 @@
 
 	survive_objective = /datum/objective/escape
 
-	stat_modifiers = list(
-		STAT_ROB = 5,
-		STAT_TGH = 5,
-		STAT_BIO = 5,
-		STAT_MEC = 5,
-		STAT_COG = 5,
-		STAT_VIG = 15
-	)
+	stat_modifiers = list()
 
 
 /datum/antagonist/contractor/get_extra_panel_options()

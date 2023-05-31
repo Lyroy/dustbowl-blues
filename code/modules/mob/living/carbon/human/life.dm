@@ -763,9 +763,10 @@
 
 		if(CE_PAINKILLER in chem_effects)
 			analgesic = chem_effects[CE_PAINKILLER]
+		/*
 		if(!(CE_ALCOHOL in chem_effects) && stats.getPerk(PERK_INSPIRATION))
 			stats.removePerk(PERK_ACTIVE_INSPIRATION)
-
+		*/
 		var/total_plasmaloss = 0
 		for(var/obj/item/I in src)
 			if(I.contaminated)
@@ -776,17 +777,19 @@
 	if(status_flags & GODMODE)
 		return FALSE	//godmode
 
+	/*
 	if(stats.getPerk(PERK_NANITE_REGEN)) // Do they have the nanite regen perk?
 		var/datum/perk/nanite_regen/P = stats.getPerk(PERK_NANITE_REGEN) // Add a reference to the perk for us to use.
 		if(P && P.regen_rate) // Check if the perk is actually there and got regeneration enabled.
 			heal_overall_damage(P.regen_rate, P.regen_rate, P.regen_rate)
+	*/
 
 	if(species.light_dam)//TODO: Use this proc for flora and mycus races. Search proc mycus. -Note for Kaz.
 		var/light_amount = 0
 		if(isturf(loc))
 			var/turf/T = loc
 			light_amount = round((T.get_lumcount()*10)-5)
-
+		/*
 		if(stats.getPerk(PERK_FOLKEN_HEALING) || stats.getPerk(PERK_FOLKEN_HEALING_YOUNG)) // Folken will have this perk
 			if(light_amount >= species.light_dam) // Enough light threshold
 				if(stats.getPerk(PERK_FOLKEN_HEALING_YOUNG)) // They are young Folken and will heal faster
@@ -800,7 +803,7 @@
 			if(light_amount <= species.light_dam) // Enough light threshold
 				heal_overall_damage(1,1)
 
-		else if(light_amount > species.light_dam) //if there's enough light, start dying
+		else */if(light_amount > species.light_dam) //if there's enough light, start dying
 			take_overall_damage(1,1)
 
 	// TODO: stomach and bloodstream organ.
@@ -831,6 +834,7 @@
 			silent = 0
 			return 1
 		if(health <= death_threshold) //No health = death
+			/*
 			if(stats.getPerk(PERK_UNFINISHED_DELIVERY) && prob(33)) //Unless you have this perk
 				heal_organ_damage(20, 20)
 				adjustOxyLoss(-100)
@@ -838,10 +842,11 @@
 				updatehealth()
 				stats.removePerk(PERK_UNFINISHED_DELIVERY)
 			else
-				death()
-				blinded = 1
-				silent = 0
-				return 1
+			*/
+			death()
+			blinded = 1
+			silent = 0
+			return 1
 
 		//UNCONSCIOUS. NO-ONE IS HOME
 		if(getOxyLoss() > (species.total_health/2))
@@ -947,14 +952,6 @@
 
 	if(hud_updateflag) // update our mob's hud over-lays, AKA what others see flaoting above our head
 		handle_hud_list()
-
-	// now handle what we see on our screen
-
-	var/obj/item/implant/core_implant/cruciform/C = get_core_implant(/obj/item/implant/core_implant/cruciform)
-	if(C)
-		var/datum/core_module/cruciform/neotheologyhud/NT_hud = C.get_module(/datum/core_module/cruciform/neotheologyhud)
-		if(NT_hud)
-			NT_hud.update_crucihud()
 
 	if(!.)
 		return
@@ -1169,8 +1166,6 @@
 		if(shadow && client.eye == shadow && !is_physically_disabled())
 			isRemoteObserve = TRUE
 		else if(client.eye && istype(client.eye,/mob/observer/eye/god))
-			isRemoteObserve = TRUE
-		else if(client.eye && istype(client.eye,/obj/item/implant/carrion_spider/observer))
 			isRemoteObserve = TRUE
 		else if(client.eye && istype(client.eye,/obj/structure/multiz))
 			isRemoteObserve = TRUE

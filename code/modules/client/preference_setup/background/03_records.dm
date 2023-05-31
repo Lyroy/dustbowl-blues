@@ -12,7 +12,7 @@
 
 /datum/category_item/player_setup_item/background/records
 	name = "Records"
-	sort_order = 5
+	sort_order = 3
 
 /datum/category_item/player_setup_item/background/records/load_character(var/savefile/S)
 	from_file(S["med_record"],pref.med_record)
@@ -28,7 +28,7 @@
 
 /datum/category_item/player_setup_item/background/records/content(var/mob/user)
 	. = list()
-	. += "<br/><b>Records</b>:<br/>"
+	. += "<b>Records</b>:<br/>"
 	if(jobban_isbanned(user, "Records"))
 		. += "<span class='danger'>You are banned from using character records.</span><br>"
 	else

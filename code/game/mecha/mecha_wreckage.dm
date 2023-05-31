@@ -40,7 +40,7 @@
 			if(salvage_num <= 0 || isemptylist(wirecutters_salvage))
 				to_chat(user, "You don't see anything that can be removed with [I].")
 				return
-			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 				var/loot_type = prob(70)?pick(wirecutters_salvage):null
 				if(loot_type)
 					var/N = new loot_type(get_turf(user))
@@ -55,7 +55,7 @@
 			if(salvage_num <= 0 || isemptylist(welder_salvage))
 				to_chat(user, "You don't see anything that can be cut with [I].")
 				return
-			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 				if(type)
 					var/P = pick_n_take(welder_salvage)
 					var/N = new P(get_turf(user))
@@ -71,7 +71,7 @@
 			if(isemptylist(crowbar_salvage))
 				to_chat(user, "You don't see anything that can be pried with [I].")
 				return
-			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 				var/obj/S = pick(crowbar_salvage)
 				if(S)
 					S.loc = get_turf(user)
@@ -82,7 +82,7 @@
 
 		if(QUALITY_SAWING)
 			to_chat(user, SPAN_NOTICE("You started to cut the mech apart..."))
-			if(I.use_tool(user, src, WORKTIME_SLOW, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+			if(I.use_tool(user, src, WORKTIME_SLOW, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 				new /obj/item/stack/material/steel(get_turf(src), 1 ? 60 : 2)
 				new /obj/item/stack/material/plastic(get_turf(src), 1 ? 30 : 2)
 				new /obj/item/stack/material/plasteel(get_turf(src), 1 ? 20 : 2)

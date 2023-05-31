@@ -117,7 +117,7 @@
 
 		if(QUALITY_PRYING)
 			if(unlocked)
-				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_HARD, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_HARD, required_stat = SKILL_REP))
 					if(open)
 						open = 0
 						cut_overlays()

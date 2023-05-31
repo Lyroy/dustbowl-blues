@@ -166,11 +166,6 @@
 		/datum/design/autolathe/ammo/sbaw_slug,						//saiga ammo
 		/datum/design/autolathe/ammo/sbaw_pellet,
 		/datum/design/autolathe/ammo/maxim,							//maxim ammo
-		/datum/design/autolathe/circuit/autolathe_excelsior,		//circuits
-		/datum/design/autolathe/circuit/shieldgen_excelsior,
-		/datum/design/autolathe/circuit/reconstructor_excelsior,
-		/datum/design/autolathe/circuit/diesel_excelsior,
-		/datum/design/autolathe/circuit/turret_excelsior,
 		/datum/design/autolathe/circuit/recharger,
 		/datum/design/autolathe/circuit/autolathe_disk_cloner,
 		/datum/design/research/item/part/micro_mani,				//machine parts
@@ -255,8 +250,6 @@
 
 	license = -1
 	designs = list(
-		/datum/design/autolathe/circuit/autolathe_excelsior,//circuits
-		/datum/design/autolathe/circuit/diesel_excelsior,
 		/datum/design/autolathe/circuit/autolathe_disk_cloner,
 		/datum/design/autolathe/circuit/recharger,
 		/datum/design/autolathe/device/propaganda_chip,

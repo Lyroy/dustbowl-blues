@@ -46,7 +46,7 @@
 
 /obj/structure/ominous/teleporter/proc/teleport()
 	for(var/mob/living/carbon/human/H in range(7, src))
-		go_to_bluespace(get_turf(src), entropy_value, FALSE, H, locate(x + rand(-14, 14), y + rand(-14, 14), z))
+		do_teleport(H, locate(x + rand(-14, 14), y + rand(-14, 14), z))
 
 /obj/structure/ominous/teleporter/attack_hand(mob/living/user as mob)
 	var/last_use

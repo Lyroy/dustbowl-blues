@@ -466,7 +466,7 @@
 		if(silenced)
 			to_chat(user, SPAN_WARNING("You should remove the silencer first!"))
 			return
-		if(saw_off && A.use_tool(user, src, WORKTIME_LONG, QUALITY_SAWING, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+		if(saw_off && A.use_tool(user, src, WORKTIME_LONG, QUALITY_SAWING, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 			qdel(src)
 			new sawn(usr.loc)
 			to_chat(user, SPAN_WARNING("You cut down the stock, barrel, and anything else nice from \the [src], ruining a perfectly good weapon for no good reason!"))

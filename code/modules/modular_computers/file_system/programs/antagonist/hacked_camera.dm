@@ -18,13 +18,13 @@
 	var/datum/nano_module/camera_monitor/hacked/HNM = NM
 
 	// The program is active and connected to one of the station's networks. Has a very small chance to trigger IDS alarm every tick.
-	if(HNM && HNM.current_network && (HNM.current_network in station_networks) && prob((STAT_LEVEL_MAX - operator_skill) * 0.05))
+	if(HNM && HNM.current_network && (HNM.current_network in station_networks) && prob((SKILL_LEVEL_MAX - operator_skill) * 0.05))
 		if(ntnet_global.intrusion_detection_enabled)
 			ntnet_global.add_log("IDS WARNING - Unauthorised access detected to camera network [HNM.current_network] by device with NID [computer.network_card.get_network_tag()]")
 			ntnet_global.intrusion_detection_alarm = 1
 
 /datum/computer_file/program/camera_monitor/hacked/nano_ui_interact(mob/user)
-	operator_skill = get_operator_skill(user, STAT_COG)
+	operator_skill = get_operator_skill(user, SKILL_SCI)
 	. = ..() // Actual work done by nanomodule's parent.
 
 /datum/nano_module/camera_monitor/hacked

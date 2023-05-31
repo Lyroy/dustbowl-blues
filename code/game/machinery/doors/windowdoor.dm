@@ -217,14 +217,14 @@
 		switch(tool_type)
 			if(QUALITY_SEALING)
 				user.visible_message("[user] starts sealing up cracks in [src] with the [I]", "You start sealing up cracks in [src] with the [I]")
-				if (I.use_tool(user, src, 60 + ((maxHealth - health)*3), QUALITY_SEALING, FAILCHANCE_NORMAL, STAT_MEC))
+				if (I.use_tool(user, src, 60 + ((maxHealth - health)*3), QUALITY_SEALING, FAILCHANCE_NORMAL, SKILL_REP))
 					to_chat(user, SPAN_NOTICE("The [src] looks pretty solid now!"))
 					health = maxHealth
 
 			//If it's emagged, crowbar can pry electronics out.
 			if (QUALITY_PRYING)
 				user.visible_message("[user] removes the electronics from the windoor.", "You start to remove electronics from the windoor.")
-				if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PRYING, FAILCHANCE_EASY, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PRYING, FAILCHANCE_EASY, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You removed the windoor electronics!"))
 
 					var/obj/structure/windoor_assembly/wa = new/obj/structure/windoor_assembly(src.loc)

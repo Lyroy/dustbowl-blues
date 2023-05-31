@@ -85,7 +85,7 @@
 		SPAN_WARNING("[user] picks in wires of the [name] with a multitool"), \
 		SPAN_WARNING("[pick("Picking wires in [name] lock", "Hacking [name] security systems", "Pulsing in locker controller")].")
 		)
-		if(I.use_tool(user, src, WORKTIME_LONG, QUALITY_PULSING, FAILCHANCE_HARD, required_stat = STAT_MEC))
+		if(I.use_tool(user, src, WORKTIME_LONG, QUALITY_PULSING, FAILCHANCE_HARD, required_stat = SKILL_SCI))
 			if(hack_stage < hack_require)
 				playsound(loc, 'sound/items/glitch.ogg', 60, 1, -3)
 				hack_stage++
@@ -185,7 +185,7 @@
 	visible_message(SPAN_DANGER("You hear a loud squelchy grinding sound."))
 	playsound(loc, 'sound/machines/juicer.ogg', 50, 1)
 	operating = TRUE
-	
+
 
 	var/slab_name = occupant.name
 	var/slab_count = 0
@@ -250,13 +250,13 @@
 			if(ishuman(occupant))
 				src.occupant.ghostize()
 
-		
+
 			ishuman(occupant) ? occupant.gib(3, TRUE) : occupant.gib()
 
 			var/mob/living/to_delete = occupant
 			occupant = null
 			qdel(to_delete)
-			
+
 
 			playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
 			operating = FALSE

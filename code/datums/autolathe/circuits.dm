@@ -20,10 +20,6 @@
 	name = "custom vendomat"
 	build_path = /obj/item/circuitboard/vending
 
-/datum/design/autolathe/circuit/autolathe_excelsior
-	name = "excelsior autolathe"
-	build_path = /obj/item/circuitboard/excelsiorautolathe
-
 /datum/design/autolathe/circuit/autolathe_disk_cloner
 	name = "autolathe disk cloner"
 	build_path = /obj/item/circuitboard/autolathe_disk_cloner
@@ -39,38 +35,6 @@
 /datum/design/autolathe/circuit/nav
 	name = "navigation console"
 	build_path = /obj/item/circuitboard/nav
-
-/datum/design/autolathe/circuit/shieldgen_excelsior
-	name = "excelsior shield wall generator"
-	build_path = /obj/item/circuitboard/excelsiorshieldwallgen
-
-/datum/design/autolathe/circuit/jtb
-	name = "junk tractor beam control console"
-	build_path = /obj/item/circuitboard/jtb
-
-/datum/design/autolathe/circuit/reconstructor_excelsior
-	name = "excelsior implant reconstructor"
-	build_path = /obj/item/circuitboard/excelsiorreconstructor
-
-/datum/design/autolathe/circuit/diesel_excelsior
-	name = "diesel generator"
-	build_path = /obj/item/circuitboard/diesel
-
-/datum/design/autolathe/circuit/teleporter_excelsior
-	name = "excelsior long-range teleporter"
-	build_path = /obj/item/circuitboard/excelsior_teleporter
-
-/datum/design/autolathe/circuit/turret_excelsior
-	name = "excelsior turret"
-	build_path = /obj/item/circuitboard/excelsior_turret
-
-/datum/design/autolathe/circuit/excelsior_autodoc
-	name = "excelsior autodoc"
-	build_path = /obj/item/circuitboard/excelsior_autodoc
-
-/datum/design/autolathe/circuit/turret_artificer
-	name = "artificer turret"
-	build_path = /obj/item/circuitboard/artificer_turret
 
 /datum/design/autolathe/circuit/centrifuge
 	name = "centrifuge"

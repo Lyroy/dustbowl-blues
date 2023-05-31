@@ -64,10 +64,12 @@
 
 	if(target.getBruteLoss() > 0)
 		var/heal_amount = -15
+		/*
 		var/advanced_medical = user.stats.getPerk(PERK_ADVANCED_MEDICAL)
 		if(advanced_medical)
 			heal_amount -= calculate_expert_surgery_bonus(user)
-		user.visible_message(SPAN_NOTICE("[user] [advanced_medical ? "expertly" : ""] treats the brute damage to [target]'s body with the [tool_name]."), \
+		*/
+		user.visible_message(SPAN_NOTICE("[user] treats the brute damage to [target]'s body with the [tool_name]."), \
 		SPAN_NOTICE("You treat the brute damage to [target]'s body with [tool_name].") )
 		if(target.getBruteLoss() > 0 && tool.use(1))
 			target.adjustBruteLoss(heal_amount)
@@ -133,11 +135,12 @@
 
 	if(target.getFireLoss() > 0)
 		var/heal_amount = -15
+		/*
 		var/advanced_medical = user.stats.getPerk(PERK_ADVANCED_MEDICAL)
 		if(advanced_medical)
 			heal_amount -= calculate_expert_surgery_bonus(user)
-
-		user.visible_message(SPAN_NOTICE("[user] [advanced_medical ? "expertly" : ""] treats the burn damage to [target]'s body with the [tool_name]."), \
+		*/
+		user.visible_message(SPAN_NOTICE("[user] treats the burn damage to [target]'s body with the [tool_name]."), \
 			SPAN_NOTICE("You treat the burn damage to [target]'s body with [tool_name].") )
 		if(target.getFireLoss() > 0 && tool.use(1))
 			target.adjustFireLoss(heal_amount)
@@ -196,10 +199,12 @@
 	var/needs_regeneration = world.time - target.timeofdeath > DEFIB_TIME_LIMIT
 	if (target.getToxLoss() >= 0 || needs_regeneration)
 		var/heal_amount = -40 // Same total heal per full stack as before
+		/*
 		var/advanced_medical = user.stats.getPerk(PERK_ADVANCED_MEDICAL)
 		if(advanced_medical)
 			heal_amount -= calculate_expert_surgery_bonus(user) * 2
-		user.visible_message(SPAN_NOTICE("[user] finishes [advanced_medical ? "expertly" : ""] filtering out any toxins in [target]'s body and repairing any neural degradation with the [tool_name]."), \
+		*/
+		user.visible_message(SPAN_NOTICE("[user] finishes filtering out any toxins in [target]'s body and repairing any neural degradation with the [tool_name]."), \
 		SPAN_NOTICE("You finish filtering out any toxins to [target]'s body and repairing any neural degradation with the [tool_name].") )
 		if((needs_regeneration || target.getToxLoss() > 0) && tool.use(1))
 			target.adjustToxLoss(heal_amount)

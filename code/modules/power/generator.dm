@@ -157,7 +157,7 @@
 			if(istype(get_turf(src), /turf/space) && !anchored)
 				user << SPAN_NOTICE("You can't anchor something to empty space. Idiot.")
 				return
-			if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+			if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP))
 				user << SPAN_NOTICE("You [anchored ? "un" : ""]anchor the brace with [I].")
 				anchored = !anchored
 				if(anchored)

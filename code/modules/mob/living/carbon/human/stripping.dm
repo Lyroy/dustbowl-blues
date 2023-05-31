@@ -12,10 +12,7 @@
 	switch(slot_to_strip)
 		// Handle things that are part of this interface but not removing/replacing a given item.
 		if("pockets")
-			if(!user.stats.getPerk(PERK_FAST_FINGERS))
-				visible_message(SPAN_DANGER("\The [user] is trying to empty \the [src]'s pockets!"))
-			else
-				to_chat(user, SPAN_NOTICE("You silently try to empty \the [src]'s pockets."))
+			to_chat(user, SPAN_NOTICE("You silently try to empty \the [src]'s pockets."))
 			if(do_mob(user,src,HUMAN_STRIP_DELAY,progress = 1))
 				empty_pockets(user)
 			return
@@ -65,15 +62,9 @@
 		stripping = TRUE
 
 	if(stripping)
-		if((target_slot == r_hand || target_slot == l_hand) && user.stats.getPerk(PERK_FAST_FINGERS))
-			to_chat(user, SPAN_NOTICE("You silently try to remove \the [src]'s [target_slot.name]."))
-		else
-			visible_message(SPAN_DANGER("\The [user] is trying to remove \the [src]'s [target_slot.name]!"))
+		visible_message(SPAN_DANGER("\The [user] is trying to remove \the [src]'s [target_slot.name]!"))
 	else
-		if((slot_to_strip == r_hand || slot_to_strip == l_hand) && user.stats.getPerk(PERK_FAST_FINGERS))
-			to_chat(user, SPAN_NOTICE("You silently try to put \a [held] on \the [src]."))
-		else
-			visible_message(SPAN_DANGER("\The [user] is trying to put \a [held] on \the [src]!"))
+		visible_message(SPAN_DANGER("\The [user] is trying to put \a [held] on \the [src]!"))
 
 	if(!do_mob(user,src,HUMAN_STRIP_DELAY,progress = 1))
 		return
@@ -100,10 +91,7 @@
 		unEquip(r_store)
 	if(l_store)
 		unEquip(l_store)
-	if(!user.stats.getPerk(PERK_FAST_FINGERS))
-		visible_message(SPAN_DANGER("\The [user] empties \the [src]'s pockets!"))
-	else
-		to_chat(user, SPAN_NOTICE("You empty \the [src]'s pockets."))
+	to_chat(user, SPAN_NOTICE("You empty \the [src]'s pockets."))
 	LEGACY_SEND_SIGNAL(user, COMSIG_EMPTY_POCKETS, src)
 // Remove all splints.
 /mob/living/carbon/human/proc/remove_splints(var/mob/living/user)

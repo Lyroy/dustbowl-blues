@@ -32,14 +32,7 @@
 	//For outer antags, access they spawn with on their newly created ID
 	var/list/default_access = list(access_external_airlocks,access_maint_tunnels)
 	//stats data
-	var/list/stat_modifiers = list(
-		STAT_ROB = 5,
-		STAT_TGH = 5,
-		STAT_BIO = 5,
-		STAT_MEC = 5,
-		STAT_COG = 5,
-		STAT_VIG = 5
-	)
+	var/list/stat_modifiers = list()
 
 
 	// Misc.

@@ -113,8 +113,3 @@
 	path = /obj/item/clothing/accessory/holster/saber/machete/cheap
 	cost = 1
 
-/datum/gear/armament/holster/nt
-	display_name = "short sword"
-	path = /obj/item/tool/sword/nt/shortsword
-	allowed_roles = list("Prime","Vector")
-	cost = 1

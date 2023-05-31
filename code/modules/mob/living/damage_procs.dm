@@ -143,9 +143,5 @@
 	if (damage > 0)
 		take_overall_damage(damage)
 		playsound(src, pick(punch_sound), 100, 1, 10)
-		if(ishuman(src))
-			if(!src.stats.getPerk(PERK_PARKOUR))
-				src.Weaken(4)
-		else
-			src.Weaken(4)
+		src.Weaken(4)
 		updatehealth()

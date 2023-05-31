@@ -287,7 +287,7 @@
 		switch(tool_type)
 
 			if(QUALITY_BOLT_TURNING)
-				if(O.use_tool(user, src, WORKTIME_FAST, QUALITY_BOLT_TURNING, FAILCHANCE_EASY,  required_stat = STAT_MEC))
+				if(O.use_tool(user, src, WORKTIME_FAST, QUALITY_BOLT_TURNING, FAILCHANCE_EASY,  required_stat = SKILL_REP))
 					playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
 					if(anchored)
 						to_chat(user, SPAN_NOTICE("You unsecure the [src] from the floor!"))
@@ -305,14 +305,14 @@
 					return
 
 			if(QUALITY_PRYING)
-				if(O.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_HARD, required_stat = STAT_MEC))
+				if(O.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_HARD, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You remove the components of \the [src] with [O]."))
 					dismantle()
 				return TRUE
 
 			if(QUALITY_SCREW_DRIVING)
 				var/used_sound = panel_open ? 'sound/machines/Custom_screwdriveropen.ogg' :  'sound/machines/Custom_screwdriverclose.ogg'
-				if(O.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC, instant_finish_tier = 30, forced_sound = used_sound))
+				if(O.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP, instant_finish_tier = 30, forced_sound = used_sound))
 					updateUsrDialog()
 					panel_open = !panel_open
 					to_chat(user, SPAN_NOTICE("You [panel_open ? "open" : "close"] the maintenance hatch of \the [src] with [O]."))

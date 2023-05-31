@@ -234,8 +234,6 @@ obj/item/scroll/sealed
 	max_storage_space = DEFAULT_NORMAL_STORAGE
 	can_hold = list(
 		/obj/item/scroll,
-		/obj/item/oddity/common/book_unholy,
-		/obj/item/oddity/common/book_omega,
 		/obj/item/tool/knife/ritual, // This means both the knife and sickle...
 		/obj/item/paper/alchemy_recipes,
 		/obj/item/device/camera_film)
@@ -261,6 +259,7 @@ obj/item/scroll/attackby(obj/item/I, mob/living/carbon/human/M)
 		wax_on.message = message
 		qdel(src)
 
+	/*
 	if(QUALITY_WELDING in I.tool_qualities || istype(I, /obj/item/flame)) //casts effects or just burns away if no spell works.
 
 		/*
@@ -304,7 +303,7 @@ obj/item/scroll/attackby(obj/item/I, mob/living/carbon/human/M)
 			to_chat(M, "<span class='warning'>You ignite the scroll. It burns to ash with a world twisting aura.</span>")
 			mightier_spell(M)
 			return
-
+	*/
 // If we don't cast anything then we end up doing a normal burn.
 		to_chat(M, "<span class='warning'>You ignite the scroll. It burns for a few moments before becoming ash.</span>")
 		ScrollBurn()
@@ -313,6 +312,7 @@ obj/item/scroll/attackby(obj/item/I, mob/living/carbon/human/M)
 // Proc that controls all Book-type spells
 /obj/effect/decal/cleanable/crayon/attackby(obj/item/I, mob/living/carbon/human/M)
 	..()
+	/*
 	if(istype(I, /obj/item/oddity/common/book_unholy) || istype(I, /obj/item/oddity/common/book_omega))
 		if(M.disabilities&NEARSIGHTED && is_rune && M.species?.reagent_tag != IS_SYNTHETIC)
 			//Anti-Death check
@@ -504,7 +504,7 @@ obj/item/scroll/attackby(obj/item/I, mob/living/carbon/human/M)
 			return
 		return
 	return
-
+*/
 
 /****************************/
 /* BOOK SPELLS PROCS START! */
@@ -518,7 +518,7 @@ obj/item/scroll/attackby(obj/item/I, mob/living/carbon/human/M)
 	log_and_message_admins("[M] has used the example spell! For testing purposes of course!")
 */
 
-
+/*
 // Babel: Grants you knowledge of the Cult language.
 // This is a requirement for the ritual knife spells, perhaps for more complex spells in future too
 /obj/effect/decal/cleanable/crayon/proc/babel_spell(mob/living/carbon/human/M)
@@ -1092,3 +1092,4 @@ obj/item/scroll/proc/example_spell(mob/living/carbon/human/M) //testing spell
 		M.drop_from_inventory(src)
 		M.put_in_inactive_hand(needles)
 	ScrollBurn()
+*/

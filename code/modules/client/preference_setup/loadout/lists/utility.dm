@@ -158,11 +158,6 @@
 	path = /obj/item/device/synthesized_instrument/violin
 	cost = 0
 
-/datum/gear/utility/tinfoil
-	display_name = "anti-psion hat"
-	path = /obj/item/clothing/head/psionic/tinfoil
-	cost = 1 //Has materas so its still a little bit of costs
-
 /datum/gear/utility/costume
 	display_name = "costume kit"
 	path = /obj/item/storage/box/costume

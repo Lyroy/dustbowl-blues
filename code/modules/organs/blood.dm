@@ -40,7 +40,6 @@
 	data["trace_chem"] = temp_chem
 	data["blood_colour"] = blood_color
 	data["resistances"] = null
-	data["carrion"] = is_carrion(src)
 	return data
 
 //Resets blood data

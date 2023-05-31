@@ -861,7 +861,7 @@ var/global/list/default_medbay_channels = list(
 	else
 		to_chat(user, SPAN_NOTICE("The [name] has already been emagged."))
 		return NO_EMAG_ACT
-
+/*
 /obj/item/device/radio/random_radio/attackby(obj/item/W, mob/user, params)
 	if(nt_sword_attack(W, user))
 		return FALSE
@@ -905,3 +905,4 @@ var/global/list/default_medbay_channels = list(
 				to_chat(user, SPAN_WARNING("You cannot find any use of [D], maybe you need something related to mechanics to repair this?"))
 		else
 			to_chat(user, SPAN_WARNING("The [D] is useless here. Try to find another one."))
+*/

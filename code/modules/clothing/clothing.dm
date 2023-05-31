@@ -61,7 +61,7 @@
 //Delayed equipping
 /obj/item/clothing/pre_equip(var/mob/user, var/slot)
 	..(user, slot)
-	if (equip_delay > 0 && !user.stats.getPerk(PERK_SECOND_SKIN))
+	if (equip_delay > 0/* && !user.stats.getPerk(PERK_SECOND_SKIN)*/)
 		//If its currently worn, we must be taking it off
 		if (is_worn())
 			user.visible_message(
@@ -551,8 +551,6 @@ BLIND     // can't see anything
 		siemens_coefficient = 0 // DAMN BOI
 		qdel(I)
 
-	if(istype(I, /obj/item/tool/knife/psionic_blade))
-		return ..()
 	if(!knifes)
 		knifes = list(
 			/obj/item/tool/knife,
@@ -562,8 +560,6 @@ BLIND     // can't see anything
 			/obj/item/tool/knife/tacknife,
 			/obj/item/tool/knife/shiv
 		)
-	if(!not_a_knife)
-		not_a_knife = list(/obj/item/tool/knife/psionic_blade)
 	if(can_hold_knife && is_type_in_list(I, knifes))
 		if(holding)
 			to_chat(user, SPAN_WARNING("\The [src] is already holding \a [holding]."))
@@ -634,21 +630,13 @@ BLIND     // can't see anything
 		/obj/item/reagent_containers/food/drinks/flask,
 		/obj/item/device/radio,
 		/obj/item/clothing/mask,
-		/obj/item/storage/backpack/guncase,
-		/obj/item/implant/carrion_spider/holographic)
+		/obj/item/storage/backpack/guncase)
 	slot_flags = SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"
 	siemens_coefficient = 0.9
 	w_class = ITEM_SIZE_NORMAL
 	var/list/extra_allowed = list()
-	blacklisted_allowed = list(
-		/obj/item/tool/knife/psionic_blade,
-		/obj/item/tool/hammer/telekinetic_fist,
-		/obj/item/flame/pyrokinetic_spark,
-		/obj/item/tool/psionic_omnitool,
-		/obj/item/shield/riot/crusader/psionic,
-		/obj/item/gun/kinetic_blaster
-		)
+	blacklisted_allowed = list()
 	equip_delay = 1 SECONDS
 
 	valid_accessory_slots = list("armband","decor")

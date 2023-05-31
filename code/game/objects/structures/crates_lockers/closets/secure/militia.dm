@@ -23,7 +23,6 @@
 	new /obj/item/storage/pouch/baton_holster/telebaton(src)
 	new /obj/item/storage/pouch/pistol_holster(src)
 	new /obj/item/storage/box/commanderuniform(src)
-	new /obj/item/roach_summon/panzer(src)
 	new /obj/item/clothing/gloves/thick/swat/blackshield(src)
 	new /obj/item/storage/sheath/judgement/exultor/filled(src)
 	new /obj/item/device/radio/headset/heads/bscom/bowman(src)

@@ -124,26 +124,6 @@
 	tool_qualities = list(QUALITY_CUTTING = 20,  QUALITY_WIRE_CUTTING = 15)
 	price_tag = 14
 
-/obj/item/tool/knife/neotritual
-	name = "absolutism ritual knife"
-	desc = "The sweet embrace of mercy, for relieving the soul from a tortured vessel."
-	icon = 'icons/obj/weapons.dmi'
-	icon_state = "neot-knife"
-	item_state = "knife"
-	matter = list(MATERIAL_PLASTEEL = 4, MATERIAL_PLASTIC = 1)
-	force = WEAPON_FORCE_PAINFUL
-	tool_qualities = list(QUALITY_CUTTING = 30,  QUALITY_WIRE_CUTTING = 10, QUALITY_SCREW_DRIVING = 5)
-	max_upgrades = 3
-	embed_mult = 6
-	price_tag = 24
-
-/obj/item/tool/knife/neotritual/equipped(mob/living/H)
-	. = ..()
-	if(is_held() && is_neotheology_disciple(H))
-		embed_mult = 0.05
-	else
-		embed_mult = initial(embed_mult)
-
 /obj/item/tool/knife/tacknife
 	name = "tactical knife"
 	desc = "You'd be killing loads of people if this was Medal of Valor: Heroes of Space."
@@ -210,80 +190,3 @@
 	tool_qualities = list(QUALITY_CUTTING = 35) //Can't be upgraded. Round start knife. Damage is bad not really good to selling either. Only fair give a good status to cutting things.
 	backstab_damage = 9
 
-/obj/item/tool/knife/dagger/bluespace
-	name = "\improper Soteria \"Displacement Dagger\""
-	desc = "A teleportation matrix attached to a dagger, for sending things you stab it into very far away."
-	icon_state = "bluespace_dagger"
-	item_state = "bluespace_dagger"
-	matter = list(MATERIAL_PLASTEEL = 3, MATERIAL_PLASTIC = 2, MATERIAL_SILVER = 10, MATERIAL_GOLD = 5, MATERIAL_PLASMA = 20)
-	price_tag = 1200 // It teleports.
-	force = WEAPON_FORCE_NORMAL+1
-	embed_mult = 50 //You WANT it to embed
-	suitable_cell = /obj/item/cell/small
-	toggleable = TRUE
-	use_power_cost = 0.4
-	passive_power_cost = 0.4
-	backstab_damage = 10
-	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_BLUESPACE = 4)
-	var/mob/living/embedded
-	var/last_teleport
-	var/entropy_value = 3
-
-/obj/item/tool/knife/dagger/bluespace/New()
-	..()
-	item_flags |= BLUESPACE
-
-/obj/item/tool/knife/dagger/bluespace/on_embed(mob/user)
-	embedded = user
-
-/obj/item/tool/knife/dagger/bluespace/on_embed_removal(mob/user)
-	embedded = null
-
-/obj/item/tool/knife/dagger/bluespace/Process()
-	..()
-	if(switched_on && embedded && cell)
-		if(last_teleport + max(3 SECONDS, embedded.mob_size*(cell.charge/cell.maxcharge)) < world.time)
-			var/area/A = random_ship_area()
-			var/turf/T = A.random_space()
-			if(T && cell.checked_use(use_power_cost*embedded.mob_size))
-				last_teleport = world.time
-				playsound(T, "sparks", 50, 1)
-				anim(T,embedded,'icons/mob/mob.dmi',,"phaseout",,embedded.dir)
-				go_to_bluespace(get_turf(embedded), entropy_value, TRUE, embedded, T)
-				playsound(T, 'sound/effects/phasein.ogg', 25, 1)
-				playsound(T, 'sound/effects/sparks2.ogg', 50, 1)
-				anim(T,embedded,'icons/mob/mob.dmi',,"phasein",,embedded.dir)
-
-/obj/item/tool/knife/dagger/assassin
-	name = "dagger"
-	desc = "A sharp implement, with a twist; The handle acts as a reservoir for reagents, and the blade injects those that it pierces."
-	icon_state = "ass_dagger"
-	item_state = "ass_dagger"
-	reagent_flags = INJECTABLE|TRANSPARENT
-	price_tag = 10
-
-/obj/item/tool/knife/dagger/assassin/New()
-	..()
-	create_reagents(80)
-
-/obj/item/tool/knife/dagger/assassin/resolve_attackby(atom/target, mob/user)
-	.=..()
-	if(!target.reagents || !isliving(target))
-		return
-
-	if(!reagents.total_volume)
-		return
-
-	if(!target.reagents.get_free_space())
-		return
-	var/modifier = 1
-	var/reagent_modifier = 1
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		modifier += min(30,H.stats.getStat(STAT_ROB))
-		reagent_modifier = CLAMP(round(H.stats.getStat(STAT_BIO)/10), 1, 5)
-	var/mob/living/L = target
-	if(prob(min(100,(100-L.getarmor(user.targeted_organ, ARMOR_MELEE))+modifier)))
-		var/trans = reagents.trans_to_mob(target, rand(1,3)*reagent_modifier, CHEM_BLOOD)
-		admin_inject_log(user, target, src, reagents.log_list(), trans)
-		to_chat(user, SPAN_NOTICE("You inject [trans] units of the solution. [src] now contains [src.reagents.total_volume] units."))

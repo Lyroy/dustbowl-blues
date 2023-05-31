@@ -110,7 +110,7 @@
 
 		if(QUALITY_WIRE_CUTTING)
 			if(!shock(user, 100))
-				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP))
 					new /obj/item/stack/rods(get_turf(src), destroyed ? 1 : 2)
 					qdel(src)
 					return

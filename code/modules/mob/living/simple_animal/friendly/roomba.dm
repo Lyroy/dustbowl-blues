@@ -33,7 +33,6 @@
 	var/drop1 = /obj/item/scrap_lump
 	var/drop2 = null
 	var/cell_drop = null
-	sanity_damage = -2
 
 // For repairing damage to the synths.
 /mob/living/simple_animal/soteria_roomba/attackby(obj/item/W as obj, mob/user as mob)
@@ -46,7 +45,7 @@
 
 		if(QUALITY_WELDING in T.tool_qualities)
 			if(health < maxHealth)
-				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = STAT_MEC))
+				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = SKILL_REP))
 					health = maxHealth
 					to_chat(user, "You repair the damage to [src].")
 					return

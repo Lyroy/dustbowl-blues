@@ -21,7 +21,7 @@
 	charge_per_use = 0
 
 /obj/item/device/scanner/health/afterattack(atom/A, mob/user, proximity)
-	if(user.stats?.getPerk(PERK_ADVANCED_MEDICAL) && user.stats.getStat(STAT_BIO) > STAT_LEVEL_EXPERT)
+	if(user.stats.getStat(SKILL_SCI) > SKILL_LEVEL_EXPERT)
 		use_delay = 0 // Instant use for skilled users
 	..()
 	use_delay = initial(use_delay) // Reset use_delay so unskilled users don't get the bonus
@@ -51,7 +51,7 @@
 		to_chat(user, SPAN_WARNING("You are not nimble enough to use this device."))
 		return
 
-	if(!user.stats?.getPerk(PERK_ADVANCED_MEDICAL) && !usr.stat_check(STAT_BIO, STAT_LEVEL_BASIC) && !usr.stat_check(STAT_COG, 30)) //Takes 15 bio so 30 cog
+	if(!usr.stat_check(SKILL_SCI, 30)) //Takes 15 bio so 30 cog
 		to_chat(usr, SPAN_WARNING("Your biological understanding isn't enough to use this."))
 		return
 

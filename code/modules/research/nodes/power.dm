@@ -125,8 +125,7 @@
 	cost = 450
 
 	unlocks_designs = list(/datum/design/research/circuit/superpacman,
-							/datum/design/research/item/hand_charger,
-							/datum/design/research/circuit/diesel)
+							/datum/design/research/item/hand_charger)
 
 /datum/technology/advanced_power_generation
 	name = "Basic Fusion Power"

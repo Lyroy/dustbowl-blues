@@ -102,7 +102,7 @@
 									SPAN_NOTICE("[user] start to disconnect the [the_gun.name] from the [src.name]."),
 									SPAN_NOTICE("You start to disconnect the [the_gun.name] from the [src.name].")
 								)
-			if(T.use_tool(user, src, WORKTIME_EXTREMELY_LONG, QUALITY_BOLT_TURNING, FAILCHANCE_HARD, required_stat = STAT_MEC)) // Skill check. Hard to pass and long to do.
+			if(T.use_tool(user, src, WORKTIME_EXTREMELY_LONG, QUALITY_BOLT_TURNING, FAILCHANCE_HARD, required_stat = SKILL_REP)) // Skill check. Hard to pass and long to do.
 				// Remove the connectionts between the gun and the backpack
 				the_gun.secured = FALSE
 				the_gun.connected = null

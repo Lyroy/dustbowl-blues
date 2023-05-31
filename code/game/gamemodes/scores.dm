@@ -128,10 +128,11 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 				GLOB.captured_or_dead_antags++
 		else
 			if(M.antagonist.len)
+				/*
 				var/area/A = get_area(M.current)
 				if(istype(A, /area/nadezhda/security/prison) || istype(A, /area/nadezhda/security/brig) || M.current.restrained())
 					GLOB.captured_or_dead_antags++
-				else if(isOnAdminLevel(M.current))
+				else */if(isOnAdminLevel(M.current))
 					GLOB.ironhammer_escaped_antagonists++
 			else if(M.assigned_job && M.assigned_job.department == DEPARTMENT_LSS && ishuman(M.current))
 				var/mob/living/carbon/human/H = M.current
@@ -240,7 +241,7 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 
 	GLOB.ironhammer_score = GLOB.initial_ironhammer_score + GLOB.ironhammer_objectives_score + GLOB.score_antag_contracts + GLOB.ironhammer_operative_dead_score + GLOB.captured_or_dead_antags_score
 
-	//Lonestar score 
+	//Lonestar score
 	GLOB.score_guild_faction_item_loss -= 150 * GLOB.guild_faction_item_loss // ~-300
 	GLOB.guild_objectives_score = GLOB.guild_objectives_completed * 25 // ~100
 	GLOB.guild_profit_score	= round(GLOB.supply_profit/50) // ? review it //target_max~500//

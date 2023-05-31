@@ -17,21 +17,16 @@
 		if(T.get_lumcount() < 0.6)
 			if(see_invisible != SEE_INVISIBLE_NOLIGHTING)
 				tally += 0.5
+	/*
 	if(stats.getPerk(PERK_FAST_WALKER))
 		tally -= 0.4
 	if(stats.getPerk(PERK_NANITE_MUSCLE))
 		tally -= 0.3
 	if(stats.getPerk(PERK_SCUTTLEBUG))
 		tally -= 0.3
+	*/
 	if(stats.getPerk(PERK_REZ_SICKNESS))
 		tally += 1
-
-	var/obj/item/implant/core_implant/cruciform/C = get_core_implant(/obj/item/implant/core_implant/cruciform)
-	if(C && C.active)
-		var/obj/item/cruciform_upgrade/upgrade = C.upgrade
-		if(upgrade && upgrade.active && istype(upgrade, CUPGRADE_SPEED_OF_THE_CHOSEN))
-			var/obj/item/cruciform_upgrade/speed_of_the_chosen/sotc = upgrade
-			tally -= sotc.speed_increase
 
 	var/health_deficiency = (maxHealth - health)
 	var/hunger_deficiency = (MOB_BASE_MAX_HUNGER - nutrition)
@@ -44,7 +39,7 @@
 		//Not porting bay's silly organ checking code here
 		tally += 1 //Small slowdown so wheelchairs aren't turbospeed
 	else
-		if(wear_suit && !src.stats.getPerk(PERK_SECOND_SKIN))
+		if(wear_suit)
 			tally += wear_suit.slowdown
 		if(shoes)
 			tally += shoes.slowdown

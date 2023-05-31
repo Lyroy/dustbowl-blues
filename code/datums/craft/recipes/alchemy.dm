@@ -1,8 +1,8 @@
 /datum/craft_recipe/alchemy
 	category = "Alchemy"
 	time = 80
-	related_stats = list(STAT_COG)
-	requiredPerk = PERK_ALCHEMY
+	related_stats = list(SKILL_MED)
+	//requiredPerk = PERK_ALCHEMY
 
 /datum/craft_recipe/alchemy/pointy_bottle
 	name = "Tincture Bottle"

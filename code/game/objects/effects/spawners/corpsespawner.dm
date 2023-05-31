@@ -124,7 +124,6 @@
 	corpseradio = /obj/item/device/radio/headset
 	corpsemask = /obj/item/clothing/mask/smokable/cigarette/cigar/cohiba
 	corpsepocket1 = /obj/item/modular_computer/pda
-	corpsepocket2 = /obj/item/oddity/common/old_id
 	corpseid = TRUE
 	corpseidjob = list("Therapist", "Private Security", "Master Chef", "Researcher", "Market Analyst", "Colonist")
 	injury_level = 4

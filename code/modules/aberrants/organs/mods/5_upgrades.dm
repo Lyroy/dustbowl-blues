@@ -150,7 +150,7 @@
 
 	M.apply_to_types = list(/obj/item/organ/internal/bone)
 	M.examine_msg = "Can be attached to bones."
-	M.examine_difficulty = STAT_LEVEL_BASIC
+	M.examine_difficulty = SKILL_LEVEL_BASIC
 	M.prefix = "reinforced"
 
 	M.organ_efficiency_mod = list(OP_BONE = 0.33)

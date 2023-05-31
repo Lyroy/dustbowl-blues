@@ -135,7 +135,6 @@ obj/item/storage/hcases/attackby(obj/item/W, mob/user)
 /obj/item/storage/hcases/preimer/populate_contents()
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/tool/knife/dagger/ceremonial(src)
-	new /obj/item/clothing/accessory/cross(src)
 
 
 

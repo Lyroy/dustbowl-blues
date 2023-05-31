@@ -34,7 +34,7 @@
 /obj/item/modification/organ/internal/special/on_pickup/shock/powerful
 	name = "powerful shocking membrane"
 	desc = "A graftable outer membrane for organ tissues. There is significant bioelectric phenomena present and it hurts to touch."
-	
+
 /obj/item/modification/organ/internal/special/on_pickup/shock/New(loc, generate_organ_stats = FALSE, predefined_modifier = null)
 	AddComponent(/datum/component/modification/organ/on_pickup/shock/powerful)
 	..()
@@ -108,50 +108,58 @@
 		S.boost = chosen_special_info[2]
 	..()
 
-/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/mechanical
-/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/mechanical/New(loc, generate_organ_stats = FALSE, predefined_modifier = null)
+/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/strength
+/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/strength/New(loc, generate_organ_stats = FALSE, predefined_modifier = null)
 	var/datum/component/modification/organ/on_cooldown/stat_boost/S = AddComponent(/datum/component/modification/organ/on_cooldown/stat_boost)
 
-	S.stat = STAT_MEC
-	S.boost = 10
+	S.stat = SPECIAL_S
+	S.boost = 1
 	..()
 
-/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/cognition
-/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/cognition/New(loc, generate_organ_stats = FALSE, predefined_modifier = null)
+/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/perception
+/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/perception/New(loc, generate_organ_stats = FALSE, predefined_modifier = null)
 	var/datum/component/modification/organ/on_cooldown/stat_boost/S = AddComponent(/datum/component/modification/organ/on_cooldown/stat_boost)
 
-	S.stat = STAT_COG
-	S.boost = 10
+	S.stat = SPECIAL_P
+	S.boost = 1
 	..()
 
-/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/biology
-/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/biology/New(loc, generate_organ_stats = FALSE, predefined_modifier = null)
+/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/endurance
+/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/endurance/New(loc, generate_organ_stats = FALSE, predefined_modifier = null)
 	var/datum/component/modification/organ/on_cooldown/stat_boost/S = AddComponent(/datum/component/modification/organ/on_cooldown/stat_boost)
 
-	S.stat = STAT_BIO
-	S.boost = 10
+	S.stat = SPECIAL_E
+	S.boost = 1
 	..()
 
-/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/robustness
-/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/robustness/New(loc, generate_organ_stats = FALSE, predefined_modifier = null)
+/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/charisma
+/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/charisma/New(loc, generate_organ_stats = FALSE, predefined_modifier = null)
 	var/datum/component/modification/organ/on_cooldown/stat_boost/S = AddComponent(/datum/component/modification/organ/on_cooldown/stat_boost)
 
-	S.stat = STAT_ROB
-	S.boost = 10
+	S.stat = SPECIAL_C
+	S.boost = 1
 	..()
 
-/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/toughness
-/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/toughness/New(loc, generate_organ_stats = FALSE, predefined_modifier = null)
+/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/intelligence
+/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/intelligence/New(loc, generate_organ_stats = FALSE, predefined_modifier = null)
 	var/datum/component/modification/organ/on_cooldown/stat_boost/S = AddComponent(/datum/component/modification/organ/on_cooldown/stat_boost)
 
-	S.stat = STAT_TGH
-	S.boost = 10
+	S.stat = SPECIAL_I
+	S.boost = 1
 	..()
 
-/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/vigilance_5
-/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/vigilance_5/New(loc, generate_organ_stats = FALSE, predefined_modifier = null)
+/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/agility
+/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/agility/New(loc, generate_organ_stats = FALSE, predefined_modifier = null)
 	var/datum/component/modification/organ/on_cooldown/stat_boost/S = AddComponent(/datum/component/modification/organ/on_cooldown/stat_boost)
 
-	S.stat = STAT_VIG
-	S.boost = 10
+	S.stat = SPECIAL_A
+	S.boost = 1
+	..()
+
+/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/luck
+/obj/item/modification/organ/internal/special/on_cooldown/stat_boost/luck/New(loc, generate_organ_stats = FALSE, predefined_modifier = null)
+	var/datum/component/modification/organ/on_cooldown/stat_boost/S = AddComponent(/datum/component/modification/organ/on_cooldown/stat_boost)
+
+	S.stat = SPECIAL_L
+	S.boost = 1
 	..()

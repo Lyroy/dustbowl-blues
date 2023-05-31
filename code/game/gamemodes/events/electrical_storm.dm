@@ -46,8 +46,12 @@ Just not fun
 		for(var/obj/machinery/power/apc/apc in GLOB.apc_list)
 			if(is_valid_apc(apc))
 				// Greatly reduce the chance for APCs in maintenance areas to be selected
+				/*
 				var/area/A = get_area(apc)
 				if(!istype(A,/area/nadezhda/maintenance) || prob(25))
+					apcs += apc
+				*/
+				if(prob(25))
 					apcs += apc
 
 		for(var/i=1, i <= lightsoutAmount, i++)

@@ -183,7 +183,7 @@
 				to_chat(user, SPAN_WARNING("Nothing to connect to!"))
 				return
 			var/turf/user_interaction_loc = user.loc
-			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_VERY_EASY,  required_stat = STAT_MEC))
+			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_VERY_EASY,  required_stat = SKILL_REP))
 				if(canister)
 					unset_canister(canister)
 				else

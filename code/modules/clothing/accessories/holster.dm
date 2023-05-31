@@ -237,36 +237,19 @@ Sword holsters
 	if(contents.len)
 		add_overlay(image('icons/inventory/accessory/icon.dmi', "crusader_layer"))
 
-/obj/item/clothing/accessory/holster/saber/greatsword/occupied
-	var/holstered_spawn = /obj/item/tool/sword/crusader
-
-/obj/item/clothing/accessory/holster/saber/greatsword/occupied/Initialize()
-	holstered = new holstered_spawn
-	update_icon()
-
 //Subtype which is for printing from the biomachine
 /obj/item/clothing/accessory/holster/saber/greatsword/churchprint
 	name = "Absolutist Sword Scabbard"
 	desc = "A sturdy brown leather scabbard with gold trim. Perfectly designed for holding weapons to fight against the enemies of the Church."
 	icon_state = "crusader_holster"
 	overlay_state = "crusader"
-	can_hold = list(
-		/obj/item/tool/sword/nt,
-		/obj/item/tool/sword/crusader
-		)
+	can_hold = list()
 
 /obj/item/clothing/accessory/holster/saber/greatsword/churchprint/update_icon()
 	..()
 	cut_overlays()
 	if(contents.len)
 		add_overlay(image('icons/inventory/accessory/icon.dmi', "crusader_layer"))
-
-/obj/item/clothing/accessory/holster/saber/greatsword/churchprint/occupied
-	var/holstered_spawn = /obj/item/tool/sword/crusader
-
-/obj/item/clothing/accessory/holster/saber/greatsword/churchprint/occupied/Initialize()
-	holstered = new holstered_spawn
-	update_icon()
 
 /obj/item/clothing/accessory/holster/saber/machete
 	name = "machete scabbard"

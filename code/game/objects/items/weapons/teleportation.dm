@@ -226,7 +226,7 @@ Frequency:
 				user.drop_from_inventory(user.get_active_hand())
 				user.drop_from_inventory(user.get_inactive_hand())
 				if(teleport_location)
-					go_to_bluespace(get_turf(src), entropy_value, TRUE, user, teleport_location, 1)
+					do_teleport(user, teleport_location, 1)
 					return
 			if(do_after(user, 30))
 				if(calibration_required)
@@ -240,7 +240,7 @@ Frequency:
 		else
 			if(do_after(user, 30))
 				if(calibration_required)
-					var/user_intelligence = user.stats.getStat(STAT_COG)
+					var/user_intelligence = user.stats.getStat(SKILL_SCI)
 					portal_fail_chance -= user_intelligence
 					if(portal_fail_chance < 0)
 						portal_fail_chance = 0
@@ -269,9 +269,9 @@ Frequency:
 	playsound(src.loc, 'sound/effects/EMPulse.ogg', 65, 1)
 	var/turf/teleport_location = pick( getcircle(user.loc, 8) )
 	if(prob(5))
-		go_to_bluespace(get_turf(src), entropy_value, FALSE, user, teleport_location, 1)
+		do_teleport(user, teleport_location, 1)
 	else
-		go_to_bluespace(get_turf(src), entropy_value, FALSE, M, teleport_location, 1)
+		do_teleport(M, teleport_location, 1)
 	qdel(src)
 	var/obj/item/stack/rods/R = new(M.loc)
 	user.put_in_active_hand(R)

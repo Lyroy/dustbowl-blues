@@ -451,9 +451,7 @@
 				/obj/item/storage/belt/security = 4,
 				/obj/item/storage/belt/webbing = 6,
 				/obj/item/storage/belt/webbing/ih = 2,
-				/obj/item/storage/belt/security/neotheology = 2,
-				/obj/item/storage/belt/utility = 8,
-				/obj/item/storage/belt/utility/neotheology = 4))
+				/obj/item/storage/belt/utility = 8))
 
 /obj/random/cloth/belt/low_chance
 	name = "low chance random belt"

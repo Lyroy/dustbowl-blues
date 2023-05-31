@@ -107,7 +107,7 @@
 									SPAN_NOTICE("[user] start to disconnect [the_gun] from [src]."),
 									SPAN_NOTICE("You start to disconnect [the_gun] from [src].")
 								)
-			if(T.use_tool(user, src, WORKTIME_EXTREMELY_LONG, QUALITY_BOLT_TURNING, FAILCHANCE_HARD, required_stat = STAT_MEC)) // Skill check. Hard to pass and long to do.
+			if(T.use_tool(user, src, WORKTIME_EXTREMELY_LONG, QUALITY_BOLT_TURNING, FAILCHANCE_HARD, required_stat = SKILL_REP)) // Skill check. Hard to pass and long to do.
 				// Remove the connectionts between the gun and the backpack
 				the_gun.connected = null
 				the_gun.update_icon()
@@ -125,7 +125,7 @@
 
 /obj/item/minigun_backpack/pre_equip(var/mob/user, var/slot)
 	..()
-	if(user.stats.getStat(STAT_ROB) < 30)
+	if(user.stats.getStat(SPECIAL_S) < 8)
 		to_chat(user, SPAN_NOTICE("You equip [src], but its weight slows you down because you are weak.."))
 		slowdown = 0.5 // 50% speed decrease
 	else

@@ -157,7 +157,7 @@
 		if(QUALITY_SCREW_DRIVING)
 			if(!locked)
 				if(!suspension_field)
-					if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
+					if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP))
 						panel_open = !panel_open
 						to_chat(user, SPAN_NOTICE("You [panel_open ? "open" : "close"] the battery panel."))
 						icon_state = "suspension[panel_open ? (cell ? "1" : "0") : "2"]"
@@ -169,7 +169,7 @@
 
 		if(QUALITY_BOLT_TURNING)
 			if(!suspension_field)
-				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP))
 					anchored = !anchored
 					to_chat(user, SPAN_NOTICE("You wrench the stabilising legs [anchored ? "into place" : "up against the body"]."))
 					update_icon()

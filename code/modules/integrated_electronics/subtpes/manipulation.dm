@@ -576,55 +576,6 @@
 	var/atom/AM = get_object()
 	AM.investigate_log("threw [A] with [src] at X: [x_abs], y: [y_abs].", INVESTIGATE_CIRCUIT)
 
-/obj/item/integrated_circuit/manipulation/bluespace_rift
-	name = "bluespace rift generator"
-	desc = "This powerful circuit can open rifts to another realspace location through bluespace."
-	extended_desc = "If a valid teleporter console is supplied as input then its selected teleporter beacon will be used as destination point, \
-					and if not an undefined destination point is selected. \
-					Rift direction is a cardinal value determening in which direction the rift will be opened, relative the local north. \
-					A direction value of 0 will open the rift on top of the assembly, and any other non-cardinal values will open the rift in the assembly's current facing."
-	icon_state = "bluespace"
-	complexity = 100
-	size = 3
-	cooldown_per_use = 10 SECONDS
-	power_draw_per_use = 300
-	inputs = list("teleporter", "rift direction")
-	outputs = list()
-	activators = list("open rift" = IC_PINTYPE_PULSE_IN)
-	spawn_flags = IC_SPAWN_RESEARCH
-	action_flags = IC_ACTION_LONG_RANGE
-
-	matter = list(MATERIAL_STEEL = 10, MATERIAL_SILVER = 2, MATERIAL_GOLD = 2)
-	var/entropy_value = 1
-
-/obj/item/integrated_circuit/manipulation/bluespace_rift/do_work()
-
-	var/obj/machinery/computer/teleporter/tporter = get_pin_data_as_type(IC_INPUT, 1, /obj/machinery/computer/teleporter)
-	var/step_dir = get_pin_data(IC_INPUT, 2)
-	var/turf/rift_location = get_turf(src)
-
-	if(!rift_location || !isPlayerLevel(rift_location.z))
-		playsound(src, get_sfx("spark"), 50, 1)
-		return
-
-	if(isnum_safe(step_dir) && (!step_dir || (step_dir in GLOB.cardinal)))
-		rift_location = get_step(rift_location, step_dir) || rift_location
-
-	var/obj/effect/portal/P = new(rift_location)
-	if(tporter && tporter.locked && !tporter.one_time_use)
-		P.set_target(tporter.locked)
-		P.entropy_value += entropy_value
-	else
-		var/turf/destination = get_random_turf_in_range(src, 10)
-		if(destination)
-			P.set_target(destination)
-			P.entropy_value += entropy_value
-			P.failchance = 33
-		else
-			playsound(src, get_sfx("spark"), 50, 1)
-	var/atom/A = get_object()
-	A.investigate_log("was opened rift with [src].", INVESTIGATE_CIRCUIT)
-
 // - inserter circuit - //
 /obj/item/integrated_circuit/manipulation/inserter
 	name = "inserter"

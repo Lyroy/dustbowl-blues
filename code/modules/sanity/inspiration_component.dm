@@ -7,6 +7,7 @@
   * (This would've been better as an element instead of a component, but currently elements don't exist on cev eris. F)
 */
 
+/*
 /datum/component/inspiration
 	/// Simple list defined as list(STAT_DEFINE = number).
 	var/list/stats
@@ -131,9 +132,11 @@
 
 	if(perk)
 		to_chat(user, SPAN_NOTICE("<span style='color:orange'>A strange aura comes from this oddity, it is more than just a curio, its an anomaly...</span>"))
+		/*
 		if(usr.stats?.getPerk(PERK_STALKER))
 			var/datum/perk/oddity/OD = GLOB.all_perks[perk]
 			to_chat(user, SPAN_NOTICE("Instinct tells you more about this anomaly: <span style='color:orange'>[OD]. [OD.desc]</span>"))
+		*/
 
 	var/strength
 	switch(get_power())
@@ -160,7 +163,7 @@
 	var/power = 0
 	if(perk)
 		var/list/L = calculate_statistics()
-		switch(L[STAT_MEC])
+		switch(L[SKILL_REP])
 			if(1 to 3)
 				power = 1
 			if(3 to 5)
@@ -170,3 +173,4 @@
 			if(7 to INFINITY)
 				power = 4
 	return power
+*/

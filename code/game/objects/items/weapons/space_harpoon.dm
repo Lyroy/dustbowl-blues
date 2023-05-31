@@ -66,7 +66,7 @@
 		return //No actual telefragging, wasn't allowed to do that at the time
 	if(!Using)
 		Using = TRUE
-		if(do_after(user, 4 SECONDS - user.stats.getMult(STAT_COG, STAT_LEVEL_EXPERT, src)))
+		if(do_after(user, 4 SECONDS - user.stats.getMult(SKILL_SCI, SKILL_LEVEL_EXPERT, src)))
 			Using = FALSE
 			if(!cell || !cell.checked_use(100))
 				to_chat(user, SPAN_WARNING("\The [src]'s battery is dead or missing."))
@@ -103,9 +103,9 @@
 			continue
 		if(!AM.anchored)
 			if(prob(offset_chance))
-				go_to_bluespace(source, entropy_value, TRUE, AM, get_turf(pick(orange(teleport_offset,source))))
+				do_teleport(AM, get_turf(pick(orange(teleport_offset,source))))
 			else
-				go_to_bluespace(source, entropy_value, TRUE, AM, target)
+				do_teleport(AM, target)
 
 /obj/item/bluespace_harpoon/attack_self(mob/living/user as mob)
 	return change_fire_mode(user)

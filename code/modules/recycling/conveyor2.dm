@@ -62,7 +62,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	var/tool_type = I.get_tool_type(user, usable_qualities, src)
 	switch(tool_type)
 		if(QUALITY_PRYING)
-			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP))
 				if(!(stat & BROKEN))
 					var/obj/item/construct/conveyor/C = new(loc)
 					C.id = id
@@ -73,7 +73,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 			return
 
 		if(QUALITY_BOLT_TURNING)
-			if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+			if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP))
 				set_rotation(user)
 				update_move_direction()
 			return
@@ -335,7 +335,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	var/tool_type = I.get_tool_type(user, usable_qualities, src)
 	switch(tool_type)
 		if(QUALITY_PRYING)
-			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP))
 				var/obj/item/construct/conveyor_switch/C = new(loc, id)
 				C.matter = matter
 				transfer_fingerprints_to(C)
@@ -344,7 +344,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 			return
 
 		if(QUALITY_PULSING)
-			if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+			if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP))
 				one_way = !one_way
 				to_chat(user, SPAN_NOTICE("[src] will now go [one_way ? "forwards only" : "both forwards and backwards"]."))
 			return

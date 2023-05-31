@@ -16,9 +16,11 @@
 		return
 
 	gravity_is_on = !gravity_is_on
+
+	/*
 	if (GLOB.active_gravity_generator)
 		GLOB.active_gravity_generator.set_state(gravity_is_on)
-
+	*/
 
 	if(gravity_is_on)
 		log_admin("[key_name(user)] toggled gravity on.", 1)

@@ -110,10 +110,6 @@
 		if(currentStage > 5)
 			progressMessage = "Bypassing bluespace interference."
 
-		var/numPings = rand(5, 15)
-		for(var/i in 1 to numPings)
-			var/turf/randTurf = get_random_turf_in_range(telegraph, 7, 1)
-			new /obj/effect/telesci_ping(randTurf)
 		playsound(telegraph,'sound/effects/telesci_ping.ogg',50,FALSE, 7, extrarange = 10, is_global = FALSE, ignore_walls = TRUE)
 		playsound(src,'sound/effects/telesci_process.ogg',50,FALSE, 7, is_global = FALSE)
 
@@ -123,25 +119,6 @@
 /obj/machinery/computer/telesci_console/proc/openPortal()
 	portalOpened = TRUE
 	telepad.openPortal(targetX, targetY, targetZ)
-	var/area/portalarea = get_area(get_turf(locate(targetX,targetY,targetZ)))
-	if(portalarea.tele_inhibited())
-		for(var/obj/machinery/telesci_relay/relay in telepad.relaysInUse)
-			relay.chanceExplode()
-		var/inhibitorExploded = FALSE
-		for(var/obj/machinery/telesci_inhibitor/blocker in portalarea.tele_inhibitors)
-			if(!istype(blocker))
-				continue
-			inhibitorExploded = TRUE
-			playsound(blocker,'sound/effects/telesci_inhibitor_alarm.ogg', 80, FALSE, 7, extrarange = 10, is_global = FALSE, ignore_walls = TRUE)
-			blocker.visible_message(SPAN_DANGER("\The [src] sparks violently and begins to shake!"))
-			do_sparks(6, FALSE, get_turf(blocker))
-			addtimer(CALLBACK(blocker, /obj/machinery/telesci_inhibitor/proc/explode), 1 SECOND)
-
-		if(inhibitorExploded)
-			var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset(null)
-			a.autosay("ALERT: Extreme bluespace disruption detected in [loc]. Equipment failure imm-m-...", "Bluespace Inhibition Node")
-			qdel(a)
-
 
 	QDEL_NULL(telegraph)
 	QDEL_NULL(construct)
@@ -161,14 +138,11 @@
 
 /obj/machinery/computer/telesci_console/proc/getDigitRequirement()
 	var/turf/target = get_turf(locate(targetX,targetY,targetZ))
-	var/area/targetArea = target.loc
 	var/turf/origin = get_turf(telepad)
 	if(!isPlayerLevel(targetZ))
 		return BS_DISTANCE_INVALID //Invalid area.
 	if(isSealedLevel(targetZ))
 		return BS_DISTANCE_STRESSFUL //Sealed Z levels like deep maint require stressing the telepad.
-	if(targetArea.tele_inhibited())
-		return BS_DISTANCE_STRESSFUL //Tele inhibited Z levels also require stressing the telepad.
 	if(tracking_beacon)
 		return BS_DISTANCE_BYPASSED //Teleporting to a beacon is easy if it's not in a tele_inhibited area.
 	if(!isOnStationLevel(telepad))
@@ -516,7 +490,7 @@
 				startPathfinding()
 			else if(properInput)
 				if(user)
-					if(rand(1, 100) < user.stats.getStat(STAT_COG))
+					if(rand(1, 100) < user.stats.getStat(SKILL_SCI))
 						var/pathHint = ""
 						var/identifiedIndex = rand(1, mastermindKey.len)
 						for(var/i in 1 to mastermindKey.len)
@@ -533,7 +507,7 @@
 		if(href_list["startTimer"])
 			addLog("Starting path traversal for bluespace tunnel to ([targetX],[targetY],[targetZ]).")
 			if(user)
-				var/cogBonus = min(user.stats.getStat(STAT_COG)/10, 4)
+				var/cogBonus = min(user.stats.getStat(SKILL_SCI)/10, 4)
 				startTimer(baseDelay = (BS_PATHING_DELAY - cogBonus))
 			else
 				startTimer()

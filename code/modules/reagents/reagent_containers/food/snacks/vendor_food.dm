@@ -11,7 +11,6 @@
 	nutriment_desc = list("candy" = 1)
 	preloaded_reagents = list("sugar" = 3, "preservatives" = 2)
 	matter = list(MATERIAL_BIOMATTER = 3)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/chocolatebar
 	name = "chocolate bar"
@@ -23,7 +22,6 @@
 	nutriment_amt = 1
 	nutriment_desc = list("chocolate" = 5)
 	preloaded_reagents = list("sugar" = 2, "coco" = 2, "preservatives" = 2)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/candy/donor
 	name = "donor candy"
@@ -42,7 +40,6 @@
 	nutriment_amt = 5
 	nutriment_desc = list("nutriment" = 7, "protein" = 8, "preservatives" = 4)
 	matter = list(MATERIAL_BIOMATTER = 3)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/candy/pistachios_pack
 	name = "pistachios pack"
@@ -53,7 +50,6 @@
 	nutriment_desc = list("pistachios" = 3, "protein" = 2, "sodiumchloride" = 2)
 	preloaded_reagents = list("nutriment" = 1, "sodiumchloride" = 6, "preservatives" = 3)
 	matter = list(MATERIAL_BIOMATTER = 3)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/candy/sunflowerseeds
 	name = "sunflower fried seed pack"
@@ -63,7 +59,6 @@
 	nutriment_amt = 1
 	nutriment_desc = list("nutriment" = 2, "protein" = 1, "preservatives" = 2)
 	matter = list(MATERIAL_BIOMATTER = 3)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/candy/energybar
 	name = "energy bar"
@@ -74,7 +69,6 @@
 	nutriment_desc = list("nutriment" = 1, "sugar" = 29)
 	preloaded_reagents = list("nutriment" = 1, "sugar" = 19, "preservatives" = 10)
 	matter = list(MATERIAL_BIOMATTER = 1)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/candy_corn
 	name = "candy corn"
@@ -86,7 +80,6 @@
 	nutriment_amt = 2
 	nutriment_desc = list("candy corn" = 4)
 	preloaded_reagents = list("nutriment" = 4, "sugar" = 2, "preservatives" = 2)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/candy_drop_blue
 	name = "\improper red gum stick"
@@ -98,7 +91,6 @@
 	nutriment_amt = 0
 	preloaded_reagents = list("gum drops" = 3, "preservatives" = 1)
 	matter = list(MATERIAL_BIOMATTER = 2)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/candy_drop_red
 	name = "\improper blue gum stick"
@@ -110,7 +102,6 @@
 	nutriment_amt = 0
 	preloaded_reagents = list("gum drops" = 5, "hacker" = 15, "preservatives" = 5)
 	matter = list(MATERIAL_BIOMATTER = 12)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/sosjerky
 	name = "Scaredy's Beef Jerky"
@@ -122,7 +113,6 @@
 	center_of_mass = list("x"=15, "y"=9)
 	preloaded_reagents = list("protein" = 4, "preservatives" = 3)
 	matter = list(MATERIAL_BIOMATTER = 6)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/cheesiehonkers
 	name = "Cheesie Honkers"
@@ -136,7 +126,6 @@
 	preloaded_reagents = list("preservatives" = 2)
 	nutriment_amt = 2
 	matter = list(MATERIAL_BIOMATTER = 4)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/dogtreats
 	name = "\improper Kriosan treats"
@@ -149,7 +138,6 @@
 	nutriment_desc = list("honey" = 2, "dry biscuits" = 1)
 	matter = list(MATERIAL_BIOMATTER = 3)
 	preloaded_reagents = list("preservatives" = 2, "honey" = 1, "protein" = 2)
-	junk_food = TRUE
 
 
 ////////////////////////////////////////////////Openable
@@ -165,7 +153,6 @@
 	nutriment_amt = 1
 	nutriment_desc = list("salt" = 1, "chips" = 2, "preservatives" = 3)
 	matter = list(MATERIAL_BIOMATTER = 2)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/openable/gamerchips
 	name = "boritos crips packet"
@@ -179,7 +166,6 @@
 	nutriment_desc = list("cool ranch" = 2, "corn" = 1)
 	matter = list(MATERIAL_BIOMATTER = 3)
 	preloaded_reagents = list("preservatives" = 2)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/openable/syndicake
 	name = "syndi-cakes"
@@ -194,7 +180,6 @@
 	trash = /obj/item/trash/syndi_cakes
 	preloaded_reagents = list("doctorsdelight" = 5, "preservatives" = 5)
 	matter = list(MATERIAL_BIOMATTER = 12)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/openable/no_raisin
 	name = "4No Raisins"
@@ -207,7 +192,6 @@
 	nutriment_desc = list("dried raisins" = 6)
 	nutriment_amt = 6
 	matter = list(MATERIAL_BIOMATTER = 6)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/openable/spacetwinkie
 	name = "Space Twinkie"
@@ -221,7 +205,6 @@
 	nutriment_desc = list("sweetness" = 3, "cake" = 1)
 	preloaded_reagents = list("sugar" = 4, "preservatives" = 5)
 	matter = list(MATERIAL_BIOMATTER = 2)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/openable/liquidfood
 	name = "\improper liquidfood ration"
@@ -236,7 +219,6 @@
 	nutriment_amt = 20
 	preloaded_reagents = list("iron" = 3, "preservatives" = 5)
 	matter = list(MATERIAL_BIOMATTER = 8)
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/openable/tastybread
 	name = "bread tube"
@@ -251,7 +233,6 @@
 	nutriment_amt = 4
 	preloaded_reagents = list("preservatives" = 5)
 	matter = list(MATERIAL_BIOMATTER = 3)
-	junk_food = TRUE
 
 ////////////////////////////////////////////////Donks
 
@@ -265,7 +246,6 @@
 	nutriment_amt = 2
 	preloaded_reagents = list("protein" = 2, "preservatives" = 2)
 	matter = list(MATERIAL_BIOMATTER = 2)
-	junk_food = TRUE
 
 	var/warm = 0
 	var/list/heated_reagents = list("tricordrazine" = 5)
@@ -293,7 +273,6 @@
 	filling_color = "#6D6D00"
 	heated_reagents = list("doctorsdelight" = 5, "hyperzine" = 1, "preservatives" = 5)
 	var/has_been_heated = 0
-	junk_food = TRUE
 
 /obj/item/reagent_containers/food/snacks/donkpocket/sinpocket/attack_self(mob/user)
 	if(has_been_heated)

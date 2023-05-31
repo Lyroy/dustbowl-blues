@@ -162,7 +162,7 @@
 	for(var/obj/item/grab/G in H.contents)
 		if(G.affecting)
 			phase_out(G.affecting,get_turf(G.affecting))
-			go_to_bluespace(get_turf(H), 3, TRUE, H, T)
+			do_teleport(H, T)
 			phase_in(G.affecting,get_turf(G.affecting))
 
 	realign_time = max(world.time, realign_time) + 30

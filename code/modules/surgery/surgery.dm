@@ -5,14 +5,12 @@
 	var/list/allowed_tools = null
 	var/required_tool_quality = null
 	var/target_organ_type = /obj/item/organ/external
-	var/perk_i_need = PERK_ADVANCED_MEDICAL					//Basically set up to check for specific surgery perks.
-	var/perk_i_need_alt = PERK_MASTER_HERBALIST
-	var/perk_drug = PERK_ULTRASURGEON
 
 	var/difficulty = FAILCHANCE_HARD
-	var/required_stat = STAT_BIO
+	var/required_stat = SKILL_MED
+	var/required_stat_level = SKILL_LEVEL_BASIC
 	var/duration = 60
-	var/requires_perk = FALSE
+	var/requires_skill = FALSE
 
 	// Can the step cause infection?
 	var/can_infect = FALSE
@@ -85,10 +83,10 @@
 	if(inflict_agony)
 		var/strength = inflict_agony
 
-		// At STAT_LEVEL_GODLIKE, there is no pain from the surgery at all
+		// At SKILL_LEVEL_GODLIKE, there is no pain from the surgery at all
 		// This supports negative stat values
 		if(user && user.stats)
-			strength *= max((STAT_LEVEL_GODLIKE - user.stats.getStat(required_stat)) / STAT_LEVEL_GODLIKE, 0)
+			strength *= max((SKILL_LEVEL_GODLIKE - user.stats.getStat(required_stat)) / SKILL_LEVEL_GODLIKE, 0)
 
 		organ.owner_pain(strength)
 
@@ -100,8 +98,8 @@
 /obj/item/organ/proc/try_surgery_step(step_type, mob/living/user, obj/item/tool, target, no_tool_message = FALSE)
 	var/datum/surgery_step/S = GLOB.surgery_steps[step_type]
 
-	if(S.requires_perk)
-		if(!(user.stats.getPerk(S.perk_i_need) || user.stats.getPerk(S.perk_i_need_alt) || user.stats.getPerk(S.perk_drug) || user.stats.getStat(STAT_BIO) >= 50))
+	if(S.requires_skill)
+		if(!(user.stats.getStat(S.required_stat) >= S.required_stat_level))
 			to_chat(user, SPAN_WARNING("You do not have the necessary training to do this surgery!"))
 			return FALSE
 
@@ -124,7 +122,7 @@
 		return FALSE
 
 	if (istype(tool,/obj/item/stack/medical/bruise_pack/advanced))
-		if (tool.icon_state == "traumakit" && (!(user.stats.getPerk(PERK_ADVANCED_MEDICAL) || user.stats.getPerk(PERK_SURGICAL_MASTER) || user.stats.getStat(STAT_BIO) >= 50)))
+		if (tool.icon_state == "traumakit" && user.stats.getStat(SKILL_MED) < SKILL_LEVEL_ADEPT)
 			to_chat(user, SPAN_WARNING("You do not have the training to use an Advanced Trauma Kit in this way."))
 			return FALSE
 
@@ -139,6 +137,7 @@
 	var/difficulty_adjust = 0
 	var/time_adjust = 0
 
+	/*
 	if(user.stats.getPerk(PERK_SURGICAL_MASTER) && !S.is_robotic)
 		difficulty_adjust = -90
 		time_adjust = -130
@@ -146,6 +145,7 @@
 	if(user.stats.getPerk(PERK_MASTER_HERBALIST) && !S.is_robotic)
 		difficulty_adjust = -80 // Negates the difficulty of most basic surgical steps, but not as good as a professional at this
 		time_adjust = -100
+	*/
 
 	// Self-surgery increases failure chance
 	if(owner && user == owner)
@@ -157,15 +157,11 @@
 			difficulty_adjust = 60
 			time_adjust = 20
 
-		// ...unless you are a carrion
-		// It makes sense that carrions have a way of making their flesh cooperate
-		if(is_carrion(user))
-			difficulty_adjust = -300
-			time_adjust = -80
-
+	/*
 	if(user.stats.getPerk(PERK_ROBOTICS_EXPERT) && S.is_robotic)
 		difficulty_adjust = -90
 		time_adjust = -130
+	*/
 
 	if(S.required_tool_quality)
 		success = tool.use_tool_extended(
@@ -323,11 +319,7 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 
 /obj/item/organ/external/proc/try_autodiagnose(mob/living/user)
 	if(istype(user) && user.stats)
-		// Carrions control their whole body so they auto base this check
-		if(!BP_IS_ROBOTIC(src) && user == owner && is_carrion(user))
-			diagnosed = TRUE
-			return TRUE
-		if(user.stats.getStat(BP_IS_ROBOTIC(src) ? STAT_MEC : STAT_BIO) >= STAT_LEVEL_EXPERT)
+		if(user.stats.getStat(BP_IS_ROBOTIC(src) ? SKILL_REP : SKILL_MED) >= SKILL_LEVEL_EXPERT)
 			to_chat(user, SPAN_NOTICE("One brief look at [get_surgery_name()] is enough for you to see all the issues immediately."))
 			diagnosed = TRUE
 			return TRUE
@@ -344,12 +336,6 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 //check if mob is lying down on something we can operate him on.
 /proc/can_operate(mob/living/carbon/M, mob/living/user)
 	if(M == user)	// Self-surgery
-
-		//Carrions dont need a chair to do self surgery
-		if(is_carrion(user))
-			return TRUE
-
-		//normal humans do
 		var/atom/chair = locate(/obj/structure/bed/chair, M.loc)
 		return chair && chair.buckled_mob == M
 
@@ -358,14 +344,14 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 // Returns a bonus to apply to flat surgery values for various stat levels.
 // Soft caps at 80 bio, providing only 1/10 of the stat value exceeding 80.
 proc/calculate_expert_surgery_bonus(mob/living/user)
-	var/user_stat = user.stats.getStat(STAT_BIO)
+	var/user_stat = user.stats.getStat(SKILL_MED)
 	var/stat_bonus = 0
-	if(user_stat > STAT_LEVEL_EXPERT && user_stat <= STAT_LEVEL_PROF)
-		stat_bonus = user_stat - STAT_LEVEL_EXPERT
-	else if(user_stat > STAT_LEVEL_PROF && user_stat <= STAT_LEVEL_GODLIKE)
-		stat_bonus = 20 + (user_stat - STAT_LEVEL_PROF) * 0.5
-	else if(user_stat > STAT_LEVEL_GODLIKE)
-		stat_bonus = 30 + (user_stat - STAT_LEVEL_GODLIKE) * 0.1
+	if(user_stat > SKILL_LEVEL_EXPERT && user_stat <= SKILL_LEVEL_PROF)
+		stat_bonus = user_stat - SKILL_LEVEL_EXPERT
+	else if(user_stat > SKILL_LEVEL_PROF && user_stat <= SKILL_LEVEL_GODLIKE)
+		stat_bonus = 20 + (user_stat - SKILL_LEVEL_PROF) * 0.5
+	else if(user_stat > SKILL_LEVEL_GODLIKE)
+		stat_bonus = 30 + (user_stat - SKILL_LEVEL_GODLIKE) * 0.1
 	return stat_bonus
 
 // Same logic as above, but instead gives a bonus to reduce surgery step duration
@@ -374,14 +360,14 @@ proc/calculate_expert_surgery_bonus(mob/living/user)
 // - Sebastian Schrader
 
 proc/bio_time_bonus(mob/living/user)
-	var/user_stat = max(user.stats.getStat(STAT_BIO), user.stats.getStat(STAT_MEC)) // Pick the highest between MEC and BIO, so that roboticists may also benefit.
+	var/user_stat = max(user.stats.getStat(SKILL_MED), user.stats.getStat(SKILL_REP)) // Pick the highest between MEC and BIO, so that roboticists may also benefit.
 	var/time_bonus = 0 // Maximum of 80
-	if(user_stat > STAT_LEVEL_EXPERT && user_stat <= STAT_LEVEL_PROF) // Average doctor gets 40 BIO, bonuses start from 41 MEC/BIO onwards
+	if(user_stat > SKILL_LEVEL_EXPERT && user_stat <= SKILL_LEVEL_PROF) // Average doctor gets 40 BIO, bonuses start from 41 MEC/BIO onwards
 		time_bonus = (user_stat - 40) // Minimum of 1 up to 20 at 60 MEC/BIO
-	else if(user_stat > STAT_LEVEL_PROF && user_stat <= STAT_LEVEL_GODLIKE)
-		time_bonus = 20 + (user_stat - STAT_LEVEL_PROF) // 21 up to 40 at 80 MEC/BIO
-	else if(user_stat > STAT_LEVEL_GODLIKE && user_stat <= 120) // Soft cap to prevent going over the surgical step duration
-		time_bonus = 40 + (user_stat - STAT_LEVEL_GODLIKE) // 41 to 80 (instant!) at 120 MEC/BIO and over
+	else if(user_stat > SKILL_LEVEL_PROF && user_stat <= SKILL_LEVEL_GODLIKE)
+		time_bonus = 20 + (user_stat - SKILL_LEVEL_PROF) // 21 up to 40 at 80 MEC/BIO
+	else if(user_stat > SKILL_LEVEL_GODLIKE && user_stat <= 120) // Soft cap to prevent going over the surgical step duration
+		time_bonus = 40 + (user_stat - SKILL_LEVEL_GODLIKE) // 41 to 80 (instant!) at 120 MEC/BIO and over
 	else if(user_stat >= 120) // Sanity check
 		time_bonus = 80 // Hardcap met at 120 MEC/BIO already, don't ever make it go over this no matter how insane our stats are
 	return time_bonus

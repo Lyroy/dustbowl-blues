@@ -2,10 +2,10 @@
 	category = "Machinery"
 	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
 	time = 120
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/machinery/computer
-	related_stats = list(STAT_MEC, STAT_COG)
+	related_stats = list(SKILL_REP, SKILL_SCI)
 
 /datum/craft_recipe/machinery/AI_core
 	name = "AI core"
@@ -13,7 +13,7 @@
 	steps = list(
 		list(CRAFT_MATERIAL, 10, MATERIAL_PLASTEEL)
 	)
-	related_stats = list(STAT_MEC, STAT_COG)
+	related_stats = list(SKILL_REP, SKILL_SCI)
 
 /datum/craft_recipe/machinery/wall/air_alarm
 	name = "air alarm frame"

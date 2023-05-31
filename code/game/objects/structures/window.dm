@@ -320,7 +320,7 @@
 		switch(tool_type)
 			if(QUALITY_SEALING)
 				user.visible_message("[user] starts sealing up cracks in [src] with the [I]", "You start sealing up cracks in [src] with the [I]")
-				if (I.use_tool(user, src, 60 + ((maxHealth - health)*3), QUALITY_SEALING, FAILCHANCE_NORMAL, STAT_MEC))
+				if (I.use_tool(user, src, 60 + ((maxHealth - health)*3), QUALITY_SEALING, FAILCHANCE_NORMAL, SKILL_REP))
 					to_chat(user, SPAN_NOTICE("The [src] looks pretty solid now!"))
 					health = maxHealth
 			if(QUALITY_BOLT_TURNING)
@@ -328,7 +328,7 @@
 					if(!glasstype)
 						to_chat(user, SPAN_NOTICE("You're not sure how to dismantle \the [src] properly."))
 						return
-					if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+					if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP))
 						visible_message(SPAN_NOTICE("[user] dismantles \the [src]."))
 						var/obj/glass
 						if(is_fulltile())
@@ -342,7 +342,7 @@
 
 			if(QUALITY_PRYING)
 				if(reinf && state <= 1)
-					if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+					if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP))
 						state = 1 - state
 						to_chat(user, (state ? SPAN_NOTICE("You have pried the window into the frame.") : SPAN_NOTICE("You have pried the window out of the frame.")))
 				return 1 //No whacking the window with tools unless harm intent
@@ -350,13 +350,13 @@
 
 			if(QUALITY_SCREW_DRIVING)
 				if(reinf && state >= 1)
-					if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+					if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP))
 						state = 3 - state
 						update_nearby_icons()
 						to_chat(user, (state == 1 ? SPAN_NOTICE("You have unfastened the window from the frame.") : SPAN_NOTICE("You have fastened the window to the frame.")))
 						return
 				if(reinf && state == 0)
-					if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+					if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP))
 						set_anchored(!anchored)
 						to_chat(user, (anchored ? SPAN_NOTICE("You have fastened the frame to the floor.") : SPAN_NOTICE("You have unfastened the frame from the floor.")))
 						return

@@ -68,10 +68,6 @@
 /obj/structure/burrow/New(var/loc, turf/anchor)
 	.=..()
 	GLOB.all_burrows.Add(src)
-	var/obj/machinery/power/nt_obelisk/obelisk = locate(/obj/machinery/power/nt_obelisk) in range(7, src)
-	if(obelisk && obelisk.active)
-		qdel(src)
-		return
 	if (anchor)
 		offset_to(anchor, 8)
 
@@ -531,7 +527,7 @@ percentage is a value in the range 0..1 that determines what portion of this mob
 	var/start = world.time
 	var/target_time = WORKTIME_FAST+ 2*health
 
-	if (I.use_tool(user, src, target_time, QUALITY_DIGGING, health * 0.66, list(STAT_MEC, STAT_ROB), forced_sound = WORKSOUND_PICKAXE))
+	if (I.use_tool(user, src, target_time, QUALITY_DIGGING, health * 0.66, list(SKILL_REP, SKILL_ATH), forced_sound = WORKSOUND_PICKAXE))
 		//On success, the hole is destroyed!
 		new /obj/random/scrap/sparse_weighted(get_turf(user))
 		user.visible_message("[user] collapses [src] with \the [I] and dumps trash which was in the way.", "You collapse [src] with \the [I] and dump trash which was in the way.")
@@ -576,7 +572,7 @@ percentage is a value in the range 0..1 that determines what portion of this mob
 	switch(tool_type)
 		if(QUALITY_WELDING)
 			user.visible_message("[user] attempts to weld [src] with \the [I]", "You start welding [src] with \the [I]")
-			if(!I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC) && isSealed)
+			if(!I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP) && isSealed)
 				return
 			user.visible_message("[user] welds [src] with \the [I].", "You weld [src] with \the [I].")
 			if(recieving && !prob(33))
@@ -588,7 +584,7 @@ percentage is a value in the range 0..1 that determines what portion of this mob
 
 		if(QUALITY_HAMMERING)
 			user.visible_message("[user] starts hammering [src] with \the [I]", "You start hammering out [src] with \the [I]")
-			if(!I.use_tool(user, src, WORKTIME_DELAYED, QUALITY_HAMMERING, FAILCHANCE_NORMAL, required_stat = STAT_ROB) && isSealed) //You are quite literally hammering the floor, slow and tedious
+			if(!I.use_tool(user, src, WORKTIME_DELAYED, QUALITY_HAMMERING, FAILCHANCE_NORMAL, required_stat = SKILL_ATH) && isSealed) //You are quite literally hammering the floor, slow and tedious
 				return
 			user.visible_message("[user] seals [src] with \the [I].", "You seal [src] with \the [I].")
 			if(recieving && !prob(33))
@@ -609,6 +605,7 @@ percentage is a value in the range 0..1 that determines what portion of this mob
 /obj/structure/burrow/proc/collapse(var/clean = FALSE)
 	if(!clean)
 		spawn_rubble(loc, 0, 100)
+	/*
 	if(deepmaint_entry_point)
 		if(free_deepmaint_ladders.len > 0)
 			var/obj/structure/multiz/ladder/up/my_ladder = pick(free_deepmaint_ladders)
@@ -619,6 +616,7 @@ percentage is a value in the range 0..1 that determines what portion of this mob
 			my_ladder.target = my_hole
 			qdel(src)
 			return
+	*/
 	isSealed = TRUE
 	icon_state = initial(icon_state)
 	name = initial(name)
@@ -682,42 +680,6 @@ percentage is a value in the range 0..1 that determines what portion of this mob
 	if (!L.incapacitated())//Can't flee if you're stunned
 		SSmove_manager.move_to(L, src, 1, L.move_to_delay*RAND_DECIMAL(1,1.5))
 //We randomise the move delay a bit so that mobs don't just move in sync like particles of dust being sucked up
-
-
-
-/****************************
-	Plant Management
-****************************/
-
-//This proc handles creation of a plant on this burrow
-//It relies on the plant seed already being set
-/obj/structure/burrow/proc/spread_plants()
-	reveal()
-	if(istype(plant, /datum/seed/wires))		//hivemind wireweeds handling
-		if(locate(/obj/effect/plant) in loc)
-			return
-
-		if(!hive_mind_ai || !hive_mind_ai.hives.len || maintenance || !GLOB.hive_data_bool["spread_trough_burrows"])
-			return
-
-		var/area/A = get_area(src)
-		if(!(A.name in GLOB.hivemind_areas))
-			if(!GLOB.hive_data_float["maximum_controlled_areas"] || GLOB.hivemind_areas.len < GLOB.hive_data_float["maximum_controlled_areas"])
-				GLOB.hivemind_areas.Add(A.name)
-			else
-				return
-
-		break_open()
-		var/obj/machinery/hivemind_machine/node/hivemind_node = pick(hive_mind_ai.hives)
-		var/obj/effect/plant/hivemind/wire = new(loc, plant)
-		hivemind_node.add_wireweed(wire)
-
-	for (var/obj/effect/plant in loc)
-		return
-
-	//The plant is not assigned a parent, so it will become the parent of plants that grow from here
-	//If it were assigned a parent from a previous burrow, it'd never spread at all due to distance
-	new /obj/effect/plant(get_turf(src), plant)
 
 
 /****************************

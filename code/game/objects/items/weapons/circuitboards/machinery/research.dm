@@ -122,19 +122,6 @@
 		/obj/item/stock_parts/manipulator = 1
 	)
 
-/obj/item/circuitboard/matter_nanoforge
-	build_name = "Circuit board (Matter NanoForge)"
-	build_path = /obj/machinery/matter_nanoforge
-	board_type = "machine"
-	origin_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
-	req_components = list(
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/console_screen = 1,
-		/obj/item/oddity/blackbox_nanoforge = 1,
-		/obj/item/stock_parts/micro_laser = 1
-	)
-
 /obj/item/circuitboard/teleporterstation
 	name = "Circuit board (Teleporter station board)"
 	build_path = /obj/machinery/teleport/station

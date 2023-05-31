@@ -30,18 +30,6 @@
 	)
 	matter = list(MATERIAL_PLASTIC = 2, MATERIAL_GLASS = 3)
 
-/obj/item/circuitboard/antigrav
-	build_name = "antigrav generator"
-	build_path = /obj/machinery/antigrav
-	board_type = "machine"
-	origin_tech = list(TECH_ENGINEERING = 4, TECH_MAGNET = 4)
-	req_components = list(
-		/obj/item/stack/cable_coil = 30,
-		/obj/item/stock_parts/subspace/crystal = 1,
-		/obj/item/stock_parts/micro_laser = 3,
-		/obj/item/stock_parts/capacitor = 3
-	)
-
 /obj/item/circuitboard/breakerbox
 	build_name = "breaker box"
 	build_path = /obj/machinery/power/breakerbox

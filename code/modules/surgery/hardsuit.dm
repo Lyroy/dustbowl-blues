@@ -3,7 +3,7 @@
 
 /datum/old_surgery_step/hardsuit
 	required_tool_quality = QUALITY_DRILLING // Solves problems for both FBP's and carbons.
-	required_stat = STAT_MEC
+	required_stat = SKILL_REP
 
 	can_infect = 0
 	blood_level = 0

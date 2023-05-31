@@ -1,3 +1,4 @@
+/*
 /datum/job/rd
 	title = "Chief Research Overseer"
 	flag = CRO
@@ -157,3 +158,4 @@
 	name = "Soteria Roboticist"
 	icon_state = "player-purple"
 	join_tag = /datum/job/roboticist
+*/

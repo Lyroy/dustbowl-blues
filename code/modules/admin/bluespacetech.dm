@@ -176,6 +176,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)
 
 	to_chat(src, span("notice", "God mode is now [status_flags & GODMODE ? "enabled" : "disabled"]"))
 
+/*
 /mob/living/carbon/human/bst/verb/bst_raise_stats()
 	set name = "Raise All Stats By 5"
 	set desc = "Gives you 5+ to all stats."
@@ -205,7 +206,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)
 	src.stats.changeStat(STAT_ROB, -5)
 	src.stats.changeStat(STAT_TGH, -5)
 	src.stats.changeStat(STAT_VIG, -5)
-
+*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////I T E M S/////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////

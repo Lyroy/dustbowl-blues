@@ -537,9 +537,6 @@
 /mob/living/silicon/robot/bullet_act(var/obj/item/projectile/Proj)
 	if(HasTrait(CYBORG_TRAIT_DEFLECTIVE_BALLISTIC_ARMOR) && istype(Proj, /obj/item/projectile/bullet))
 		var/chance = 90
-		if(ishuman(Proj.firer))
-			var/mob/living/carbon/human/firer = Proj.firer
-			chance -= firer.stats.getStat(STAT_VIG, FALSE) / 5
 		var/obj/item/projectile/bullet/B = Proj
 		chance = max((chance - B.armor_penetration), 0)
 		if (!(Proj.testing))
@@ -621,7 +618,7 @@
 					to_chat(user, SPAN_NOTICE("Nothing to fix here!"))
 					return
 
-				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 					adjustBruteLoss(-30)
 					updatehealth()
@@ -635,7 +632,7 @@
 			if (user.a_intent == I_HELP)
 				if(opened)
 					if(cell)
-						if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+						if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 							to_chat(user, SPAN_NOTICE("You close the cover."))
 							opened = 0
 							updateicon()
@@ -646,7 +643,7 @@
 							to_chat(user, SPAN_NOTICE("\The [src] has no brain to remove."))
 							return
 
-						if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+						if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 							to_chat(user, SPAN_NOTICE("You jam the crowbar into the robot and begin levering [mmi]."))
 							to_chat(user, SPAN_NOTICE("You damage some parts of the chassis, but eventually manage to rip out [mmi]!"))
 							new /obj/item/robot_parts/robot_suit/with_limbs (loc)
@@ -668,7 +665,7 @@
 						var/remove = input(user, "Which component do you want to pry out?", "Remove Component") as null|anything in removable_components
 						if(!remove)
 							return
-						if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+						if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 							if(istype(remove, /obj/item/borg/upgrade))
 								var/obj/item/borg/upgrade/comp = remove
 								robot_upgrades -= comp
@@ -694,7 +691,7 @@
 					if(locked)
 						to_chat(user, SPAN_WARNING("The cover is locked and cannot be opened."))
 					else
-						if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+						if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 							to_chat(user, SPAN_NOTICE("You open the cover."))
 							opened = 1
 							updateicon()
@@ -710,7 +707,7 @@
 		if(QUALITY_SCREW_DRIVING)
 			if (user.a_intent == I_HELP)
 				if (opened && !cell)
-					if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+					if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 						wiresexposed = !wiresexposed
 						to_chat(user, SPAN_NOTICE("The wires have been [wiresexposed ? "exposed" : "unexposed"]"))
 						updateicon()
@@ -730,7 +727,7 @@
 						if("Radio")
 							if(!radio)
 								to_chat(user, SPAN_WARNING("Unable to locate a radio."))
-							if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+							if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 								radio.attackby(I,user)//Push it to the radio to let it handle everything
 								updateicon()
 				return

@@ -1,3 +1,4 @@
+/*
 /datum/job/chaplain
 	title = "Prime"
 	flag = CHAPLAIN
@@ -110,3 +111,4 @@
 	name = "Vector"
 	icon_state = "player-black"
 	join_tag = /datum/job/acolyte
+*/

@@ -337,8 +337,8 @@ var/list/mob/living/forced_ambiance_list = new
 		else
 			gravity_blocker = null
 
-	if (GLOB.active_gravity_generator)
-		has_gravity = gravity_is_on
+	/*if (GLOB.active_gravity_generator)
+		has_gravity = gravity_is_on*/
 
 	if (grav_before != has_gravity)
 		gravity_changed()
@@ -361,8 +361,6 @@ var/list/mob/living/forced_ambiance_list = new
 	if(istype(mob,/mob/living/carbon/human/))
 		var/mob/living/carbon/human/H = mob
 		if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.item_flags & NOSLIP))
-			return
-		if(H.stats.getPerk(PERK_ASS_OF_CONCRETE) || H.stats.getPerk(PERK_BRAWN))
 			return
 		if(MOVING_QUICKLY(H))
 			H.AdjustStunned(2)

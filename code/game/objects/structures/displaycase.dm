@@ -81,7 +81,7 @@
 			SPAN_DANGER("[user] starts to carefully unlock \the [src]."),
 			SPAN_DANGER("You begin to unlock disarm \the [src].")
 			)
-		if(W.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PULSING, FAILCHANCE_NORMAL,  required_stat = STAT_COG))
+		if(W.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PULSING, FAILCHANCE_NORMAL,  required_stat = SKILL_SCI))
 			user.visible_message(
 				SPAN_DANGER("[user] has unlocked \the [src]."),
 				SPAN_DANGER("You have unlocked \the [src]!")
@@ -98,7 +98,7 @@
 			SPAN_DANGER("[user] starts to carefully lock \the [src]."),
 			SPAN_DANGER("You begin to lock disarm \the [src].")
 			)
-		if(W.use_tool(user, src, WORKTIME_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_ZERO,  required_stat = STAT_COG))
+		if(W.use_tool(user, src, WORKTIME_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_ZERO,  required_stat = SKILL_REP))
 			user.visible_message(
 				SPAN_DANGER("[user] has locked \the [src]."),
 				SPAN_DANGER("You have locked \the [src]!")

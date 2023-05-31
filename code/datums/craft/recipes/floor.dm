@@ -5,7 +5,7 @@
 	)
 	flags = CRAFT_BATCH
 	time = 1 //Crafting individual tiles is fast
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/floor/underplating
 	name = "underplating"
@@ -15,7 +15,7 @@
 	steps = list(
 		list(CRAFT_MATERIAL, 15, MATERIAL_STEEL)
 	)
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/floor/catwalk
 	name = "catwalk"
@@ -25,7 +25,7 @@
 	steps = list(
 		list(CRAFT_MATERIAL, 8, MATERIAL_STEEL)
 	)
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/floor/wood
 	name = "wood floor tile"

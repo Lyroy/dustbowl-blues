@@ -403,26 +403,39 @@ SUBSYSTEM_DEF(job)
 				var/obj/item/clothing/glasses/G = H.glasses
 				G.prescription = 1
 
-		var/obj/item/implant/core_implant/C = H.get_core_implant()
-		if(C)
-			C.install_default_modules_by_job(job)
-			C.access.Add(job.cruciform_access)
-			C.install_default_modules_by_path(job)
-			C.security_clearance = job.security_clearance
-			//IDK were else to place this so it works when you late join and its active
-			if(GLOB.hive_data_bool["all_church_to_battle"])
-				if(H.client &&  H.stat != DEAD && ishuman(H)) //Basic sanity checks to prevent anything abd
-					make_antagonist(H.mind, ROLE_INQUISITOR)
-
 		//Occulus Edit, Right here! Custom skills.
-		H.stats.changeStat(STAT_BIO, H.client.prefs.BIOMOD)
-		H.stats.changeStat(STAT_COG, H.client.prefs.COGMOD)
-		H.stats.changeStat(STAT_MEC, H.client.prefs.MECMOD)
-		H.stats.changeStat(STAT_ROB, H.client.prefs.ROBMOD)
-		H.stats.changeStat(STAT_TGH, H.client.prefs.TGHMOD)
-		H.stats.changeStat(STAT_VIG, H.client.prefs.VIGMOD)
-		H.stats.changeStat(STAT_VIV, H.client.prefs.VIVMOD)
-		H.stats.changeStat(STAT_ANA, H.client.prefs.ANAMOD)
+		H.stats.setStat(SPECIAL_S, H.client.prefs.SCORE_S)
+		H.stats.setStat(SPECIAL_P, H.client.prefs.SCORE_P)
+		H.stats.setStat(SPECIAL_E, H.client.prefs.SCORE_E)
+		H.stats.setStat(SPECIAL_C, H.client.prefs.SCORE_C)
+		H.stats.setStat(SPECIAL_I, H.client.prefs.SCORE_I)
+		H.stats.setStat(SPECIAL_A, H.client.prefs.SCORE_A)
+		H.stats.setStat(SPECIAL_L, H.client.prefs.SCORE_L)
+
+		//We use changeStat here because we get bonuses from jobs, backgrounds, and perks on top of this
+		H.stats.changeStat(SKILL_ATH, 15 * H.client.prefs.BOOST_ATH)
+		H.stats.changeStat(SKILL_LOC, 15 * H.client.prefs.BOOST_LOC)
+		H.stats.changeStat(SKILL_MED, 15 * H.client.prefs.BOOST_MED)
+		H.stats.changeStat(SKILL_REP, 15 * H.client.prefs.BOOST_REP)
+		H.stats.changeStat(SKILL_SCI, 15 * H.client.prefs.BOOST_SCI)
+		H.stats.changeStat(SKILL_SUR, 15 * H.client.prefs.BOOST_SUR)
+
+		H.stats.changeStat(SKILL_BIG, 15 * H.client.prefs.BOOST_BIG)
+		H.stats.changeStat(SKILL_ENE, 15 * H.client.prefs.BOOST_ENE)
+		H.stats.changeStat(SKILL_EXP, 15 * H.client.prefs.BOOST_EXP)
+		H.stats.changeStat(SKILL_MEL, 15 * H.client.prefs.BOOST_MEL)
+		H.stats.changeStat(SKILL_SMA, 15 * H.client.prefs.BOOST_SMA)
+		H.stats.changeStat(SKILL_UNA, 15 * H.client.prefs.BOOST_UNA)
+
+		// add character perk
+		if(H.client.prefs.perk)
+			var/datum/perk/level/perk_to_add = GLOB.level_one_perks[H.client.prefs.perk] // can byond just be normal about arrays?
+			if(perk_to_add.check_requirements(H))
+				H.stats.addPerk(perk_to_add.type)
+			else
+				to_chat(H,SPAN_WARNING("You didn't meet the requirements for the [perk_to_add.name] perk. You have been reimbursed with one perk point."))
+				H.sanity.perk_points++
+
 		H.give_health_via_stats()
 		// This could be cleaner and better, however it should apply your stats once on spawn properly if here. If anyone wants to do this in a cleaner manner be my guest.
 

@@ -142,7 +142,7 @@ This makes cloning vat is probably the most dangerous tool in Genetics. Because 
 /obj/machinery/genetics/cloner/proc/addLog(var/message)
 	if(reader)
 		reader.addLog(message)
-	
+
 
 /obj/machinery/genetics/cloner/proc/find_reader()
 	//every direction but west and north
@@ -461,7 +461,7 @@ This makes cloning vat is probably the most dangerous tool in Genetics. Because 
 	protein_consumption = round(BASE_PROTEIN_CONSUMPTION * (2 / (bin_rating))) * (cloning_speed/5)
 
 /obj/machinery/genetics/cloner/attackby(obj/item/I, mob/user)
-	if(!user.stats?.getPerk(PERK_SI_SCI) && !usr.stat_check(STAT_COG, 90) &&!user.stats?.getPerk(PERK_NERD) && !usr.stat_check(STAT_BIO, 180))
+	if(!usr.stat_check(SKILL_SCI, 90))
 		to_chat(usr, SPAN_WARNING("The console pityingly suggests: \"Sorry hun, you were pressing some weird buttons so I locked you out~ Maybe have a scientist help~?\""))
 		return
 
@@ -678,7 +678,7 @@ and which aren't.
 	cloneLog = "\[[stationtime2text()]\] " + string + "<br>" + cloneLog
 
 /obj/machinery/computer/genetics/clone_console/attack_hand(mob/user)
-	if(!user.stats?.getPerk(PERK_SI_SCI) && !usr.stat_check(STAT_COG, 75) &&!user.stats?.getPerk(PERK_NERD) && !usr.stat_check(STAT_BIO, 150))
+	if(!usr.stat_check(SKILL_SCI, 75))
 		to_chat(usr, SPAN_WARNING("This is a bit beyond your cognitive understanding."))
 		return
 	if(..())

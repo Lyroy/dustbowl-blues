@@ -43,7 +43,7 @@
 
 /obj/structure/reagent_dispensers/bidon/trigger/attackby(obj/item/I, mob/user)
 	if(!timing)
-		if(I.use_tool(user, src, WORKTIME_INSTANT, QUALITY_PULSING, FAILCHANCE_ZERO, required_stat = STAT_MEC))
+		if(I.use_tool(user, src, WORKTIME_INSTANT, QUALITY_PULSING, FAILCHANCE_ZERO, required_stat = SKILL_REP))
 			to_chat(user, SPAN_NOTICE("You start the timer."))
 			timing = TRUE
 			ticktock()
@@ -99,7 +99,7 @@
 	//Handle attaching the BIDON to a valid machine
 	var/tool_type = I.get_tool_type(user, list(QUALITY_BOLT_TURNING), src)
 	if(tool_type)
-		if(anchored && I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_BIO))
+		if(anchored && I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP))
 			anchored = FALSE
 			anchored_machine = null
 		else
@@ -114,7 +114,7 @@
 						else
 							anchored_machine = valid_machine
 							break
-			if(anchored_machine && I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_BIO))
+			if(anchored_machine && I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP))
 				to_chat(user, SPAN_NOTICE("You [anchored ? "detach" : "attach"] the B.I.D.O.N canister to the [anchored_machine]."))
 				anchored = TRUE
 

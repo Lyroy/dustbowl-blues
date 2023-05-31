@@ -213,7 +213,7 @@
 				return
 			else if(seed.chems)
 				if((QUALITY_CUTTING in W.tool_qualities) && !isnull(seed.chems["woodpulp"]))
-					if(W.use_tool(user, src, WORKTIME_FAST, QUALITY_CUTTING, FAILCHANCE_EASY,  required_stat = STAT_BIO))
+					if(W.use_tool(user, src, WORKTIME_FAST, QUALITY_CUTTING, FAILCHANCE_EASY,  required_stat = SKILL_SUR))
 						user.show_message(SPAN_NOTICE("You make planks out of \the [src]!"), 1)
 						var/flesh_colour = seed.get_trait(TRAIT_FLESH_COLOUR)
 						if(!flesh_colour) flesh_colour = seed.get_trait(TRAIT_PRODUCT_COLOUR)

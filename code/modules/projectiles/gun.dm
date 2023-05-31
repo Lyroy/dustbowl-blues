@@ -140,13 +140,15 @@ For the sake of consistency, I suggest always rounding up on even values when ap
 	var/overcharge_level = 0 //What our current overcharge level is. Peaks at overcharge_max
 	var/overcharge_max = 10
 
+	var/used_skill = SKILL_SMA
+
 /obj/item/gun/wield(mob/user)
 	if(!wield_delay)
 		..()
 		return
 	var/calculated_delay = wield_delay
 	if(ishuman(user))
-		calculated_delay = wield_delay - (wield_delay * (user.stats.getStat(STAT_VIG) / (100 * wield_delay_factor))) // wield delay - wield_delay * user vigilance / 100 * wield_factor
+		calculated_delay = wield_delay - (wield_delay * (user.stats.getStat(used_skill) / (100 * wield_delay_factor))) // wield delay - wield_delay * user vigilance / 100 * wield_factor
 	if (calculated_delay > 0 && do_after(user, calculated_delay, immobile = FALSE))
 		..()
 	else if (calculated_delay <= 0)
@@ -320,24 +322,6 @@ For the sake of consistency, I suggest always rounding up on even values when ap
 				explosion(get_turf(src), 1, 2, 3, 3)
 				qdel(src)
 			return FALSE
-
-	if(excelsior)
-		if(!is_excelsior(M) && prob(60 - min(user.stat_check(STAT_COG), 59)))
-			var/obj/P = consume_next_projectile()
-			if(P)
-				if(process_projectile(P, user, user, BP_HEAD))
-					handle_post_fire(user, user)
-					currently_firing = FALSE
-					user.visible_message(
-						SPAN_DANGER("As \the [user] pulls the trigger on \the [src], a bullet fires backwards out of it!"),
-						SPAN_DANGER("Your \the [src] fires backwards, shooting you in the face!")
-						)
-
-				if(prob(60 - user.stat_check(STAT_COG)))
-					explosion(get_turf(src), 1, 2, 3, 3)
-					qdel(src)
-			return FALSE
-
 	return TRUE
 
 /obj/item/gun/emp_act(severity)
@@ -395,7 +379,7 @@ For the sake of consistency, I suggest always rounding up on even values when ap
 	//UNDETECTABLE CRIIIIMEEEE!!!!!!!
 	if(I.get_tool_quality(QUALITY_HAMMERING) && serial_type)
 		user.visible_message(SPAN_NOTICE("[user] begins chiseling \the [name]'s serial numbers away."), SPAN_NOTICE("You begin removing the serial numbers from \the [name]."))
-		if(I.use_tool(user, src, WORKTIME_SLOW, QUALITY_HAMMERING, FAILCHANCE_EASY, required_stat = STAT_MEC))
+		if(I.use_tool(user, src, WORKTIME_SLOW, QUALITY_HAMMERING, FAILCHANCE_EASY, required_stat = SKILL_REP))
 			user.visible_message(SPAN_DANGER("[user] removes \the [name]'s serial numbers."), SPAN_NOTICE("You successfully remove the serial numbers from \the [name]."))
 			serial_type = "INDEX"
 			serial_type += "-[generate_gun_serial(pick(3,4,5,6,7,8))]"
@@ -408,7 +392,7 @@ For the sake of consistency, I suggest always rounding up on even values when ap
 			return FALSE
 
 		user.visible_message(SPAN_NOTICE("[user] begins breaking apart [src]."), SPAN_WARNING("You begin breaking apart [src] for gun parts."))
-		if(I.use_tool(user, src, WORKTIME_SLOW, QUALITY_WIRE_CUTTING, FAILCHANCE_EASY, required_stat = STAT_MEC))
+		if(I.use_tool(user, src, WORKTIME_SLOW, QUALITY_WIRE_CUTTING, FAILCHANCE_EASY, required_stat = SKILL_REP))
 			user.visible_message(SPAN_NOTICE("[user] breaks [src] apart for gun parts!"), SPAN_NOTICE("You break [src] apart for gun parts."))
 			for(var/target_item in gun_parts)
 				var/amount = gun_parts[target_item]
@@ -472,7 +456,7 @@ For the sake of consistency, I suggest always rounding up on even values when ap
 		if(extra_proj_penmult)
 			projectile.multiply_projectile_penetration(extra_proj_penmult)
 
-		projectile.multiply_projectile_penetration(penetration_multiplier + user.stats.getStat(STAT_VIG) * 0.02)
+		projectile.multiply_projectile_penetration(penetration_multiplier + user.stats.getStat(used_skill) * 0.02)
 
 		if(extra_proj_wallbangmult)
 			projectile.multiply_pierce_penetration(extra_proj_wallbangmult)
@@ -530,7 +514,7 @@ For the sake of consistency, I suggest always rounding up on even values when ap
 	//update timing
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 	user.set_move_cooldown(move_delay)
-	if(!twohanded && user.stats.getPerk(PERK_GUNSLINGER))
+	if(!twohanded)
 		addtimer(CALLBACK(src, /obj/item/gun/proc/ready_to_shoot), min(0, (fire_delay - fire_delay * 0.33)))
 
 	if((CLUMSY in user.mutations) && prob(40)) //Clumsy handling

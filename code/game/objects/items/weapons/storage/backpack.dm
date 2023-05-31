@@ -91,8 +91,6 @@
 /obj/item/storage/backpack/holding/New()
 	..()
 	item_flags |= BLUESPACE
-	if(!bluespace_safe)
-		bluespace_entropy(6, get_turf(src))
 
 /obj/item/storage/backpack/holding/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.item_flags & BLUESPACE * !bluespace_safe)

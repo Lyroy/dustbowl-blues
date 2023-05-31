@@ -111,8 +111,6 @@
 
 /mob/living/carbon/superior_animal/robot/greyson/custodian/chef/New()
 	. = ..()
-	if(prob(5))
-		drop2 = /obj/item/oddity/common/old_radio
 	if(prob(10)) //Can override radio
 		drop2 = /obj/random/rations
 	if(prob(20)) //Can override radio or snack

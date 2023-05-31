@@ -32,19 +32,7 @@
 		/obj/item/genetics/purger,
 		/obj/item/genetics/sample,
 		/obj/item/genetics/mut_injector,
-		/obj/item/stamp,
-		// All these anomalies should be small in size enough to be able to fit inside a wallet.
-		/obj/item/oddity/common/old_id, // ID's fit
-		/obj/item/oddity/common/lighter, // Zippos fit
-		/obj/item/oddity/common/coin, // Coins fit
-		/obj/item/oddity/common/photo_crime, // All sizes of photos should fit
-		/obj/item/oddity/common/photo_landscape,
-		/obj/item/oddity/common/photo_coridor,
-		/obj/item/oddity/common/photo_eyes,
-		/obj/item/oddity/common/paper_crumpled, // Papers fit
-		/obj/item/oddity/common/paper_bundle,
-		/obj/item/oddity/common/broken_key, // It's broken and small enough to fit
-		/obj/item/oddity/common/old_money // Money stacks fit
+		/obj/item/stamp
 		)
 	slot_flags = SLOT_ID
 
@@ -133,24 +121,17 @@
 						/obj/item/spacecash/bundle/c20,
 						/obj/item/spacecash/bundle/c50,
 						/obj/random/cigarettes/singles,
-						/obj/item/oddity/common/lighter,
 						/obj/item/reagent_containers/pill/floorpill/wallet)
 
 	if(prob(50))
 		item3_type = pick(/obj/item/coin/silver,
 						/obj/item/coin/gold,
 						/obj/item/coin/iron,
-						/obj/item/oddity/common/coin,
-						/obj/item/oddity/common/paper_crumpled,
-						/obj/item/oddity/common/old_money,
 						/obj/random/cigarettes/singles,
 						/obj/item/reagent_containers/pill/floorpill/wallet)
 
 	if(prob(50))
-		item4_type = pick(/obj/item/oddity/common/old_id,
-						/obj/item/oddity/common/broken_key,
-						/obj/item/oddity/common/paper_bundle,
-						/obj/item/flame/lighter,
+		item4_type = pick(/obj/item/flame/lighter,
 						/obj/item/flame/match,
 						/obj/item/paper,
 						/obj/item/pen,

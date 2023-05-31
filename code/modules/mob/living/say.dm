@@ -124,14 +124,14 @@ var/list/channel_to_radio_key = new
 			return
 
 	if(stat)
-		var/last_symbol = copytext(message, length(message))
+		//var/last_symbol = copytext(message, length(message))
 		if(stat == DEAD)
 			return say_dead(message)
-		else if(last_symbol=="@")
+		/*else if(last_symbol=="@")
 			if(src.stats.getPerk(PERK_CODESPEAK))
 				return
 			else
-				to_chat(src, "You don't know the codes, pal.")
+				to_chat(src, "You don't know the codes, pal.")*/
 		return
 
 	if(HUSK in mutations)
@@ -286,7 +286,8 @@ var/list/channel_to_radio_key = new
 			speech_bubble_recipients += M.client
 		M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol, 1)
 
-	animate_speechbubble(speech_bubble, speech_bubble_recipients, 30)
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/animate_speechbubble, speech_bubble, speech_bubble_recipients, 30)
+	INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_recipients, 40)
 
 	for(var/obj/O as anything in listening_obj)
 		spawn(0)

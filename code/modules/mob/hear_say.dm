@@ -10,7 +10,7 @@
 		// GetVoice(TRUE) checks if mask hiding the voice
 		speaker_name = H.rank_prefix_name(H.GetVoice(TRUE))
 		// If we have the right perk or standing close - GetVoice() again, but skip mask check
-		if((get_dist(src, H) < 2) || stats?.getPerk(PERK_EAR_OF_QUICKSILVER))
+		if((get_dist(src, H) < 2)/* || stats?.getPerk(PERK_EAR_OF_QUICKSILVER)*/)
 			speaker_name = H.rank_prefix_name(H.GetVoice(FALSE))
 		//If the person is a ghost/spectator - you should be able to get the voice of the person.
 		if(isghost(src))
@@ -22,18 +22,17 @@
 		message = "<i>[message]</i>"
 
 	if(verb == "reports")
-		var/cop_code
-		if(is_neotheology_disciple(src))
-			cop_code = get_cop_code(holy = TRUE)
-		else
-			cop_code = get_cop_code()
+		var/cop_code = get_cop_code()
 		if(isghost(src))
 			message = cop_code + " (" + replace_characters(message, list("@"=")"))
 		else
+			/*
 			if(!src.stats.getPerk(PERK_CODESPEAK))
 				message = cop_code
 			else
 				message = cop_code + " (" + replace_characters(message, list("@"=")"))
+			*/
+			message = cop_code
 
 	var/track = null
 	if(isghost(src))
@@ -84,17 +83,17 @@
 
 	if(rverb == "reports")
 		var/cop_code
-		if(is_neotheology_disciple(src))
-			cop_code = get_cop_code(holy = TRUE)
-		else
-			cop_code = get_cop_code()
+		cop_code = get_cop_code()
 		if(isghost(src))
 			message = cop_code + " (" + replace_characters(message, list("@"=")"))
 		else
+			/*
 			if(!src.stats.getPerk(PERK_CODESPEAK))
 				message = cop_code
 			else
 				message = cop_code + " (" + replace_characters(message, list("@"=")"))
+			*/
+			message = cop_code
 
 	if(language && !(rverb == "reports"))
 		if(!say_understands(speaker,language) || language.name == LANGUAGE_COMMON) //Check if we understand the message. If so, add the language name after the verb. Don't do this for Galactic Common.

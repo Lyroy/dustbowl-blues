@@ -10,8 +10,10 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(istype(L) && !L.weakened && prob(15))
+			/*
 			if(L.stats.getPerk(PERK_ASS_OF_CONCRETE) || L.stats.getPerk(PERK_BRAWN))
 				return
+			*/
 			L.Weaken(3)
 			L.visible_message(SPAN_DANGER("\the [src] knocks down \the [L]!"))
 
@@ -21,8 +23,10 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(istype(L) && !L.weakened && prob(30))
+			/*
 			if(L.stats.getPerk(PERK_ASS_OF_CONCRETE) || L.stats.getPerk(PERK_BRAWN))
 				return
+			*/
 			L.Weaken(8)
 			L.visible_message(SPAN_DANGER("\the [src] rams \the [L] off there feet!"))
 

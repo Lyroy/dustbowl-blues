@@ -148,12 +148,13 @@
 			eater.stats.addTempStat(stat, buff_power, buff_time, "donut")
 			to_chat(eater, SPAN_NOTICE("Your knowledge of [stat] is increased for a short period of time. Make use of it."))
 
+/*
 /obj/item/reagent_containers/food/snacks/donut/stat_buff/mec
 	name = "Yellow Masterpiece Donut"
 	desc = "The sour citrus flavor you will never forget. A choice sweet of mechanics."
 	icon_state = "donut_mec"
 	overlay_state = "donut_mec_c"
-	stats_buff = list(STAT_MEC)
+	stats_buff = list(SKILL_REP)
 	preloaded_reagents = list("sprinkles" = 1, "lemonjuice" = 1, "preservatives" = 2)
 
 /obj/item/reagent_containers/food/snacks/donut/stat_buff/cog
@@ -161,7 +162,7 @@
 	desc = "The too-sweet artificial grape taste you will never forget. An intellectual's favorite."
 	icon_state = "donut_cog"
 	overlay_state = "donut_cog_c"
-	stats_buff = list(STAT_COG)
+	stats_buff = list(SKILL_SCI)
 	preloaded_reagents = list("sprinkles" = 1, "grapejuice" = 1, "preservatives" = 2)
 
 /obj/item/reagent_containers/food/snacks/donut/stat_buff/bio
@@ -169,7 +170,7 @@
 	desc = "The fresh spearmint flavor you will never forget. Perfect for an immaculate doctor."
 	icon_state = "donut_bio"
 	overlay_state = "donut_bio_c"
-	stats_buff = list(STAT_BIO)
+	stats_buff = list(SKILL_MED)
 	preloaded_reagents = list("sprinkles" = 1, "mint" = 1, "preservatives" = 2)
 
 /obj/item/reagent_containers/food/snacks/donut/stat_buff/rob
@@ -194,3 +195,4 @@
 	overlay_state = "donut_vig_c"
 	stats_buff = list(STAT_VIG)
 	preloaded_reagents = list("sprinkles" = 1, "berryjuice" = 1, "preservatives" = 2)
+*/

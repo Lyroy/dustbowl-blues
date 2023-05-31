@@ -43,8 +43,8 @@
 /obj/machinery/power/port_gen/os_generator/examine(mob/living/carbon/user)
 	..(user)
 	if(iscarbon(user) || issilicon(user)) //sanity check so we dont check stats of a ghost
-		var/mec_or_cog = max(user.stats.getStat(STAT_MEC), user.stats.getStat(STAT_COG))
-		if(mec_or_cog >= STAT_LEVEL_PROF)
+		var/mec_or_cog = max(user.stats.getStat(SKILL_REP), user.stats.getStat(SKILL_SCI))
+		if(mec_or_cog >= SKILL_LEVEL_PROF)
 			if(can_generate_power)
 				to_chat(user, "\The [src] appears to be producing [power_gen*power_output] W.")
 			else
@@ -75,8 +75,8 @@
 		power_gen = min(power_gen, max_power_gen)
 
 /obj/machinery/power/port_gen/os_generator/attackby(obj/item/I, mob/user)
-	var/mec_or_cog = max(user.stats.getStat(STAT_MEC), user.stats.getStat(STAT_COG))
-	if(mec_or_cog <= STAT_LEVEL_EXPERT)
+	var/mec_or_cog = max(user.stats.getStat(SKILL_REP), user.stats.getStat(SKILL_SCI))
+	if(mec_or_cog <= SKILL_LEVEL_EXPERT)
 		to_chat(user, SPAN_WARNING("You lack the knowledge or skill to perform work on \the [src]."))
 		return
 
@@ -98,7 +98,7 @@
 			if(istype(get_turf(src), /turf/space) && !anchored)
 				to_chat(user, SPAN_NOTICE("You can't anchor something to empty space. Idiot."))
 				return
-			if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+			if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP))
 				to_chat(user, SPAN_NOTICE("You [anchored ? "un" : ""]anchor the brace with [I]."))
 				anchored = !anchored
 				if(anchored)

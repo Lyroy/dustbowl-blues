@@ -76,7 +76,7 @@
 		updateUsrDialog()
 		return
 	if(QUALITY_BOLT_TURNING in I.tool_qualities)
-		if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_EASY,  required_stat = STAT_MEC))
+		if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_EASY,  required_stat = SKILL_REP))
 			if(anchored)
 				to_chat(user, SPAN_NOTICE("You lean down and unwrench [src]."))
 				anchored = FALSE

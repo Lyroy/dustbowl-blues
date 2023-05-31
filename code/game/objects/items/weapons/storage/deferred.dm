@@ -300,31 +300,6 @@
 	/obj/item/clothing/suit/armor/vest/iron_lock_security = 1,
 	/obj/item/clothing/under/iron_lock_security = 1)
 
-/obj/item/storage/deferred/crate/exc_gear
-	name = "excelsior crate"
-	desc = "A crate containing everything you need for the revolution."
-	icon_state = "exc_deferred"
-	initial_contents = list(/obj/item/gun/projectile/makarov = 2,
-	/obj/item/ammo_magazine/highcap_pistol_35  = 4,
-	/obj/item/tool/knife/boot = 1,
-	/obj/item/circuitboard/excelsior_teleporter = 1,
-	/obj/item/circuitboard/excelsiorautolathe = 1,
-	/obj/item/stock_parts/manipulator/excelsior = 3,
-	/obj/item/stock_parts/matter_bin/excelsior = 3,
-	/obj/item/cell/large/excelsior = 1,
-	/obj/item/stock_parts/subspace/crystal = 1,
-	/obj/item/clothing/under/excelsior = 1,
-	/obj/item/gun/matter/launcher/reclaimer = 1,
-	/obj/item/storage/toolbox/syndicate = 1,
-	/obj/item/storage/toolbox/electrical = 1,
-	/obj/item/clothing/shoes/combat = 1,
-	/obj/item/clothing/gloves/thick/combat = 1,
-	/obj/item/clothing/suit/space/void/excelsior = 1,
-	/obj/item/storage/firstaid/ifak = 1,
-	/obj/item/implanter/excelsior = 2,
-	/obj/item/storage/backpack = 1,
-	/obj/item/storage/backpack/satchel = 1)
-
 
 // TRADE
 

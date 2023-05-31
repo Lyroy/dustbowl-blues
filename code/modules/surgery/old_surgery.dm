@@ -10,7 +10,7 @@
 	var/list/allowed_species = null
 	var/list/disallowed_species = null
 
-	var/required_stat = STAT_BIO
+	var/required_stat = SKILL_MED
 
 	// duration of the step
 	var/duration = 0

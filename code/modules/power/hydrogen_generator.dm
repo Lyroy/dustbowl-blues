@@ -118,7 +118,7 @@
 				if(istype(get_turf(src), /turf/space) && !anchored)
 					to_chat(user, SPAN_NOTICE("You can't anchor something to empty space. Idiot."))
 					return
-				if(W.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+				if(W.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You [anchored ? "un" : ""]anchor the brace with [W]."))
 					anchored = !anchored
 					if(anchored)

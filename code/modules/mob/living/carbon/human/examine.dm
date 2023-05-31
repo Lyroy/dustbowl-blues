@@ -198,10 +198,6 @@
 	if(mSmallsize in mutations)
 		msg += "[He] [is] small halfling!\n"
 
-	if(!wear_suit && !w_uniform && !(T == src))
-		if(locate(/obj/item/implant/carrion_spider) in src)
-			msg += SPAN_DANGER("[He] [has] a strange growth on [his] chest!") + "\n"
-
 	var/distance = get_dist(usr,src)
 	if(isghost(usr) || usr?.stat == DEAD) // ghosts can see anything
 		distance = 1

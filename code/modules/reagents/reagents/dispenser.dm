@@ -28,23 +28,6 @@
 /datum/reagent/metal
 	reagent_type = "Metal"
 
-/datum/reagent/metal/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
-	M.add_chemical_effect(CE_MECH_REPAIR, 0.05)	// Makes metals useful and stackable for FBPs
-
-/datum/reagent/metal/affect_ingest(var/mob/living/carbon/M, var/alien)
-	if(M.species.reagent_tag == IS_CHTMANT)
-		M.add_chemical_effect(CE_TOXIN, 0.1)
-
-	if(M.stats.getPerk(PERK_NANITE_METAL_EATER))
-		M.add_chemical_effect(CE_BLOODCLOT, 0.2)
-		M.adjustNutrition(0.4) //Metal even with the perk isnt that filling
-
-
-/datum/reagent/metal/affect_blood(var/mob/living/carbon/M, var/alien)
-	if(M.species.reagent_tag == IS_CHTMANT)
-		M.add_chemical_effect(CE_TOXIN, 0.2)
-
-
 /datum/reagent/metal/aluminum
 	name = "Aluminum"
 	id = "aluminum"
@@ -124,7 +107,7 @@
 	var/adj_temp = 0
 	var/targ_temp = 310
 	var/halluci = 0
-	sanity_gain_ingest = 0.5
+	var/sanity_gain_ingest = 0.5
 	common = TRUE //All alchoholic reagents can be ID'd pretty easily
 
 	glass_icon_state = "glass_clear"
@@ -157,7 +140,7 @@
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 
 //Tough people can drink a lot
-	var/tolerance = max(5, strength + (M.stats.getStat(STAT_TGH) * 0.5)) //TGH scaling is 50%
+	var/tolerance = max(5, strength + (M.stats.getStat(SPECIAL_E) * 0.5)) //TGH scaling is 50%
 
 
 	if(dose * strength_mod >= tolerance) // Slurring
@@ -193,9 +176,6 @@
 
 	if(halluci)
 		M.adjust_hallucination(halluci, halluci)
-
-	apply_sanity_effect(M, effect_multiplier)
-	LEGACY_SEND_SIGNAL(M, COMSIG_CARBON_HAPPY, src, ON_MOB_DRUG)
 
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
@@ -423,8 +403,6 @@
 		M.take_organ_damage(0, units_for_this_part * power * 0.1)
 
 /datum/reagent/acid/touch_obj(obj/O)
-	if(istype(O, /obj/effect/plant/hivemind))
-		qdel(O)
 	if(O.unacidable)
 		return
 	if((istype(O, /obj/item) || istype(O, /obj/effect/plant)) && (volume > meltdose))

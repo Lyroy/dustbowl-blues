@@ -81,14 +81,14 @@
 		give_points(0.8) //200 points per tick per tier of laser
 		if(prob(1))
 			spawn_monsters(2)
-
+	/*
 	else if(istype(area, /area/nadezhda/rnd))
 		give_points(0.1) //Anti-Cheese
 		if(prob(10))
 			spawn_monsters(5)
 			spawn_monsters(1) //Some infighting
 			spawn_monsters(1) //Some infighting
-
+	*/
 	else
 		give_points(0.2)
 		if(prob(10))

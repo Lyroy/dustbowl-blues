@@ -10,7 +10,7 @@
 	to_chat(human_holder, SPAN_DANGER("Your head feels a little cold."))
 	human_holder.ChangeHairToBald()
 	//For those who are willing to take the hit and powergame. Fucking savages.
-	container.holder.stats.changeStat(STAT_COG, 10)
+	container.holder.stats.changeStat(SKILL_SCI, 10)
 
 /datum/genetics/mutation/bald/onPlayerRemove()
-	container.holder.stats.changeStat(STAT_COG, -10)
+	container.holder.stats.changeStat(SKILL_SCI, -10)

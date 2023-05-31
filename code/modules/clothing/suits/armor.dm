@@ -1389,60 +1389,6 @@
 	icon_state = "marshal_coat_ss"
 	item_state = "marshal_coat_ss"
 
-/*
- * Reactive Armor
- */
-//When the wearer gets hit, this armor will teleport the user a short distance away (to safety or to more danger, no one knows. That's the fun of it!)
-/obj/item/clothing/suit/armor/reactive
-	name = "reactive teleport armor"
-	desc = "Someone separated our Research Director's head from their body!"
-	var/active = FALSE
-	icon_state = "reactiveoff"
-	item_state = "reactiveoff"
-	blood_overlay_type = "armor"
-	armor_list = list(
-		melee = 20,
-		bullet = 20,
-		energy = 20,
-		bomb = 0,
-		bio = 0,
-		rad = 0
-		)
-	var/entropy_value = 2
-	stiffness = MEDIUM_STIFFNESS
-
-/obj/item/clothing/suit/armor/reactive/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
-	if(prob(50))
-		user.visible_message(SPAN_DANGER("The reactive teleport system flings [user] clear of the attack!"))
-		var/turf/TLoc = get_turf(user)
-		var/turf/picked = get_random_secure_turf_in_range(src, 7, 1)
-		if(!picked) return
-		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
-		spark_system.set_up(5, 0, user.loc)
-		spark_system.start()
-		go_to_bluespace(TLoc, entropy_value, TRUE, user, picked)
-		return PROJECTILE_FORCE_MISS
-	return FALSE
-
-/obj/item/clothing/suit/armor/reactive/attack_self(mob/user)
-	src.active = !( src.active )
-	if (src.active)
-		to_chat(user, "\blue The reactive armor is now active.")
-		src.icon_state = "reactive"
-		src.item_state = "reactive"
-	else
-		to_chat(user, "\blue The reactive armor is now inactive.")
-		src.icon_state = "reactiveoff"
-		src.item_state = "reactiveoff"
-		src.add_fingerprint(user)
-	return
-
-/obj/item/clothing/suit/armor/reactive/emp_act(severity)
-	active = 0
-	src.icon_state = "reactiveoff"
-	src.item_state = "reactiveoff"
-	..()
-
 /// Hunting Lodge Armor
 
 /obj/item/clothing/suit/armor/hunter

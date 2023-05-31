@@ -21,7 +21,7 @@
 
 
 /obj/machinery/autolathe/mechfab/proc/check_user(mob/user)
-	if(user.stats?.getPerk(PERK_SI_SCI) || user.stat_check(STAT_MEC, 30)) //Needs same skill as it takes to maintain a mech
+	if(user.stat_check(SKILL_REP, 30)) //Needs same skill as it takes to maintain a mech
 		return TRUE
 	to_chat(user, SPAN_NOTICE("You don't know how to make the [src] work, you lack the training or mechanical skill."))
 	return FALSE

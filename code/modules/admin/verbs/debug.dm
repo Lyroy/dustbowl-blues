@@ -902,21 +902,6 @@ ADMIN_VERB_ADD(/client/proc/view_runtimes, R_DEBUG, FALSE)
 	error_cache.showTo(usr)
 
 
-ADMIN_VERB_ADD(/client/proc/spawn_disciple, R_DEBUG, FALSE)
-/client/proc/spawn_disciple()
-	set category = "Debug"
-	set name = "Spawn Disciple"
-	set desc = "Spawns a human with a cruciform, for ritual testing"
-	if (!mob)
-		return
-
-	var/mob/living/carbon/human/H = new (get_turf(mob))
-	var/obj/item/implant/core_implant/cruciform/C = new /obj/item/implant/core_implant/cruciform(H)
-
-	C.install(H)
-	C.activate()
-
-
 ADMIN_VERB_ADD(/client/proc/delete_npcs, R_DEBUG, FALSE)
 /client/proc/delete_npcs()
 	set category = "Debug"

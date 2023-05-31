@@ -188,8 +188,10 @@
 		oxyloss = 0
 	else
 		amount = amount*species.oxy_mod*src.oxy_mod_perk
+		/*
 		if(stats.getPerk(PERK_LUNGS_OF_IRON) && amount > 0)
 			amount *= 0.5
+		*/
 		..(amount)
 
 /mob/living/carbon/human/setOxyLoss(var/amount)
@@ -358,8 +360,10 @@ This function restores all organs.
 			brain.take_damage(damage, PSY, armor_divisor, wounding_multiplier)
 			return TRUE
 
+		/*
 		if(damagetype == TOX && stats.getPerk(PERK_BLOOD_OF_LEAD))
 			damage /= 2
+		*/
 
 		. = ..(damage, damagetype, def_zone)
 	else	//Handle BRUTE and BURN damage

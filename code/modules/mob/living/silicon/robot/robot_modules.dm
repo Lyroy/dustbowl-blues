@@ -58,13 +58,7 @@ var/global/list/robot_modules = list(
 	var/power_efficiency = 1.0 //Power efficiency, applied as a divisor on power taken from the internal cell
 
 	//Stat modifiers for skillchecks
-	var/list/stat_modifiers = list(
-		STAT_BIO = 25,
-		STAT_COG = 120,
-		STAT_MEC = 35, //weldering cracks
-		STAT_ROB = 15,
-		STAT_TGH = 15,
-	)
+	var/list/stat_modifiers = list()
 
 	desc = "This is a robot module parent class. You shouldn't see this description"
 
@@ -267,13 +261,7 @@ var/global/list/robot_modules = list(
 				  )
 
 	desc = "The baseline, jack of all trades. Can do a little of everything. Some DIY, some healing, some combat."
-	stat_modifiers = list(
-		STAT_BIO = 30,
-		STAT_COG = 120,
-		STAT_ROB = 30,
-		STAT_TGH = 30,
-		STAT_MEC = 30
-	)
+	stat_modifiers = list()
 
 /obj/item/robot_module/standard/New(var/mob/living/silicon/robot/R)
 	src.modules += new /obj/item/device/flash(src)
@@ -311,10 +299,10 @@ var/global/list/robot_modules = list(
 	src.modules += O
 
 	//We are stronk so we get less no knockdowns
-	R.stats.addPerk(PERK_ASS_OF_CONCRETE)
+	/*R.stats.addPerk(PERK_ASS_OF_CONCRETE)
 	//So we cant be escaped as quickly
 	R.stats.addPerk(PERK_PARKOUR)
-	R.stats.addPerk(PERK_SI_SCI)
+	R.stats.addPerk(PERK_SI_SCI)*/
 
 	..(R)
 
@@ -361,11 +349,7 @@ var/global/list/robot_modules = list(
 	supported_upgrades = list(/obj/item/borg/upgrade/hypospray_medical,
 							  /obj/item/borg/upgrade/jetpack)
 
-	stat_modifiers = list(
-		STAT_BIO = 60,
-		STAT_COG = 120,
-		STAT_MEC = 35, //weldering cracks
-	)
+	stat_modifiers = list()
 
 /obj/item/robot_module/medical/general/New(var/mob/living/silicon/robot/R)
 	src.modules += new /obj/item/tool/crowbar/robotic(src)
@@ -422,10 +406,10 @@ var/global/list/robot_modules = list(
 	src.modules += S
 
 	//We know medical care and have all the data on it
-	R.stats.addPerk(PERK_MEDICAL_EXPERT)
+	/*R.stats.addPerk(PERK_MEDICAL_EXPERT)
 	R.stats.addPerk(PERK_SURGICAL_MASTER)
 	R.stats.addPerk(PERK_ADVANCED_MEDICAL)
-	R.stats.addPerk(PERK_SI_SCI)
+	R.stats.addPerk(PERK_SI_SCI)*/
 
 	..(R)
 
@@ -478,11 +462,7 @@ var/global/list/robot_modules = list(
 	as well as occasional repair work here and there. It's a good all rounder that can serve most \
 	engineering tasks."
 
-	stat_modifiers = list(
-		STAT_COG = 120,
-		STAT_MEC = 40,
-		STAT_BIO = 25
-	)
+	stat_modifiers = list()
 
 /obj/item/robot_module/engineering/general/New(var/mob/living/silicon/robot/R)
 	src.modules += new /obj/item/device/flash(src)
@@ -573,9 +553,9 @@ var/global/list/robot_modules = list(
 	src.modules += FWT
 
 	//We know guild work and robotics.
-	R.stats.addPerk(PERK_HANDYMAN)
+	/*R.stats.addPerk(PERK_HANDYMAN)
 	R.stats.addPerk(PERK_ROBOTICS_EXPERT)
-	R.stats.addPerk(PERK_SI_SCI)
+	R.stats.addPerk(PERK_SI_SCI)*/
 
 	..(R)
 
@@ -621,13 +601,7 @@ var/global/list/robot_modules = list(
 	desc = "Focused on keeping the peace and fighting off threats to the colony, the security module is a \
 	heavily armored, though lightly armed battle unit."
 
-	stat_modifiers = list(
-		STAT_ROB = 60,
-		STAT_TGH = 60,
-		STAT_BIO = 25,
-		STAT_COG = 120,
-		STAT_MEC = 35 //weldering cracks
-	)
+	stat_modifiers = list()
 
 /obj/item/robot_module/security/general
 	sprites = list(
@@ -666,11 +640,11 @@ var/global/list/robot_modules = list(
 	src.emag += new /obj/item/gun/energy/laser/mounted/cyborg(src)
 
 	//We are stronk so we get less no knockdowns
-	R.stats.addPerk(PERK_ASS_OF_CONCRETE)
+	/*R.stats.addPerk(PERK_ASS_OF_CONCRETE)
 	//So we cant be escaped as quickly
 	R.stats.addPerk(PERK_PARKOUR)
 
-	R.stats.addPerk(PERK_SI_SCI)
+	R.stats.addPerk(PERK_SI_SCI)*/
 	..(R)
 
 /obj/item/robot_module/security/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
@@ -717,13 +691,7 @@ var/global/list/robot_modules = list(
 							  /obj/item/borg/upgrade/satchel_of_holding_for_borgs)
 
 	robot_traits = CYBORG_TRAIT_CLEANING_WALK
-	stat_modifiers = list(
-		STAT_ROB = 25,
-		STAT_TGH = 25,
-		STAT_BIO = 30,
-		STAT_COG = 120,
-		STAT_MEC = 35 //weldering cracks
-	)
+	stat_modifiers = list()
 
 	desc = "A vast machine designed for cleaning up trash and scrubbing floors. A fairly specialised task, \
 	but requiring a large capacity. The huge chassis consequentially grants it a degree of toughness, \
@@ -757,8 +725,8 @@ var/global/list/robot_modules = list(
 		R.reset_icon_folder_draw = TRUE
 
 	//Silent cleaners
-	R.stats.addPerk(PERK_QUIET_AS_MOUSE)
-	R.stats.addPerk(PERK_SI_SCI)
+	/*R.stats.addPerk(PERK_QUIET_AS_MOUSE)
+	R.stats.addPerk(PERK_SI_SCI)*/
 
 	..(R)
 
@@ -799,13 +767,7 @@ var/global/list/robot_modules = list(
 	 gardening, secreterial and similar personal service roles. Their work does not necessitate any \
 	 significant durability, and they are typically constructed from civilian grade plastics."
 
-	stat_modifiers = list(
-		STAT_BIO = 30,
-		STAT_COG = 120,
-		STAT_ROB = 30,
-		STAT_TGH = 30,
-		STAT_MEC = 30
-	)
+	stat_modifiers = list()
 	supported_upgrades = list(/obj/item/borg/upgrade/jetpack,/obj/item/borg/upgrade/satchel_of_holding_for_borgs)
 
 /obj/item/robot_module/service/New(var/mob/living/silicon/robot/R)
@@ -853,9 +815,9 @@ var/global/list/robot_modules = list(
 	src.emag += new /obj/item/reagent_containers/food/drinks/bottle/small/beer_two(src)
 
 	//Seller and cleaner mix, so quite and knowing the deal!
-	R.stats.addPerk(PERK_QUIET_AS_MOUSE)
+	/*R.stats.addPerk(PERK_QUIET_AS_MOUSE)
 	R.stats.addPerk(PERK_MARKET_PROF)
-	R.stats.addPerk(PERK_SI_SCI)
+	R.stats.addPerk(PERK_SI_SCI)*/
 
 	..(R)
 
@@ -887,13 +849,7 @@ var/global/list/robot_modules = list(
 	speed_factor = 1.2 //meh
 	power_efficiency = 1.5 //Best efficiency
 
-	stat_modifiers = list(
-		STAT_ROB = 60,
-		STAT_TGH = 50,
-		STAT_BIO = 25,
-		STAT_COG = 120,
-		STAT_MEC = 50 //Drills
-	)
+	stat_modifiers = list()
 	supported_upgrades = list(/obj/item/borg/upgrade/jetpack,
 							  /obj/item/borg/upgrade/satchel_of_holding_for_borgs)
 
@@ -924,8 +880,8 @@ var/global/list/robot_modules = list(
 	src.emag += new /obj/item/tool/pickaxe/onestar/cyborg(src)
 
 	//Seller so quite and knowing the deal!
-	R.stats.addPerk(PERK_MARKET_PROF)
-	R.stats.addPerk(PERK_SI_SCI)
+	/*R.stats.addPerk(PERK_MARKET_PROF)
+	R.stats.addPerk(PERK_SI_SCI)*/
 
 	..(R)
 
@@ -952,11 +908,7 @@ var/global/list/robot_modules = list(
 	chemistry, xenobiology and robotics."
 	supported_upgrades = list(/obj/item/borg/upgrade/jetpack,/obj/item/borg/upgrade/satchel_of_holding_for_borgs)
 
-	stat_modifiers = list(
-		STAT_BIO = 40,
-		STAT_COG = 120,
-		STAT_MEC = 30
-	)
+	stat_modifiers = list()
 
 /obj/item/robot_module/research/New(var/mob/living/silicon/robot/R)
 	src.modules += new /obj/item/device/flash(src)
@@ -998,10 +950,10 @@ var/global/list/robot_modules = list(
 	src.modules += N
 
 	//We know medical and robotics, were a mix.
-	R.stats.addPerk(PERK_MEDICAL_EXPERT)
+	/*R.stats.addPerk(PERK_MEDICAL_EXPERT)
 	R.stats.addPerk(PERK_SURGICAL_MASTER)
 	R.stats.addPerk(PERK_ROBOTICS_EXPERT)
-	R.stats.addPerk(PERK_SI_SCI)
+	R.stats.addPerk(PERK_SI_SCI)*/
 
 	..(R)
 
@@ -1013,10 +965,7 @@ var/global/list/robot_modules = list(
 	networks = list(NETWORK_ENGINEERING)
 	channels = list("Engineering" = 1, "Common" = 1)
 	health = 35 //Basic colony drones and the like should have 35 health as they are not meant for combat
-	stat_modifiers = list(
-		STAT_COG = 120,
-		STAT_MEC = 40
-	) //so we can use rnd consoles for parts ect
+	stat_modifiers = list() //so we can use rnd consoles for parts ect
 
 /obj/item/robot_module/drone/New(var/mob/living/silicon/robot/R)
 	src.modules += new /obj/item/tool/weldingtool/robotic(src)
@@ -1099,9 +1048,9 @@ var/global/list/robot_modules = list(
 	src.modules += P
 
 	//We know guild work and robotics.
-	R.stats.addPerk(PERK_HANDYMAN)
+	/*R.stats.addPerk(PERK_HANDYMAN)
 	R.stats.addPerk(PERK_ROBOTICS_EXPERT)
-	R.stats.addPerk(PERK_SI_SCI)
+	R.stats.addPerk(PERK_SI_SCI)*/
 
 	..(R)
 

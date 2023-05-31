@@ -134,7 +134,7 @@
 		if(!..())
 			return 0
 
-		if(!usr.stat_check(STAT_MEC, STAT_LEVEL_ADEPT))
+		if(!usr.stat_check(SKILL_REP, SKILL_LEVEL_ADEPT))
 			to_chat(usr, SPAN_WARNING("You lack the mechanical knowledge to do this!"))
 			return
 

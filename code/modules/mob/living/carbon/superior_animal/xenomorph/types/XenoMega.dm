@@ -56,8 +56,10 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(istype(L) && !L.weakened && prob(30))
+			/*
 			if(L.stats.getPerk(PERK_ASS_OF_CONCRETE) || L.stats.getPerk(PERK_BRAWN))
 				return
+			*/
 			L.Weaken(8)
 			L.visible_message(SPAN_DANGER("\the [src] rams \the [L] off there feet!"))
 
@@ -125,7 +127,7 @@
 				M.visible_message("\red [M] missed \the [src]")
 			else
 				if (istype(H))
-					damage += max(0, (H.stats.getStat(STAT_ROB) / 10))
+					damage += max(0, (H.stats.getStat(SPECIAL_S)))
 					if (HULK in H.mutations)
 						damage *= 2
 

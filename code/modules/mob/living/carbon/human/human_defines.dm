@@ -109,7 +109,6 @@
 
 
 	var/datum/sanity/sanity = null
-	var/rest_points = 0
 
 	var/shock_resist = 0 // Resistance to paincrit
 
@@ -121,6 +120,5 @@
 	var/momentum_speed = 0 // The amount of run-up
 	var/momentum_dir = 0 // Direction of run-up
 	var/momentum_reduction_timer
-
 
 	var/added_movedelay = 0 //Used for humans only

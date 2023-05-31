@@ -39,7 +39,7 @@
 	)
 	flags = null
 	time = 120
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/wall/wall_girders
 	name = "wall girder"
@@ -50,7 +50,7 @@
 		list(CRAFT_MATERIAL, 5, MATERIAL_STEEL)
 	)
 	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/wall/wall_girders/low
 	name = "wall girder, low"
@@ -60,7 +60,7 @@
 	steps = list(
 		list(CRAFT_MATERIAL, 3, MATERIAL_STEEL)
 	)
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/wall/lattice
 	name = "lattice"
@@ -70,4 +70,4 @@
 	steps = list(
 		list(CRAFT_MATERIAL, 2, MATERIAL_STEEL)
 	)
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)

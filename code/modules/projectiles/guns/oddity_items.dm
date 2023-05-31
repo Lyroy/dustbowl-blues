@@ -26,7 +26,6 @@
 /obj/item/gun/projectile/revolver/mistral/elite/New()
 	..()
 	item_flags |= BLUESPACE
-	bluespace_entropy(2, get_turf(src)) //Same as the normal bluespace crystal
 
 /obj/item/gun/projectile/shotgun/doublebarrel/bluecross_shotgun
 	name = "\"King's\" shotgun"

@@ -237,9 +237,9 @@ var/list/ai_verbs_default = list(
 	//The AI gets 100 in all three knowledge stats.
 	//These are only ever used to operate machinery and software
 	//It doesnt get any physical stats, like robustness, since its a disembodied mind
-	stats.changeStat(STAT_BIO, 100)
+	/*stats.changeStat(STAT_BIO, 100)
 	stats.changeStat(STAT_MEC, 100)
-	stats.changeStat(STAT_COG, 100)
+	stats.changeStat(STAT_COG, 100)*/
 
 /mob/living/silicon/ai/proc/on_mob_init()
 	to_chat(src, "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")

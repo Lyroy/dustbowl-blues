@@ -797,28 +797,19 @@
 	log_admin("[key_name(usr)] forced [key_name(M)] to say: [speech]")
 	message_admins("\blue [key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]")
 
-/datum/admin_topic/forcesanity
-	keyword = "forcesanity"
-	require_perms = list(R_FUN)
+/datum/admin_topic/levelup
+	keyword = "levelup"
+	require_perms = list(R_MOD|R_ADMIN)
 
-/datum/admin_topic/forcesanity/Run(list/input)
-	var/mob/living/carbon/human/H = locate(input["forcesanity"])
+/datum/admin_topic/levelup/Run(list/input)
+	var/mob/living/carbon/human/H = locate(input["levelup"])
 	if(!ishuman(H))
-		to_chat(usr, "This can only be used on instances of type /human.")
-		return
+		to_chat(usr, "this can only be used on instances of type /mob/living/carbon/human")
 
-	var/datum/breakdown/B = input("What breakdown will [key_name(H)] suffer from?", "Sanity Breakdown") as null | anything in subtypesof(/datum/breakdown)
-	if(!B)
-		return
-	B = new B(H.sanity)
-	if(!B.can_occur())
-		to_chat(usr, "[B] could not occur. [key_name(H)] did not meet the right conditions.")
-		qdel(B)
-		return
-	if(B.occur())
-		H.sanity.breakdowns += B
-		to_chat(usr, SPAN_NOTICE("[B] has occurred for [key_name(H)]."))
-		return
+	H.sanity.give_resting(1)
+	H.sanity.level_up()
+	log_admin("[key_name(usr)] leveled [key_name(H)] up")
+	message_admins("\blue [key_name(usr)] leveled [key_name(H)] up")
 
 /datum/admin_topic/revive
 	keyword = "revive"

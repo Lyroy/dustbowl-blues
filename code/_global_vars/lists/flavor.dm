@@ -9,27 +9,7 @@ GLOBAL_LIST_INIT(phonetic_alphabet, list("Alpha", "Bravo", "Charlie",
 	"Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray",
 	"Yankee", "Zulu"))
 
-GLOBAL_LIST_INIT(music_tracks, list(
-	"Comet Halley" = /music_track/comet_haley,
-	"Please Come Back Any Time" = /music_track/elevator,
-	"Marhaba" = /music_track/marhaba,
-	"In Orbit" = /music_track/inorbit,
-	"Martian Cowboy" = /music_track/martiancowboy,
-	"Monument" = /music_track/monument,
-	"As Far As It Gets" = /music_track/asfarasitgets,
-	"80s All Over Again" = /music_track/eighties,
-	"Wild Encounters" = /music_track/wildencounters,
-	"Metropolis" = /music_track/metropolis,
-	"Bluespace" = /music_track/bluespace,
-	"Exploring" = /music_track/exploring,
-	"The Runner in Motion" = /music_track/runner,
-	"Neotheology" = /music_track/neotheology,
-	"Downtown 2" = /music_track/downtown,
-	"Wild Encounters" = /music_track/wildencounters,
-	"Around the Village" = /music_track/aroundthev,
-	"Nuclear" = /music_track/nuclear,
-	"Loners in the Night" = /music_track/loners
-))
+GLOBAL_LIST_INIT(music_tracks, list())
 
 /proc/setup_music_tracks(var/list/tracks)
 	. = list()

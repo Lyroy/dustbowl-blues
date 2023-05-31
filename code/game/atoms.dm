@@ -507,10 +507,10 @@ its easier to just keep the beam vertical.
 				else
 					to_chat(user, SPAN_DANGER("It's empty."))
 
-	if(ishuman(user) && user.stats && user.stats.getPerk(PERK_GREENTHUMB))
+	/*if(ishuman(user) && user.stats && user.stats.getPerk(PERK_GREENTHUMB))
 		var/datum/perk/greenthumb/P = user.stats.getPerk(PERK_GREENTHUMB)
 		var/obj/item/I = P.virtual_scanner
-		I.afterattack(src, user, get_dist(src, user) <= 1)
+		I.afterattack(src, user, get_dist(src, user) <= 1)*/
 
 	LEGACY_SEND_SIGNAL(src, COMSIG_EXAMINE, user, distance)
 

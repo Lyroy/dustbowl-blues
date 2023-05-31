@@ -268,8 +268,8 @@
 		return
 
 	// Adjust the grab warmup using assailant's ROB stat
-	var/assailant_stat = assailant?.stats.getStat(STAT_ROB)
-	var/affecting_stat = affecting?.stats.getStat(STAT_ROB)
+	var/assailant_stat = assailant?.stats.getStat(SKILL_UNA)
+	var/affecting_stat = affecting?.stats.getStat(SKILL_UNA)
 	var/warmup_increase
 	if(assailant_stat > 0)
 		// Positive ROB decreases warmup, but not linearly
@@ -365,8 +365,8 @@
 	if(isnull(affecting))
 		return //do not upgrade a grab and drop it
 
-	var/affecting_stat = affecting.stats.getStat(STAT_ROB)	// Victim
-	var/assailant_stat = assailant.stats.getStat(STAT_ROB)	// Grabber
+	var/affecting_stat = affecting.stats.getStat(SKILL_UNA)	// Victim
+	var/assailant_stat = assailant.stats.getStat(SKILL_UNA)	// Grabber
 	var/difference_stat = assailant_stat - affecting_stat
 
 	// Early exit to save processing time

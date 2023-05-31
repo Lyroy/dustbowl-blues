@@ -1,7 +1,7 @@
 /datum/craft_recipe/gun
 	category = "Guns"
 	time = 25
-	related_stats = list(STAT_MEC)
+	related_stats = list(SKILL_REP)
 
 /datum/craft_recipe/gun/ammo_kit
 	name = "scrap ammo kit"

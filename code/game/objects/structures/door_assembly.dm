@@ -36,7 +36,7 @@
 
 		if(QUALITY_BOLT_TURNING)
 			if(state == 0)
-				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					if(anchored)
 						user.visible_message("[user] begins unbolting the airlock assembly from the floor.", "You start unbolting the airlock assembly from the floor.")
 					else
@@ -48,18 +48,18 @@
 
 		if(QUALITY_WELDING)
 			if(istext(glass))
-				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You welded the [glass] plating off!"))
 					var/M = text2path("/obj/item/stack/material/[glass]")
 					new M(src.loc, 2)
 					glass = 0
 			else if(glass == 1)
-				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You welded the glass panel out!"))
 					new /obj/item/stack/material/glass/reinforced(src.loc)
 					glass = 0
 			else if(!anchored)
-				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You disassembled the airlock assembly!"))
 					new /obj/item/stack/material/steel(src.loc, 8)
 					qdel (src)
@@ -68,7 +68,7 @@
 
 		if(QUALITY_PRYING)
 			if(state == 2)
-				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You removed the airlock electronics!"))
 					src.state = 1
 					src.name = "Wired Airlock Assembly"
@@ -79,7 +79,7 @@
 
 		if(QUALITY_WIRE_CUTTING)
 			if(state == 1)
-				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You remove the airlock wires!"))
 					new/obj/item/stack/cable_coil(src.loc, 1)
 					src.state = 0
@@ -88,7 +88,7 @@
 
 		if(QUALITY_SCREW_DRIVING)
 			if(state == 2)
-				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
 					to_chat(user, SPAN_NOTICE("You finish the airlock!"))
 					var/path
 					if(istext(glass))

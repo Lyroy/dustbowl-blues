@@ -26,25 +26,6 @@
 	UnregisterSignal(SStrade, COMSIG_TRADE_BEACON)
 	..()
 */
-/datum/individual_objective/museum
-	name = "It Belongs in a Museum"
-	desc = "Ensure that 3-4 oddities are exported or sold via trade beacon."
-	req_department = list(DEPARTMENT_LSS)
-
-/datum/individual_objective/museum/assign()
-	..()
-	units_requested = rand(3,4)
-	desc = "Ensure that [units_requested] oddities are exported or sold via trade beacon."
-	RegisterSignal(SStrade, COMSIG_TRADE_BEACON, .proc/task_completed)
-
-/datum/individual_objective/museum/task_completed(atom/movable/AM)
-	if(AM.GetComponent(/datum/component/inspiration))
-		..(1)
-
-/datum/individual_objective/museum/completed()
-	if(completed) return
-	UnregisterSignal(SStrade, COMSIG_TRADE_BEACON)
-	..()
 
 /datum/individual_objective/order
 	name = "Special Order"

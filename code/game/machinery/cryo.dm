@@ -70,8 +70,8 @@
 		go_out()
 
 /obj/machinery/atmospherics/unary/cryo_cell/attack_hand(mob/user)
-	if(!user.stats?.getPerk(PERK_MEDICAL_EXPERT) && !user.stat_check(STAT_BIO, STAT_LEVEL_BASIC) && !usr.stat_check(STAT_COG, 30)) //Are we missing the perk AND to low on bio? Cog needs 30 as bio is 15
-		to_chat(usr, SPAN_WARNING("Your biological understanding isn't enough to use this."))
+	if(!usr.stat_check(SKILL_SCI, 30)) //Are we missing the perk AND to low on bio? Cog needs 30 as bio is 15
+		to_chat(usr, SPAN_WARNING("Your scientific understanding isn't enough to use this."))
 		return
 	ui_interact(user) //routed to TGUI
 

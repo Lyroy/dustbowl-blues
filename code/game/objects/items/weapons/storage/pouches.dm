@@ -365,7 +365,6 @@
 		/obj/item/gun/projectile/shotgun/doublebarrel/sawn, //short enough to fit in
 		/obj/item/gun/launcher/syringe,
 		/obj/item/gun/energy/plasma/auretian,
-		/obj/item/gun/energy/plasma/stranger,
 		/obj/item/gun/energy/plasma/martyr,
 		/obj/item/gun/projectile/boltgun/flare_gun,
 		/obj/item/gun/matter/launcher/nt_sprayer
@@ -549,7 +548,6 @@
 /obj/item/storage/pouch/holding/New()
 	..()
 	item_flags |= BLUESPACE
-	bluespace_entropy(3, get_turf(src))
 
 /obj/item/storage/pouch/holding/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.item_flags & BLUESPACE)

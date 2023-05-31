@@ -103,7 +103,6 @@
 	do_sparks(6, FALSE, get_turf(src))
 	qdel(stored_crystal)
 	stored_crystal = null
-	bluespace_entropy(4, get_turf(src), TRUE)
 	new /obj/item/bluespace_dust(get_turf(src))
 
 /obj/machinery/telesci_relay/proc/pingCrystal()
@@ -115,7 +114,6 @@
 		damageCrystal(1)
 		if(!checkCrystal())
 			burntOut = TRUE
-	bluespace_entropy(2, get_turf(src), TRUE)
 	cut_overlays()
 	if(panel_open)
 		overlays += "relay-panel"
@@ -145,7 +143,6 @@
 	var/turf/T = get_turf(src)
 	explosion(T, -1, 1, 2, 5) //Like a landmine but with less flash.
 	qdel(stored_crystal)
-	bluespace_entropy(20, get_turf(src), TRUE)
 	qdel(src)
 
 /////////////////////////////

@@ -53,7 +53,7 @@
 			var/excavation_amount = input("How deep are you going to dig?", "Excavation depth", 0) as num
 			if(excavation_amount)
 				to_chat(user, SPAN_NOTICE("You start exacavating [src]."))
-				if(I.use_tool(user, src, WORKTIME_SLOW, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_COG))
+				if(I.use_tool(user, src, WORKTIME_SLOW, tool_type, FAILCHANCE_NORMAL, required_stat = SKILL_SCI))
 					to_chat(user, SPAN_NOTICE("You finish exacavating [src]."))
 					excavation_level += excavation_amount
 
@@ -82,7 +82,7 @@
 			return
 
 		if(QUALITY_DIGGING)
-			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_ZERO, required_stat = STAT_ROB))
+			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_ZERO, required_stat = SKILL_ATH))
 				user.visible_message(SPAN_DANGER("[src] suddenly crumbles away."),\
 				SPAN_WARNING("[src] has disintegrated under your onslaught, any secrets it was holding are long gone."))
 				qdel(src)

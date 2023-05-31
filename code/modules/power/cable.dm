@@ -138,22 +138,22 @@ var/list/possible_cable_coil_colours = list(
 		return
 
 	if(QUALITY_WIRE_CUTTING in I.tool_qualities)
-		if(I.use_tool(user, src, WORKTIME_INSTANT, QUALITY_WIRE_CUTTING, FAILCHANCE_EASY, required_stat = STAT_MEC))
+		if(I.use_tool(user, src, WORKTIME_INSTANT, QUALITY_WIRE_CUTTING, FAILCHANCE_EASY, required_stat = SKILL_REP))
 			if(!shock(user, 50))
 				cutting(user)
 				return
-		var/fail_chance = FAILCHANCE_NORMAL - user.stats.getStat(STAT_MEC)
+		var/fail_chance = FAILCHANCE_NORMAL - user.stats.getStat(SKILL_REP)
 		if(prob(fail_chance))
 			to_chat(user, SPAN_NOTICE("Oh God, what a mess!"))
 			spawnSplicing()
 		return
 
 	if(QUALITY_CUTTING in I.tool_qualities)
-		if(I.use_tool(user, src, WORKTIME_INSTANT, QUALITY_CUTTING, FAILCHANCE_EASY, required_stat = STAT_MEC))
+		if(I.use_tool(user, src, WORKTIME_INSTANT, QUALITY_CUTTING, FAILCHANCE_EASY, required_stat = SKILL_REP))
 			if(!shock(user, 50))
 				cutting(user)
 				return
-		var/fail_chance = FAILCHANCE_NORMAL - user.stats.getStat(STAT_MEC)
+		var/fail_chance = FAILCHANCE_NORMAL - user.stats.getStat(SKILL_REP)
 		if(prob(fail_chance))
 			to_chat(user, SPAN_NOTICE("Oh God, what a mess!"))
 			spawnSplicing()
@@ -179,7 +179,7 @@ var/list/possible_cable_coil_colours = list(
 				return 		//he didn't
 			if(do_after(user, 20, src))
 				log_and_message_admins(" - Wire splicing trap being added to at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[user]") //So we can go to it
-				var/fail_chance = FAILCHANCE_HARD - user.stats.getStat(STAT_MEC) // 72 for assistant
+				var/fail_chance = FAILCHANCE_HARD - user.stats.getStat(SKILL_REP) // 72 for assistant
 				if(prob(fail_chance))
 					if(!shock(user, 100)) //why not
 						to_chat(user, SPAN_WARNING("You failed to finish your task with [src.name]! There was a [fail_chance]% chance to screw this up."))
@@ -566,14 +566,11 @@ obj/structure/cable/proc/cableColor(var/colorC)
 			return ..()
 
 		if(S.burn_dam)
-			var/robotics_expert = user.stats.getPerk(PERK_ROBOTICS_EXPERT)
-			if(S.burn_dam < ROBOLIMB_SELF_REPAIR_CAP || robotics_expert)
+			if(S.burn_dam < ROBOLIMB_SELF_REPAIR_CAP/* || robotics_expert*/)
 				var/repair_amount = 15
-				if(robotics_expert)
-					repair_amount = user.stats.getStat(STAT_MEC)
 				S.heal_damage(0,repair_amount,TRUE)
 				user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-				user.visible_message(SPAN_DANGER("\The [user] [robotics_expert ? "expertly" : ""] patches some damaged wiring on \the [M]'s [S.name] with \the [src]."))
+				user.visible_message(SPAN_DANGER("\The [user] patches some damaged wiring on \the [M]'s [S.name] with \the [src]."))
 			else if(S.open != 2)
 				to_chat(user, SPAN_DANGER("The damage is far too severe to patch over externally."))
 			return 1

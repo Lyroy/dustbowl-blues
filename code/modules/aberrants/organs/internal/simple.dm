@@ -33,8 +33,7 @@
 	input_mod_path = /obj/item/modification/organ/internal/input/reagents
 	process_mod_path = /obj/item/modification/organ/internal/process/boost
 	output_mod_path = /obj/item/modification/organ/internal/output/reagents_ingest
-	specific_input_type_pool = list(/datum/reagent/other/crayon_dust, /datum/reagent/other/paint, /datum/reagent/other/ultraglue, /datum/reagent/other/space_cleaner,
-									/datum/reagent/toxin/amatoxin, /datum/reagent/toxin/carpotoxin, /datum/reagent/toxin/fertilizer)
+	specific_input_type_pool = list(/datum/reagent/other/crayon_dust, /datum/reagent/other/paint, /datum/reagent/other/ultraglue, /datum/reagent/other/space_cleaner)
 	input_mode = CHEM_INGEST
 	should_process_have_organ_stats = FALSE
 	output_pool = list(/datum/reagent/organic/nutriment)

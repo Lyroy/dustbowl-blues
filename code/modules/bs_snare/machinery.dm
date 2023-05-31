@@ -73,15 +73,12 @@
 	var/obj/effect/temporary/A = new(get_turf(target), 24.5, animation_icon, back_animation)
 	target.dir = 2
 	target.forceMove(A)
-	bluespace_entropy(3, get_turf(A))
 	sleep(23)
 	target.forceMove(src)
-	bluespace_entropy(3, get_turf(src))
 	target.dir = 2
 	new /obj/effect/temporary(get_turf(src), 26.5, animation_icon, onhub_animation)
 	sleep(24)
 	target.forceMove(loc)
-	bluespace_entropy(3, get_turf(loc))
 
 /obj/machinery/bssilk_hub/Destroy()
 	. = ..()

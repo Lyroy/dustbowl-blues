@@ -1,7 +1,7 @@
 /datum/craft_recipe/tool
 	category = "Tools"
 	time = 100
-	related_stats = list(STAT_COG)
+	related_stats = list(SKILL_REP)
 
 //A shard of glass wrapped in tape makes a crude sort of knife
 /datum/craft_recipe/tool/shiv
@@ -138,6 +138,7 @@
 		list(QUALITY_PRYING, 10, 80),
 		list(/obj/item/stack/rods, 1, 30)
 	)
+	related_stats = list(SKILL_SUR)
 
 /datum/craft_recipe/tool/makeshift_centrifuge
 	name = "manual centrifuge"
@@ -150,6 +151,7 @@
 		list(QUALITY_WIRE_CUTTING, 10, 20),
 		list(QUALITY_WELDING, 10, "time" = 70)
 	)
+	related_stats = list(SKILL_MED)
 
 /datum/craft_recipe/tool/makeshift_electrolyser
 	name = "makeshift electrolyzer"
@@ -162,7 +164,8 @@
 		list(QUALITY_WIRE_CUTTING, 10, 20),
 		list(/obj/item/stack/rods, 2, 30)
 	)
-	
+	related_stats = list(SKILL_SCI)
+
 /datum/craft_recipe/tool/improv_charger
 	name = "improvised crank charger"
 	result = /obj/item/device/manual_charger/improv
@@ -189,7 +192,7 @@
 		list(/obj/item/cell/small, 1),
 		list(/obj/item/stack/cable_coil, 5, "time" = 20)
 	)
-	related_stats = list(STAT_COG)
+	related_stats = list(SKILL_SCI)
 
 //Metal rods reinforced with regular tape
 /datum/craft_recipe/tool/brace

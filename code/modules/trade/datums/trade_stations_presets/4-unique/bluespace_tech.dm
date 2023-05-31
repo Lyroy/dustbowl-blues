@@ -22,7 +22,6 @@
 	)
 	hidden_inventory = list(
 		"25$$5325@$25@$5325323" = list(
-			/obj/item/oddity/broken_necklace = custom_good_amount_range(list(-5,1)),
 			/obj/item/implanter/compressed,
 			/obj/item/tool_upgrade/augment/randomizer
 		)

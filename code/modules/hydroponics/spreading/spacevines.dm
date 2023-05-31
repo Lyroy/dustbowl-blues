@@ -49,7 +49,7 @@
 
 
 	//Force an immediate spread
-	SSmigration.handle_plant_spreading()
+	//SSmigration.handle_plant_spreading()
 
 	for (var/a in origin.plantspread_burrows)
 		var/obj/structure/burrow/B = locate(a)

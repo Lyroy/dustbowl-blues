@@ -86,12 +86,6 @@
 								if ((istype(M, /mob/living/carbon/human)) && (M.icon)) // Eating a human
 									// Icon check is to check if another roach has already finished eating this human
 									var/mob/living/carbon/human/H = M
-									// Process Cruciform
-									var/obj/item/implant/core_implant/cruciform/CI = H.get_core_implant(/obj/item/implant/core_implant/cruciform, FALSE)
-									if (CI)
-										var/mob/N = CI.wearer
-										CI.name = "[N]'s Cruciform"
-										CI.uninstall()
 									// Gib victim but remove non synthetic organs
 									for(var/obj/item/W in H)
 										if(W.is_equipped())

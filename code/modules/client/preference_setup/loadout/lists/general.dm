@@ -48,10 +48,6 @@
 	path = /obj/item/reagent_containers/food/drinks/mug
 	flags = GEAR_HAS_TYPE_SELECTION
 
-/datum/gear/psi_juice
-	display_name = "cerebrix inhaler"
-	path = /obj/item/psi_injector
-
 /datum/gear/pipe
 	display_name = "pipe selection"
 	path = /obj/item/clothing/mask/smokable/pipe

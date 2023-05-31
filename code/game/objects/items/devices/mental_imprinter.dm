@@ -11,7 +11,7 @@
 	price_tag = 1200
 
 /obj/item/device/mental_imprinter/proc/imprint(mob/living/carbon/human/user)
-	var/stat = input(user, "Select stat to boost", "Mental imprinter") as null|anything in ALL_STATS_TO_IMPRINT
+	var/stat = input(user, "Select stat to boost", "Mental imprinter") as null|anything in ALL_SPECIAL
 	if(!stat || spent || user.species.reagent_tag == IS_SYNTHETIC)//If it's spent we won't attempt to use it again
 		return//No synths because of stat meme
 
@@ -19,7 +19,7 @@
 		return
 
 	// User gains more and loses less if the base stat is fairly low
-	if(user.stats.getStat(stat, pure=TRUE) <= STAT_LEVEL_BASIC)
+	if(user.stats.getStat(stat, pure=TRUE) <= SKILL_LEVEL_BASIC)
 		user.stats.changeStat(stat, stat_increase * 2)
 		user.sanity.onPsyDamage(apply_sanity_damage / 2)
 	else

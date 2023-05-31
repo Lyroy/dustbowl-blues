@@ -268,17 +268,8 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			if("5")
 				screenstate = 5
 			if("6")
-				if(!bibledelay)
-
-					var/obj/item/book/ritual/cruciform/B = new /obj/item/book/ritual/cruciform()
-					B.loc=src.loc
-					bibledelay = 1
-					spawn(60)
-						bibledelay = 0
-
-				else
-					for (var/mob/V in hearers(src))
-						V.show_message("<b>[src]</b>'s monitor flashes, \"Bible printer currently unavailable, please wait a moment.\"")
+				for (var/mob/V in hearers(src))
+					V.show_message("<b>[src]</b>'s monitor flashes, \"Bible printer currently unavailable, please wait a moment.\"")
 
 			if("7")
 				screenstate = 7

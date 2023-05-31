@@ -43,7 +43,7 @@
 	update_icon()
 
 /obj/item/reagent_containers/syringe/attack_self(mob/user as mob)
-	if(!user.stat_check(STAT_BIO, 10) && !user.stat_check(STAT_COG, 20) && !user.stats.getPerk(PERK_ADDICT))
+	if(!user.stat_check(SKILL_SCI, 20))
 		to_chat(user, SPAN_WARNING("You have no idea how to properly use this syringe!"))
 		return
 
@@ -72,7 +72,7 @@
 		to_chat(user, SPAN_WARNING("This syringe is broken!"))
 		return
 
-	if(user.stats.getStat(STAT_BIO) < 15 && !usr.stat_check(STAT_COG, 30) && !usr.stats.getPerk(PERK_ADDICT))
+	if(!usr.stat_check(SKILL_SCI, 30))
 		to_chat(user, SPAN_WARNING("You have no idea how to properly use this syringe!"))
 		return
 
@@ -177,7 +177,7 @@
 					else if(!H.can_inject(user, FALSE))
 						// lets check if user is easily fooled
 						var/obj/item/organ/external/affected = H.get_organ(user.targeted_organ)
-						if(BP_IS_LIFELIKE(affected) && user && user.stats.getStat(STAT_BIO) < STAT_LEVEL_BASIC)
+						if(BP_IS_LIFELIKE(affected) && user && user.stats.getStat(SKILL_MED) < SKILL_LEVEL_BASIC)
 							break_syringe(user = user)
 							to_chat(user, SPAN_WARNING("\The [src] have broken while trying to inject [target]."))
 							return
@@ -214,9 +214,9 @@
 				var/mob/living/carbon/human/H = target
 				if(istype(H))
 					var/obj/item/organ/external/affecting = H.get_organ(user.targeted_organ)
-					if(user && user.stats.getStat(STAT_BIO) < STAT_LEVEL_BASIC)
-						if(prob(affecting.get_damage() - user.stats.getStat(STAT_BIO)))
-							var/pain = rand(min(30,affecting.get_damage()), max(affecting.get_damage() + 30,60) - user.stats.getStat(STAT_BIO))
+					if(user && user.stats.getStat(SKILL_SCI) < SKILL_LEVEL_BASIC)
+						if(prob(affecting.get_damage() - user.stats.getStat(SKILL_SCI)))
+							var/pain = rand(min(30,affecting.get_damage()), max(affecting.get_damage() + 30,60) - user.stats.getStat(SKILL_SCI))
 							H.pain(affecting, pain)
 							if(user != H)
 								to_chat(H, "<span class='[pain > 50 ? "danger" : "warning"]'>\The [user]'s amateur actions caused you [pain > 50 ? "a lot of " : ""]pain.</span>")
