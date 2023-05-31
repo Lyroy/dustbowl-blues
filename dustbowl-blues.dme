@@ -3192,10 +3192,10 @@
 #include "maps\submaps\junk_field\j25_25\serbian\serbian.dm"
 #include "maps\submaps\junk_field\j5_5\neutral\neutral.dm"
 #include "maps\submaps\map_clearers\map_clearers.dm"
+#include "maps\testmap\testmap.dm"
 #include "modular_dustbowl\fallout_chems\code\datums\perks.dm"
 #include "modular_dustbowl\fallout_chems\code\modules\reagents\reagent_containers\hypospray.dm"
 #include "modular_dustbowl\fallout_chems\code\modules\reagents\reagents\medicine.dm"
-#include "maps\testmap\testmap.dm"
 #include "tgs_dmapi\tgs.dm"
 #include "tgs_dmapi\tgs\includes.dm"
 // END_INCLUDE
