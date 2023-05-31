@@ -269,7 +269,7 @@
 			var/drop_prob = 50
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
-				drop_prob *= H.stats.getMult(SPECIAL_S, SPECIAL_LEVEL_GREAT)
+				drop_prob *= H.stats.getMult(STAT_ROB, STAT_LEVEL_EXPERT)
 			if(prob(drop_prob))
 				to_chat(user, SPAN_WARNING("\The [src] launches from your grasp!"))
 				user.drop_item(src)

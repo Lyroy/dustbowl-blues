@@ -178,11 +178,12 @@ see multiz/movement.dm for some info.
 			if(ishuman(mover))
 				var/mob/living/carbon/human/H = mover
 				if(H.a_intent == I_HURT)
-					fall_damage = (H.mob_size + (min(min(H.stats.getStat(SKILL_ATH), 1), 60) / 2)) //max is 50(a lot)
+					fall_damage = (H.mob_size + (min(min(H.stats.getStat(STAT_ROB), 1), 60) / 2)) //max is 50(a lot)
 			if(M == mover)
 				continue
 			if(ishuman(M))
-				M.Weaken(10)
+				if(!M.stats.getPerk(PERK_PARKOUR))
+					M.Weaken(10)
 			else
 				M.Weaken(10)
 				continue
@@ -294,7 +295,7 @@ see multiz/movement.dm for some info.
 	climbers |= user
 
 	var/delay = (issmall(user) ? 32 : 60) * user.mod_climb_delay
-	var/duration = max(delay * user.stats.getMult(SKILL_ATH, SKILL_LEVEL_EXPERT), delay * 0.66)
+	var/duration = max(delay * user.stats.getMult(STAT_VIG, STAT_LEVEL_EXPERT), delay * 0.66)
 	if(!do_after(user, duration, src))
 		climbers -= user
 		return

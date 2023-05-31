@@ -1,4 +1,3 @@
-/*
 //Cargo
 /datum/job/merchant
 	title = "Chief Executive Officer"
@@ -164,4 +163,3 @@ The deep tunnels are far less dangerous than the wilderness, but pack well - dis
 	name = "Lonestar Miner"
 	icon_state = "player-beige"
 	join_tag = /datum/job/mining
-*/

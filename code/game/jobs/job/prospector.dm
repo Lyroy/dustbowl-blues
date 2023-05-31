@@ -1,4 +1,3 @@
-/*
 /datum/job/foreman
 	title = "Foreman"
 	flag = FOREMAN
@@ -152,4 +151,3 @@
 	icon_state = "player-blue"
 	join_tag = /datum/job/pro
 
-*/

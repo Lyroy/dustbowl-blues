@@ -129,8 +129,8 @@
 	custom_action(index, diff, atom/used_atom, mob/user)
 		if(!..())
 			return 0
-
-		if(!usr.stat_check(SKILL_REP, SKILL_LEVEL_ADEPT))
+		
+		if(!usr.stat_check(STAT_MEC, STAT_LEVEL_ADEPT))
 			to_chat(usr, SPAN_WARNING("You lack the mechanical knowledge to do this!"))
 			return
 
@@ -331,7 +331,7 @@
 						"You scrape the gold foil lining from the [holder]."
 					)
 					new /obj/item/stack/material/gold (get_turf(holder), 5)
-
+					
 					holder.icon_state = "firefighter8"
 			if(9)
 				if(diff==FORWARD)

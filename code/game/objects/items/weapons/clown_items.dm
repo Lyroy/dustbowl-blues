@@ -197,6 +197,7 @@
 /obj/item/soap/bluespase/New()
 	..()
 	item_flags |= BLUESPACE
+	bluespace_entropy(5, get_turf(src))
 
 /*
  * Bike Horns

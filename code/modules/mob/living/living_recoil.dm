@@ -20,12 +20,12 @@
 	var/base = 0.4
 	var/scale = 0.9
 
-	/*if(ishuman(src))
+	if(ishuman(src))
 		if(usr.stats.getPerk(PERK_PERFECT_SHOT))
 			scale = 0.5 //less recoil build up
 		if(usr.stats.getPerk(PERK_SMARTLINK))
 			scale = 0.8 //Not as crazy as racial because it's kriosan niche
-	*/
+
 	if(recoil <= base)
 		recoil = 0
 	else
@@ -33,14 +33,14 @@
 		recoil *= scale
 	update_recoil()
 
-/mob/living/proc/calculate_offset(offset = 0, stat_type = SPECIAL_A)
+/mob/living/proc/calculate_offset(offset = 0)
 	if(recoil)
 		offset += recoil
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.head)
 			offset += H.head.obscuration
-		offset -= CLAMP(H.stats.getStat(stat_type), 0, SKILL_LEVEL_PROF) * 0.1 // Up to max -6 offset
+		offset -= CLAMP(H.stats.getStat(STAT_VIG), 0, STAT_LEVEL_PROF) * 0.1 // Up to max -6 offset
 
 	offset = round(offset)
 	offset = CLAMP(offset, 0, MAX_ACCURACY_OFFSET)

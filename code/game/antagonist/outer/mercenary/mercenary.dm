@@ -21,7 +21,13 @@
 	possible_objectives = list()
 	survive_objective = null
 
-	stat_modifiers = list()
+	stat_modifiers = list(
+		STAT_ROB = 30,
+		STAT_TGH = 30,
+		STAT_VIG = 30,
+		STAT_BIO = 10,
+		STAT_MEC = 20
+	)
 
 
 

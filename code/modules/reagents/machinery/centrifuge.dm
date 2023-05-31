@@ -130,7 +130,7 @@
 
 
 /obj/machinery/centrifuge/attack_hand(mob/user)
-	if(!usr.stat_check(SKILL_SCI, 30)) //Are we missing the perk AND to low on bio? Needs bio 25 so cog 50 to bypass
+	if(!user.stats?.getPerk(PERK_MEDICAL_EXPERT) && !user.stat_check(STAT_BIO, STAT_LEVEL_BASIC) && !usr.stat_check(STAT_COG, 30)) //Are we missing the perk AND to low on bio? Needs bio 25 so cog 50 to bypass
 		to_chat(usr, SPAN_WARNING("Your biological understanding isn't enough to use this."))
 		return
 
@@ -264,7 +264,7 @@
 	on = TRUE
 	SSnano.update_uis(src)
 	user.visible_message(SPAN_NOTICE("[user] have started to turn handle on \the [src]."), SPAN_NOTICE("You started to turn handle on \the [src]."))
-	if(do_after(user, 60 - (30 * user.stats.getMult(SKILL_ATH, SKILL_LEVEL_ADEPT))))
+	if(do_after(user, 60 - (30 * user.stats.getMult(STAT_TGH, STAT_LEVEL_ADEPT))))
 		if(mainBeaker && mainBeaker.reagents.total_volume)
 			switch(mode)
 				if(MODE_SEPARATING)

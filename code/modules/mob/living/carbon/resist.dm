@@ -69,12 +69,12 @@
 			if(GRAB_PASSIVE)
 				qdel(G)
 			if(GRAB_AGGRESSIVE)
-				if(prob(max(60 + ((stats?.getStat(SKILL_UNA)) - spow(G.assailant?.stats.getStat(SKILL_UNA), 0.8)), 1))) // same scaling as cooldown increase and if you manage to be THAT BAD, 1% for luck
+				if(prob(max(60 + ((stats?.getStat(STAT_ROB)) - spow(G.assailant?.stats.getStat(STAT_ROB), 0.8)), 1))) // same scaling as cooldown increase and if you manage to be THAT BAD, 1% for luck
 					visible_message("<span class='warning'>[src] has broken free of [G.assailant]'s grip!</span>")
 					qdel(G)
 			if(GRAB_NECK)
 				var/conditionsapply = (world.time - G.assailant.l_move_time < 30 || !stunned) ? 3 : 1 //If you move when grabbing someone then it's easier for them to break free. Same if the affected mob is immune to stun.
-				if(prob(conditionsapply * (5 + max((stats?.getStat(SKILL_UNA)) - G.assailant.stats?.getStat(SKILL_UNA), 1) ** 0.8))) // 4% minimal chance
+				if(prob(conditionsapply * (5 + max((stats?.getStat(STAT_ROB)) - G.assailant.stats?.getStat(STAT_ROB), 1) ** 0.8))) // 4% minimal chance
 					visible_message("<span class='warning'>[src] has broken free of [G.assailant]'s headlock!</span>")
 					qdel(G)
 	if(resisting)
@@ -126,10 +126,10 @@
 	var/obj/item/handcuffs/HC = handcuffed
 
 	//A default in case you are somehow handcuffed with something that isn't an obj/item/handcuffs type
-	var/breakouttime = 1200 - src.stats.getSpecial(SPECIAL_S) * 10
+	var/breakouttime = 1200 - src.stats.getStat(STAT_ROB) * 10
 	//If you are handcuffed with actual handcuffs... Well what do I know, maybe someone will want to handcuff you with toilet paper in the future...
 	if(istype(HC))
-		breakouttime = HC.breakouttime - src.stats.getSpecial(SPECIAL_S) * 10
+		breakouttime = HC.breakouttime - src.stats.getStat(STAT_ROB) * 10
 
 	var/mob/living/carbon/human/H = src
 	if(istype(H) && H.gloves && istype(H.gloves,/obj/item/clothing/gloves/rig))

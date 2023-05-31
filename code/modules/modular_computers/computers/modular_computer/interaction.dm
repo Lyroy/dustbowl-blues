@@ -226,7 +226,7 @@
 				if(components.len)
 					to_chat(user, "Remove all components from \the [src] before disassembling it.")
 					return
-				if(tool.use_tool(user, src, WORKTIME_SLOW, QUALITY_BOLT_TURNING, FAILCHANCE_VERY_EASY, required_stat = SKILL_SCI))
+				if(tool.use_tool(user, src, WORKTIME_SLOW, QUALITY_BOLT_TURNING, FAILCHANCE_VERY_EASY, required_stat = STAT_COG))
 					new /obj/item/stack/material/steel( get_turf(src.loc), steel_sheet_cost )
 					src.visible_message("\The [src] has been disassembled by [user].")
 					qdel(src)
@@ -236,7 +236,7 @@
 				if(!damage)
 					to_chat(user, "\The [src] does not require repairs.")
 					return
-				if(tool.use_tool(user, src, WORKTIME_SLOW, QUALITY_WELDING, FAILCHANCE_HARD, required_stat = SKILL_SCI))
+				if(tool.use_tool(user, src, WORKTIME_SLOW, QUALITY_WELDING, FAILCHANCE_HARD, required_stat = STAT_COG))
 					damage = 0
 					to_chat(user, "You repair \the [src].")
 					return
@@ -261,7 +261,7 @@
 					return
 				if(!Adjacent(usr))
 					return
-				if(tool.use_tool(user, src, WORKTIME_FAST, QUALITY_SCREW_DRIVING, FAILCHANCE_VERY_EASY, required_stat = SKILL_SCI))
+				if(tool.use_tool(user, src, WORKTIME_FAST, QUALITY_SCREW_DRIVING, FAILCHANCE_VERY_EASY, required_stat = STAT_COG))
 					var/obj/item/computer_hardware/H = find_hardware_by_name(choice)
 					if(!H)
 						return
@@ -295,5 +295,5 @@
 /obj/item/modular_computer/CtrlAltClick(mob/user)
 	if(!CanPhysicallyInteract(user))
 		return
-	if(user.stat_check(SKILL_SCI, SKILL_LEVEL_BASIC)) // Make sure the user can at least do the exit command.
+	if(user.stat_check(STAT_COG, STAT_LEVEL_BASIC)) // Make sure the user can at least do the exit command.
 		open_terminal(user)

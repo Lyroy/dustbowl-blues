@@ -170,7 +170,7 @@
 	to_chat(user, "The manufacturer's label states this cell has a power rating of [maxcharge], and that you should not swallow it.")
 	to_chat(user, "The charge meter reads [round(src.percent() )]%.")
 
-	if(rigged && user.stats?.getStat(SKILL_REP) >= SKILL_LEVEL_ADEPT)
+	if(rigged && user.stats?.getStat(STAT_MEC) >= STAT_LEVEL_ADEPT)
 		to_chat(user, SPAN_WARNING("This cell is ready to short circuit!"))
 
 /obj/item/cell/attackby(obj/item/W, mob/user)

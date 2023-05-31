@@ -19,7 +19,7 @@
 /obj/item/computer_hardware/attackby(obj/item/W, mob/living/user)
 	// Multitool. Runs diagnostics
 	if(QUALITY_PULSING in W.tool_qualities)
-		if(W.use_tool(user, src, WORKTIME_LONG, QUALITY_PULSING, FAILCHANCE_HARD, required_stat = SKILL_SCI))
+		if(W.use_tool(user, src, WORKTIME_LONG, QUALITY_PULSING, FAILCHANCE_HARD, required_stat = STAT_COG))
 			to_chat(user, "***** DIAGNOSTICS REPORT *****")
 			diagnostics(user)
 			to_chat(user, "******************************")

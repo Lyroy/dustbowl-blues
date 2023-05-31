@@ -1,4 +1,3 @@
-/*
 /datum/job/ai
 	title = "AI"
 	flag = AI
@@ -72,4 +71,3 @@
 
 /obj/landmark/join/start/cyborg
 	join_tag = /datum/job/cyborg
-*/

@@ -19,9 +19,7 @@
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
 	active_power_usage = 100
-	// circuit = /obj/item/circuitboard/jukebox
-	// MFER we better be keeping the jukebox
-	circuit = null
+	circuit = /obj/item/circuitboard/jukebox
 
 	// Vars for hacking
 	var/datum/wires/jukebox/wires
@@ -236,6 +234,8 @@
 						ear_safety += 1
 					if(istype(M:head, /obj/item/clothing/head/armor/helmet))
 						ear_safety += 1
+					if(M.stats.getPerk(PERK_EAR_OF_QUICKSILVER))
+						ear_safety -= 1
 				if(ear_safety >= 2)
 					continue
 				M.sleeping = 0

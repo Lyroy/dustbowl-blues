@@ -63,7 +63,7 @@
 	update_faction_score()
 	to_chat(owner,  SPAN_NOTICE("You have completed the personal objective: [name]"))
 	H.sanity.give_insight(insight_reward)
-	//H.sanity.finish_rest()
+	H.sanity.finish_rest()
 
 /datum/individual_objective/proc/get_description()
 	var/n_desc = desc
@@ -98,7 +98,7 @@
 			continue
 		if(!ignore_departmen && H.mind.assigned_job && (H.mind.assigned_job.department in GLOB.all_faction_items[faction_item]))
 			continue
-		if(!ignore_departmen && GLOB.all_faction_items[faction_item] == GLOB.department_church)
+		if(!ignore_departmen && GLOB.all_faction_items[faction_item] == GLOB.department_church && is_neotheology_disciple(H))
 			continue
 		if(!locate(faction_item.type))
 			continue
@@ -114,6 +114,15 @@
 		return FALSE
 	if(!L || !L.mind || (L.mind && player_is_antag(L.mind)))
 		return FALSE
+	if(is_neotheology_disciple(L))
+		if(!allow_cruciform)
+			return FALSE
+	if(L.stats.getPerk(PERK_PSION))
+		if(!allow_psion)
+			return FALSE
+	else
+		if(req_cruciform)
+			return FALSE
 	if(req_department.len && (!L.mind.assigned_job || !(L.mind.assigned_job.department in req_department)))
 		return FALSE
 	return TRUE

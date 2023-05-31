@@ -1,5 +1,3 @@
-// DBB REMOVAL - We don't do this no more
-/*
 //This is set of item created to work with Eris stat and perk systems
 //The idea here is simple, you find oddities in random spawners, you use them, and they grant you stats, or even perks.
 //After use, the object is claimed, and cannot be used by someone else
@@ -964,4 +962,3 @@
 		STAT_COG = 25,
 		STAT_VIG = 25
 	)
-*/

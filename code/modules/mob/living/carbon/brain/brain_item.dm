@@ -91,6 +91,12 @@
 	name = "[owner.real_name]'s brain"
 
 	if(!(owner.status_flags & REBUILDING_ORGANS))
+		var/obj/item/organ/internal/carrion/core/C = owner.random_organ_by_process(BP_SPCORE)
+		if(C)
+			C.removed()
+			qdel(src)
+			return
+
 		transfer_identity(owner)
 
 	..()

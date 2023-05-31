@@ -1,8 +1,8 @@
 /datum/craft_recipe/lodge
 	category = "Lodge"
 	time = 100
-	related_stats = list(SKILL_SUR)
-	//requiredPerk = PERK_BUTCHER
+	related_stats = list(STAT_BIO)
+	requiredPerk = PERK_BUTCHER
 
 // Weaponry -----------------
 /datum/craft_recipe/lodge/crossbow_bolts
@@ -359,6 +359,15 @@
 		list(CRAFT_MATERIAL, 3, MATERIAL_WOOD, "time" = 60),
 		list(/obj/item/animal_part/slepnir_hoof, 1, "time" = 20),
 		list(QUALITY_HAMMERING, 15, "time" = 40)
+	)
+
+/datum/craft_recipe/lodge/chimera_fang
+	name = "Chimera Fang Trophy"
+	result = /obj/item/oddity/chimeric_fang_trophy
+	icon_state = "clothing"
+	steps = list(
+		list(/obj/item/animal_part/chimera_fang, 1, "time" = 10),
+		list(QUALITY_CUTTING, 50, "time" = 90)
 	)
 
 /datum/craft_recipe/lodge/sheath

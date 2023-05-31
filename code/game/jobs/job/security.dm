@@ -1,4 +1,3 @@
-/*
 /datum/job/smc
 	title = "Blackshield Commander"
 	flag = SMC
@@ -459,4 +458,3 @@
 	name = "Marshal Officer"
 	icon_state = "player-blue"
 	join_tag = /datum/job/officer
-*/

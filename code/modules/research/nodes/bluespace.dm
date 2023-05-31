@@ -162,7 +162,8 @@
 							/datum/design/research/item/part/artificialbscrystal,
 							/datum/design/research/circuit/bssilk/hub,
 							/datum/design/research/circuit/bssilk/console,
-							/datum/design/research/item/bs_snare
+							/datum/design/research/item/bs_snare,
+							/datum/design/research/item/si_bluespace_scanner
 							)
 
 /datum/technology/bluespace_tools
@@ -181,7 +182,8 @@
 	unlocks_designs = list(	/datum/design/research/item/beaker/bluespace,
 							/datum/design/research/item/beaker/noreact,
 							/datum/design/research/item/bag_holding,
-							/datum/design/research/item/weapon/bluespace_harpoon
+							/datum/design/research/item/weapon/bluespace_harpoon,
+							/datum/design/research/item/weapon/bluespace_dagger
 							)
 
 /datum/technology/bluespace_extended

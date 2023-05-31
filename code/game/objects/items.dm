@@ -230,13 +230,13 @@
 	if(allow_greyson_mods)
 		message += "\n<blue>This allows for Greyson Positronic based mods to be integrated without normal constraints.<blue>"
 
-	/*
+
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.stats.getPerk(PERK_MARKET_PROF))
 			message += SPAN_NOTICE("\nThis item cost: [get_item_cost()][CREDITS]")
 		if(H.stats.getPerk(PERK_MARKET_PROF) && surplus_tag == TRUE)
-			message += SPAN_NOTICE("\nThis item has a surplus tag and is only worth ten percent its usual value on exports.")*/
+			message += SPAN_NOTICE("\nThis item has a surplus tag and is only worth ten percent its usual value on exports.")
 
 	return ..(user, distance, "", message)
 
@@ -281,6 +281,10 @@
 		unwield(user)
 	if(zoom)
 		zoom(user)
+	if(get_equip_slot() in unworn_slots)
+		LEGACY_SEND_SIGNAL(src, COMSIG_CLOTH_DROPPED, user)
+		if(user)
+			LEGACY_SEND_SIGNAL(user, COMSIG_CLOTH_DROPPED, src)
 
 
 //	Called before an item is picked up (loc is not yet changed)

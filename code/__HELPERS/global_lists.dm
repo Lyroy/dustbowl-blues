@@ -88,8 +88,6 @@ GLOBAL_LIST_EMPTY(all_stash_datums)
 
 //PERKS
 GLOBAL_LIST_EMPTY(all_perks)
-GLOBAL_LIST_EMPTY(level_one_perks) // For character creation
-GLOBAL_LIST_EMPTY(selectable_perks)
 
 //individual_objectives
 GLOBAL_LIST_EMPTY(all_faction_items)
@@ -117,7 +115,7 @@ GLOBAL_LIST_EMPTY(body_marking_list)
 
 GLOBAL_DATUM_INIT(underwear, /datum/category_collection/underwear, new())
 
-var/global/list/exclude_jobs = list()
+var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
 
 var/global/list/organ_structure = list(
 	BP_CHEST = list(name= "Chest", children=list(BP_GROIN, BP_HEAD, BP_L_ARM, BP_R_ARM, OP_HEART, OP_LUNGS, OP_STOMACH)),
@@ -140,6 +138,9 @@ var/global/list/organ_tag_to_name = list(
 	stomach = "stomach", brain = "brain",
 	back  = "back"
 	)
+
+// Boss spawners
+var/list/psi_mega_fauna = list(/mob/living/carbon/superior_animal/psi_monster/dreaming_king, /mob/living/carbon/superior_animal/psi_monster/dreaming_king/hound_crown, /obj/item/paper/psi_log_1, /obj/item/paper/psi_log_2, /obj/item/paper/psi_log_3, /obj/item/paper/psi_log_4, /obj/item/paper/psi_log_5)
 
 // Visual nets
 var/list/datum/visualnet/visual_nets = list()
@@ -229,14 +230,7 @@ var/global/list/hair_gradients_list = list(
 	paths = subtypesof(/datum/perk)
 	for(var/path in paths)
 		var/datum/perk/P = new path
-		GLOB.all_perks[P.name] = P
-		if(istype(P, /datum/perk/level))
-			if(P.name == "Perk") // SUBTYPESOF() STILL RETURNS THE PARENT PERK, FUCKING WHY
-				continue
-			var/datum/perk/level/level_perk = P
-			GLOB.selectable_perks[level_perk.name] = level_perk
-			if(level_perk.req_level == 1)
-				GLOB.level_one_perks[level_perk.name] = level_perk
+		GLOB.all_perks[path] = P
 
 	//List of job department datums
 	paths = subtypesof(/datum/department)
@@ -349,6 +343,15 @@ var/global/list/hair_gradients_list = list(
 	for(var/T in paths)
 		var/datum/hud/C = new T
 		GLOB.HUDdatums[C.name] = C
+
+	//Rituals
+	paths = typesof(/datum/ritual)
+	for(var/T in paths)
+		var/datum/ritual/R = new T
+
+		//Rituals which are just categories for subclasses will have a null phrase
+		if (R.phrase)
+			GLOB.all_rituals[R.name] = R
 
 	return 1
 

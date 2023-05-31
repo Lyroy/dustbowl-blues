@@ -1,4 +1,3 @@
-/*
 //Prisoner containment sleeper: Ghosts become escaped prisoners and are advised to find a way out of the mess they've gotten themselves into.
 /obj/effect/mob_spawn/human/prisoner_transport
 	name = "prisoner containment sleeper"
@@ -198,4 +197,3 @@
 		STAT_COG = 18
 	)
 
-*/

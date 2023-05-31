@@ -64,6 +64,7 @@
 /obj/item/storage/bag/trash/holding/New()
 	..()
 	item_flags |= BLUESPACE
+	bluespace_entropy(10, get_turf(src))
 
 /obj/item/storage/bag/trash/holding/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.item_flags & BLUESPACE)
@@ -153,6 +154,7 @@
 /obj/item/storage/bag/ore/holding/New()
 	..()
 	item_flags |= BLUESPACE
+	bluespace_entropy(4, get_turf(src))
 
 /obj/item/storage/bag/ore/holding/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.item_flags & BLUESPACE)

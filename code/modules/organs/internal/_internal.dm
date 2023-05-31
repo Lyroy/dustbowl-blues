@@ -187,9 +187,9 @@
 
 /obj/item/organ/internal/examine(mob/user)
 	. = ..()
-	if(user.stats?.getStat(SKILL_MED) > SKILL_LEVEL_BASIC)
+	if(user.stats?.getStat(STAT_BIO) > STAT_LEVEL_BASIC)
 		to_chat(user, SPAN_NOTICE("Organ size: [specific_organ_size]"))
-	if(user.stats?.getStat(SKILL_MED) > SKILL_LEVEL_EXPERT)
+	if(user.stats?.getStat(STAT_BIO) > STAT_LEVEL_EXPERT)
 		var/organs
 		for(var/organ in organ_efficiency)
 			organs += organ + " ([organ_efficiency[organ]]), "

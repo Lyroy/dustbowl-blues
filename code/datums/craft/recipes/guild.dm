@@ -1,8 +1,8 @@
 /datum/craft_recipe/guild
 	category = "Guild"
 	time = 100
-	related_stats = list(SKILL_REP)
-	//requiredPerk = PERK_HANDYMAN
+	related_stats = list(STAT_MEC)
+	requiredPerk = PERK_HANDYMAN
 
 //Materal Craft ------------------
 
@@ -721,6 +721,50 @@
 	)*/
 
 //Machines
+/datum/craft_recipe/guild/turretcircuit
+	name = "Circuit: Artificer Turret"
+	result = /obj/item/circuitboard/artificer_turret
+	icon_state = "electronic"
+	steps = list(
+		list(/obj/item/computer_hardware/processor_unit/adv, 1, "time" = 30),
+		list(/obj/item/stack/cable_coil, 5, "time" = 20),
+		list(QUALITY_SCREW_DRIVING, 40, "time" = 90),
+		list(QUALITY_WELDING, 40, "time" = 90)
+	)
+
+/datum/craft_recipe/guild/matter_nanoforge
+	name = "Circuit: Matter Nano-Forge"
+	result = /obj/item/circuitboard/matter_nanoforge
+	icon_state = "electronic"
+	steps = list(
+		list(/obj/item/circuitboard/autolathe, 1, "time" = 30),
+		list(CRAFT_MATERIAL, 2, MATERIAL_GOLD),
+		list(CRAFT_MATERIAL, 2, MATERIAL_SILVER),
+		list(/obj/item/stack/cable_coil, 5, "time" = 20),
+		list(QUALITY_SCREW_DRIVING, 20, "time" = 90),
+		list(QUALITY_WELDING, 30, "time" = 90)
+	)
+
+/datum/craft_recipe/guild/matter_nanoforge_blackbox
+	name = "Black Box: Matter Nano-Forge"
+	result = /obj/item/oddity/blackbox_nanoforge
+	steps = list(
+		list(/obj/item/computer_hardware/processor_unit, 1, "time" = 120),
+		list(QUALITY_SCREW_DRIVING, 20, 70, "time" = 10),
+		list(CRAFT_MATERIAL, 12, MATERIAL_PLASTEEL, "time" = 90),
+		list(CRAFT_MATERIAL, 2, MATERIAL_RGLASS, "time" = 20),
+		list(QUALITY_BOLT_TURNING, 10, 70),
+		list(QUALITY_WELDING, 30, "time" = 90),
+		list(/obj/item/stack/cable_coil, 10, "time" = 90),
+		list(CRAFT_MATERIAL, 1, MATERIAL_DIAMOND, "time" = 20),
+		list(/obj/item/stock_parts/manipulator, 1, "time" = 120),
+		list(QUALITY_HAMMERING, 30, "time" = 40),
+		list(QUALITY_SAWING, 30, "time" = 60),
+		//list(QUALITY_DRILLING, 60, "time" = 90),
+		list(CRAFT_MATERIAL, 2, MATERIAL_GOLD),
+		list(QUALITY_BOLT_TURNING, 10, 70),
+		list(CRAFT_MATERIAL, 2, MATERIAL_SILVER)
+	)
 
 /datum/craft_recipe/guild/safety_clamp
 	name = "Hydraulic clamp overclock: KILL CLAMP"

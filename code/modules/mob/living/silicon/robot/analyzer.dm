@@ -27,7 +27,7 @@
 	if(!cell || !cell.checked_use(5))
 		to_chat(user, SPAN_WARNING("[src] battery is dead or missing."))
 		return
-	if(!usr.stat_check(SKILL_SCI, SKILL_LEVEL_ADEPT))
+	if(!usr.stat_check(STAT_MEC, STAT_LEVEL_ADEPT))
 		to_chat(usr, SPAN_WARNING("Your mechanical understanding isn't high enough to use this!"))
 		return
 	if((CLUMSY in user.mutations) && prob(15))

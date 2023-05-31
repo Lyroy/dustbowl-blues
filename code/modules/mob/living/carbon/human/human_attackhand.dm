@@ -89,7 +89,7 @@
 				if(!do_after(H, 30, src))
 					return
 
-				var/cpr_efficiency = 3 + max(0, 2 * (H.stats.getStat(SKILL_MED) / 10))
+				var/cpr_efficiency = 3 + max(0, 2 * (H.stats.getStat(STAT_BIO) / 10))
 				adjustOxyLoss(-(min(getOxyLoss(), cpr_efficiency)))
 				updatehealth()
 				H.visible_message(SPAN_DANGER("\The [H] performs CPR on \the [src]!"))
@@ -114,7 +114,7 @@
 			for(var/obj/item/grab/g in get_both_hands(src)) //countering a grab
 
 				if(g.counter_timer>0 && g.affecting == M) //were we grabbed by src in a span of 3 seconds?
-					if(prob(max(30 + H.stats.getStat(SKILL_UNA) - stats.getStat(SKILL_UNA) ** 0.7, 1))) // Harder between low rob, easier between high rob wrestlers
+					if(prob(max(30 + H.stats.getStat(STAT_ROB) - stats.getStat(STAT_ROB) ** 0.7, 1))) // Harder between low rob, easier between high rob wrestlers
 						var/obj/item/grab/G = new /obj/item/grab(M, src)
 						if(!G)	//the grab will delete itself in New if affecting is anchored
 							return
@@ -176,12 +176,12 @@
 
 			//adds a soft cap of 80 robustness. Deminishing returns by taking robustness/10 + 72
 			var/stat_damage = 3 // declared with a value of 3 before normal calculations for safty.
-			if (H.stats.getStat(SKILL_UNA) >= 80)
-				var softcap = H.stats.getStat(SKILL_UNA) / 10
+			if (H.stats.getStat(STAT_ROB) >= 80)
+				var softcap = H.stats.getStat(STAT_ROB) / 10
 				var newrob = (72 + softcap) / 10
 				stat_damage = 3 + max(0, newrob)
 			else
-				stat_damage = 3 + max(0, (H.stats.getStat(SKILL_UNA) / 10))
+				stat_damage = 3 + max(0, (H.stats.getStat(STAT_ROB) / 10))
 			var/limb_efficiency_multiplier = 1
 			var/block = 0
 			var/accurate = 0
@@ -203,7 +203,7 @@
 					accurate = 1
 				if(I_HURT, I_GRAB)
 					// We're in a fighting stance, there's a chance we block
-					if(src.canmove && src!=H && prob(10 + round(src.stats.getStat(SKILL_UNA) / 3)))
+					if(src.canmove && src!=H && prob(10 + round(src.stats.getStat(STAT_TGH) / 3)))
 						block = 1
 
 			if (M.grabbed_by.len)
@@ -235,9 +235,9 @@
 						  were made for projectiles.
 					TODO: proc for melee combat miss chances depending on organ?
 				*/
-				if(prob(50 - H.stats.getStat(SKILL_UNA)))
+				if(prob(50 - H.stats.getStat(STAT_ROB)))
 					hit_zone = ran_zone(hit_zone)
-				if(prob(25 - H.stats.getStat(SKILL_UNA)) && hit_zone != BP_CHEST) // Missed!
+				if(prob(25 - H.stats.getStat(STAT_ROB)) && hit_zone != BP_CHEST) // Missed!
 					if(!src.lying)
 						attack_message = "[H] attempted to strike [src], but missed!"
 					else
@@ -261,7 +261,7 @@
 				H.visible_message(SPAN_DANGER("[attack_message]"))
 
 			//The stronger you are, the louder you strike!
-			var/attack_volume = 25 + H.stats.getStat(SKILL_UNA)
+			var/attack_volume = 25 + H.stats.getStat(STAT_ROB)
 			playsound(loc, ((miss_type) ? (miss_type == 1 ? attack.miss_sound : 'sound/weapons/thudswoosh.ogg') : attack.attack_sound), attack_volume, 1, -1)
 			H.attack_log += text("\[[time_stamp()]\] <font color='red'>[miss_type ? (miss_type == 1 ? "Missed" : "Blocked") : "[pick(attack.attack_verb)]"] [src.name] ([src.ckey])</font>")
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>[miss_type ? (miss_type == 1 ? "Was missed by" : "Has blocked") : "Has Been [pick(attack.attack_verb)]"] by [H.name] ([H.ckey])</font>")
@@ -311,8 +311,8 @@
 						W.afterattack(target,src)
 
 			//Actually disarm them
-			var/rob_attacker = (50 / (1 + 150 / max(1, H.stats.getStat(SKILL_UNA))) + 40) //soft capped amount of recoil that attacker deals
-			var/rob_target = max(0, min(400,stats.getStat(SKILL_UNA))) //hard capped amount of recoil the target negates upon disarming
+			var/rob_attacker = (50 / (1 + 150 / max(1, H.stats.getStat(STAT_ROB))) + 40) //soft capped amount of recoil that attacker deals
+			var/rob_target = max(0, min(400,stats.getStat(STAT_ROB))) //hard capped amount of recoil the target negates upon disarming
 			var/recoil_damage = (rob_attacker * (1 - (rob_target / 400))) //recoil itself
 			for(var/obj/item/I in holding)
 				external_recoil(recoil_damage)

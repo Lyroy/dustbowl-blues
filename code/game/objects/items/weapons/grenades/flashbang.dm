@@ -42,8 +42,10 @@
 		H.flash(3, FALSE , TRUE , TRUE, 15)
 	else
 		M.flash(5, FALSE, TRUE , TRUE)
-	M.stats.addTempStat(SPECIAL_A, -3, 10 SECONDS, "flashbang")
-	M.stats.addTempStat(SPECIAL_P, -5, 10 SECONDS, "flashbang")
+	M.stats.addTempStat(STAT_VIG, -STAT_LEVEL_ADEPT, 10 SECONDS, "flashbang")
+	M.stats.addTempStat(STAT_COG, -STAT_LEVEL_ADEPT, 10 SECONDS, "flashbang")
+	M.stats.addTempStat(STAT_BIO, -STAT_LEVEL_ADEPT, 10 SECONDS, "flashbang")
+	M.stats.addTempStat(STAT_MEC, -STAT_LEVEL_ADEPT, 10 SECONDS, "flashbang")
 	M.update_icons()
 
 /obj/item/proc/flashbang_bang(var/turf/T, var/mob/living/carbon/M, var/explosion_text = "BANG", var/stat_reduction = TRUE, var/intensity = FALSE) //Bang made into an item proc so lot's of stuff can use it wtihout copy - paste
@@ -54,7 +56,7 @@
 //Checking for protections
 	var/eye_safety = 0
 	var/ear_safety = 0
-	var/extra_stat_loss = 0
+	var/stat_def = -STAT_LEVEL_ADEPT
 	if(iscarbon(M))
 		eye_safety = M.eyecheck()
 		if(ishuman(M))
@@ -68,6 +70,8 @@
 //				ear_safety += 1
 			if(istype(M:head, /obj/item/clothing/head/helmet))
 				ear_safety += 1
+			if(M.stats.getPerk(PERK_EAR_OF_QUICKSILVER))
+				stat_def *= 2
 	if(intensity)
 		eye_safety += 1
 
@@ -98,7 +102,7 @@
 	switch(bang_intensity)
 		if(1)
 			if(ear_safety <= 0)
-				extra_stat_loss = 3
+				stat_def *= 5
 				if ((prob(14) || (M == loc && prob(70))))
 					M.adjustEarDamage(rand(1, 10))
 					M.confused = max(M.confused,8)
@@ -107,18 +111,18 @@
 					M.ear_deaf = max(M.ear_deaf,15)
 					M.confused = max(M.confused,8)
 			else
-				extra_stat_loss = 2
+				stat_def *= 2
 				M.confused = max(M.confused,4)
 		if(2)
 			if(ear_safety <= 0)
-				extra_stat_loss = 2
+				stat_def *= 4
 				M.adjustEarDamage(rand(0, 3))
 				M.ear_deaf = max(M.ear_deaf,10)
 				M.confused = max(M.confused,6)
 			else
 				M.confused = max(M.confused,2)
 		if(3)
-			extra_stat_loss = 1
+			stat_def *= 2
 			M.adjustEarDamage(rand(0, 1))
 			M.ear_deaf = max(M.ear_deaf,5)
 			M.confused = max(M.confused,5)
@@ -135,6 +139,27 @@
 		if (M.ear_damage >= 5)
 			to_chat(M, SPAN_DANGER("Your ears start to ring!"))
 	if(stat_reduction)
-		M.stats.addTempStat(SPECIAL_A, -3 - extra_stat_loss, 10 SECONDS, "flashbang")
-		M.stats.addTempStat(SPECIAL_P, -5 - extra_stat_loss, 10 SECONDS, "flashbang")
+		M.stats.addTempStat(STAT_VIG, stat_def, 10 SECONDS, "flashbang")
+		M.stats.addTempStat(STAT_COG, stat_def, 10 SECONDS, "flashbang")
+		M.stats.addTempStat(STAT_BIO, stat_def, 10 SECONDS, "flashbang")
+		M.stats.addTempStat(STAT_MEC, stat_def, 10 SECONDS, "flashbang")
 	M.update_icons()
+
+/obj/item/grenade/flashbang/nt
+	name = "NT FBG \"Holy Light\""
+	desc = "An \"Absolute\" branded flashbang grenade, to spread the light of god."
+	icon_state = "flashbang_nt"
+	item_state = "flashbang_nt"
+	matter = list(MATERIAL_BIOMATTER = 15)
+
+/obj/item/grenade/flashbang/nt/flashbang_without_the_bang(turf/T, mob/living/carbon/M)
+	if(M.get_core_implant(/obj/item/implant/core_implant/cruciform))
+		to_chat(M, span_singing("You are blinded by the Absolute\' light!"))
+		M.flash(0, FALSE, FALSE , FALSE, 0) // angel light , non-harmfull other than the overlay
+		return
+	..()
+
+/obj/item/grenade/flashbang/nt/flashbang_bang(var/turf/T, var/mob/living/carbon/M, var/explosion_text = "BANG", var/stat_reduction = TRUE, var/intensity = FALSE)
+	if(M.get_core_implant(/obj/item/implant/core_implant/cruciform))
+		intensity += 1
+	..()

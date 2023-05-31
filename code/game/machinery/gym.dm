@@ -1,4 +1,3 @@
-/*
 /obj/machinery/gym
 	name = "Advanced Arcade Machine"
 	desc = "Links with your brain to reduce lag to minimum. Now, success really does depend only on your skill!"
@@ -152,4 +151,3 @@
 		add_overlay (occupant_image)
 		add_overlay (robustness_overlay)
 		icon_state = "robustness_base"
-*/

@@ -1,4 +1,3 @@
-/*
 #define ERR_OK 0
 #define ERR_NOTFOUND "not found"
 #define ERR_NOMATERIAL "no material"
@@ -281,7 +280,7 @@
 		return
 	flick("[initial(icon_state)]_work", src)
 	working = TRUE
-	if(!do_after(user, 15 * user.stats.getMult(STAT_MEC, SKILL_LEVEL_GODLIKE), src))
+	if(!do_after(user, 15 * user.stats.getMult(STAT_MEC, STAT_LEVEL_GODLIKE), src))
 		error = "Lost artist."
 		working = FALSE
 		return
@@ -370,4 +369,3 @@
 #undef ERR_PAUSED
 #undef ERR_NOINSIGHT
 
-*/

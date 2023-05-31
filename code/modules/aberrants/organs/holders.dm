@@ -57,7 +57,7 @@
 			using_sci_goggles = G.active	// Meat vision
 
 		// Stat check
-		details_unlocked = (user.stats.getStat(SKILL_MED) >= SKILL_LEVEL_PROF) ? TRUE : FALSE
+		details_unlocked = (user.stats.getStat(STAT_BIO) >= STAT_LEVEL_PROF || user.stats?.getPerk(PERK_ADVANCED_MEDICAL)) ? TRUE : FALSE
 	else if(istype(user, /mob/observer/ghost))
 		details_unlocked = TRUE
 

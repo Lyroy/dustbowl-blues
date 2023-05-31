@@ -75,7 +75,7 @@
 		return 1
 
 /datum/terminal/proc/parse(text, mob/user)
-	if(user.stat_check(SKILL_SCI, SKILL_LEVEL_BASIC))
+	if(user.stat_check(STAT_COG, STAT_LEVEL_BASIC))
 		for(var/datum/terminal_command/command in GLOB.terminal_commands)
 			. = command.parse(text, user, src)
 			if(!isnull(.))

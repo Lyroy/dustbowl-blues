@@ -260,11 +260,10 @@
 
 
 //lazy text span classes defines.
-#define SPAN_NOTICE(text)	"<span class='notice'>[text]</span>"
-#define SPAN_WARNING(text)	"<span class='warning'>[text]</span>"
-#define SPAN_DANGER(text)	"<span class='danger'>[text]</span>"
-#define SPAN_PSION(text)	"<b><font color='purple'>[text]</b></font>"
-#define SPAN_FOBLOCK(text)	"<p class='foblock'>[text]</p>"
+#define SPAN_NOTICE(text)  "<span class='notice'>[text]</span>"
+#define SPAN_WARNING(text) "<span class='warning'>[text]</span>"
+#define SPAN_DANGER(text)  "<span class='danger'>[text]</span>"
+#define SPAN_PSION(text)   "<b><font color='purple'>[text]</b></font>"
 // the thing below allow using SPANning in datum definition, the above can't.
 #define SPAN(class, X) "<span class='" + ##class + "'>" + ##X + "</span>"
 
@@ -404,6 +403,3 @@
         }\
         A.flags &= ~OVERLAY_QUEUED;\
     } while (FALSE)
-
-//Music for when a round ends
-#define END_MUSIC list('sound/music/lobby/end1.ogg','sound/music/lobby/end2.ogg','sound/music/lobby/end3.ogg','sound/music/lobby/end4.ogg','sound/music/lobby/end5.ogg')

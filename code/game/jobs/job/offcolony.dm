@@ -1,4 +1,3 @@
-/*
 /datum/job/off_colony_hunt_master
 	title = "Lodge Hunt Master"
 	total_positions = 1
@@ -164,4 +163,3 @@
 	name = "Outsider"
 	icon_state = "player-black"
 	join_tag = /datum/job/outsider
-*/

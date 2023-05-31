@@ -115,7 +115,14 @@
 	var/alt_title = null
 	var/equip_adjustments
 	assignedrole = "Ghost Role"
-	var/list/stat_modifiers = list()
+	var/list/stat_modifiers = list(
+		STAT_ROB = 8,
+		STAT_TGH = 8,
+		STAT_BIO = 8,
+		STAT_MEC = 8,
+		STAT_VIG = 8,
+		STAT_COG = 8
+	)
 
 	var/list/ghost_role_perks = list()
 

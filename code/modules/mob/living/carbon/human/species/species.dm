@@ -82,7 +82,14 @@
 	var/light_dam                                     // If set, mob will be damaged in light over this value and heal in light below its negative.
 	var/body_temperature = 310.15	                  // Non-IS_SYNTHETIC species will try to stabilize at this temperature.
 	                                                  // (also affects temperature processing)
-	var/list/stat_modifiers = list()
+	var/list/stat_modifiers = list(
+		STAT_BIO = 0,
+		STAT_COG = 0,
+		STAT_MEC = 0,
+		STAT_ROB = 0,
+		STAT_TGH = 0,
+		STAT_VIG = 0
+	)
 
 	var/list/perks = list()
 
@@ -111,6 +118,7 @@
 	var/flags = 0                 // Various specific features.
 	var/spawn_flags = 0           // Flags that specify who can spawn as this species
 	var/slowdown = 0              // Passive movement speed malus (or boost, if negative)
+	var/lower_sanity_process	  // Controls how much sanity is processed on the mob for performance reasons.
 	var/holder_type
 	var/gluttonous                // Can eat some mobs. Values can be GLUT_TINY, GLUT_SMALLER, GLUT_ANYTHING.
 	var/rarity_value = 1          // Relative rarity/collector value for this species.
@@ -148,8 +156,6 @@
 	var/swap_flags = ~HEAVY	// What can we swap place with?
 
 	var/pass_flags = 0
-
-	var/list/permitted_forms  = null
 
 /datum/species/proc/get_eyes(var/mob/living/carbon/human/H)
 	return

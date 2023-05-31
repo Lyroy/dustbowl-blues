@@ -30,6 +30,8 @@
 		/datum/design/bioprinter/medical/advanced/ointment/nt,
 		/datum/design/autolathe/firstaid/nt,
 		//church clothes
+		/datum/design/bioprinter/belt/utility/neotheology,
+		/datum/design/bioprinter/belt/security/neotheology,
 		/datum/design/bioprinter/nt_clothes/church_uniform,
 		/datum/design/bioprinter/nt_clothes/acolyte_uniform,
 		/datum/design/bioprinter/nt_clothes/sports_jacket,
@@ -533,6 +535,17 @@ obj/item/computer_hardware/hard_drive/portable/design/nt/concillium
 	license = -1
 	designs = list(
 		//weapons
+		/datum/design/autolathe/sword/nt_sword,
+		/datum/design/autolathe/sword/nt_longsword,
+		/datum/design/autolathe/sword/nt_dagger,
+		/datum/design/autolathe/sword/nt_halberd,
+		/datum/design/autolathe/sword/nt_scourge,
+		/datum/design/autolathe/sword/nt_spear,
+		/datum/design/autolathe/sword/nt_warhammer,
+		/datum/design/autolathe/sword/nt_flanged,
+		/datum/design/autolathe/sword/nt_power,
+		/datum/design/autolathe/nt/shield/nt_buckler,
+		/datum/design/autolathe/shield/nt_shield,
 		/datum/design/autolathe/gun/plasma/martyr,
 		/datum/design/autolathe/gun/plasma/excubitor,
 		//armor
@@ -563,6 +576,7 @@ obj/item/computer_hardware/hard_drive/portable/design/nt/concillium
 		/datum/design/bioprinter/pouch/quiver,
 		/datum/design/bioprinter/pouch/xbowquiver,
 		//mods
+		/datum/design/autolathe/tool_upgrade/sanctifier,
 		/datum/design/autolathe/gun_upgrade/barrel/excruciator,
 		//power cells
 		/datum/design/bioprinter/nt_cells/small,
@@ -583,6 +597,7 @@ obj/item/computer_hardware/hard_drive/portable/design/nt/concillium
 	license = 12
 	designs = list(
 		/datum/design/autolathe/grenade/nt_explosive,
+		/datum/design/autolathe/grenade/nt_flashbang,
 		/datum/design/autolathe/grenade/nt_frag,
 		/datum/design/autolathe/grenade/nt_smokebomb,
 		/datum/design/autolathe/grenade/nt_heatwave
@@ -595,6 +610,7 @@ obj/item/computer_hardware/hard_drive/portable/design/nt/concillium
 	license = 16
 	designs = list(
 		/datum/design/autolathe/grenade/nt_explosive,
+		/datum/design/autolathe/grenade/nt_flashbang,
 		/datum/design/autolathe/grenade/nt_frag,
 		/datum/design/autolathe/grenade/nt_smokebomb,
 		/datum/design/autolathe/grenade/nt_heatwave

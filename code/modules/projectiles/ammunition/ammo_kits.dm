@@ -33,20 +33,20 @@
 	var/material_points = 15 + extra_material_points // 10 steel and 5 cardboard
 
 	if(user.stats)
-		/*if(user.stats.getPerk(PERK_HANDYMAN))
+		if(user.stats.getPerk(PERK_HANDYMAN))
 			material_points += 11
 		if(user.stats.getPerk(PERK_GUNSMITH))
-			material_points += 11*/
-		switch(user.stats.getStat(SKILL_REP))
-			if(SKILL_LEVEL_BASIC to SKILL_LEVEL_ADEPT)
+			material_points += 11
+		switch(user.stats.getStat(STAT_MEC))
+			if(STAT_LEVEL_BASIC to STAT_LEVEL_ADEPT)
 				material_points += 3
-			if(SKILL_LEVEL_ADEPT to SKILL_LEVEL_EXPERT)
+			if(STAT_LEVEL_ADEPT to STAT_LEVEL_EXPERT)
 				material_points += 6
-			if(SKILL_LEVEL_EXPERT to SKILL_LEVEL_PROF)
+			if(STAT_LEVEL_EXPERT to STAT_LEVEL_PROF)
 				material_points += 9
-			if(SKILL_LEVEL_PROF to SKILL_LEVEL_GODLIKE)
+			if(STAT_LEVEL_PROF to STAT_LEVEL_GODLIKE)
 				material_points += 12
-			if(SKILL_LEVEL_GODLIKE to INFINITY)
+			if(STAT_LEVEL_GODLIKE to INFINITY)
 				material_points += 15
 
 	var/list/array = list(

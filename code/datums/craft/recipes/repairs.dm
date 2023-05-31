@@ -1,7 +1,7 @@
 /datum/craft_recipe/repairs
 	category = "Repairs"
 	time = 60
-	related_stats = list(SKILL_REP)
+	related_stats = list(STAT_MEC)
 	icon_state = "gun"
 
 /datum/craft_recipe/repairs/double_barrel

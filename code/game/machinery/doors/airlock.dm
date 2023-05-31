@@ -634,6 +634,9 @@ There are 9 wires.
 		return
 	var/obj/item/tool/T = usr.get_active_hand()
 	if(istype(T) && T.w_class >= ITEM_SIZE_NORMAL) // We do the checks before proc call, because see "proc overhead".
+		if(istype(T,/obj/item/tool/psionic_omnitool) || istype(T,/obj/item/tool/knife/psionic_blade))
+			to_chat(usr, SPAN_NOTICE("You can't wedge your psionic item in."))
+			return
 		if(!density)
 			usr.drop_item()
 			force_wedge_item(T)
@@ -1014,7 +1017,7 @@ There are 9 wires.
 			return
 		used_now = TRUE
 		if(ishuman(usr))
-			//var/mob/living/carbon/human/H = usr
+			var/mob/living/carbon/human/H = usr
 			if(istype(I, /obj/item/keys/lockpicks))
 				playsound(loc, 'sound/items/keychainrattle.ogg', 30, 1, -2)
 			else
@@ -1025,12 +1028,12 @@ There are 9 wires.
 					to_chat(user, SPAN_NOTICE("Even with the right key you can't open \"deadbolts\"!"))
 					used_now = FALSE
 					return
-				/*if(prob(key_odds+1) && H.stats.getPerk(PERK_JINGLE_JANGLE)) //minmium 1%
+				if(prob(key_odds+1) && H.stats.getPerk(PERK_JINGLE_JANGLE)) //minmium 1%
 					to_chat(user, SPAN_NOTICE("You found the correct key!"))
 					open(0)
 					key_odds = 100 //If we open it we know the combo
 					used_now = FALSE
-					return*/
+					return
 				to_chat(user, SPAN_NOTICE("Damn wrong key!"))
 				key_odds += 1 //We dont try the same key over and over!
 				used_now = FALSE
@@ -1046,7 +1049,7 @@ There are 9 wires.
 	switch(tool_type)
 		if(QUALITY_PRYING)
 			if(!repairing)
-				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_VERY_EASY,  required_stat = list(SKILL_REP, SPECIAL_S)))
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_VERY_EASY,  required_stat = list(STAT_MEC, STAT_ROB)))
 					if(p_open && (operating < 0 || (!operating && welded && !arePowerSystemsOn() && density && (!locked || (stat & BROKEN)))) )
 						to_chat(user, SPAN_NOTICE("You removed the airlock electronics!"))
 
@@ -1091,7 +1094,7 @@ There are 9 wires.
 
 		if(QUALITY_SCREW_DRIVING)
 			var/used_sound = p_open ? 'sound/machines/Custom_screwdriveropen.ogg' :  'sound/machines/Custom_screwdriverclose.ogg'
-			if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP, instant_finish_tier = 30, forced_sound = used_sound))
+			if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC, instant_finish_tier = 30, forced_sound = used_sound))
 				if (p_open)
 					if (stat & BROKEN)
 						to_chat(usr, SPAN_WARNING("The panel is broken and cannot be closed."))
@@ -1104,7 +1107,7 @@ There are 9 wires.
 
 		if(QUALITY_WELDING)
 			if(!repairing && !(operating > 0 ) && density)
-				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = SKILL_REP))
+				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
 					if(!welded)
 						welded = TRUE
 					else
@@ -1118,7 +1121,7 @@ There are 9 wires.
 			if(stat & NOPOWER && locked)
 				to_chat(user, SPAN_NOTICE("You start hammering the bolts into the unlocked position"))
 				// long time and high chance to fail.
-				if(I.use_tool(user, src, WORKTIME_LONG, tool_type, FAILCHANCE_VERY_HARD, required_stat = SKILL_REP))
+				if(I.use_tool(user, src, WORKTIME_LONG, tool_type, FAILCHANCE_VERY_HARD, required_stat = STAT_MEC))
 					to_chat(user, SPAN_NOTICE("You unbolt the door."))
 					locked = FALSE
 			else

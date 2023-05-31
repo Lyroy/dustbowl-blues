@@ -2,7 +2,6 @@
 	name = "Human"
 	name_plural = "Humans"
 	default_form = FORM_HUMAN
-	obligate_form = TRUE
 	obligate_name = FALSE
 	unarmed_types = list(/datum/unarmed_attack/punch, /datum/unarmed_attack/stomp,  /datum/unarmed_attack/kick, /datum/unarmed_attack/bite)
 	blurb = "Humanity originated in the Sol system, and over the last five centuries has spread \
@@ -18,9 +17,17 @@
 	dark_color = "#ffffff"
 	light_color = "#000000"
 
+	stat_modifiers = list(
+		STAT_BIO = 2,
+		STAT_COG = 2,
+		STAT_MEC = 2,
+		STAT_ROB = 2,
+		STAT_TGH = 2,
+		STAT_VIG = 2
+	)
 	darksight = 2
 
-	//perks = list(PERK_IWILLSURVIVE, PERK_BATTLECRY, PERK_TENACITY, PERK_DIVERSE_CULTURE)
+	perks = list(PERK_IWILLSURVIVE, PERK_BATTLECRY, PERK_TENACITY, PERK_DIVERSE_CULTURE)
 
 	spawn_flags = CAN_JOIN
 
@@ -49,9 +56,18 @@
 	dark_color = "#ffffff"
 	light_color = "#000000"
 
+	stat_modifiers = list(
+		STAT_BIO = 5,
+		STAT_COG = 5,
+		STAT_MEC = 5,
+		STAT_ROB = 5,
+		STAT_TGH = 5,
+		STAT_VIG = 5
+	)
+
 	darksight = 3
 
-	//perks = list(PERK_DEBTOR, PERK_SPLICER, PERK_DIVERSE_CULTURE)
+	perks = list(PERK_DEBTOR, PERK_SPLICER, PERK_DIVERSE_CULTURE)
 
 	has_limbs = list(
 		BP_CHEST =  new /datum/organ_description/chest/exalt,
@@ -75,7 +91,7 @@
 		OP_EYES         = /obj/item/organ/internal/eyes
 	)
 
-	spawn_flags = IS_RESTRICTED
+	spawn_flags = CAN_JOIN
 
 /datum/species/exalt_human/get_bodytype()
 	return "Exalt Human"
@@ -123,7 +139,12 @@
 		"You shiver suddenly.",
 		"Your chilly flesh stands out in goosebumps."
 		)
-	spawn_flags = IS_RESTRICTED
+	spawn_flags = CAN_JOIN
+
+	stat_modifiers = list(
+		STAT_ROB = 5,
+		STAT_TGH = 5
+	)
 
 	permitted_ears  = list("Sablekyne Large Horns",
 		"Sablekyne Curled Horns",
@@ -148,7 +169,7 @@
 	permitted_wings = list()
 
 	darksight = 3 //Cat eyes
-	//perks = list(PERK_LASTSTAND, PERK_BONE, PERK_BRAWN, PERK_CARNIVORE)
+	perks = list(PERK_LASTSTAND, PERK_BONE, PERK_BRAWN, PERK_CARNIVORE)
 
 /datum/species/sablekyne/get_bodytype()
 	return "Sablekyne"
@@ -182,7 +203,13 @@
 		"You shiver suddenly.",
 		"Your chilly flesh stands out in goosebumps."
 		)
-	spawn_flags = IS_RESTRICTED
+	spawn_flags = CAN_JOIN
+
+	stat_modifiers = list(
+		STAT_BIO = 10,
+		STAT_COG = 10,
+		STAT_MEC = 10
+	)
 
 	has_process = list(    // which required-organ checks are conducted.
 		OP_HEART        = /obj/item/organ/internal/heart,
@@ -200,7 +227,7 @@
 	permitted_tail  = list()
 	permitted_wings = list()
 
-	//perks = list(PERK_SUDDENBRILLIANCE, PERK_INSPIRED, PERK_ALIEN_NERVES)
+	perks = list(PERK_SUDDENBRILLIANCE, PERK_INSPIRED, PERK_ALIEN_NERVES)
 
 /datum/species/marqua/get_bodytype()
 	return "Mar'Qua"
@@ -230,7 +257,12 @@
 	dark_color = "#ff0000"
 	light_color = "#990000"
 
-	spawn_flags = IS_RESTRICTED
+	spawn_flags = CAN_JOIN
+
+	stat_modifiers = list(
+		STAT_TGH = 5,
+		STAT_VIG = 5
+	)
 
 	permitted_ears  = list("Fennec Ears",
 		"Fox Ears",
@@ -260,7 +292,7 @@
 		)
 	permitted_wings = list()
 
-	//perks = list(PERK_PERFECT_SHOT, PERK_ENHANCEDSENSES)
+	perks = list(PERK_PERFECT_SHOT, PERK_ENHANCEDSENSES)
 
 /datum/species/kriosan/get_bodytype()
 	return "Kriosan"
@@ -291,16 +323,20 @@
 		"You shiver suddenly.",
 		"Your chilly flesh stands out in goosebumps."
 		)
-	spawn_flags = IS_RESTRICTED
+	spawn_flags = CAN_JOIN
 
 	dark_color = "#0000ff"
 	light_color = "#0000ff"
+
+	stat_modifiers = list(
+		STAT_TGH = 10
+	)
 
 	permitted_ears  = list("Sleek Ears")
 	permitted_tail  = list("Akula Tail")
 	permitted_wings = list()
 
-	//perks = list(PERK_RECKLESSFRENZY, PERK_IRON_FLESH, PERK_CARNIVORE)
+	perks = list(PERK_RECKLESSFRENZY, PERK_IRON_FLESH, PERK_CARNIVORE)
 
 /datum/species/akula/get_bodytype()
 	return "Akula"
@@ -320,7 +356,14 @@
 	blurb = "no."
 	darksight = 2
 
-	spawn_flags = IS_RESTRICTED
+	spawn_flags = CAN_JOIN
+
+	stat_modifiers = list(
+		STAT_TGH = 10,
+		STAT_ROB = 10,
+		STAT_VIG = -10,
+		STAT_COG = -10
+	)
 
 	dark_color = "#ffff00"
 	light_color = "#ffff00"
@@ -329,7 +372,7 @@
 	permitted_tail  = list("Naramad Tail", "Naramad Tail 2")
 	permitted_wings = list()
 
-	//perks = list(PERK_ADRENALINEBURST, PERK_BORN_WARRIOR, PERK_STAY_HYDRATED)
+	perks = list(PERK_ADRENALINEBURST, PERK_BORN_WARRIOR, PERK_STAY_HYDRATED)
 
 /datum/species/naramad/get_bodytype()
 	return "Naramad"
@@ -350,8 +393,13 @@
 	poison_type = "oxygen"                        // Poisonous air.
 	exhale_type = "carbon_dioxide"
 	siemens_coefficient = 0.5
-	spawn_flags = IS_RESTRICTED
+	spawn_flags = CAN_JOIN
 	hunger_factor = 0.5
+
+	stat_modifiers = list(
+		STAT_MEC = 5,
+		STAT_COG = 5
+	)
 
 	dark_color = "#dddddd"
 	light_color = "#dddddd"
@@ -366,7 +414,7 @@
 		"Feathered Wings, Large"
 		)
 
-	//perks = list(PERK_OPIFEX_TURRET, PERK_OPIFEX_PATCHKIT)
+	perks = list(PERK_OPIFEX_TURRET, PERK_OPIFEX_PATCHKIT)
 
 /datum/species/vox/get_bodytype()
 	return "Opifex"
@@ -384,13 +432,18 @@
 	max_age = 120
 	blurb = "no."
 	flags = NO_PAIN
-	spawn_flags = IS_RESTRICTED
+	spawn_flags = CAN_JOIN
 	taste_sensitivity = TASTE_HYPERSENSITIVE
 	darksight = 4
 
 	brute_mod =     1.25                    // Physical damage multiplier.
 	burn_mod =      0.85                    // Burn damage multiplier.
 	flash_mod =     3
+
+	stat_modifiers = list(
+		STAT_BIO = 5,
+		STAT_COG = 5
+	)
 
 	dark_color = "#5ac18e"
 	light_color = "#5ac18e"
@@ -467,10 +520,17 @@
 	name_language = null
 	min_age = 18
 	max_age = 90
-	spawn_flags = IS_RESTRICTED
+	spawn_flags = CAN_JOIN
 	total_health = 130                    // Burn damage multiplier.
 	radiation_mod = 0
 	darksight = 3
+
+	stat_modifiers = list(
+		STAT_BIO = 2,
+		STAT_COG = 2,
+		STAT_MEC = 2,
+		STAT_TGH = 2
+	)
 
 	cold_level_1 = 290 //Default 270
 	cold_level_2 = 265 //Default 230
@@ -528,7 +588,7 @@
 		"Spines, Short Membrane",
 		)
 
-	//perks = list(PERK_PURGEINFECTIONS, PERK_PURGETOXINS, PERK_SECOND_SKIN)
+	perks = list(PERK_PURGEINFECTIONS, PERK_PURGETOXINS, PERK_SECOND_SKIN)
 
 /datum/species/cindarite/get_bodytype()
 	return "Cindarite"
@@ -567,9 +627,18 @@
 		OP_EYES =     /obj/item/organ/internal/eyes/plant
 		)
 
-	//perks = list(PERK_FOLKEN_HEALING)
+	perks = list(PERK_FOLKEN_HEALING)
 
-	spawn_flags = IS_RESTRICTED
+	stat_modifiers = list(
+		STAT_BIO = 10,
+		STAT_COG = 0,
+		STAT_MEC = 0,
+		STAT_ROB = 0,
+		STAT_TGH = 0,
+		STAT_VIG = 10
+	)
+
+	spawn_flags = CAN_JOIN
 
 /datum/species/folken/get_bodytype()
 	return "Folken"
@@ -610,9 +679,18 @@
 		OP_KIDNEY_RIGHT = /obj/item/organ/internal/kidney/right,
 		)
 
-	//perks = list(PERK_DARK_HEAL)
+	perks = list(PERK_DARK_HEAL)
 
-	spawn_flags = IS_RESTRICTED
+	stat_modifiers = list(
+		STAT_BIO = 0,
+		STAT_COG = 0,
+		STAT_MEC = 0,
+		STAT_ROB = 20,
+		STAT_TGH = 0,
+		STAT_VIG = 0
+	)
+
+	spawn_flags = CAN_JOIN
 
 /datum/species/mycus/get_bodytype()
 	return "Mycus"
@@ -662,7 +740,7 @@
 		"System analysis reports dangerous levels of cold!."
 		)
 
-	spawn_flags = IS_RESTRICTED
+	spawn_flags = CAN_JOIN
 
 /datum/species/full_body_prosthetic/get_bodytype()
 	return "Full Body Prosthetic"
@@ -712,7 +790,7 @@
 		"System analysis reports dangerous levels of cold!."
 		)
 
-	spawn_flags = IS_RESTRICTED
+	spawn_flags = CAN_JOIN
 
 /datum/species/unbranded_synth/get_bodytype()
 	return "Unbranded Full Body Prosthetic"
@@ -771,7 +849,12 @@
 		"System analysis reports dangerous levels of cold!."
 		)
 
-	spawn_flags = IS_RESTRICTED
+	stat_modifiers = list(
+		STAT_COG = 5,
+		STAT_MEC = 5
+	)
+
+	spawn_flags = CAN_JOIN
 
 /datum/species/soteria_synthetic/get_bodytype()
 	return "Soteria Synthetic"
@@ -829,7 +912,11 @@
 		"System analysis reports dangerous levels of cold!."
 		)
 
-	spawn_flags = IS_RESTRICTED
+	stat_modifiers = list(
+		STAT_MEC = 10
+	)
+
+	spawn_flags = CAN_JOIN
 
 /datum/species/artificer_guild_synthetic/get_bodytype()
 	return "Artificer Guild Synthetic"
@@ -885,7 +972,11 @@
 		"System analysis reports dangerous levels of cold!."
 		)
 
-	spawn_flags = IS_RESTRICTED
+	stat_modifiers = list(
+		STAT_TGH = 10
+	)
+
+	spawn_flags = CAN_JOIN
 
 /datum/species/blackshield_synthetic/get_bodytype()
 	return "Blackshield Synthetic"
@@ -942,7 +1033,11 @@
 		"System analysis reports dangerous levels of cold!."
 		)
 
-	spawn_flags = IS_RESTRICTED
+	stat_modifiers = list(
+		STAT_BIO = 10
+	)
+
+	spawn_flags = CAN_JOIN
 
 /datum/species/church_synthetic/get_bodytype()
 	return "Absolute Synthetic"
@@ -998,6 +1093,10 @@
 		"System analysis reports dangerous levels of cold!."
 		)
 
+	stat_modifiers = list(
+		STAT_BIO = 10
+	)
+
 	spawn_flags = IS_RESTRICTED
 
 /datum/species/slime
@@ -1043,9 +1142,10 @@
 		BP_R_LEG =  new /datum/organ_description/leg/right/slime
 	)
 
-	//perks = list(PERK_SPEED, PERK_LIMB_REGEN, PERK_MIND_BOOST, PERK_BODY_BOOST)
+	perks = list(PERK_SPEED, PERK_LIMB_REGEN, PERK_MIND_BOOST, PERK_BODY_BOOST)
 
 /datum/species/slime/handle_death(var/mob/living/carbon/human/H)
 	spawn(1)
 		if(H)
 			H.gib()
+

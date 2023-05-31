@@ -76,10 +76,10 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 
 	//Hex: Don't questions, just trust me on this one
 	var/nepotism = 1
-	/*if(H && H.stats.getPerk(PERK_NEPOTISM))
+	if(H && H.stats.getPerk(PERK_NEPOTISM))
 		nepotism += 0.3
 	if(H && H.stats.getPerk(PERK_DEBTOR))
-		nepotism -= 0.5*/
+		nepotism -= 0.5
 	set_nepotismMod(nepotism)
 	//set_nepotismMod(1)
 
@@ -103,16 +103,14 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 	//set_homeSystem(H ? html_decode(H.get_cultural_value(TAG_HOMEWORLD)) : "Unset")
 	//set_faction(H ? html_decode(H.get_cultural_value(TAG_FACTION)) : "Unset")
 
-	/*
 	if(H)
 		var/stats = list()
 		for(var/statName in ALL_STATS)
 			var/points = H.stats.getStat(statName,pure = TRUE)
-			if(points > SKILL_LEVEL_NONE)
+			if(points > STAT_LEVEL_NONE)
 				stats += "[statName]: [points] ([statPointsToLevel(points)])"
 
 		set_skillset(jointext(stats,"\n"))
-	*/
 
 	// Antag record
 	set_antagRecord(H && H.exploit_record && !jobban_isbanned(H, "Records") ? html_decode(H.exploit_record) : "")

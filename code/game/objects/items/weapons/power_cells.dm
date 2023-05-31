@@ -559,7 +559,7 @@
 		return
 	inuse = TRUE
 	user.visible_message(SPAN_NOTICE("[user] starts turning the handle on [src]."), SPAN_NOTICE("You start to turn the handle on [src]."))
-	if(do_after(user, 12 + (30 * user.stats.getMult(SKILL_ATH, SKILL_LEVEL_ADEPT))))
+	if(do_after(user, 12 + (30 * user.stats.getMult(STAT_TGH, STAT_LEVEL_ADEPT))))
 		if(!cell)
 			return
 		if(cell.charge >= cell.maxcharge)

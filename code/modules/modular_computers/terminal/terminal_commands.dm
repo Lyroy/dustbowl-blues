@@ -7,8 +7,8 @@ GLOBAL_LIST_INIT(terminal_commands, init_subtypes(/datum/terminal_command))
 	var/pattern                           // Matched using regex
 	var/regex_flags                       // Used in the regex
 	var/regex/regex                       // The actual regex, produced from above.
-	var/core_skill = SKILL_SCI       // The skill which is checked
-	var/skill_needed = SKILL_LEVEL_EXPERT       // How much skill the user needs to use this. This is not for critical failure effects at unskilled; those are handled globally.
+	var/core_skill = STAT_COG       // The skill which is checked
+	var/skill_needed = STAT_LEVEL_EXPERT       // How much skill the user needs to use this. This is not for critical failure effects at unskilled; those are handled globally.
 	var/req_access = list()               // Stores access needed, if any
 	var/req_one_access = list()           // Like for objects
 
@@ -48,7 +48,7 @@ Subtypes
 	name = "exit"
 	man_entry = list("Format: exit", "Exits terminal immediately.")
 	pattern = "^exit$"
-	skill_needed = SKILL_LEVEL_BASIC
+	skill_needed = STAT_LEVEL_BASIC
 
 /datum/terminal_command/exit/proper_input_entered(text, mob/user, terminal)
 	qdel(terminal)
@@ -161,7 +161,7 @@ Subtypes
 	man_entry = list("Format: locate nid", "Attempts to locate the device with the given nid by triangulating via relays.")
 	pattern = "locate"
 	req_access = list(access_network)
-	skill_needed = SKILL_LEVEL_PROF
+	skill_needed = STAT_LEVEL_PROF
 
 /datum/terminal_command/locate/proper_input_entered(text, mob/user, datum/terminal/terminal)
 	. = "Failed to find device with given nid. Try ping for diagnostics."

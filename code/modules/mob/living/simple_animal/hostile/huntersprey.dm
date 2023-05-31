@@ -284,7 +284,7 @@
 
 /mob/living/simple_animal/hostile/renderpatriarch/proc/thunderhowl(var/turf/T, var/mob/living/carbon/M)
 	var/ear_safety = 0
-	var/stat_def = -SKILL_LEVEL_ADEPT
+	var/stat_def = -STAT_LEVEL_ADEPT
 	if(iscarbon(M))
 		if(ishuman(M))
 			if(istype(M:l_ear, /obj/item/clothing/ears/earmuffs) || istype(M:r_ear, /obj/item/clothing/ears/earmuffs))
@@ -293,6 +293,8 @@
 				ear_safety += 1
 			if(istype(M:head, /obj/item/clothing/head/helmet))
 				ear_safety += 1
+			if(M.stats.getPerk(PERK_EAR_OF_QUICKSILVER))
+				stat_def *= 2
 
 //Now applying sound
 	if((get_dist(M, T) <= 2 || src.loc == M.loc || src.loc == M))
@@ -330,11 +332,10 @@
 	else
 		if (M.ear_damage >= 5)
 			to_chat(M, SPAN_DANGER("Your ears start to ring!"))
-	// REPLACE WITH SPECIAL STATS
-	/*M.stats.addTempStat(STAT_VIG, stat_def, 10 SECONDS, "shaken")
+	M.stats.addTempStat(STAT_VIG, stat_def, 10 SECONDS, "shaken")
 	M.stats.addTempStat(STAT_COG, stat_def, 10 SECONDS, "shaken")
 	M.stats.addTempStat(STAT_BIO, stat_def, 10 SECONDS, "shaken")
-	M.stats.addTempStat(STAT_MEC, stat_def, 10 SECONDS, "shaken")*/
+	M.stats.addTempStat(STAT_MEC, stat_def, 10 SECONDS, "shaken")
 	M.update_icons()
 
 /mob/living/simple_animal/hostile/poporavtomat

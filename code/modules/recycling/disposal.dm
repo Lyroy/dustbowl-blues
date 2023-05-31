@@ -88,7 +88,7 @@
 				return
 			if(mode<=0)
 				var/used_sound = mode ? 'sound/machines/Custom_screwdriverclose.ogg' : 'sound/machines/Custom_screwdriveropen.ogg'
-				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP, instant_finish_tier = 30, forced_sound = used_sound))
+				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC, instant_finish_tier = 30, forced_sound = used_sound))
 					if(mode==0) // It's off but still not unscrewed
 						mode=-1 // Set it to doubleoff l0l
 						to_chat(user, "You remove the screws around the power connection.")
@@ -104,7 +104,7 @@
 				to_chat(user, "Eject the items first!")
 				return
 			if(mode==-1)
-				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP))
+				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
 					to_chat(user, "You sliced the floorweld off the disposal unit.")
 					var/obj/structure/disposalconstruct/C = new (src.loc)
 					src.transfer_fingerprints_to(C)
@@ -166,7 +166,7 @@
 				V.show_message("[usr] starts stuffing [target.name] into the disposal.", 3)
 
 		var/delay = 20
-		if(!do_after(usr, max(delay * usr.stats.getMult(SKILL_ATH, SKILL_LEVEL_EXPERT), delay * 0.66), src))
+		if(!do_after(usr, max(delay * usr.stats.getMult(STAT_VIG, STAT_LEVEL_EXPERT), delay * 0.66), src))
 			return
 		if(target_loc != target.loc)
 			return
@@ -497,12 +497,11 @@
 
 /obj/machinery/disposal/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(ishuman(mover) && mover.throwing)
-		/*var/mob/living/carbon/human/H = mover
+		var/mob/living/carbon/human/H = mover
 		if(H.stats.getPerk(PERK_SPACE_ASSHOLE))
 			H.forceMove(src)
 			visible_message("[H] dives into \the [src]!")
 			flush = TRUE
-		*/
 		return
 	else if (istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
@@ -602,9 +601,9 @@
 				// Hurt any living creature jumping down disposals
 				var/multiplier = 1
 
-				// SKILL_REP or STAT_TGH help you reduce disposal damage, with no damage being recieved at all at SKILL_LEVEL_EXPERT
+				// STAT_MEC or STAT_TGH help you reduce disposal damage, with no damage being recieved at all at STAT_LEVEL_EXPERT
 				//if(H.stats)
-				//	multiplier = min(H.stats.getMult(SKILL_REP, SKILL_LEVEL_EXPERT), H.stats.getMult(STAT_TGH, SKILL_LEVEL_EXPERT))
+				//	multiplier = min(H.stats.getMult(STAT_MEC, STAT_LEVEL_EXPERT), H.stats.getMult(STAT_TGH, STAT_LEVEL_EXPERT))
 				//Soj edit we want these to be REALLY deadly and not good for fast travel
 				if(multiplier > 0)
 					H.take_overall_damage(8 * multiplier, 0, "Blunt Trauma")
@@ -926,7 +925,7 @@
 	src.add_fingerprint(user)
 
 	if(QUALITY_WELDING in I.tool_qualities)
-		if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = SKILL_REP))
+		if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = STAT_MEC))
 			welded()
 
 	return
@@ -1404,7 +1403,7 @@
 	src.add_fingerprint(user)
 
 	if(QUALITY_WELDING in I.tool_qualities)
-		if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = SKILL_REP))
+		if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = STAT_MEC))
 			welded()
 
 	// would transfer to next pipe segment, but we are in a trunk
@@ -1521,7 +1520,7 @@
 		if(QUALITY_SCREW_DRIVING)
 			if(mode<=0)
 				var/used_sound = mode ? 'sound/machines/Custom_screwdriverclose.ogg' : 'sound/machines/Custom_screwdriveropen.ogg'
-				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP, instant_finish_tier = 30, forced_sound = used_sound))
+				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC, instant_finish_tier = 30, forced_sound = used_sound))
 					if(mode==0) // It's off but still not unscrewed
 						mode=-1 // Set it to doubleoff l0l
 						to_chat(user, "You remove the screws around the power connection.")
@@ -1534,7 +1533,7 @@
 
 		if(QUALITY_WELDING)
 			if(mode==-1)
-				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY, required_stat = SKILL_REP))
+				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
 					to_chat(user, "You sliced the floorweld off the disposal outlet.")
 					var/obj/structure/disposalconstruct/C = new (src.loc)
 					src.transfer_fingerprints_to(C)

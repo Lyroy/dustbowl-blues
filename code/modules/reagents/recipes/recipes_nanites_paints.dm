@@ -1,5 +1,4 @@
  //Nanites
-/*
 /datum/chemical_reaction/arad
 	result = "arad nanites"
 	required_reagents = list("nanites" = 1, "arithrazine" = 1)
@@ -243,4 +242,3 @@
 
 /datum/chemical_reaction/aluminum_paint/send_data()
 	return "#F0F8FF"
-*/

@@ -149,7 +149,9 @@
 	var/known_implants = list(
 		/obj/item/implant/chem,
 		/obj/item/implant/death_alarm,
-		/obj/item/implant/tracking
+		/obj/item/implant/tracking,
+		/obj/item/implant/core_implant/cruciform,
+		/obj/item/implant/excelsior
 	)
 	var/delete
 	var/temphtml
@@ -179,8 +181,8 @@
 	if(!ishuman(connected.occupant))
 		to_chat(user, SPAN_WARNING("This device can only scan compatible lifeforms."))
 		return
-	if(!usr.stat_check(SKILL_SCI, 50)) //Are we missing the perk AND to low on bio? Needs bio 25 so cog 50 to bypass
-		to_chat(usr, SPAN_WARNING("Your scientific understanding isn't enough to use this."))
+	if(!usr.stats?.getPerk(PERK_MEDICAL_EXPERT) && !usr.stat_check(STAT_BIO, STAT_LEVEL_EXPERT) && !usr.stat_check(STAT_COG, 50)) //Are we missing the perk AND to low on bio? Needs bio 25 so cog 50 to bypass
+		to_chat(usr, SPAN_WARNING("Your biological understanding isn't enough to use this."))
 		return
 
 	var/dat

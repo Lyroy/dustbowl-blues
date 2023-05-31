@@ -34,7 +34,7 @@ meteor_act
 
 		var/check_absorb = .
 		//Shrapnel
-		if(P.can_embed() && (check_absorb < 2))
+		if(P.can_embed() && (check_absorb < 2) && !src.stats.getPerk(PERK_IRON_FLESH))
 			var/armor = getarmor_organ(organ, ARMOR_BULLET)
 			if(prob((20 + max(P.damage_types[BRUTE] - armor, -10) * P.embed_mult)))
 				if(!P.shrapnel_type)
@@ -51,7 +51,7 @@ meteor_act
 /mob/living/carbon/human/hit_impact(damage, dir)
 	if(incapacitated(INCAPACITATION_DEFAULT|INCAPACITATION_BUCKLED_PARTIALLY))
 		return
-	if(damage < stats.getSpecial(SPECIAL_E))
+	if(damage < stats.getStat(STAT_TGH))
 		..()
 		return
 
@@ -63,12 +63,12 @@ meteor_act
 
 	var/stumbled = FALSE
 
-	if(prob(60 - stats.getSpecial(SPECIAL_E)))
+	if(prob(60 - stats.getStat(STAT_TGH)))
 		stumbled = TRUE
 		step(src, pick(cardinal - hit_dirs))
 
 	for(var/atom/movable/A in oview(1))
-		if(!A.Adjacent(src) || prob(50 + stats.getSpecial(SPECIAL_E)))
+		if(!A.Adjacent(src) || prob(50 + stats.getStat(STAT_TGH)))
 			continue
 
 		if(istype(A, /obj/structure/table))

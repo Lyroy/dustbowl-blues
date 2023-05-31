@@ -121,6 +121,11 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	for(var/obj/item/loot in contents)
 		if(prob(66))
 			loot.make_old()
+		if(istype(loot, /obj/item/reagent_containers/food/snacks))
+			var/obj/item/reagent_containers/food/snacks/S = loot
+			S.junk_food = TRUE
+			if(prob(20))
+				S.reagents.add_reagent("toxin", rand(2, 5))
 
 	loot = new(src)
 	loot.max_w_class = ITEM_SIZE_HUGE
@@ -295,6 +300,10 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 		visible_message("<span class='notice'>\A hidden [big_item] is uncovered from beneath the [src]!</span>")
 		big_item.forceMove(get_turf(src))
 		big_item = null
+	else if(rare_item && prob(rare_item_chance))
+		var/obj/O = pickweight(RANDOM_RARE_ITEM - /obj/item/stash_spawner)
+		O = new O(get_turf(src))
+		visible_message("<span class='notice'><span style='color:orange'>\A rare [O.name] is found beneath the [src]!</span>")
 	else if(rare_item && prob(50))
 		new /obj/item/stack/sheet/refined_scrap/random(src.loc)
 		visible_message("<span class='notice'><span style='color:orange'>A pile of refined scrap is found beneath the [src]!</span>")
@@ -306,20 +315,18 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	var/tool_type = W.get_tool_type(user, usable_qualities, src)
 	switch(tool_type)
 		if(QUALITY_SHOVELING)
-			if(W.use_tool(user, src, WORKTIME_NORMAL, QUALITY_SHOVELING, FAILCHANCE_VERY_EASY, required_stat = SKILL_ATH, forced_sound = "rummage"))
+			if(W.use_tool(user, src, WORKTIME_NORMAL, QUALITY_SHOVELING, FAILCHANCE_VERY_EASY, required_stat = STAT_ROB, forced_sound = "rummage"))
 				user.visible_message(SPAN_NOTICE("[user] [pick(ways)] \the [src]."))
 				user.do_attack_animation(src)
-				/*
 				if(user.stats.getPerk(PERK_JUNKBORN))
 					rare_item = TRUE
 				else
-				*/
-				rare_item = FALSE
+					rare_item = FALSE
 				dig_out_lump(user.loc, 0)
 				shuffle_loot()
 				clear_if_empty()
 		if(QUALITY_HAMMERING)
-			if(W.use_tool(user,src, WORKTIME_EXTREMELY_LONG, QUALITY_HAMMERING, FAILCHANCE_HARD, required_stat = SKILL_ATH, forced_sound = "rummage"))
+			if(W.use_tool(user,src, WORKTIME_EXTREMELY_LONG, QUALITY_HAMMERING, FAILCHANCE_HARD, required_stat = STAT_ROB, forced_sound = "rummage"))
 				user.visible_message(SPAN_NOTICE("[user] compacts \the [src] into a solid mass!"))
 				make_cube()
 
@@ -414,6 +421,7 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 		/obj/random/circuitboard,
 		/obj/random/science,
 		/obj/random/material_ore,
+		/obj/random/common_oddities = 0.5,
 		/obj/random/pack/rare,//No weight on this, rare loot is pretty likely to appear in scientific scrap
 		/obj/random/tool_upgrade,
 		/obj/random/mecha_equipment)
@@ -439,6 +447,7 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 		/obj/random/lowkeyrandom = 5,
 		/obj/random/junk/nondense = 4,
 		/obj/item/stack/rods/random = 3,
+		/obj/random/common_oddities = 0.5,
 		/obj/random/cigarettes = 0.3,
 		/obj/random/material_ore,
 		/obj/item/material/shard,

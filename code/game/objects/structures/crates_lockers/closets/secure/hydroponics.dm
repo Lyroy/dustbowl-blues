@@ -40,6 +40,7 @@
 
 /obj/structure/closet/secure_closet/personal/agrolyte/populate_contents()
 	new /obj/item/clothing/suit/rank/botanist(src)
+	new /obj/item/storage/belt/utility/neotheology(src)
 	new /obj/item/storage/bag/produce(src)
 	new /obj/item/clothing/under/rank/botanist(src)
 	new /obj/item/device/scanner/plant(src)

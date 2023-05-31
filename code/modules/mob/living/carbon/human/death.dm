@@ -43,6 +43,9 @@
 			SPAN_DANGER("Warning: user death event. Mobility control passed to integrated intelligence system.")
 		)
 
+	if(stats.getPerk(PERK_TERRIBLE_FATE))
+		visible_message(SPAN_WARNING("their inert body emits a strange sensation and a cold invades your body. Their screams before dying recount in your mind."))
+
 	. = ..(gibbed,form.death_message)
 	if(!gibbed)
 
@@ -51,6 +54,24 @@
 		if(form.death_sound)
 			playsound(loc, form.death_sound, 80, 1, 1)
 	handle_hud_list()
+
+	var/obj/item/implant/core_implant/cruciform/C = get_core_implant(/obj/item/implant/core_implant/cruciform)
+	if(C && C.active)
+		var/obj/item/cruciform_upgrade/upgrade = C.upgrade
+		if(upgrade && upgrade.active && istype(upgrade, CUPGRADE_MARTYR_GIFT))
+			var/obj/item/cruciform_upgrade/martyr_gift/martyr = upgrade
+			visible_message(SPAN_DANGER("The [C] emit a massive light!"))
+			var/damage_healed
+			for(var/mob/living/L in oviewers(6, src))
+				if(ishuman(L))
+					var/mob/living/carbon/human/H = L
+					damage_healed = martyr.damage_healed / get_dist(src, H)
+					H.adjustFireLoss(-damage_healed)
+					H.adjustBruteLoss(-damage_healed)
+					to_chat(H, SPAN_DANGER("You are get healed by radiance!"))
+
+			qdel(martyr)
+			C.upgrade = null
 
 /mob/living/carbon/human/proc/ChangeToHusk()
 	if(HUSK in mutations)	return

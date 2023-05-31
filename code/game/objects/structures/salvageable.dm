@@ -16,10 +16,9 @@
 /obj/structure/salvageable/attackby(obj/item/I, mob/user)
 	if(I.get_tool_type(usr, list(QUALITY_PRYING), src))
 		to_chat(user, SPAN_NOTICE("You start to salvage anything useful from \the [src]."))
-		if(I.use_tool(user, src, WORKTIME_LONG, QUALITY_PRYING, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
+		if(I.use_tool(user, src, WORKTIME_LONG, QUALITY_PRYING, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
 			dismantle()
-			/*
-			if(prob(user.stats.getStat(SPECIAL_P)+user.stats.getStat(SKILL_REP)) && user.stats.getPerk(PERK_HANDYMAN))
+			if(prob(user.stats.getStat(STAT_COG)+user.stats.getStat(STAT_MEC)) && user.stats.getPerk(PERK_HANDYMAN))
 				to_chat(user, SPAN_NOTICE("Thanks to your training on salvaging machines, you find additional materials in \the [src]."))
 				new /obj/random/material_handyman(src.loc)
 				new /obj/item/stack/sheet/refined_scrap/random(src.loc) //So we can fuel scap-pacmans
@@ -38,7 +37,6 @@
 					new /obj/item/scrap_lump(src.loc)
 				if(prob(5))
 					new /obj/item/scrap_lump(src.loc)
-			*/
 			qdel(src)
 			return
 
@@ -323,7 +321,7 @@ obj/structure/salvageable/bliss/Initialize()
 /obj/structure/salvageable/bliss/attackby(obj/item/I, mob/user)
 	if(I.get_tool_type(usr, list(QUALITY_PRYING), src))
 		to_chat(user, SPAN_NOTICE("You start salvage anything useful from \the [src]."))
-		if(I.use_tool(user, src, WORKTIME_LONG, QUALITY_PRYING, FAILCHANCE_NORMAL, required_stat = SKILL_REP))
+		if(I.use_tool(user, src, WORKTIME_LONG, QUALITY_PRYING, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
 			playsound(user, 'sound/machines/shutdown.ogg', 60, 1)
 			dismantle()
 			qdel(src)
@@ -582,3 +580,77 @@ obj/structure/salvageable/bliss/Initialize()
 		/obj/item/trash/material/circuit = 60,
 		/obj/item/circuitboard/os_generator = 30
 	)
+
+
+// Deepmaints cryo pod
+
+
+/obj/structure/salvageable/deepmaints_cryopod
+	name = "locked cryopod"
+	desc = "A old cryo pod thats sealed shut. What wounders could be inside..."
+	icon = 'icons/obj/cryogenics.dmi' // map only
+	icon_state = "pod_preview"
+	salvageable_parts = list(
+		/obj/item/stock_parts/console_screen = 80,
+		/obj/item/stock_parts/micro_laser = 50,
+		/obj/item/stock_parts/micro_laser = 20,
+		/obj/item/scrap_lump = 40,
+		/obj/item/scrap_lump = 40,
+		/obj/item/stock_parts/capacitor = 50,
+		/obj/item/trash/material/circuit = 60,
+		/obj/item/reagent_containers/glass/beaker = 40,
+		/obj/item/storage/freezer/medical/contains_teratomas = 10
+	)
+	var/mob/occupant = null
+	var/on = FALSE
+
+/obj/structure/salvageable/deepmaints_cryopod/dismantle()
+	new /obj/machinery/constructable_frame/machine_frame/vertical (src.loc)
+	for(var/path in salvageable_parts)
+		if(prob(salvageable_parts[path]))
+			new path (loc)
+	if(occupant)
+		new occupant(src.loc)
+	return
+
+/obj/structure/salvageable/deepmaints_cryopod/Initialize()
+	. = ..()
+	if(prob(80))
+		occupant = pick(subtypesof(/mob/living/simple_animal/hostile/hivemind))
+
+	if(prob(40))
+		on = TRUE
+
+	salvageable_parts = list(
+		/obj/item/stock_parts/console_screen = 80,
+		/obj/item/stock_parts/micro_laser = 50,
+		/obj/item/stock_parts/micro_laser = 20,
+		/obj/item/scrap_lump = 40,
+		/obj/item/scrap_lump = 40,
+		/obj/item/stock_parts/capacitor = 50,
+		/obj/item/trash/material/circuit = 60,
+		/obj/item/reagent_containers/glass/beaker = 40,
+		/obj/item/storage/freezer/medical/contains_teratomas = 50
+	)
+
+	icon = 'icons/obj/cryogenics_split.dmi'
+	update_icon()
+
+/obj/structure/salvageable/deepmaints_cryopod/update_icon()
+	cut_overlays()
+	icon_state = "pod[on]"
+	var/image/I
+
+	I = image(icon, "pod[on]_top")
+	I.layer = WALL_OBJ_LAYER
+	I.pixel_z = 32
+	add_overlay(I)
+
+	I = image(icon, "lid[on]")
+	I.layer = WALL_OBJ_LAYER
+	add_overlay(I)
+
+	I = image(icon, "lid[on]_top")
+	I.layer = WALL_OBJ_LAYER
+	I.pixel_z = 32
+	add_overlay(I)

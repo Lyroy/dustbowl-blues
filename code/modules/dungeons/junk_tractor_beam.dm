@@ -1,4 +1,3 @@
-/*
 #define BEAM_IDLE        0
 #define BEAM_CAPTURING   1
 #define BEAM_STABILIZING 2
@@ -934,4 +933,3 @@
 #undef JTB_MAXX
 #undef JTB_MAXY
 #undef JTB_OFFSET
-*/

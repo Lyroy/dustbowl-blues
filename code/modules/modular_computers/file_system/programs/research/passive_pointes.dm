@@ -62,7 +62,7 @@
 	progress = 0
 
 /datum/computer_file/program/point_miner/proc/get_speed()
-	var/skill_speed_modifier = max(100 + (operator_skill - SKILL_LEVEL_BASIC) * 2, 25) / 100
+	var/skill_speed_modifier = max(100 + (operator_skill - STAT_LEVEL_BASIC) * 2, 25) / 100
 	return computer.processor_unit.max_programs * skill_speed_modifier
 
 /datum/computer_file/program/point_miner/Topic(href, href_list)
@@ -75,7 +75,7 @@
 		if(running)
 			return 1
 		var/obj/item/computer_hardware/processor_unit/CPU = computer.processor_unit
-		operator_skill = get_operator_skill(usr, SKILL_SCI)
+		operator_skill = get_operator_skill(usr, STAT_COG)
 		if(!istype(CPU) || !CPU.check_functionality())
 			message = "A fatal hardware error has been detected."
 			return

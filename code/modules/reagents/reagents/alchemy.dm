@@ -259,8 +259,8 @@
 	M.add_chemical_effect(CE_TOXIN, 1)
 
 /datum/reagent/mind_exspander/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
-	M.stats.addTempStat(SKILL_SCI, SKILL_LEVEL_ADEPT, STIM_TIME, "mind_exspander")
-	M.stats.addTempStat(SKILL_MED, SKILL_LEVEL_ADEPT, STIM_TIME, "mind_exspander")
+	M.stats.addTempStat(STAT_COG, STAT_LEVEL_ADEPT, STIM_TIME, "mind_exspander")
+	M.stats.addTempStat(STAT_BIO, STAT_LEVEL_ADEPT, STIM_TIME, "mind_exspander")
 
 /datum/reagent/work_tonic
 	name = "Work Tonic"
@@ -281,7 +281,7 @@
 	M.add_chemical_effect(CE_TOXIN, 1)
 
 /datum/reagent/work_tonic/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
-	M.stats.addTempStat(SKILL_REP, SKILL_LEVEL_EXPERT, STIM_TIME, "work_tonic")
+	M.stats.addTempStat(STAT_MEC, STAT_LEVEL_EXPERT, STIM_TIME, "work_tonic")
 
 /datum/reagent/ethanol/combat_brew
 	name = "Medvesila Brew"
@@ -308,8 +308,8 @@
 
 /datum/reagent/ethanol/combat_brew/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
 	..()
-	M.stats.addTempStat(SPECIAL_E, 1, STIM_TIME, "combat_brew")
-	M.stats.addTempStat(SKILL_ATH, SKILL_LEVEL_ADEPT, STIM_TIME, "combat_brew")
+	M.stats.addTempStat(STAT_TGH, STAT_LEVEL_ADEPT, STIM_TIME, "combat_brew")
+	M.stats.addTempStat(STAT_ROB, STAT_LEVEL_ADEPT, STIM_TIME, "combat_brew")
 
 /datum/reagent/ethanol/eye_lid // It's a liquor
 	name = "Gwalch Liquor"
@@ -351,7 +351,7 @@
 
 /datum/reagent/ethanol/eye_lid/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
 	..()
-	M.stats.addTempStat(SPECIAL_P, 1, STIM_TIME, "eye_lid")
+	M.stats.addTempStat(STAT_VIG, STAT_LEVEL_ADEPT, STIM_TIME, "eye_lid")
 
 /datum/reagent/red_heart
 	name = "Vitaurum"

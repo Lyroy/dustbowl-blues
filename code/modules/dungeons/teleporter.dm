@@ -1,4 +1,3 @@
-/*
 /obj/rogue/teleporter //the teleporter itself
 	name = "ancient teleporter"
 	icon = 'icons/obj/bluespace_portal.dmi'
@@ -259,4 +258,3 @@
 		var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
 		sparks.set_up(3, 0, get_turf(user))
 		sparks.start()
-*/

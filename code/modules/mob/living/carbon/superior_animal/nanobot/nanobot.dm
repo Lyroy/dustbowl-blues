@@ -93,11 +93,10 @@
 /mob/living/carbon/superior_animal/nanobot/examine(mob/user)
 	..()
 	if(iscarbon(user) || issilicon(user))
-		/*
 		var/robotics_expert = user.stats.getPerk(PERK_ROBOTICS_EXPERT)
 		if(robotics_expert) // Are we an expert in robots or examining ourselves?
 			to_chat(user, SPAN_NOTICE("[name] is currently at [(health/maxHealth)*100]% integrity!")) // Give a more accurate reading.
-		else */if(health < maxHealth * 0.10)
+		else if(health < maxHealth * 0.10)
 			to_chat(user, SPAN_DANGER("It looks like they are on their last legs!"))
 		else if (health < maxHealth * 0.20)
 			to_chat(user, SPAN_DANGER("It's grievously wounded!"))
@@ -144,17 +143,15 @@
 
 		if(QUALITY_WELDING in T.tool_qualities)
 			if(health < maxHealth)
-				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = SKILL_REP))
+				if(T.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = STAT_MEC))
 					user.visible_message(
-										SPAN_NOTICE("[user] repairs the damage to [src.name]."),
-										SPAN_NOTICE("You repair the damage to [src.name].")
+										SPAN_NOTICE("[user] [user.stats.getPerk(PERK_ROBOTICS_EXPERT) ? "expertly" : ""] repair the damage to [src.name]."),
+										SPAN_NOTICE("You [user.stats.getPerk(PERK_ROBOTICS_EXPERT) ? "expertly" : ""] repair the damage to [src.name].")
 										)
-					/*
 					if(user.stats.getPerk(PERK_ROBOTICS_EXPERT))
 						health += 50
 					else
-					*/
-					health += (rand(30, 50))
+						health += (rand(30, 50))
 					return
 				return
 			to_chat(user, "[src] doesn't need repairs.")
@@ -165,17 +162,15 @@
 				follow_distance = input(user, "How far should [src.name] follow?", "Distance to set", initial(follow_distance)) as null | anything in list(1, 2, 3, 4, 5)
 				if(density && follow_distance < 1)
 					follow_distance = 1 // Making sure that the bot don't try to occupy your tile if it can't share it.
-			/*
 			else if(health >= maxHealth * 0.99 && user.stats.getPerk(PERK_ROBOTICS_EXPERT)) // We are dead, but are we at least intact?, not actual maxHealth in case something put the HP at least 399.9999999
 				user.visible_message(
 										SPAN_NOTICE("[user] start to reactivate [src.name]."),
 										SPAN_NOTICE("You start to reactivate [src.name]..")
 										)
-				if(T.use_tool(user, src, WORKTIME_EXTREMELY_LONG, QUALITY_PULSING, FAILCHANCE_EASY, required_stat = SKILL_SCI)) // Bring the bot back. It's long as fuck. Bit faster if it's your job.
+				if(T.use_tool(user, src, WORKTIME_EXTREMELY_LONG, QUALITY_PULSING, FAILCHANCE_EASY, required_stat = STAT_COG)) // Bring the bot back. It's long as fuck. Bit faster if it's your job.
 					rejuvenate() // That proc fully heal the bot, but we don't care because we make sure it is fully healed before calling it.
 			else if(user.stats.getPerk(PERK_ROBOTICS_EXPERT))
 				to_chat(user, "[src] need to be fully repaired before reactivation is possible.")
-			*/
 			else
 				to_chat(user, "You have no idea how to repair a completely broken nanobot. Maybe a roboticist would know how?")
 			return

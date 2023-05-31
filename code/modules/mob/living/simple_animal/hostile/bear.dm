@@ -33,7 +33,7 @@
 	. = ..()
 	if(.)
 		playsound(src, 'sound/effects/creatures/bear.ogg', 100, 1, -3)
-/*
+
 /mob/living/simple_animal/hostile/bear/proc/rawr_xd()
 	if(health >= 15) //to weak to rawr if less then 15 health
 		visible_message(SPAN_DANGER("[src] stands up and roars!"))
@@ -41,34 +41,34 @@
 		for(var/mob/living/carbon/human/H in range(5,src))
 			if(istype(H))
 				if(prob(100 - H.stats.getStat(STAT_VIG))) //Kinda a hard check-ish but cant stack
-					H.stats.addTempStat(STAT_VIG, -SKILL_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
-					H.stats.addTempStat(STAT_COG, -SKILL_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
-					H.stats.addTempStat(STAT_BIO, -SKILL_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
-					H.stats.addTempStat(STAT_MEC, -SKILL_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
-					H.stats.addTempStat(STAT_ROB, SKILL_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
-					H.stats.addTempStat(STAT_TGH, SKILL_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
+					H.stats.addTempStat(STAT_VIG, -STAT_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
+					H.stats.addTempStat(STAT_COG, -STAT_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
+					H.stats.addTempStat(STAT_BIO, -STAT_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
+					H.stats.addTempStat(STAT_MEC, -STAT_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
+					H.stats.addTempStat(STAT_ROB, STAT_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
+					H.stats.addTempStat(STAT_TGH, STAT_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
 					H.added_movedelay -= 0.1
 					addtimer(CALLBACK(H, /mob/living/carbon/human/proc/clear_movement_delay, -0.1), 60)
 					to_chat(H, SPAN_WARNING("\The [src] 's roar triggers the familiar feeling of flight or fight in you!"))
 				else
 					to_chat(H, SPAN_NOTICE("The natural insticts of fear become apparent, but you ignore such things."))
-					H.stats.addTempStat(STAT_VIG, SKILL_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
-					H.stats.addTempStat(STAT_TGH, SKILL_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
-					H.stats.addTempStat(STAT_ROB, SKILL_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
+					H.stats.addTempStat(STAT_VIG, STAT_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
+					H.stats.addTempStat(STAT_TGH, STAT_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
+					H.stats.addTempStat(STAT_ROB, STAT_LEVEL_ADEPT, 30 SECONDS, "fear_of_bear")
 					H.added_movedelay -= 0.1
 					addtimer(CALLBACK(H, /mob/living/carbon/human/proc/clear_movement_delay, -0.1), 60) //Needs to be a negative as it subtracts meaning its - - 0.1 (aka doble negitive so it adds)
 
 		anchored = TRUE
 		addtimer(CALLBACK(src, .proc/unanchor), 10)
-*/
+
 
 /mob/living/simple_animal/hostile/bear/proc/unanchor()
 	anchored = FALSE
-	//addtimer(CALLBACK(src, .proc/rawr_xd_recharge), 120) //should be tolds of time for people to kill the bear
-/*
+	addtimer(CALLBACK(src, .proc/rawr_xd_recharge), 120) //should be tolds of time for people to kill the bear
+
 /mob/living/simple_animal/hostile/bear/proc/rawr_xd_recharge()
 	rawr_cooldown = FALSE
-*/
+
 //Copy pasted for hostile.dm more complicated verson
 /mob/living/simple_animal/hostile/bear/MoveToTarget()
 	var/mob/living/targetted_mob = (target_mob?.resolve())
@@ -90,9 +90,9 @@
 				set_glide_size(DELAY2GLIDESIZE(move_to_delay))
 				SSmove_manager.move_to(src, targetted_mob, 1, move_to_delay)
 
-	/*if(horror_modifer && !rawr_cooldown)
+	if(horror_modifer && !rawr_cooldown)
 		rawr_xd()
-		rawr_cooldown = TRUE*/
+		rawr_cooldown = TRUE
 	return FALSE
 
 /mob/living/simple_animal/hostile/bear/hudson

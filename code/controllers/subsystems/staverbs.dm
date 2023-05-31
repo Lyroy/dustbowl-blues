@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(statverbs)
 // Statverb datum //
 /datum/statverb
 	var/name
-	var/required_stat = SKILL_ATH
+	var/required_stat = STAT_MEC
 	var/base_range = RANGE_ADJACENT	//maximum distance or RANGE_ADJACENT
 	var/minimal_stat = 0
 
@@ -43,46 +43,22 @@ SUBSYSTEM_DEF(statverbs)
 
 	if(user.stats.getStat(required_stat) < minimal_stat)
 		switch(required_stat)
-			if(SPECIAL_S)
-				to_chat(user, SPAN_WARNING("You aren't strong enough to do that!"))
-			if(SPECIAL_P)
-				to_chat(user, SPAN_WARNING("You aren't perceptive enough to do that!"))
-			if(SPECIAL_E)
+			if(STAT_MEC)
+				to_chat(user, SPAN_WARNING("You don't know enough about engineering to do that!"))
+			if(STAT_BIO)
+				to_chat(user, SPAN_WARNING("You don't know enough about medicine to do that!"))
+			if(STAT_TGH)
 				to_chat(user, SPAN_WARNING("You're not tough enough to do that!"))
-			if(SPECIAL_C)
-				to_chat(user, SPAN_WARNING("You're not charismatic enough to do that!"))
-			if(SPECIAL_I)
+			if(STAT_ROB)
+				to_chat(user, SPAN_WARNING("You're not strong enough to do that!"))
+			if(STAT_COG)
 				to_chat(user, SPAN_WARNING("You're not smart enough to do that!"))
-			if(SPECIAL_A)
-				to_chat(user, SPAN_WARNING("You're not agile enough to do that!"))
-			if(SPECIAL_L)
-				to_chat(user, SPAN_WARNING("Your luck isn't good enough!"))
-
-			if(SKILL_ATH)
-				to_chat(user, SPAN_WARNING("You're not athletic enough to do this!"))
-			if(SKILL_LOC)
-				to_chat(user, SPAN_WARNING("You're not skilled enough in lockpicking to do this!"))
-			if(SKILL_MED)
-				to_chat(user, SPAN_WARNING("You're not skilled enough in medicine to do this!"))
-			if(SKILL_REP)
-				to_chat(user, SPAN_WARNING("You're not skilled enough in repairing to do this!"))
-			if(SKILL_SCI)
-				to_chat(user, SPAN_WARNING("You're not skilled enough in science to do this!"))
-			if(SKILL_SUR)
-				to_chat(user, SPAN_WARNING("You're not skilled enough in survival to do this!"))
-
-			if(SKILL_BIG)
-				to_chat(user, SPAN_WARNING("You're not proficient enough with big weapons to do this!"))
-			if(SKILL_ENE)
-				to_chat(user, SPAN_WARNING("You're not proficient enough with energy weapons to do this!"))
-			if(SKILL_EXP)
-				to_chat(user, SPAN_WARNING("You're not proficient enough with explosives to do this!"))
-			if(SKILL_MEL)
-				to_chat(user, SPAN_WARNING("You're not proficient enough with melee weapons to do this!"))
-			if(SKILL_SMA)
-				to_chat(user, SPAN_WARNING("You're not proficient enough with small weapons to do this!"))
-			if(SKILL_UNA)
-				to_chat(user, SPAN_WARNING("You're not proficient enough in unarmed combat to do this!"))
+			if(STAT_VIG)
+				to_chat(user, SPAN_WARNING("You're not perceptive enough to do that!"))
+			if(STAT_VIV)
+				to_chat(user, SPAN_WARNING("Your nerves can't handle this!"))
+			if(STAT_ANA)
+				to_chat(user, SPAN_WARNING("You're not healthy enough to do this!"))
 		return FALSE
 
 	action(user, target)
@@ -143,8 +119,8 @@ SUBSYSTEM_DEF(statverbs)
 
 /datum/statverb/remove_plating
 	name = "Remove plating"
-	required_stat = SPECIAL_S
-	minimal_stat  = SPECIAL_LEVEL_GOOD
+	required_stat = STAT_ROB
+	minimal_stat  = STAT_LEVEL_ADEPT
 
 /datum/statverb/remove_plating/action(mob/user, turf/simulated/floor/target)
 	if(target.flooring && target.flooring.flags & TURF_REMOVE_CROWBAR)
@@ -171,8 +147,8 @@ SUBSYSTEM_DEF(statverbs)
 
 /datum/statverb/fix_computer
 	name = "Fix computer"
-	required_stat = SKILL_SCI
-	minimal_stat  = SKILL_LEVEL_PROF //We use what we at lest need to use this
+	required_stat = STAT_COG
+	minimal_stat  = STAT_LEVEL_PROF //We use what we at lest need to use this
 
 /datum/statverb/fix_computer/action(mob/user, obj/item/modular_computer/target)
 	if(target.hard_drive.damage < 100)
@@ -180,7 +156,7 @@ SUBSYSTEM_DEF(statverbs)
 			SPAN_WARNING("[target] doesn't need repairs!")
 		)
 		return
-	var/timer = 160 - (user.stats.getStat(SKILL_SCI) * 2)
+	var/timer = 160 - (user.stats.getStat(STAT_COG) * 2)
 	if(target.hard_drive.damage == 100)
 		var/datum/repeating_sound/keyboardsound = new(30, timer, 0.15, target, "keyboard", 80, 1)
 		user.visible_message(
@@ -210,8 +186,8 @@ SUBSYSTEM_DEF(statverbs)
 
 /datum/statverb/hack_console
 	name = "Hack console"
-	required_stat = SKILL_SCI
-	minimal_stat  = SKILL_LEVEL_ADEPT
+	required_stat = STAT_COG
+	minimal_stat  = STAT_LEVEL_ADEPT
 
 
 /datum/statverb/hack_console/action(mob/user, obj/machinery/computer/rdconsole/target)
@@ -221,44 +197,7 @@ SUBSYSTEM_DEF(statverbs)
 		)
 		return
 	if(target.hacked == 0)
-		var/timer = 220 - (user.stats.getStat(SKILL_SCI) * 2)
-		var/datum/repeating_sound/keyboardsound = new(30, timer, 0.15, target, "keyboard", 80, 1)
-		user.visible_message(
-			SPAN_DANGER("[user] begins hacking into [target]!"),
-			"You start hacking the access requirement on [target]"
-		)
-		if(do_mob(user, target, timer))
-			keyboardsound.stop()
-			keyboardsound = null
-			target.req_access.Cut()
-			target.hacked = 1
-			user.visible_message(
-				SPAN_DANGER("[user] breaks the access encryption on [target]!"),
-				"You break the access encryption on [target]"
-			)
-		else
-			keyboardsound.stop()
-			keyboardsound = null
-			var/target_name = target ? "[target]" : "the research console"
-			user.visible_message(
-				SPAN_DANGER("[user] stopped hacking into [target_name]!"),
-				"You stop hacking into [target_name]."
-			)
-
-/datum/statverb/pick_lock
-	name = "Pick lock"
-	required_stat = SKILL_LOC
-	minimal_stat  = SKILL_LEVEL_NONE
-
-
-/datum/statverb/pick_lock/action(mob/user, obj/machinery/computer/rdconsole/target)
-	if(target.hacked == 1)
-		user.visible_message(
-			SPAN_WARNING("[target] is already hacked!")
-		)
-		return
-	if(target.hacked == 0)
-		var/timer = 220 - (user.stats.getStat(SKILL_SCI) * 2)
+		var/timer = 220 - (user.stats.getStat(STAT_COG) * 2)
 		var/datum/repeating_sound/keyboardsound = new(30, timer, 0.15, target, "keyboard", 80, 1)
 		user.visible_message(
 			SPAN_DANGER("[user] begins hacking into [target]!"),

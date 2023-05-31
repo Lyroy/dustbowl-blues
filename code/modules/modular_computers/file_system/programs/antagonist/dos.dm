@@ -18,7 +18,7 @@
 /datum/computer_file/program/ntnet_dos/process_tick()
 	..()
 	dos_speed = ntnet_speed * NTNETSPEED_DOS_AMPLIFICATION
-	dos_speed *= (50 + operator_skill - SKILL_LEVEL_BASIC) / 50
+	dos_speed *= (50 + operator_skill - STAT_LEVEL_BASIC) / 50
 	if(target && executed)
 		target.dos_overload += dos_speed
 		if(!target.operable())
@@ -90,10 +90,10 @@
 			return 1
 		executed = 1
 		target.dos_sources.Add(src)
-		operator_skill = get_operator_skill(usr, SKILL_SCI)
+		operator_skill = get_operator_skill(usr, STAT_COG)
 
 		var/list/sources_to_show = list(computer.network_card.get_network_tag())
-		var/extra_to_show = 2 * max(operator_skill - SKILL_LEVEL_ADEPT, 0)
+		var/extra_to_show = 2 * max(operator_skill - STAT_LEVEL_ADEPT, 0)
 		if(extra_to_show)
 			var/list/candidates = list()
 			for(var/obj/item/modular_computer/C in SSobj.processing) // Apparently the only place these are stored.

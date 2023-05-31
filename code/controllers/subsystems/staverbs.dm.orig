@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(statverbs)
 // Statverb datum //
 /datum/statverb
 	var/name
-	var/required_stat = SKILL_REP
+	var/required_stat = STAT_MEC
 	var/base_range = RANGE_ADJACENT	//maximum distance or RANGE_ADJACENT
 	var/minimal_stat = 0
 
@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(statverbs)
 /datum/statverb/remove_plating
 	name = "Remove plating"
 	required_stat = STAT_ROB
-	minimal_stat  = SKILL_LEVEL_ADEPT
+	minimal_stat  = STAT_LEVEL_ADEPT
 
 <<<<<<< HEAD
 /datum/statverb/remove_plating/action(mob/user, turf/simulated/floor/target)
