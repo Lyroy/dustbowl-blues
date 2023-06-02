@@ -1,12 +1,12 @@
 // Well Isnt This Convenient
-var/global/list/desert_plant_turfs = list(/turf/simulated/floor/asteroid/dirt/ground, /turf/simulated/floor/asteroid/dirt)
+var/global/list/desert_plant_turfs = list(/turf/simulated/floor/asteroid/dirt/ground, /turf/simulated/floor/asteroid/dirt/dark)
 
 /datum/turf_initializer/desert/Initialize(var/turf/simulated/T)
 	if(T.density)
 		return
 
 	// check to make sure were looking at the fucking ground
-	if(!(locate(T.type) in desert_plant_turfs))
+	if(!is_type_in_list(T, desert_plant_turfs))
 		return
 
 	// Quick and dirty check to avoid placing things inside windows
