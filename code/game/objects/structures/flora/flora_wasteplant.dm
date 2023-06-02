@@ -13,11 +13,21 @@
 		return ..()
 
 	if(has_plod)
-		var/obj/item/product = new produce
-		if(!istype(product))
-			return //Something fucked up here or it's a weird product
-		user.put_in_hands(product)
-		to_chat(user, "<span class='notice'>You pluck [product] from [src].</span>")
+		// some math to get the total yield
+		var/max_yield = min(round(user.getStatStats(SKILL_SUR)/10,1),10)
+		var/min_yield = round(user.getStatStats(SKILL_SUR)/100,1)
+		var/total_yield = rand(min_yield,max_yield)
+
+		// create the produce
+		for(var/i = 0;i<total_yield;i++)
+			new produce(get_turf(user))
+
+		// tell the user what they got
+		if(!total_yield)
+			to_chat(user, SPAN_DANGER("You fail to harvest anything useful."))
+		else
+			to_chat(user, SPAN_NOTICE("You harvest [produce] from [src]."))
+
 		has_plod = FALSE
 		update_icon() //Won't update due to proc otherwise
 		timer = initial(timer) + rand(-100,100) //add some variability
