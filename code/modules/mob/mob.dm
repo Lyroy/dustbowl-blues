@@ -719,7 +719,7 @@
 	if(.)
 		if(statpanel("Status") && SSticker.current_state != GAME_STATE_PREGAME)
 			stat("Storyteller", "[master_storyteller]")
-			stat("Wasteland Time", stationtime2text())
+			stat("Wasteland Time", SSday_night.get_twenty_four_hour_timestamp())
 			stat("Wasteland Date", stationdate2text())
 			stat("Round Duration", roundduration2text())
 			stat("Round End Timer", rounddurationcountdown2text())

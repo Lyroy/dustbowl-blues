@@ -86,7 +86,7 @@ SUBSYSTEM_DEF(lighting)
 	var/list/currentrun_overlays = src.currentrun_overlays
 
 	while (currentrun_overlays.len)
-		var/atom/movable/lighting_overlay/O = currentrun_overlays[currentrun_overlays.len]
+		var/datum/lighting_overlay/O = currentrun_overlays[currentrun_overlays.len]
 		currentrun_overlays.len--
 
 		O.update_overlay()

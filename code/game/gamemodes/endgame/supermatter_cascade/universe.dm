@@ -88,11 +88,11 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 
 /datum/universal_state/supermatter_cascade/OverlayAndAmbientSet()
 	spawn(0)
-		for(var/atom/movable/lighting_overlay/L in world)
+		/*for(var/datum/lighting_overlay/L in world)
 			if(isAdminLevel(L.z))
 				L.update_overlay(1,1,1)
 			else
-				L.update_overlay(0.0, 0.4, 1)
+				L.update_overlay(0.0, 0.4, 1)*/
 
 		for(var/turf/space/T in turfs)
 			OnTurfChange(T)

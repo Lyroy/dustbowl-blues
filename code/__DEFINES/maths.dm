@@ -144,6 +144,9 @@
 // Returns the nth root of x.
 #define ROOT(n, x) ((x) ** (1 / (n)))
 
+/// Checks if a number needs to have a 0 placed infront, 24 hour format. Takes a number, returns a string.
+#define TIMESTAMP_TO_PROPER_FORMAT(number) (number < 10 ? "0[number]" : number)
+
 // The quadratic formula. Returns a list with the solutions, or an empty list
 // if they are imaginary.
 /proc/SolveQuadratic(a, b, c)

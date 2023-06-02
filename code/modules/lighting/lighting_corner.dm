@@ -113,7 +113,7 @@
 
 	for (var/TT in masters)
 		var/turf/T = TT
-		var/atom/movable/lighting_overlay/O = T.lighting_overlay
+		var/datum/lighting_overlay/O = T.lighting_overlay
 		if (O && !O.needs_update)
 			O.needs_update = TRUE
 			global.lighting_update_overlays += O

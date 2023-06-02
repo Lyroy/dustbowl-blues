@@ -6,6 +6,7 @@
 	. = ..()
 
 	if (dynamic_lighting)
+		to_chat(world,"Epic wooo false")
 		luminosity = FALSE
 
 /area/proc/set_dynamic_lighting(var/new_dynamic_lighting = TRUE)

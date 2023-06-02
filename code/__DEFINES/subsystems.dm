@@ -87,15 +87,16 @@
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 #define INIT_ORDER_GARBAGE 99
-#define INIT_ORDER_SKYBOX 20
-#define INIT_ORDER_DBCORE 19
-#define INIT_ORDER_BLACKBOX 18
-#define INIT_ORDER_SERVER_MAINT 17
-#define INIT_ORDER_JOBS 16
-#define INIT_ORDER_EVENTS 15
-#define INIT_ORDER_TICKER 14
-#define INIT_ORDER_SPAWN_DATA 13
-#define INIT_ORDER_MAPPING 12
+#define INIT_ORDER_SKYBOX 21
+#define INIT_ORDER_DBCORE 20
+#define INIT_ORDER_BLACKBOX 19
+#define INIT_ORDER_SERVER_MAINT 18
+#define INIT_ORDER_JOBS 17
+#define INIT_ORDER_EVENTS 16
+#define INIT_ORDER_TICKER 15
+#define INIT_ORDER_SPAWN_DATA 14
+#define INIT_ORDER_MAPPING 13
+//#define INIT_ORDER_DAY_NIGHT 12 // Networking and atoms require this as if the subsystem hasn't initialised, there will be no time to get, resulting in runtimes.
 #define INIT_ORDER_LANGUAGE 11
 #define INIT_ORDER_INVENTORY 10
 #define INIT_ORDER_CHAR_SETUP 9
@@ -117,6 +118,7 @@
 #define INIT_ORDER_TICKETS -10
 #define INIT_ORDER_LIGHTING -20
 #define INIT_ORDER_SHUTTLE -21
+#define INIT_ORDER_DAY_NIGHT -22
 #define INIT_ORDER_SQUEAK -40
 #define INIT_ORDER_PATH -50
 #define INIT_ORDER_XENOARCH	-50

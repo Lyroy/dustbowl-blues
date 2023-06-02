@@ -138,6 +138,13 @@
 #define COMSING_DESTRUCTIVE_ANALIZER "destructive_analizer"
 #define COMSIG_TURRENT "create_turrent"
 
+/// Sent when a shuttle leaves this area
+#define COMSIG_AREA_AFTER_SHUTTLE_MOVE "area_after_shuttle_move"
+/// from /datum/day_night_controller/proc/update_lighting() : (light_color, alpha_to_set)
+#define COMSIG_DAY_NIGHT_CONTROLLER_LIGHT_UPDATE "day_night_controller_light_update"
+/// from /datum/controller/subsystem/day_night/proc/tick_tock() : (current_hour, current_minute)
+#define COMSIG_DAY_NIGHT_CONTROLLER_TIME_TICK "day_night_controller_time_tick"
+
 // /obj/item signals
 #define COMSIG_IATTACK "item_attack"									//from /mob/ClickOn(): (/atom, /src, /params) If any reply to this returns TRUE, overrides attackby and afterattack
 #define COMSIG_ATTACKBY "attack_by"										//from /mob/ClickOn():

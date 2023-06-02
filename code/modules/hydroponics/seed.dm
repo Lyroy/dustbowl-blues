@@ -341,7 +341,7 @@
 
 	// Handle light requirements.
 	if(!light_supplied)
-		var/atom/movable/lighting_overlay/L = locate(/atom/movable/lighting_overlay) in current_turf
+		var/datum/lighting_overlay/L = current_turf.lighting_overlay
 		if(L)
 			light_supplied =  5
 	if(light_supplied)

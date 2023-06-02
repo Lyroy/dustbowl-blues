@@ -22,6 +22,37 @@
 #define SMOOTH_BLACKLIST 3 //Smooth with all but a blacklist of subtypes
 #define SMOOTH_GREYLIST 4 // Use a whitelist and a blacklist at the same time. atom smoothing only
 
+#define NORTH_JUNCTION NORTH //(1<<0)
+#define SOUTH_JUNCTION SOUTH //(1<<1)
+#define EAST_JUNCTION EAST  //(1<<2)
+#define WEST_JUNCTION WEST  //(1<<3)
+#define NORTHEAST_JUNCTION (1<<4)
+#define SOUTHEAST_JUNCTION (1<<5)
+#define SOUTHWEST_JUNCTION (1<<6)
+#define NORTHWEST_JUNCTION (1<<7)
+
+/*DEFINE_BITFIELD(smoothing_junction, list(
+	"NORTH_JUNCTION" = NORTH_JUNCTION,
+	"SOUTH_JUNCTION" = SOUTH_JUNCTION,
+	"EAST_JUNCTION" = EAST_JUNCTION,
+	"WEST_JUNCTION" = WEST_JUNCTION,
+	"NORTHEAST_JUNCTION" = NORTHEAST_JUNCTION,
+	"SOUTHEAST_JUNCTION" = SOUTHEAST_JUNCTION,
+	"SOUTHWEST_JUNCTION" = SOUTHWEST_JUNCTION,
+	"NORTHWEST_JUNCTION" = NORTHWEST_JUNCTION
+))*/
+
+#define ALL_JUNCTION_DIRECTIONS list(\
+	NORTH_JUNCTION,\
+	SOUTH_JUNCTION,\
+	EAST_JUNCTION,\
+	WEST_JUNCTION,\
+	NORTHEAST_JUNCTION,\
+	SOUTHEAST_JUNCTION,\
+	SOUTHWEST_JUNCTION,\
+	NORTHWEST_JUNCTION\
+	)
+
 
 #define DECK_HEIGHT 3	//3 metres in vertical height between decks
 //Note that the height of a turf's airspace is defined elsewhere as 2.5 metres, this adds extra to account for floor thickness
