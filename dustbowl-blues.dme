@@ -3202,6 +3202,8 @@
 #include "modular_dustbowl\fallout_chems\code\datums\perks.dm"
 #include "modular_dustbowl\fallout_chems\code\modules\reagents\reagent_containers\hypospray.dm"
 #include "modular_dustbowl\fallout_chems\code\modules\reagents\reagents\medicine.dm"
+#include "modular_dustbowl\fallout_chems\code\modules\reagents\reagents\poultice.dm"
+#include "modular_dustbowl\fallout_chems\code\modules\reagents\reagents\powder.dm"
 #include "tgs_dmapi\tgs.dm"
 #include "tgs_dmapi\tgs\includes.dm"
 // END_INCLUDE

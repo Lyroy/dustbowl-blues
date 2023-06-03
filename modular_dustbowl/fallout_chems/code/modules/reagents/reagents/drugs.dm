@@ -3,7 +3,7 @@
 	id = "jet"
 	description = "Jet, the ubiquitous meth-based wasteland chem. Smells like shit, but will fill you with energy."
 	taste_description = "undescribable"
-	reagent_state = LIQUID
+	reagent_state = GAS
 	color = "#553c1c"
 	metabolism = REM * 1.2
 	scannable = TRUE
@@ -17,10 +17,8 @@
 	if(prob(7 * effect_multiplier))
 		M.emote(pick("twitch", "drool", "moan", "giggle"))
 	M.add_chemical_effect(CE_PULSE, -1)
-	M.stats.addTempStat(STAT_VIG, -STAT_LEVEL_BASIC, STIM_TIME, "jet")
-	M.stats.addTempStat(STAT_COG, -STAT_LEVEL_BASIC, STIM_TIME, "jet")
-	M.stats.addTempStat(STAT_BIO, -STAT_LEVEL_BASIC, STIM_TIME, "jet")
-	M.stats.addTempStat(STAT_MEC, -STAT_LEVEL_BASIC, STIM_TIME, "jet")
+	M.stats.addTempStat(SPECIAL_A, -1, STIM_TIME, "jet")
+	M.stats.addTempStat(SPECIAL_I, -2, STIM_TIME, "jet")
 
 /datum/reagent/drugs/jet/on_mob_add(mob/living/L)
 	. = ..()
@@ -53,23 +51,13 @@
 	addiction_chance = 25
 
 /datum/reagent/drugs/buffout/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
-	M.stats.addTempStat(STAT_ROB, STAT_LEVEL_ADEPT, STIM_TIME, "buffout")
-	M.stats.addTempStat(STAT_TGH, STAT_LEVEL_EXPERT, STIM_TIME, "buffout")
+	M.stats.addTempStat(SPECIAL_S, 2, STIM_TIME, "buffout")
+	M.stats.addTempStat(SPECIAL_E, 3, STIM_TIME, "buffout")
 	M.hallucination(50, 50)
 
-/datum/reagent/drugs/buffout/on_mob_add(mob/living/carbon/M)
-	. = ..()
-	M.maxHealth += 45
-	M.health += 45
-
-/datum/reagent/drugs/buffout/on_mob_delete(mob/living/carbon/M)
-	. = ..()
-	M.maxHealth -= 45
-	M.health -= 45
-
 /datum/reagent/drugs/buffout/withdrawal_act(mob/living/carbon/M)
-	M.stats.addTempStat(STAT_ROB, -STAT_LEVEL_BASIC, STIM_TIME, "buffout_w")
-	M.stats.addTempStat(STAT_TGH, -STAT_LEVEL_ADEPT, STIM_TIME, "buffout_w")
+	M.stats.addTempStat(SPECIAL_S, -1, STIM_TIME, "buffout_w")
+	M.stats.addTempStat(SPECIAL_E, -2, STIM_TIME, "buffout_w")
 
 /datum/reagent/drugs/psycho
 	name = "Psycho"
@@ -85,10 +73,10 @@
 	addiction_chance = 1000
 
 /datum/reagent/drugs/psycho/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
-	M.stats.addTempStat(STAT_TGH, STAT_LEVEL_ADEPT, STIM_TIME, "psycho")
-	M.stats.addTempStat(STAT_BIO, -STAT_LEVEL_EXPERT, STIM_TIME, "psycho")
-	M.stats.addTempStat(STAT_COG, -STAT_LEVEL_EXPERT, STIM_TIME, "psycho")
-	M.stats.addTempStat(STAT_MEC, -STAT_LEVEL_EXPERT, STIM_TIME, "psycho")
+	M.stats.addTempStat(SPECIAL_E, 2, STIM_TIME, "psycho")
+	M.stats.addTempStat(SPECIAL_I, -5, STIM_TIME, "psycho")
+	M.stats.addTempStat(SPECIAL_C, -3, STIM_TIME, "psycho")
+	M.stats.addTempStat(SPECIAL_P, -3, STIM_TIME, "psycho")
 	M.add_chemical_effect(CE_PAINKILLER, 1000) //No pain at all
 	M.apply_effect(3, STUTTER)
 	M.make_jittery(10)
@@ -111,10 +99,10 @@
 
 /datum/reagent/drugs/psycho/withdrawal_act(mob/living/carbon/M)
 	M.add_chemical_effect(CE_PULSE,2)
-	M.stats.addTempStat(STAT_TGH, -STAT_LEVEL_ADEPT, STIM_TIME, "psycho_w")
-	M.stats.addTempStat(STAT_BIO, -STAT_LEVEL_ADEPT, STIM_TIME, "psycho_w")
-	M.stats.addTempStat(STAT_COG, -STAT_LEVEL_ADEPT, STIM_TIME, "psycho_w")
-	M.stats.addTempStat(STAT_MEC, -STAT_LEVEL_ADEPT, STIM_TIME, "psycho_w")
+	M.stats.addTempStat(SPECIAL_E, -2, STIM_TIME, "psycho_w")
+	M.stats.addTempStat(SPECIAL_I, -2, STIM_TIME, "psycho_w")
+	M.stats.addTempStat(SPECIAL_C, -2, STIM_TIME, "psycho_w")
+	M.stats.addTempStat(SPECIAL_P, -2, STIM_TIME, "psycho_w")
 
 /datum/reagent/drugs/cateye
 	name = "Cateye"
