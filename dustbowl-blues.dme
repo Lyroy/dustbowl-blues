@@ -3200,6 +3200,8 @@
 #include "maps\submaps\map_clearers\map_clearers.dm"
 #include "maps\testmap\testmap.dm"
 #include "modular_dustbowl\fallout_chems\code\datums\perks.dm"
+#include "modular_dustbowl\fallout_chems\code\modules\hydroponics\seed_datums.dm"
+#include "modular_dustbowl\fallout_chems\code\modules\hydroponics\seed_packets.dm"
 #include "modular_dustbowl\fallout_chems\code\modules\reagents\reagent_containers\hypospray.dm"
 #include "modular_dustbowl\fallout_chems\code\modules\reagents\reagents\medicine.dm"
 #include "modular_dustbowl\fallout_chems\code\modules\reagents\reagents\poultice.dm"
