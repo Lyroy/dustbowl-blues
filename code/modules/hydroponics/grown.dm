@@ -149,19 +149,22 @@
 		return
 	cut_overlays()
 	var/image/plant_icon
-	var/icon_key = "fruit-[seed.get_trait(TRAIT_PRODUCT_ICON)]-[seed.get_trait(TRAIT_PRODUCT_COLOUR)]-[seed.get_trait(TRAIT_PLANT_COLOUR)]"
-	if(plant_controller.plant_icon_cache[icon_key])
-		plant_icon = plant_controller.plant_icon_cache[icon_key]
-	else
-		plant_icon = image('icons/obj/hydroponics_products.dmi',"blank")
-		var/image/fruit_base = image('icons/obj/hydroponics_products.dmi',"[seed.get_trait(TRAIT_PRODUCT_ICON)]-product")
-		fruit_base.color = "[seed.get_trait(TRAIT_PRODUCT_COLOUR)]"
-		plant_icon.add_overlay(fruit_base)
-		if("[seed.get_trait(TRAIT_PRODUCT_ICON)]-leaf" in icon_states('icons/obj/hydroponics_products.dmi'))
-			var/image/fruit_leaves = image('icons/obj/hydroponics_products.dmi',"[seed.get_trait(TRAIT_PRODUCT_ICON)]-leaf")
-			fruit_leaves.color = "[seed.get_trait(TRAIT_PLANT_COLOUR)]"
-			plant_icon.add_overlay(fruit_leaves)
-		plant_controller.plant_icon_cache[icon_key] = plant_icon
+	if(seed.get_trait(TRAIT_PRODUCT_ICON_OVERRIDE)) // overridden behavior
+		plant_icon = image('icons/obj/hydroponics_products.dmi',"[seed.get_trait(TRAIT_PRODUCT_ICON)]-product")
+	else // normal behavior
+		var/icon_key = "fruit-[seed.get_trait(TRAIT_PRODUCT_ICON)]-[seed.get_trait(TRAIT_PRODUCT_COLOUR)]-[seed.get_trait(TRAIT_PLANT_COLOUR)]"
+		if(plant_controller.plant_icon_cache[icon_key])
+			plant_icon = plant_controller.plant_icon_cache[icon_key]
+		else
+			plant_icon = image('icons/obj/hydroponics_products.dmi',"blank")
+			var/image/fruit_base = image('icons/obj/hydroponics_products.dmi',"[seed.get_trait(TRAIT_PRODUCT_ICON)]-product")
+			fruit_base.color = "[seed.get_trait(TRAIT_PRODUCT_COLOUR)]"
+			plant_icon.add_overlay(fruit_base)
+			if("[seed.get_trait(TRAIT_PRODUCT_ICON)]-leaf" in icon_states('icons/obj/hydroponics_products.dmi'))
+				var/image/fruit_leaves = image('icons/obj/hydroponics_products.dmi',"[seed.get_trait(TRAIT_PRODUCT_ICON)]-leaf")
+				fruit_leaves.color = "[seed.get_trait(TRAIT_PLANT_COLOUR)]"
+				plant_icon.add_overlay(fruit_leaves)
+			plant_controller.plant_icon_cache[icon_key] = plant_icon
 	add_overlay(plant_icon)
 
 /obj/item/reagent_containers/food/snacks/grown/Crossed(var/mob/living/M)

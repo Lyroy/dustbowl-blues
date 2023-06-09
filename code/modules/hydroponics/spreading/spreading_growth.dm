@@ -118,7 +118,7 @@
 		if(prob(chance))
 			sampled = 0
 
-	if(is_mature() && neighbors.len && prob(spread_chance))
+	if(is_mature() && neighbors.len && prob(spread_chance) && seed.get_trait(TRAIT_SPREAD) > 0) // FUCK OFFFFFFFFFFFFF
 		spawn()
 			spread()
 

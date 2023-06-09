@@ -20,6 +20,7 @@
 	icon_state = "erisyellow"
 	outdoors = TRUE
 	underground = FALSE
+	turf_initializer = new /datum/turf_initializer/desert()
 
 /area/testmap_outdoors_up
 	ship_area = TRUE

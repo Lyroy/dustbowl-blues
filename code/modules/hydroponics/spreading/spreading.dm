@@ -151,7 +151,7 @@
 	//TODO: should really be caching this.
 	refresh_icon()
 
-	var/icon_colour = seed.get_trait(TRAIT_PLANT_COLOUR)
+	var/icon_colour = seed.get_trait(TRAIT_PLANT_ICON_OVERRIDE) ? null : seed.get_trait(TRAIT_PLANT_COLOUR) // FUCK YOU
 	if(icon_colour)
 		color = icon_colour
 	// Apply colour and light from seed datum.

@@ -25,9 +25,11 @@
 
 #define MINIMUM_CHEMICAL_VOLUME 0.01
 
+// These are used to define which reagent containers can contain them
 #define SOLID			1
-#define LIQUID			2
-#define GAS				3
+#define SEMILIQUID		2
+#define LIQUID			3
+#define GAS				4
 
 #define REAGENTS_OVERDOSE 30
 
