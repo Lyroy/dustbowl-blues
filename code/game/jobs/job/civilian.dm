@@ -1,4 +1,3 @@
-/*
 /datum/job/clubmanager
 	title = "Bartender"
 	flag = CLUBMANAGER
@@ -201,4 +200,3 @@
 	name = "Janitor"
 	icon_state = "player-black"
 	join_tag = /datum/job/janitor
-*/

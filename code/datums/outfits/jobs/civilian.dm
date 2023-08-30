@@ -1,5 +1,5 @@
-/decl/hierarchy/outfit/job/assistant
-	name = OUTFIT_JOB_NAME("Assistant")
+/decl/hierarchy/outfit/job/wastelander
+	name = OUTFIT_JOB_NAME("Wastelander")
 	suit = /obj/item/clothing/suit/storage/rank/ass_jacket
 	uniform = /obj/item/clothing/under/rank/assistant
 

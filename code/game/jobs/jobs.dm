@@ -1,22 +1,18 @@
-GLOBAL_LIST_INIT(department_command, list(DEPARTMENT_COMMAND))
-GLOBAL_LIST_INIT(department_security, list(DEPARTMENT_SECURITY))
-GLOBAL_LIST_INIT(department_moebius, list(DEPARTMENT_SCIENCE, DEPARTMENT_MEDICAL))
-GLOBAL_LIST_INIT(department_engineering, list(DEPARTMENT_ENGINEERING))
-GLOBAL_LIST_INIT(department_guild, list(DEPARTMENT_LSS))
-GLOBAL_LIST_INIT(department_church, list(DEPARTMENT_CHURCH))
+GLOBAL_LIST_INIT(faction_wayward, list(FACTION_WAYWARD))
+GLOBAL_LIST_INIT(faction_skymarshal, list(FACTION_SKYMARSHAL))
+GLOBAL_LIST_INIT(faction_followers, list(FACTION_FOLLOWERS))
+GLOBAL_LIST_INIT(faction_tribe, list(FACTION_TRIBE))
+GLOBAL_LIST_INIT(faction_wastelanders, list(FACTION_WASTELANDERS))
+GLOBAL_LIST_INIT(faction_raiders, list(FACTION_RAIDERS))
+GLOBAL_LIST_INIT(faction_bos, list(FACTION_BOS))
 
-var/const/ENGINEERING       =(1<<0)
-var/const/SECURITY        	=(1<<1)
-var/const/MEDICAL           =(1<<2)
-var/const/SCIENCE           =(1<<3)
-var/const/CIVILIAN          =(1<<4)
-var/const/COMMAND           =(1<<5)
-var/const/MISC              =(1<<6)
-var/const/SERVICE           =(1<<7)
-var/const/LSS	            =(1<<8)
-var/const/CHURCH           	=(1<<9)
-var/const/PROSPECTORS		=(1<<10)
-var/const/INDEPENDENT		=(1<<11)
+var/const/WAYWARD = (1<<0)
+var/const/SKYMARSHAL = (1<<1)
+var/const/FOLLOWERS = (1<<2)
+var/const/TRIBE = (1<<3)
+var/const/WASTELANDERS = (1<<4)
+var/const/RAIDERS = (1<<5)
+var/const/BOS = (1<<6)
 
 var/const/ENGSEC			=(1<<0)
 
@@ -72,38 +68,21 @@ var/const/LODGEHERBALIST	=(1<<3)
 
 var/list/assistant_occupations = list()
 
-
 var/list/command_positions = list(JOBS_COMMAND)
 
+var/list/wayward_positions = list(JOBS_WAYWARD)
 
-var/list/engineering_positions = list(JOBS_ENGINEERING)
+var/list/skymarshal_positions = list(JOBS_SKYMARSHAL)
 
+var/list/followers_positions = list(JOBS_FOLLOWERS)
 
-var/list/medical_positions = list(JOBS_MEDICAL)
+var/list/tribe_positions = list(JOBS_TRIBE)
 
+var/list/wastelander_positions = list(JOBS_WASTELANDERS)
 
-var/list/science_positions = list(JOBS_SCIENCE)
+var/list/raider_positions = list(JOBS_RAIDERS)
 
-//BS12 EDIT
-var/list/cargo_positions = list(JOBS_LSS)
-
-
-var/list/prospector_positions = list(JOBS_PROSPECTOR)
-
-
-var/list/church_positions = list(JOBS_CHURCH)
-
-
-var/list/civilian_positions = list(JOBS_CIVILIAN)
-
-
-var/list/security_positions = list(JOBS_SECURITY)
-
-
-var/list/nonhuman_positions = list(JOBS_NONHUMAN)
-
-
-var/list/offcolony_positions = list(JOBS_INDEPENDENT)
+var/list/bos_positions = list(JOBS_BOS)
 
 /proc/guest_jobbans(var/job)
-	return ((job in command_positions) || (job in nonhuman_positions) || (job in security_positions))
+	return ((job in raider_positions))

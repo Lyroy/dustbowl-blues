@@ -35,9 +35,9 @@
 		kill()
 		return
 
-	for(fighter in GLOB.player_list)
+	/*for(fighter in GLOB.player_list)
 		if(fighter.mind.assigned_role in list(JOBS_ANTI_HIVEMIND))
-			active_players++
+			active_players++*/
 
 	log_and_message_admins("Active Blob combative players number is [active_players].")
 

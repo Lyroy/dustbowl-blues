@@ -1,83 +1,68 @@
-/*
 //Cargo
-/datum/job/merchant
-	title = "Chief Executive Officer"
+/datum/job/ww_branch_chief
+	title = "Wayward Branch Chief"
 	flag = MERCHANT
-	department = DEPARTMENT_LSS
+	department = FACTION_WAYWARD
 	head_position = TRUE
 	aster_guild_member = TRUE
-	department_flag = LSS | COMMAND
+	department_flag = WAYWARD | COMMAND
 	faction = MAP_FACTION
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Nadezhda Council"
+	supervisors = "the Wayward Winds Company"
 	difficulty = "Medium."
 	selection_color = "#b3a68c"
-	wage = WAGE_COMMAND	//CEO now gets paid the money moola muh [redacted] -Kaz
+	alt_titles = list("Wayward Branch Supervisor")
+	wage = WAGE_NONE
 	access = list(
 		access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_merchant, access_mining,
 		access_heads, access_mining_station, access_RC_announce, access_keycard_auth, access_sec_doors,
 		access_eva, access_external_airlocks, access_hydroponics, access_bar, access_kitchen, access_theatre
 	)
-	disallow_species = list(FORM_SOTSYNTH, FORM_AGSYNTH, FORM_BSSYNTH, FORM_CHURCHSYNTH, FORM_NASHEF)
 
 	ideal_character_age = 40
 	minimum_character_age = 25
 	playtimerequired = 1200
-	health_modifier = 5
 
 	stat_modifiers = list(
-		STAT_ROB = 10,
-		STAT_COG = 20,
-		STAT_MEC = 15,
-		STAT_VIG = 10
+		SKILL_REP = SKILL_LEVEL_BASIC,
+		SKILL_LOC = SKILL_LEVEL_BASIC
 	)
-	description = "The Chief Executive Officer coordinates the affairs of the local branch of Lonestar Shipping Solutions.<br>\
+	description = "The Branch Chief coordinates the affairs of the local branch of Wayward Winds.<br>\
 Your main objective, bluntly, is to make as much money as you can. Purchase and acquire goods, and sell them on for a profit.<br>\
-Your Cargo Technicians will handle most of the grunt work and your Miners will acquire minerals. They are capable - utilize them well.<br>\
-The vendors found throughout the colony are also operated by your organization. They make you money - ensure they are functional and well-stocked.<br>\
-There is a market for contraband and more unscrupulous services. Venturing into this area may prove profitable, but comes with risk.<br>\
-You do not receive a salary, but can fund yourself from the company account. Strike a balance between the needs of yourself and the wider company."
+Your Peons will handle most of the grunt work and your Scrappers will acquire resources. They are capable - utilize them well.<br>\
+The vendors found throughout Skyline are also operated by your organization. They make you money - ensure they are functional and well-stocked.<br>\
+The other factions can provide you with much to export. Trade with them."
 
-	duties = "Keep the crew supplied with anything they might need - for a healthy profit.<br>\
+	duties = "Keep the population supplied with anything they might need - for a healthy profit.<br>\
 Buy up valuable items from scavengers and make a profit reselling them.<br>\
-Deploy your mining staff to harvest matter and materials.<br>\
-Counsel the council on directing the colony towards profitable opportunities."
-
-	software_on_spawn = list(///datum/computer_file/program/supply,
-							 ///datum/computer_file/program/deck_management,
-							 /datum/computer_file/program/trade,
-							 /datum/computer_file/program/scanner,
-							 /datum/computer_file/program/wordprocessor,
-							 /datum/computer_file/program/reports)
+Deploy your salvaging staff to harvest matter and materials.<br>\
+Counsel the Foreman on directing Skyline towards profitable opportunities."
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/merchant
 
 	perks = list(PERK_TIMEISMONEY, PERK_MARKET_PROF, PERK_BARTENDER, PERK_CHEM_CONTRABAND)
 
-/obj/landmark/join/start/merchant
-	name = "Chief Executive Officer"
+/obj/landmark/join/start/ww_branch_chief
+	name = "Wayward Branch Chief"
 	icon_state = "player-beige-officer"
-	join_tag = /datum/job/merchant
+	join_tag = /datum/job/ww_branch_chief
 
-/datum/job/cargo_tech
-	title = "Cargo Technician"
+/datum/job/ww_peon
+	title = "Peon"
 	flag = CARGOTECH
-	department = DEPARTMENT_LSS
-	department_flag = LSS
+	department = FACTION_WAYWARD
+	department_flag = WAYWARD
 	faction = MAP_FACTION
 	total_positions = 4
 	spawn_positions = 4
-	supervisors = "the Chief Executive Officer"
+	supervisors = "the Wayward Branch Chief"
 	difficulty = "Easy."
-	alt_titles = list("Cargo Specialist", "Lonestar Sales Technician", "Lonestar Retail Assistant")
+	alt_titles = list("Cargo Technician", "Cashier")
 	selection_color = "#c3b9a6"
-	wage = WAGE_LABOUR_DUMB
+	wage = WAGE_NONE
 	department_account_access = TRUE
 	outfit_type = /decl/hierarchy/outfit/job/cargo/cargo_tech
-
-	disallow_species = list(FORM_BSSYNTH)
-
 
 	access = list(
 		access_mailsorting, access_cargo, access_cargo_bot, access_mining,
@@ -85,39 +70,32 @@ Counsel the council on directing the colony towards profitable opportunities."
 	)
 
 	stat_modifiers = list(
-		STAT_ROB = 10,
-		STAT_TGH = 10,
-		STAT_VIG = 10,
+		SKILL_UNA = SKILL_LEVEL_BASIC,
+		SKILL_MEL = SKILL_LEVEL_BASIC,
+		SKILL_REP = SKILL_LEVEL_BASIC
 	)
 
 	perks = list(PERK_MARKET_PROF)
 
-	software_on_spawn = list(///datum/computer_file/program/supply,
-							 ///datum/computer_file/program/deck_management,
-							 /datum/computer_file/program/scanner,
-							 /datum/computer_file/program/wordprocessor,
-							 /datum/computer_file/program/reports)
-
-
-	description = "The Cargo Technician forms the backbone of Lonestar Shipping Solutions, equal parts scavenger, loader, and salesman.<br>\
+	description = "The Peon forms the backbone of Wayward Winds, equal parts loader and salesman.<br>\
 Your main duty is to keep the local company branch operational and profitable. Deliver goods, take payments and orders, and buy from scavengers.<br>\
-In quieter times, use your initiative. Visit departments to ask if there's anything they need and try to sell them unusual items.<br>\
-Busted lights? Broken vendors? Offer your services for a small fee. You may also find profit in the maintenance tunnels.<br>\
-Avoid the deeper tunnels unless otherwise instructed, however - this domain is hazardous and for training mining specialists."
+In quieter times, use your initiative. Visit factions to ask if there's anything they need and try to sell them unusual items.<br>\
+Busted lights? Broken vendors? Offer your services for a small fee. You may also find profit in the wastes.<br>\
+Avoid the more dangerous areas unless otherwise instructed, however - this domain is hazardous and for training scrappers."
 
 	duties = "Staff the front desk and be ready to process payments and orders.<br>\
-	Deliver goods to departments and individuals in good time.<br>\
+	Deliver goods to factions and individuals in good time.<br>\
 	Always seek other forms of profit, but do so while keeping the company in a good light."
 
-/obj/landmark/join/start/cargo_tech
-	name = "Cargo Technician"
+/obj/landmark/join/start/ww_peon
+	name = "Peon"
 	icon_state = "player-beige"
-	join_tag = /datum/job/cargo_tech
+	join_tag = /datum/job/ww_peon
 
-/datum/job/mining
-	title = "Lonestar Miner"
+/datum/job/ww_scrapper
+	title = "Scrapper"
 	flag = MINER
-	department = DEPARTMENT_LSS
+	department = FACTION_WAYWARD
 	department_flag = LSS
 	faction = MAP_FACTION
 	total_positions = 4
@@ -164,4 +142,3 @@ The deep tunnels are far less dangerous than the wilderness, but pack well - dis
 	name = "Lonestar Miner"
 	icon_state = "player-beige"
 	join_tag = /datum/job/mining
-*/

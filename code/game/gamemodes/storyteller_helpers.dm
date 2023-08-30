@@ -128,14 +128,13 @@ var/list/event_last_fired = list()
 // Note that this isn't sorted by department, because e.g. having a roboticist shouldn't make meteors spawn.
 /proc/number_active_with_role()
 	var/list/active_with_role = list()
-	active_with_role["Engineer"] = 0
-	active_with_role["Medical"] = 0
-	active_with_role["Security"] = 0
-	active_with_role["Scientist"] = 0
-	active_with_role["AI"] = 0
-	active_with_role["Robot"] = 0
-	active_with_role["Janitor"] = 0
-	active_with_role["Gardener"] = 0
+	active_with_role["Wayward"] = 0
+	active_with_role["Skymarshal"] = 0
+	active_with_role["Follower"] = 0
+	active_with_role["Tribal"] = 0
+	active_with_role["BOS"] = 0
+	active_with_role["Wastelander"] = 0
+	active_with_role["Raider"] = 0
 
 	for(var/mob/M in GLOB.player_list)
 		// longer than 10 minutes AFK counts them as inactive
@@ -143,7 +142,7 @@ var/list/event_last_fired = list()
 			continue
 
 		active_with_role["Any"]++
-
+		/*
 		if(isrobot(M))
 			var/mob/living/silicon/robot/R = M
 			if(R.module)
@@ -155,29 +154,26 @@ var/list/event_last_fired = list()
 					active_with_role["Medical"]++
 				else if(istype(R.module, /obj/item/robot_module/research))
 					active_with_role["Scientist"]++
+		*/
+		if(M.mind.assigned_role in wayward_positions)
+			active_with_role["Wayward"]++
 
-		if(M.mind.assigned_role in engineering_positions)
-			active_with_role["Engineer"]++
+		if(M.mind.assigned_role in skymarshal_positions)
+			active_with_role["Skymarshal"]++
 
-		if(M.mind.assigned_role in medical_positions)
-			active_with_role["Medical"]++
+		if(M.mind.assigned_role in followers_positions)
+			active_with_role["Follower"]++
 
-		if(M.mind.assigned_role in security_positions)
-			active_with_role["Security"]++
+		if(M.mind.assigned_role in tribe_positions)
+			active_with_role["Tribal"]++
 
-		if(M.mind.assigned_role in science_positions)
-			active_with_role["Scientist"]++
+		if(M.mind.assigned_role in bos_positions)
+			active_with_role["BOS"]++
 
-		if(M.mind.assigned_role == "AI")
-			active_with_role["AI"]++
+		if(M.mind.assigned_role in wastelander_positions)
+			active_with_role["Wastelander"]++
 
-		if(M.mind.assigned_role == "Robot")
-			active_with_role["Robot"]++
-
-		if(M.mind.assigned_role == "Janitor")
-			active_with_role["Janitor"]++
-
-		if(M.mind.assigned_role == "Gardener")
-			active_with_role["Gardener"]++
+		if(M.mind.assigned_role in raider_positions)
+			active_with_role["Raider"]++
 
 	return active_with_role

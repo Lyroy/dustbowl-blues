@@ -376,35 +376,19 @@
 
 	//Regular jobs
 	//Command (Blue)
-	body += source.formatJobGroup(M, "Command Positions", "ccccff", "commanddept", command_positions)
+	body += source.formatJobGroup(M, "Wayward Winds Positions", "ccccff", "waywarddept", wayward_positions)
 	//Security (Red)
-	body += source.formatJobGroup(M, "Security Positions", "ffddf0", "securitydept", security_positions)
+	body += source.formatJobGroup(M, "Sky Marshal Positions", "ffddf0", "marshaldept", skymarshal_positions)
 	//Engineering (Yellow)
-	body += source.formatJobGroup(M, "Engineering Positions", "d5c88f", "engineeringdept", engineering_positions)
+	body += source.formatJobGroup(M, "Followers Positions", "d5c88f", "followersdept", followers_positions)
 	//Medical (White)
-	body += source.formatJobGroup(M, "Medical Positions", "ffeef0", "medicaldept", medical_positions)
+	body += source.formatJobGroup(M, "Tribal Positions", "ffeef0", "tribedept", tribe_positions)
 	//Science (Purple)
-	body += source.formatJobGroup(M, "Science Positions", "e79fff", "sciencedept", science_positions)
+	body += source.formatJobGroup(M, "Brotherhood Positions", "e79fff", "bosdept", bos_positions)
 	//Church (Gold)
-	body += source.formatJobGroup(M, "Church Positions", "ecd37d", "churchdept", church_positions)
+	body += source.formatJobGroup(M, "Wastelander Positions", "ecd37d", "wastelanderdept", wastelander_positions)
 	//Prospector (Brown)
-	body += source.formatJobGroup(M, "Prospector Positions", "8B4513", "prospectordept", prospector_positions)
-	//Civilian (Grey)
-	body += source.formatJobGroup(M, "Civilian Positions", "dddddd", "civiliandept", civilian_positions)
-	//Lonestar (Grey)
-	body += source.formatJobGroup(M, "Lonestar Positions", "dddddd", "lonestardept", cargo_positions)
-	//Off-colony (Black)
-	body += source.formatJobGroup(M, "Independent Positions", "191919", "offcolonydept", offcolony_positions)
-	//Non-Human (Green)
-	body += source.formatJobGroup(M, "Non-human Positions", "ccffcc", "nonhumandept", nonhuman_positions + "Antag HUD")
-	//Antagonist (Orange)
-
-	var/jobban_list = list()
-	for(var/a_id in GLOB.antag_bantypes)
-		var/a_ban = GLOB.antag_bantypes[a_id]
-		var/datum/antagonist/antag = get_antag_data(a_id)
-		jobban_list[antag.role_text] = a_ban
-	body += source.formatJobGroup(M, "Antagonist Positions", "ffeeaa", "Syndicate", jobban_list)
+	body += source.formatJobGroup(M, "Raider Positions", "8B4513", "raiderdept", raider_positions)
 
 	dat = "<head>[header]</head><body><tt><table width='100%'>[body.Join(null)]</table></tt></body>"
 	usr << browse(dat, "window=jobban2;size=800x490")
@@ -432,60 +416,38 @@
 	//get jobs for department if specified, otherwise just returnt he one job in a list.
 	var/list/joblist = list()
 	switch(input["jobban3"])
-		if("commanddept")
-			for(var/jobPos in command_positions)
+		if("waywarddept")
+			for(var/jobPos in wayward_positions)
 				var/datum/job/temp = SSjob.GetJob(jobPos)
 				if(!temp) continue
 				joblist += temp.title
-		if("securitydept")
-			for(var/jobPos in security_positions)
+		if("marshaldept")
+			for(var/jobPos in skymarshal_positions)
 				var/datum/job/temp = SSjob.GetJob(jobPos)
 				if(!temp) continue
 				joblist += temp.title
-		if("engineeringdept")
-			for(var/jobPos in engineering_positions)
+		if("followersdept")
+			for(var/jobPos in followers_positions)
 				var/datum/job/temp = SSjob.GetJob(jobPos)
 				if(!temp) continue
 				joblist += temp.title
-		if("medicaldept")
-			for(var/jobPos in medical_positions)
+		if("tribedept")
+			for(var/jobPos in tribe_positions)
 				var/datum/job/temp = SSjob.GetJob(jobPos)
 				if(!temp) continue
 				joblist += temp.title
-		if("sciencedept")
-			for(var/jobPos in science_positions)
+		if("bosdept")
+			for(var/jobPos in bos_positions)
 				var/datum/job/temp = SSjob.GetJob(jobPos)
 				if(!temp) continue
 				joblist += temp.title
-		if("churchdept")
-			for(var/jobPos in church_positions)
+		if("wastelanderdept")
+			for(var/jobPos in wastelander_positions)
 				var/datum/job/temp = SSjob.GetJob(jobPos)
 				if(!temp) continue
 				joblist += temp.title
-		if("prospectordept")
-			for(var/jobPos in prospector_positions)
-				var/datum/job/temp = SSjob.GetJob(jobPos)
-				if(!temp) continue
-				joblist += temp.title
-		if("civiliandept")
-			for(var/jobPos in civilian_positions)
-				var/datum/job/temp = SSjob.GetJob(jobPos)
-				if(!temp) continue
-				joblist += temp.title
-		if("lonestardept")
-			for(var/jobPos in cargo_positions)
-				var/datum/job/temp = SSjob.GetJob(jobPos)
-				if(!temp) continue
-				joblist += temp.title
-		if("offcolonydept")
-			for(var/jobPos in offcolony_positions)
-				var/datum/job/temp = SSjob.GetJob(jobPos)
-				if(!temp) continue
-				joblist += temp.title
-		if("nonhumandept")
-			joblist += "pAI"
-			for(var/jobPos in nonhuman_positions)
-				if(!jobPos)	continue
+		if("raiderdept")
+			for(var/jobPos in raider_positions)
 				var/datum/job/temp = SSjob.GetJob(jobPos)
 				if(!temp) continue
 				joblist += temp.title

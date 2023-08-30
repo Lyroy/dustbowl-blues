@@ -1,3 +1,4 @@
+/*
 /datum/individual_objective/disturbance
 	name = "Disturbance"
 	req_department = list(DEPARTMENT_ENGINEERING)
@@ -54,7 +55,6 @@
 	UnregisterSignal(mind_holder, COMSING_HUMAN_EQUITP)
 	..()
 
-/*
 /datum/individual_objective/tribalism
 	name = "Advanced Tribalism"
 	req_department = list(DEPARTMENT_ENGINEERING)

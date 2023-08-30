@@ -15,23 +15,19 @@
 /proc/html_crew_manifest(var/monochrome, var/OOC)
 	var/list/dept_data = list(
 
-		list("names" = list(), "header" = "Command Staff", "flag" = COMMAND),
-		list("names" = list(), "header" = "Marshal and Blackshield", "flag" = SECURITY),
-		list("names" = list(), "header" = "Soteria Medical", "flag" = MEDICAL),
-		list("names" = list(), "header" = "Soteria Research", "flag" = SCIENCE),
-		list("names" = list(), "header" = "Church of the Absolute", "flag" = CHURCH),
-		list("names" = list(), "header" = "Lonestar Shipping Solutions", "flag" = LSS),
-		list("names" = list(), "header" = "Artificers Guild", "flag" = ENGINEERING),
-		list("names" = list(), "header" = "Prospector", "flag" = PROSPECTORS),
-		list("names" = list(), "header" = "Civilian", "flag" = CIVILIAN),
-		list("names" = list(), "header" = "Miscellaneous", "flag" = MISC),
-		list("names" = list(), "header" = "Silicon")
+		list("names" = list(), "header" = "Wayward Winds", "flag" = WAYWARD),
+		list("names" = list(), "header" = "Sky Marshals", "flag" = SKYMARSHAL),
+		list("names" = list(), "header" = "Followers of the Apocalypse", "flag" = FOLLOWERS),
+		list("names" = list(), "header" = "Tribe Name Goes Here", "flag" = TRIBE),
+		list("names" = list(), "header" = "Brotherhood Outcasts", "flag" = BOS),
+		list("names" = list(), "header" = "Wastelanders", "flag" = WASTELANDERS),
+		list("names" = list(), "header" = "Raiders", "flag" = RAIDERS)
 	)
 	var/list/misc //Special departments for easier access
 	var/list/bot
 	for(var/list/department in dept_data)
-		if(department["flag"] == MISC)
-			misc = department["names"]
+		/*if(department["flag"] == MISC)
+			misc = department["names"]*/
 		if(isnull(department["flag"]))
 			bot = department["names"]
 
@@ -138,19 +134,15 @@
 
 /proc/nano_crew_manifest()
 	return list(\
-		"heads" = filtered_nano_crew_manifest(command_positions),\
-		"sci" = filtered_nano_crew_manifest(science_positions),\
-		"sec" = filtered_nano_crew_manifest(security_positions),\
-		"eng" = filtered_nano_crew_manifest(engineering_positions),\
-		"med" = filtered_nano_crew_manifest(medical_positions),\
-		"sup" = filtered_nano_crew_manifest(cargo_positions),\
-		"chr" = filtered_nano_crew_manifest(church_positions),\
-		"pro" = filtered_nano_crew_manifest(prospector_positions),\
-		"bot" = silicon_nano_crew_manifest(nonhuman_positions),\
-		"civ" = filtered_nano_crew_manifest(civilian_positions)\
+		"www" = filtered_nano_crew_manifest(wayward_positions),\
+		"skm" = filtered_nano_crew_manifest(skymarshal_positions),\
+		"fol" = filtered_nano_crew_manifest(followers_positions),\
+		"tri" = filtered_nano_crew_manifest(tribe_positions),\
+		"bos" = filtered_nano_crew_manifest(bos_positions),\
+		"was" = filtered_nano_crew_manifest(wastelander_positions),\
+		"rai" = filtered_nano_crew_manifest(raider_positions)\
 		)
 
 /proc/flat_nano_crew_manifest()
 	. = list()
 	. += filtered_nano_crew_manifest(null, TRUE)
-	. += silicon_nano_crew_manifest(nonhuman_positions)

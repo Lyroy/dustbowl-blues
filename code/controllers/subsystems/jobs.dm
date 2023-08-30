@@ -109,12 +109,6 @@ SUBSYSTEM_DEF(job)
 		if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
 			continue
 
-		if(istype(job, GetJob("Assistant"))) // We don't want to give him assistant, that's boring!
-			continue
-
-		if(job in command_positions) //If you want a command position, select it!
-			continue
-
 		if(job.is_restricted(player.client.prefs))
 			continue
 
