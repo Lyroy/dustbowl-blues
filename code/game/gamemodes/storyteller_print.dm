@@ -65,16 +65,16 @@
 	data += "Heads: [heads] "
 	if(debug_mode)
 		data += "<a href='?src=\ref[src];edit_heads=1'>\[EDIT\]</a>"
-	data += "<br>Ironhammer: [sec] "
+	data += "<br>Wayward Winds: [www] "
 	if(debug_mode)
 		data += "<a href='?src=\ref[src];edit_sec=1'>\[EDIT\]</a>"
-	data += "<br>Technomancers: [eng] "
+	data += "<br>Sky Marshals: [skm] "
 	if(debug_mode)
 		data += "<a href='?src=\ref[src];edit_eng=1'>\[EDIT\]</a>"
-	data += "<br>Medical: [med] "
+	data += "<br>Followers of the Apocalypse: [fol] "
 	if(debug_mode)
 		data += "<a href='?src=\ref[src];edit_med=1'>\[EDIT\]</a>"
-	data += "<br>Science: [sci] "
+	data += "<br>Brotherhood Outcasts: [bos] "
 	if(debug_mode)
 		data += "<a href='?src=\ref[src];edit_sci=1'>\[EDIT\]</a>"
 	data += "<br><b>Total: [crew]</b> "
@@ -170,16 +170,16 @@
 		crew = input("Enter new total crew count.","Debug",crew) as num
 
 	if(href_list["edit_sec"])
-		sec = input("Enter new security crew count.","Debug",sec) as num
+		www = input("Enter new Wayward crew count.","Debug",www) as num
 
 	if(href_list["edit_med"])
-		med = input("Enter new medical crew count.","Debug",med) as num
+		fol = input("Enter new Follower crew count.","Debug",fol) as num
 
 	if(href_list["edit_eng"])
-		eng = input("Enter new engineering crew count.","Debug",eng) as num
+		skm = input("Enter new Sky Marshal crew count.","Debug",skm) as num
 
 	if(href_list["edit_sci"])
-		sci = input("Enter new science crew count.","Debug",sci) as num
+		bos = input("Enter new Brotherhood crew count.","Debug",bos) as num
 
 	if(href_list["toggle_weight_calc"])
 		calculate_weights = !calculate_weights
@@ -262,7 +262,7 @@
 
 	if(href_list["modify_points"])
 		var/pooltype = href_list["modify_points"]
-		var/add_points = input("Pool [pooltype] currently has [round(points[pooltype], 0.01)]. How many do you wish to add? Enter a negative value to subtract points","Altering Points",eng) as num
+		var/add_points = input("Pool [pooltype] currently has [round(points[pooltype], 0.01)]. How many do you wish to add? Enter a negative value to subtract points","Altering Points",www) as num
 		modify_points(add_points, pooltype)
 
 	storyteller_panel()

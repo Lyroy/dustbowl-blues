@@ -7,10 +7,10 @@
 
 	req_crew = -1
 	req_heads = -1
-	req_sec = -1
-	req_eng = 2
-	req_med = 1
-	req_sci = -1
+	req_skm = -1
+	req_www = 2
+	req_fol = 1
+	req_bos = -1
 
 	req_stage = 2
 

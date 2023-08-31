@@ -45,10 +45,10 @@
 
 	crew = 0
 	heads = 0
-	sec = 0
-	eng = 0
-	med = 0
-	sci = 0
+	www = 0
+	skm = 0
+	fol = 0
+	bos = 0
 
 	for(var/mob/M in GLOB.player_list)
 		if(M.client && (M.mind && !M.mind.antagonist.len) && M.stat != DEAD && (ishuman(M) || isrobot(M) || isAI(M)))
@@ -57,14 +57,14 @@
 				crew++
 				if(job.head_position)
 					heads++
-				if(job.department == "Engineering")
-					eng++
-				if(job.department == "Security")
-					sec++
-				if(job.department == "Medical")
-					med++
-				if(job.department == "Science")
-					sci++
+				if(job.department == FACTION_WAYWARD)
+					www++
+				if(job.department == FACTION_SKYMARSHAL)
+					skm++
+				if(job.department == FACTION_FOLLOWERS)
+					fol++
+				if(job.department == FACTION_BOS)
+					bos++
 
 
 
@@ -73,10 +73,10 @@
 
 	new_weight *= weight_mult(crew,R.req_crew)
 	new_weight *= weight_mult(heads,R.req_heads)
-	new_weight *= weight_mult(sec,R.req_sec)
-	new_weight *= weight_mult(eng,R.req_eng)
-	new_weight *= weight_mult(med,R.req_med)
-	new_weight *= weight_mult(sci,R.req_sci)
+	new_weight *= weight_mult(www,R.req_www)
+	new_weight *= weight_mult(skm,R.req_skm)
+	new_weight *= weight_mult(fol,R.req_fol)
+	new_weight *= weight_mult(bos,R.req_bos)
 
 	new_weight = R.get_special_weight(new_weight)
 

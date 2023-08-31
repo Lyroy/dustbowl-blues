@@ -1,3 +1,4 @@
+/*
 /datum/storyevent/roleset/blitz
 	id = "blitz"
 	name = "blitzshell infiltration"
@@ -63,3 +64,4 @@
 
 	base_quantity = 2
 	scaling_threshold = 15
+*/

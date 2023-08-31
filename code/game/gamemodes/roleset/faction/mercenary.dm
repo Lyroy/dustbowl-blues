@@ -1,3 +1,4 @@
+/*
 /datum/storyevent/roleset/faction/mercenary
 	id = "mercenary"
 	name = "serbian mercenaries"
@@ -14,5 +15,4 @@
 
 	faction_id = FACTION_SERBS
 	faction_type = /datum/antag_faction/mercenary
-
-
+*/
