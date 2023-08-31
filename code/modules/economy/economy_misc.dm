@@ -92,7 +92,7 @@ var/global/datum/computer_file/data/email_account/service/payroll/payroll_mailer
 	for(var/d in GLOB.all_departments)
 		create_department_account(GLOB.all_departments[d])
 
-	station_account = department_accounts[DEPARTMENT_COMMAND]
+	station_account = department_accounts[FACTION_WAYWARD]
 
 	for(var/obj/machinery/vending/V in GLOB.machines)
 		if(V.vendor_department)
