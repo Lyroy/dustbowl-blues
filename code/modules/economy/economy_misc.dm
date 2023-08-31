@@ -118,7 +118,7 @@ var/global/datum/computer_file/data/email_account/service/payroll/payroll_mailer
 	department_account.wage = department.get_total_budget()
 
 	department_account.department_id = department.id
-	if(department.id in DEPARTMENT_LSS)
+	if(department.id in FACTION_WAYWARD)
 		department_account.can_make_accounts = TRUE
 
 	//create an entry in the account transaction log for when it was created

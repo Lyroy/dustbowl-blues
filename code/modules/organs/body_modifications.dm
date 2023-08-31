@@ -42,7 +42,7 @@ var/global/list/modifications_types = list(
 	var/nature = MODIFICATION_ORGANIC
 	var/hascolor = FALSE
 	var/allow_nt = TRUE
-	var/list/department_specific = ALL_DEPARTMENTS
+	var/list/department_specific = ALL_FACTIONS
 
 /datum/body_modification/proc/get_mob_icon(organ, body_build = "", color="#ffffff", gender = MALE, var/datum/species_form/species_form)	//Use in setup character only
 	return new/icon('icons/mob/human.dmi', "blank")
@@ -63,7 +63,7 @@ var/global/list/modifications_types = list(
 			to_chat(usr, "[name] can't be attached to [parent.name]")
 			return FALSE
 
-	if(department_specific.len && !(department_specific ~= ALL_DEPARTMENTS))
+	if(department_specific.len && !(department_specific ~= ALL_FACTIONS))
 		if(H && H.mind)
 			var/department = H.mind.assigned_job.department
 			if(!department)
@@ -214,14 +214,14 @@ var/global/list/modifications_types = list(
 	replace_limb = /obj/item/organ/external/robotic/moebius
 	body_parts = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
 	icon = 'icons/mob/human_races/cyberlimbs/moebius.dmi'
-	department_specific = list(DEPARTMENT_MEDICAL, DEPARTMENT_SCIENCE)
+	department_specific = list(FACTION_FOLLOWERS, FACTION_SKYMARSHAL)
 
 /datum/body_modification/limb/prosthesis/blackshield
 	id = "prosthesis_blackshield"
 	replace_limb = /obj/item/organ/external/robotic/blackshield
 	body_parts = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
 	icon = 'icons/mob/human_races/cyberlimbs/blackshield.dmi'
-	department_specific = list(DEPARTMENT_SECURITY)
+	department_specific = list(FACTION_SKYMARSHAL)
 
 /datum/body_modification/limb/prosthesis/church
 	id = "prosthesis_church"

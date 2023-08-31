@@ -114,7 +114,7 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 
 /datum/controller/subsystem/ticker/proc/scoreboard()
 	// Score Calculation and Display
-	var/list/guild_fingerprints = new
+	// var/list/guild_fingerprints = new
 	for(var/datum/mind/M in SSticker.minds)
 		if(!M.current)
 			continue

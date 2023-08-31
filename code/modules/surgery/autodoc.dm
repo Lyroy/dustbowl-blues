@@ -334,7 +334,7 @@
 	return TRUE
 
 
-
+/*
 /datum/autodoc/capitalist_autodoc
 	var/datum/money_account/linked_account
 	var/datum/money_account/patient_account
@@ -453,7 +453,7 @@
 	if(href_list["login"])
 		login()
 		. = TRUE
-
+*/
 #undef AUTODOC_DAMAGE
 #undef AUTODOC_EMBED_OBJECT
 #undef AUTODOC_FRACTURE

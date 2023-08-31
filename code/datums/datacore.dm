@@ -16,15 +16,13 @@ var/global/ManifestJSON
 
 /datum/datacore/proc/get_manifest(monochrome, OOC)
 	var/list/heads = new()
-	var/list/sec = new()
-	var/list/eng = new()
-	var/list/med = new()
-	var/list/sci = new()
-	var/list/car = new()
-	var/list/chr = new()
-	var/list/pro = new()
-	var/list/civ = new()
-	var/list/bot = new()
+	var/list/www = new()
+	var/list/skm = new()
+	var/list/fol = new()
+	var/list/tri = new()
+	var/list/was = new()
+	var/list/rai = new()
+	var/list/bos = new()
 	var/list/misc = new()
 	var/list/isactive = new()
 	var/dat = {"
@@ -61,29 +59,26 @@ var/global/ManifestJSON
 		if(real_rank in command_positions)
 			heads[name] = rank
 			department = 1
-		if(real_rank in security_positions)
-			sec[name] = rank
+		if(real_rank in wayward_positions)
+			www[name] = rank
 			department = 1
-		if(real_rank in engineering_positions)
-			eng[name] = rank
+		if(real_rank in skymarshal_positions)
+			skm[name] = rank
 			department = 1
-		if(real_rank in medical_positions)
-			med[name] = rank
+		if(real_rank in followers_positions)
+			fol[name] = rank
 			department = 1
-		if(real_rank in science_positions)
-			sci[name] = rank
+		if(real_rank in tribe_positions)
+			tri[name] = rank
 			department = 1
-		if(real_rank in cargo_positions)
-			car[name] = rank
+		if(real_rank in wastelander_positions)
+			was[name] = rank
 			department = 1
-		if(real_rank in prospector_positions)
-			pro[name] = rank
+		if(real_rank in raider_positions)
+			rai[name] = rank
 			department = 1
-		if(real_rank in church_positions)
-			chr[name] = rank
-			department = 1
-		if(real_rank in civilian_positions)
-			civ[name] = rank
+		if(real_rank in bos_positions)
+			bos[name] = rank
 			department = 1
 		if(!department && !(name in heads))
 			misc[name] = rank
@@ -98,57 +93,52 @@ var/global/ManifestJSON
 			continue
 
 		bot[robot.name] = "[robot.modtype] [robot.braintype]"*/
-
+	/*
 	if(bot.len > 0)
 		dat += "<tr><th colspan=3>Silicon</th></tr>"
 		for(name in bot)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[bot[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-
+	*/
 	if(heads.len > 0)
 		dat += "<tr><th colspan=3>Heads</th></tr>"
 		for(name in heads)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[heads[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-	if(sec.len > 0)
-		dat += "<tr><th colspan=3>Security</th></tr>"
-		for(name in sec)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[sec[name]]</td><td>[isactive[name]]</td></tr>"
+	if(www.len > 0)
+		dat += "<tr><th colspan=3>Wayward Winds</th></tr>"
+		for(name in www)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[www[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-	if(eng.len > 0)
-		dat += "<tr><th colspan=3>Engineering</th></tr>"
-		for(name in eng)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[eng[name]]</td><td>[isactive[name]]</td></tr>"
+	if(skm.len > 0)
+		dat += "<tr><th colspan=3>Sky Marshals</th></tr>"
+		for(name in skm)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[skm[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-	if(med.len > 0)
-		dat += "<tr><th colspan=3>Medical</th></tr>"
-		for(name in med)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[med[name]]</td><td>[isactive[name]]</td></tr>"
+	if(fol.len > 0)
+		dat += "<tr><th colspan=3>Followers of the Apocalypse</th></tr>"
+		for(name in fol)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[fol[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-	if(sci.len > 0)
-		dat += "<tr><th colspan=3>Science</th></tr>"
-		for(name in sci)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[sci[name]]</td><td>[isactive[name]]</td></tr>"
+	if(tri.len > 0)
+		dat += "<tr><th colspan=3>Placeholder Tribe</th></tr>"
+		for(name in tri)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[tri[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-	if(car.len > 0)
-		dat += "<tr><th colspan=3>Guild</th></tr>"
-		for(name in car)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[car[name]]</td><td>[isactive[name]]</td></tr>"
+	if(was.len > 0)
+		dat += "<tr><th colspan=3>Wastelanders</th></tr>"
+		for(name in was)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[was[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-	if(chr.len > 0)
-		dat += "<tr><th colspan=3>Church</th></tr>"
-		for(name in chr)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[chr[name]]</td><td>[isactive[name]]</td></tr>"
+	if(rai.len > 0)
+		dat += "<tr><th colspan=3>Raiders</th></tr>"
+		for(name in rai)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[rai[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-	if(pro.len > 0)
-		dat += "<tr><th colspan=3>Prospector</th></tr>"
-		for(name in pro)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[pro[name]]</td><td>[isactive[name]]</td></tr>"
-			even = !even
-	if(civ.len > 0)
-		dat += "<tr><th colspan=3>Civilian</th></tr>"
-		for(name in civ)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[civ[name]]</td><td>[isactive[name]]</td></tr>"
+	if(bos.len > 0)
+		dat += "<tr><th colspan=3>Brotherhood Outcasts</th></tr>"
+		for(name in bos)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[bos[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
 	if(misc.len > 0)
 		dat += "<tr><th colspan=3>Miscellaneous</th></tr>"
@@ -379,14 +369,13 @@ var/global/ManifestJSON
 	if(PDA_Manifest.len)
 		return
 	var/heads[0]
-	var/sec[0]
-	var/eng[0]
-	var/med[0]
-	var/sci[0]
-	var/chr[0]
-	var/pro[0]
-	var/civ[0]
-	var/bot[0]
+	var/www[0]
+	var/skm[0]
+	var/fol[0]
+	var/tri[0]
+	var/was[0]
+	var/rai[0]
+	var/bos[0]
 	var/misc[0]
 	for(var/datum/data/record/t in data_core.general)
 		var/name = sanitize(t.fields["name"])
@@ -403,51 +392,53 @@ var/global/ManifestJSON
 			if(rank=="Premier" && heads.len != 1)
 				heads.Swap(1, heads.len)
 
-		if(real_rank in security_positions)
-			sec[++sec.len] = list("name" = name, "rank" = rank, "active" = isactive)
+		if(real_rank in wayward_positions)
+			www[++www.len] = list("name" = name, "rank" = rank, "active" = isactive)
 			department = 1
-			if(depthead && sec.len != 1)
-				sec.Swap(1, sec.len)
+			if(depthead && www.len != 1)
+				www.Swap(1, www.len)
 
-		if(real_rank in engineering_positions)
-			eng[++eng.len] = list("name" = name, "rank" = rank, "active" = isactive)
+		if(real_rank in skymarshal_positions)
+			skm[++skm.len] = list("name" = name, "rank" = rank, "active" = isactive)
 			department = 1
-			if(depthead && eng.len != 1)
-				eng.Swap(1, eng.len)
+			if(depthead && skm.len != 1)
+				skm.Swap(1, skm.len)
 
-		if(real_rank in medical_positions)
-			med[++med.len] = list("name" = name, "rank" = rank, "active" = isactive)
+		if(real_rank in followers_positions)
+			fol[++fol.len] = list("name" = name, "rank" = rank, "active" = isactive)
 			department = 1
-			if(depthead && med.len != 1)
-				med.Swap(1, med.len)
+			if(depthead && fol.len != 1)
+				fol.Swap(1, fol.len)
 
-		if(real_rank in science_positions)
-			sci[++sci.len] = list("name" = name, "rank" = rank, "active" = isactive)
+		if(real_rank in tribe_positions)
+			tri[++tri.len] = list("name" = name, "rank" = rank, "active" = isactive)
 			department = 1
-			if(depthead && sci.len != 1)
-				sci.Swap(1, sci.len)
+			if(depthead && tri.len != 1)
+				tri.Swap(1, tri.len)
 
-		if(real_rank in church_positions)
-			chr[++chr.len] = list("name" = name, "rank" = rank, "active" = isactive)
+		if(real_rank in wastelander_positions)
+			was[++was.len] = list("name" = name, "rank" = rank, "active" = isactive)
 			department = 1
-			if(depthead && chr.len != 1)
-				chr.Swap(1, chr.len)
+			if(depthead && was.len != 1)
+				was.Swap(1, was.len)
 
-		if(real_rank in prospector_positions)
-			pro[++pro.len] = list("name" = name, "rank" = rank, "active" = isactive)
+		if(real_rank in raider_positions)
+			rai[++rai.len] = list("name" = name, "rank" = rank, "active" = isactive)
 			department = 1
-			if(depthead && pro.len != 1)
-				pro.Swap(1, pro.len)
+			if(depthead && rai.len != 1)
+				rai.Swap(1, rai.len)
 
-		if(real_rank in civilian_positions)
-			civ[++civ.len] = list("name" = name, "rank" = rank, "active" = isactive)
+		if(real_rank in bos_positions)
+			bos[++bos.len] = list("name" = name, "rank" = rank, "active" = isactive)
 			department = 1
-			if(depthead && civ.len != 1)
-				civ.Swap(1, civ.len)
+			if(depthead && bos.len != 1)
+				bos.Swap(1, bos.len)
 
+		/*
 		if(real_rank in nonhuman_positions)
 			bot[++bot.len] = list("name" = name, "rank" = rank, "active" = isactive)
 			department = 1
+		*/
 
 		if(!department && !(name in heads))
 			misc[++misc.len] = list("name" = name, "rank" = rank, "active" = isactive)
@@ -455,14 +446,13 @@ var/global/ManifestJSON
 
 	PDA_Manifest = list(
 		"heads" = heads,
-		"sec" = sec,
-		"eng" = eng,
-		"med" = med,
-		"sci" = sci,
-		"chr" = chr,
-		"pro" = pro,
-		"civ" = civ,
-		"bot" = bot,
+		"www" = www,
+		"skm" = skm,
+		"fol" = fol,
+		"tri" = tri,
+		"bos" = bos,
+		"was" = was,
+		"rai" = rai,
 		"misc" = misc
 		)
 	ManifestJSON = json_encode(PDA_Manifest)

@@ -226,7 +226,7 @@ SUBSYSTEM_DEF(job)
 	Debug("AC1, Candidates: [assistant_candidates.len]")
 	for(var/mob/new_player/player in assistant_candidates)
 		Debug("AC1 pass, Player: [player]")
-		AssignRole(player, "Assistant")
+		AssignRole(player, "Wastelander")
 		assistant_candidates -= player
 	Debug("DO, AC1 end")
 

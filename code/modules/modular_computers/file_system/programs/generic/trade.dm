@@ -343,7 +343,7 @@
 		current_order = SStrade.build_order(account, reason, shoppinglist)
 		shoppinglist = list()
 		trade_screen = ORDER_SCREEN
-		if(account != department_accounts[DEPARTMENT_LSS])
+		if(account != department_accounts[FACTION_WAYWARD])
 			orders_locked = TRUE
 			addtimer(CALLBACK(src, .proc/unlock_ordering), 10 SECONDS, TIMER_STOPPABLE)
 		return TRUE
@@ -665,7 +665,7 @@
 		.["balance"] = PRG.account.money
 		var/dept_id = PRG.account.department_id
 		if(dept_id)
-			is_all_access = (dept_id == DEPARTMENT_LSS) ? TRUE : FALSE
+			is_all_access = (dept_id == FACTION_WAYWARD) ? TRUE : FALSE
 
 	.["is_all_access"] = is_all_access
 

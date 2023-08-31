@@ -13,6 +13,7 @@ var/const/TRIBE = (1<<3)
 var/const/WASTELANDERS = (1<<4)
 var/const/RAIDERS = (1<<5)
 var/const/BOS = (1<<6)
+var/const/COMMAND = (1<<7)
 
 var/const/ENGSEC			=(1<<0)
 

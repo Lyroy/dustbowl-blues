@@ -29,7 +29,7 @@
 	var/area/A = random_ship_area(filter_players = TRUE, filter_critical = TRUE)
 	var/turf/T = A.random_space()
 	var/active_players = 0
-	var/mob/living/carbon/human/fighter
+	// var/mob/living/carbon/human/fighter
 	if(!T)
 		log_and_message_admins("Blob failed to find a viable turf.")
 		kill()

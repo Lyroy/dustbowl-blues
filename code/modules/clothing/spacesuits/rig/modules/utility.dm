@@ -629,10 +629,6 @@
 /obj/item/rig_module/autodoc/deactivate()
 	return
 
-/obj/item/rig_module/autodoc/commercial
-	autodoc_type = /datum/autodoc/capitalist_autodoc
-
-
 /obj/item/rig_module/cargo_clamp
 	name = "hardsuit cargo clamp"
 	desc = "A pair of folding arm-mounted clamps for a hardsuit, meant for loading crates and other large objects. Due to its bulky nature, precludes the installation of most hardsuit weaponry."

@@ -41,7 +41,7 @@ Counsel the Foreman on directing Skyline towards profitable opportunities."
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/merchant
 
-	perks = list(PERK_TIMEISMONEY, PERK_MARKET_PROF, PERK_BARTENDER, PERK_CHEM_CONTRABAND)
+	// perks = list(PERK_TIMEISMONEY, PERK_MARKET_PROF, PERK_BARTENDER, PERK_CHEM_CONTRABAND)
 
 /obj/landmark/join/start/ww_branch_chief
 	name = "Wayward Branch Chief"
@@ -75,7 +75,7 @@ Counsel the Foreman on directing Skyline towards profitable opportunities."
 		SKILL_REP = SKILL_LEVEL_BASIC
 	)
 
-	perks = list(PERK_MARKET_PROF)
+	// perks = list(PERK_MARKET_PROF)
 
 	description = "The Peon forms the backbone of Wayward Winds, equal parts loader and salesman.<br>\
 Your main duty is to keep the local company branch operational and profitable. Deliver goods, take payments and orders, and buy from scavengers.<br>\
@@ -96,7 +96,7 @@ Avoid the more dangerous areas unless otherwise instructed, however - this domai
 	title = "Scrapper"
 	flag = MINER
 	department = FACTION_WAYWARD
-	department_flag = LSS
+	department_flag = WAYWARD
 	faction = MAP_FACTION
 	total_positions = 4
 	spawn_positions = 4
@@ -124,7 +124,7 @@ The deep tunnels are far less dangerous than the wilderness, but pack well - dis
 		access_mining_station
 	)
 
-	perks = list(PERK_MARKET_PROF)
+	// perks = list(PERK_MARKET_PROF)
 
 	stat_modifiers = list(
 		STAT_ROB = 15,
@@ -139,6 +139,7 @@ The deep tunnels are far less dangerous than the wilderness, but pack well - dis
 							 /datum/computer_file/program/reports)
 
 /obj/landmark/join/start/mining
-	name = "Lonestar Miner"
+	name = "Scrapper"
 	icon_state = "player-beige"
-	join_tag = /datum/job/mining
+	join_tag = /datum/job/ww_scrapper
+

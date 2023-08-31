@@ -230,7 +230,6 @@
 	cost = 750
 
 	unlocks_designs = list(	/datum/design/research/item/autodoc,
-							/datum/design/research/item/autodoc_commercial,
 							/datum/design/research/item/chem_dispenser,
 							/datum/design/research/item/medhud,
 							/datum/design/research/structure/bidonadv,

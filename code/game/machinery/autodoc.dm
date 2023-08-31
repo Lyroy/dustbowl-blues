@@ -15,7 +15,7 @@
 
 /obj/machinery/autodoc/New()
 	. = ..()
-	autodoc_processor = new/datum/autodoc/capitalist_autodoc()
+	autodoc_processor = new/datum/autodoc()
 	autodoc_processor.holder = src
 	autodoc_processor.damage_heal_amount = 20
 
