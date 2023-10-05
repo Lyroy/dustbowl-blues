@@ -1,3 +1,4 @@
+/*
 /obj/machinery/recycle_vendor
 	name = "recycling vendor"
 	desc = "Recycle today for a better tomorrow!"
@@ -286,3 +287,4 @@
 		ui = new(user, src, ui_key, "recycle_vendor.tmpl", name, 440, 650)
 		ui.set_initial_data(data)
 		ui.open()
+*/

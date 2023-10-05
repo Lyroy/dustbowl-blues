@@ -1,4 +1,4 @@
-/datum/individual_objective/only_thing_they_fear
+/*/datum/individual_objective/only_thing_they_fear
 	name = "The only thing they fear is you"
 	req_department = list(DEPARTMENT_PROSPECTOR)
 	units_requested = 40
@@ -43,3 +43,4 @@
 	if(completed) return
 	UnregisterSignal(mind_holder, COMSING_HUMAN_EQUITP)
 	..()
+*/

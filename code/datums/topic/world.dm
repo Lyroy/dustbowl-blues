@@ -95,16 +95,13 @@
 /datum/world_topic/manifest/Run(list/input)
 	var/list/positions = list()
 	var/list/set_names = list(
-			"heads" = command_positions,
-			"sec" = security_positions,
-			"eng" = engineering_positions,
-			"med" = medical_positions,
-			"sci" = science_positions,
-			"car" = cargo_positions,
-			"civ" = civilian_positions,
-			"chr" = church_positions,
-			"pro" = prospector_positions,
-			"bot" = nonhuman_positions
+			"www" = wayward_positions,
+			"skm" = skymarshal_positions,
+			"fol" = followers_positions,
+			"tri" = tribe_positions,
+			"bos" = bos_positions,
+			"was" = wastelander_positions,
+			"rai" = raider_positions
 		)
 
 	for(var/datum/data/record/t in data_core.general)

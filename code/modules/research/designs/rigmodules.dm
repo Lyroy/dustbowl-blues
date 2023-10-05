@@ -8,12 +8,6 @@
 	build_path = /obj/item/rig_module/autodoc
 	category = "RIG"
 
-/datum/design/research/item/autodoc_commercial
-	name = "commercial autodoc module"
-	desc = "A complex surgery system for almost all your needs."
-	build_path = /obj/item/rig_module/autodoc/commercial
-	category = "RIG"
-
 /datum/design/research/item/chem_dispenser
 	name = "mounted chemical dispenser"
 	desc = "A complex web of tubing and needles suitable for hardsuit use."

@@ -109,12 +109,6 @@ SUBSYSTEM_DEF(job)
 		if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
 			continue
 
-		if(istype(job, GetJob("Assistant"))) // We don't want to give him assistant, that's boring!
-			continue
-
-		if(job in command_positions) //If you want a command position, select it!
-			continue
-
 		if(job.is_restricted(player.client.prefs))
 			continue
 
@@ -232,7 +226,7 @@ SUBSYSTEM_DEF(job)
 	Debug("AC1, Candidates: [assistant_candidates.len]")
 	for(var/mob/new_player/player in assistant_candidates)
 		Debug("AC1 pass, Player: [player]")
-		AssignRole(player, "Assistant")
+		AssignRole(player, "Wastelander")
 		assistant_candidates -= player
 	Debug("DO, AC1 end")
 

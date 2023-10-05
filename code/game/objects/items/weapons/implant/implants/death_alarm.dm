@@ -43,7 +43,7 @@
 			if(T.z <= 5) //WAH HARDCODE! - SOB EVEN
 				radio_caller.autosay("[mobname] has died in [t.name] at coordinates [T.x], [T.y], [T.z]!", "[mobname]'s Death Alarm", "Marshal")
 			for(wearer in GLOB.player_list)
-				if(wearer.mind.assigned_role in list(JOBS_MEDICAL))
+				if(wearer.mind.assigned_role in list(FACTION_FOLLOWERS))
 					medical = TRUE
 			if(!medical)
 				radio_caller.autosay("No Medical Detected Broadcasting to Common: [mobname] has died in [t.name] at coordinates [T.x], [T.y], [T.z]!", "[mobname]'s Death Alarm")
@@ -58,7 +58,7 @@
 			if(T.z <= 5) //WAH HARDCODE! - SOB EVEN
 				radio_caller.autosay("[mobname] has died in [name] at coordinates [T.x], [T.y], [T.z]!", "[mobname]'s Death Alarm", "Marshal")
 			for(wearer in GLOB.player_list)
-				if(wearer.mind.assigned_role in list(JOBS_MEDICAL))
+				if(wearer.mind.assigned_role in list(FACTION_FOLLOWERS))
 					medical = TRUE
 			if(!medical)
 				radio_caller.autosay("No Medical Detected Broadcasting to Common: [mobname] has died in [t.name] at coordinates [T.x], [T.y], [T.z]!", "[mobname]'s Death Alarm")
@@ -71,7 +71,7 @@
 			if(T.z <= 5) //WAH HARDCODE! - SOB EVEN
 				radio_caller.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm", "Marshal")
 			for(wearer in GLOB.player_list)
-				if(wearer.mind.assigned_role in list(JOBS_MEDICAL))
+				if(wearer.mind.assigned_role in list(FACTION_FOLLOWERS))
 					medical = TRUE
 			if(!medical)
 				radio_caller.autosay("No Medical Detected Broadcasting to Common: [mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm", "[mobname]'s Death Alarm")

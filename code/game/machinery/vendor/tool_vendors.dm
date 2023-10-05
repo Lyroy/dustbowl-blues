@@ -1,4 +1,5 @@
 
+/*
 /obj/machinery/vending/assist
 	products = list(
 		/obj/item/device/assembly/prox_sensor = 10,
@@ -346,3 +347,4 @@
 					/obj/item/storage/box/mantis_drone_kit = 750)
 
 	auto_price = FALSE
+*/

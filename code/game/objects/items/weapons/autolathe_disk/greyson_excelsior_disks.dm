@@ -189,7 +189,6 @@
 		/datum/design/autolathe/prosthesis/excelsior/chest,
 		/datum/design/autolathe/prosthesis/excelsior/head,
 		/datum/design/autolathe/device/implanter,					//misc
-		/datum/design/autolathe/device/propaganda_chip,
 		/datum/design/autolathe/clothing/excelsior_armor,
 		/datum/design/autolathe/device/excelbaton,
 		/datum/design/autolathe/container/ammocan_excel,
@@ -252,7 +251,6 @@
 	designs = list(
 		/datum/design/autolathe/circuit/autolathe_disk_cloner,
 		/datum/design/autolathe/circuit/recharger,
-		/datum/design/autolathe/device/propaganda_chip,
 		/datum/design/autolathe/part/cable_coil,
 		/datum/design/autolathe/part/igniter,//regular parts
 		/datum/design/autolathe/part/signaler,

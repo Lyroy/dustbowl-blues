@@ -114,10 +114,11 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 
 /datum/controller/subsystem/ticker/proc/scoreboard()
 	// Score Calculation and Display
-	var/list/guild_fingerprints = new
+	// var/list/guild_fingerprints = new
 	for(var/datum/mind/M in SSticker.minds)
 		if(!M.current)
 			continue
+	/*
 		if(M.current.stat == DEAD)
 			if(M.assigned_job && M.assigned_job.faction == "CEV Eris")
 				if(M.assigned_job.department == DEPARTMENT_SECURITY)
@@ -151,14 +152,15 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 					if(full_print in guild_fingerprints)
 						GLOB.guild_shared_gears++
 						break
+	*/
 
 	var/obj/item/cell/large/high/HC = /obj/item/cell/large/high
 	var/min_charge = initial(HC.maxcharge) * 0.6
 
 	//calculate guild (Sojourn: Lonestar!) profits in a sane way
-	var/ending_balance = get_account_credits(department_accounts[DEPARTMENT_LSS])
+	/*var/ending_balance = get_account_credits(department_accounts[DEPARTMENT_LSS])
 	var/datum/department/guild/guild_var = new/datum/department/guild
-	GLOB.supply_profit = ending_balance - guild_var.account_initial_balance
+	GLOB.supply_profit = ending_balance - guild_var.account_initial_balance*/
 
 	//Check station's power levels
 	for(var/area/A in ship_areas)
@@ -369,6 +371,7 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 	src << browse(dat, "window=roundstats;size=500x600")
 
 /mob/proc/get_faction_score()
+	/*
 	if(mind && mind.assigned_job && mind.assigned_job.department)
 		if(mind.assigned_job.department == DEPARTMENT_MEDICAL || mind.assigned_job.department == DEPARTMENT_SCIENCE)
 			return GLOB.moebius_score
@@ -380,9 +383,11 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 			return GLOB.guild_score
 		else if(mind.assigned_job.department == DEPARTMENT_CHURCH)
 			return GLOB.neotheology_score
+	*/
 
 /mob/proc/is_scored_departmen()
 	. = FALSE
+	/*
 	if(mind && mind.assigned_job && mind.assigned_job.department)
 		switch(mind.assigned_job.department)
 			if(DEPARTMENT_MEDICAL)
@@ -397,3 +402,4 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 				. = TRUE
 			if(DEPARTMENT_CHURCH)
 				. = TRUE
+	*/

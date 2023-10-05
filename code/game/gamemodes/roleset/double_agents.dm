@@ -1,3 +1,4 @@
+/*
 /datum/storyevent/roleset/double_agents
 	id = "double_agents"
 	name = "double agents"
@@ -7,10 +8,10 @@
 	/*
 	req_crew = 10
 	req_heads = -1
-	req_sec = 2
-	req_eng = -1
-	req_med = -1
-	req_sci = -1
+	req_skm = 2
+	req_www = -1
+	req_fol = -1
+	req_bos = -1
 
 	trigger_times_max = 2
 	*/
@@ -46,3 +47,4 @@
 
 	A.greet()
 	B.greet()
+*/

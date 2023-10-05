@@ -29,15 +29,15 @@
 	var/area/A = random_ship_area(filter_players = TRUE, filter_critical = TRUE)
 	var/turf/T = A.random_space()
 	var/active_players = 0
-	var/mob/living/carbon/human/fighter
+	// var/mob/living/carbon/human/fighter
 	if(!T)
 		log_and_message_admins("Blob failed to find a viable turf.")
 		kill()
 		return
 
-	for(fighter in GLOB.player_list)
+	/*for(fighter in GLOB.player_list)
 		if(fighter.mind.assigned_role in list(JOBS_ANTI_HIVEMIND))
-			active_players++
+			active_players++*/
 
 	log_and_message_admins("Active Blob combative players number is [active_players].")
 

@@ -97,6 +97,7 @@
 				/obj/item/flame/lighter/zippo/soyfed = 250,
 				)
 
+/*
 /obj/machinery/vending/fortune
 	name = "The Great Zoltan"
 	desc = "An archaic fortune teller machine. It looks recently refurbished."
@@ -115,7 +116,7 @@
 /obj/machinery/vending/fortune/postvend_effect()
 	playsound(loc, 'sound/machines/fortune_riff.ogg', 100, 1)
 	return
-
+*/
 /obj/machinery/vending/gamers
 	name = "Game Emporium"
 	desc = "A one stop shop for all your card or board game needs!"

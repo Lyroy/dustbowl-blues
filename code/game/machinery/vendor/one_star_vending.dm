@@ -1,3 +1,4 @@
+/*
 /obj/machinery/vending/one_star
 	name = "Greyson Positronic Vendor"
 	desc = "A holographic vendor made by Greyson Positronic."
@@ -66,3 +67,4 @@
 /obj/machinery/vending/one_star/health
 	desc = "A holographic vendor made by Greyson Positronic. This one sells medical paraphernalia of the GP variety."
 	icon_state = "vendor_health"
+*/

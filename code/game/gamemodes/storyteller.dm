@@ -23,10 +23,10 @@ GLOBAL_DATUM(storyteller, /datum/storyteller)
 
 	var/crew = 0
 	var/heads = 0
-	var/sec = 0
-	var/eng = 0
-	var/med = 0
-	var/sci = 0
+	var/www = 0
+	var/skm = 0
+	var/fol = 0
+	var/bos = 0
 
 	var/event_spawn_timer = 0
 	var/event_spawn_stage = 0
@@ -76,6 +76,7 @@ GLOBAL_DATUM(storyteller, /datum/storyteller)
 	if(debug_mode || SSticker.start_immediately)
 		return TRUE
 
+	/*
 	var/engineer = FALSE
 	var/command = FALSE
 	for(var/mob/new_player/player in GLOB.player_list)
@@ -104,6 +105,9 @@ GLOBAL_DATUM(storyteller, /datum/storyteller)
 		return TRUE
 
 	return FALSE
+	*/
+
+	return TRUE
 
 /datum/storyteller/proc/announce()
 	to_chat(world, "<b><font size=3>Storyteller is [name].</font> <br>[welcome]</b>")

@@ -1,3 +1,4 @@
+/*
 /obj/machinery/vending/weapon_machine
 	name = "Marshal Portable Armory"
 	desc = "A self-defense equipment vending machine. When you need to be tacticool."
@@ -286,3 +287,4 @@
 		)
 	product_ads = "Imagine the rare stuff and buy more!;Rare stuff if you buy more!;Buy and get random items!;Don't quit, buy more!;Its not a lootbox, its surprise mechanics!"
 	auto_price = FALSE
+*/

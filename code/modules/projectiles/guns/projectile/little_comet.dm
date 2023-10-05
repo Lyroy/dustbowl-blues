@@ -34,7 +34,6 @@
 
 /obj/item/gun/projectile/revolver/little_comet/New()
 	..()
-	GLOB.all_faction_items[src] = GLOB.department_security
 
 /obj/item/gun/projectile/revolver/little_comet/Destroy()
 	for(var/mob/living/carbon/human/H in viewers(get_turf(src)))

@@ -1,3 +1,4 @@
+/*
 // TODO: Refactor wires, this is horrible -- KIROV
 
 #define WIRE_THROW		0x1
@@ -52,3 +53,4 @@ var/const/VENDING_WIRE_SPEAKER = 2
 			mended ? (BITRESET(V.wire_flags, WIRE_SHOCK))	: (BITSET(V.wire_flags, WIRE_SHOCK))
 		if(VENDING_WIRE_IDSCAN)
 			mended ? (BITRESET(V.wire_flags, WIRE_ID_SCAN))	: (BITSET(V.wire_flags, WIRE_ID_SCAN))
+*/

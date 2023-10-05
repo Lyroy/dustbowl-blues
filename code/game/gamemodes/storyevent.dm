@@ -25,10 +25,10 @@
 	//Weight calculation settings. Set to negative to disable check
 	var/req_crew = -1
 	var/req_heads = -1
-	var/req_sec = -1
-	var/req_eng = -1
-	var/req_med = -1
-	var/req_sci = -1
+	var/req_www = -1
+	var/req_skm = -1
+	var/req_fol = -1
+	var/req_bos = -1
 
 	var/req_stage = -1
 

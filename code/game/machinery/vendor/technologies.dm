@@ -1,3 +1,4 @@
+/*
 // The vendor that allow colonists to buy Build-a-Drones kits.
 
 /obj/machinery/vending/build_a_drone
@@ -42,3 +43,4 @@
 	auto_price = FALSE
 	give_discounts = FALSE
 	give_discount_points = FALSE
+*/

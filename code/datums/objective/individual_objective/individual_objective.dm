@@ -98,8 +98,6 @@
 			continue
 		if(!ignore_departmen && H.mind.assigned_job && (H.mind.assigned_job.department in GLOB.all_faction_items[faction_item]))
 			continue
-		if(!ignore_departmen && GLOB.all_faction_items[faction_item] == GLOB.department_church)
-			continue
 		if(!locate(faction_item.type))
 			continue
 		if(!istype(faction_item, strict_type))
@@ -121,13 +119,3 @@
 /datum/individual_objective/proc/update_faction_score()
 	if(owner)
 		owner.individual_objectives_completed++
-	if(req_cruciform || (DEPARTMENT_CHURCH in req_department))
-		GLOB.neotheology_objectives_completed++
-	else if(DEPARTMENT_SECURITY in req_department)
-		GLOB.ironhammer_objectives_completed++
-	else if((DEPARTMENT_SCIENCE in req_department) || (DEPARTMENT_MEDICAL in req_department))
-		GLOB.moebius_objectives_completed++
-	else if(DEPARTMENT_LSS in req_department)
-		GLOB.guild_objectives_completed++
-	else if(DEPARTMENT_ENGINEERING in req_department)
-		GLOB.technomancer_objectives_completed++
