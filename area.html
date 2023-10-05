@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;area - Space Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">Space Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="area.html#var">Var Details</a> - <a href="area.html#proc">Proc Details</a></header>
+<main>
+<h1>area <aside>/<a href="area.html">area</a></aside><aside> inherits /<a href="atom.html">atom</a></aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/game/area/areas.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 10"/></a></h1>
+
+<p>Simple data container component containing level up statistics.
+This does NOT make something a valid inspiration. It simply holds the data in case it gets used as one!
+To actually use it, the typepath of the object has to be contained within the sanity datum valid_inspiration list.
+Assign this component to an item specifying which statistics should be levelled up, and the item will be able to be used as an inspiration.
+The format of statistics is list(STAT_DEFINE = number) or a proc that returns such a list.
+(This would've been better as an element instead of a component, but currently elements don't exist on cev eris. F)</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="area.html#var/adjacent_day_night_turf_cache">adjacent_day_night_turf_cache</a></th><td>A normally empty cache used to store turf adjacencies for day/night lighting effects.</td></tr>
+            <tr><th><a href="area.html#var/open_over_area_day_night">open_over_area_day_night</a></th><td>This caches the openspace turfs above this area that get updated whenever the day/night lighting changes</td></tr>
+            <tr><th><a href="area.html#var/outdoors">outdoors</a></th><td>For space, the asteroid, lavaland, etc. Used with blueprints or with weather to determine if we are adding a new area (vs editing a station room)</td></tr>
+            <tr><th><a href="area.html#var/underground">underground</a></th><td>Is this area considered underground? As in, is it not the top most Z level of a map? Used for determining if the day/night system should touch this area.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="area.html#proc/LateInitialize">LateInitialize</a></th><td>Sets machine power levels in the area</td></tr>
+            <tr><th><a href="area.html#proc/apply_day_night_turfs">apply_day_night_turfs</a></th><td>A handler to set all adjacent turfs to the correct lighting.</td></tr>
+            <tr><th><a href="area.html#proc/clear_adjacent_turf">clear_adjacent_turf</a></th><td>Clears a signle turf from the adjacency turf cache.
+Arguments:</td></tr>
+            <tr><th><a href="area.html#proc/clear_adjacent_turfs">clear_adjacent_turfs</a></th><td>Completely clears any adjacent turfs from the area while removing the effect.</td></tr>
+            <tr><th><a href="area.html#proc/initialize_day_night_adjacent_turfs">initialize_day_night_adjacent_turfs</a></th><td>This will calculate all adjacent turfs in this area and add them to a cache for lighting effects.</td></tr>
+            <tr><th><a href="area.html#proc/powered">powered</a></th><td>weather
+/////weather</td></tr>
+            <tr><th><a href="area.html#proc/update_day_night_turfs">update_day_night_turfs</a></th><td>Used to update the area regarding day and night adjacency turfs.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/adjacent_day_night_turf_cache"><aside class="declaration">var </aside>adjacent_day_night_turf_cache
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/game/area/areas.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 34"/></a></h3>
+        <p>A normally empty cache used to store turf adjacencies for day/night lighting effects.</p><h3 id="var/open_over_area_day_night"><aside class="declaration">var </aside>open_over_area_day_night
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/game/area/areas.dm#L39">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 39"/></a></h3>
+        <p>This caches the openspace turfs above this area that get updated whenever the day/night lighting changes</p><h3 id="var/outdoors"><aside class="declaration">var </aside>outdoors
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/game/area/areas.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 28"/></a></h3>
+        <p>For space, the asteroid, lavaland, etc. Used with blueprints or with weather to determine if we are adding a new area (vs editing a station room)</p><h3 id="var/underground"><aside class="declaration">var </aside>underground
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/game/area/areas.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 31"/></a></h3>
+        <p>Is this area considered underground? As in, is it not the top most Z level of a map? Used for determining if the day/night system should touch this area.</p><h2 id="proc">Proc Details</h2><h3 id="proc/LateInitialize"><aside class="parent"><a title="/atom" href="atom.html#proc/LateInitialize">&uarr;</a></aside>LateInitialize<aside>() 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/game/area/areas.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 78"/></a></aside>
+        </h3>
+        <p>Sets machine power levels in the area</p><h3 id="proc/apply_day_night_turfs"><aside class="declaration">proc </aside>apply_day_night_turfs<aside>(/<a href="datum.html">datum</a>/<a href="datum/day_night_controller.html">day_night_controller</a>/incoming_controller) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/game/area/areas.dm#L516">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 516"/></a></aside>
+        </h3>
+        <p>A handler to set all adjacent turfs to the correct lighting.</p><h3 id="proc/clear_adjacent_turf"><aside class="declaration">proc </aside>clear_adjacent_turf<aside>(/<a href="turf.html">turf</a>/turf_to_clear) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/game/area/areas.dm#L506">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 506"/></a></aside>
+        </h3>
+        <p>Clears a signle turf from the adjacency turf cache.
+Arguments:</p>
+<ul>
+<li>turf_to_clear - The turf we will unregister with and clear of any effects.</li>
+</ul><h3 id="proc/clear_adjacent_turfs"><aside class="declaration">proc </aside>clear_adjacent_turfs<aside>() 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/game/area/areas.dm#L496">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 496"/></a></aside>
+        </h3>
+        <p>Completely clears any adjacent turfs from the area while removing the effect.</p><h3 id="proc/initialize_day_night_adjacent_turfs"><aside class="declaration">proc </aside>initialize_day_night_adjacent_turfs<aside>() 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/game/area/areas.dm#L438">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 438"/></a></aside>
+        </h3>
+        <p>This will calculate all adjacent turfs in this area and add them to a cache for lighting effects.</p>
+<p>WARNING: This proc is VERY expensive and should be used sparingly.</p><h3 id="proc/powered"><aside class="declaration">proc </aside>powered<aside>(chan) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/game/area/areas.dm#L224">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 224"/></a></aside>
+        </h3>
+        <p>weather
+/////weather</p><h3 id="proc/update_day_night_turfs"><aside class="declaration">proc </aside>update_day_night_turfs<aside>(initialize_turfs, search_for_controller, /<a href="datum.html">datum</a>/<a href="datum/day_night_controller.html">day_night_controller</a>/incoming_controller) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/game/area/areas.dm#L547">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 547"/></a></aside>
+        </h3>
+        <p>Used to update the area regarding day and night adjacency turfs.</p>
+<p>Use this to update the area if changes need to be made.
+Arguments:</p>
+<ul>
+<li>initialize_turfs - This will call the expensive proc initialize_day_night_adjacent_turfs, recalculating all of the turfs after clearing them.</li>
+<li>search_for_controller - This will make us look for a controller in our new z-level, and set us up to it if needed.</li>
+<li>incoming_controller - The controller that is updating this areas lighting.</li>
+</ul></main>
+<footer>
+    dustbowl-blues.dme
+    <a href="https://github.com/Lyroy/dustbowl-blues/tree/2cee6be40db0adff7bc9e372b5699a9239ffbc20">2cee6be</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

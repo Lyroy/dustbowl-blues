@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;day_night_controller - Space Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">Space Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/day_night_controller.html#var">Var Details</a> - <a href="datum/day_night_controller.html#proc">Proc Details</a></header>
+<main>
+<h1>day_night_controller <aside>/<a href="datum.html">datum</a>/<a href="datum/day_night_controller.html">day_night_controller</a></aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 6"/></a></h1>
+
+<p>Day Night Presets are easy to use day/night cycles for certain maps, they are what is used to dictate the sky color.</p>
+<p>IMPORTANT: The lightzones in this MUST all add up to 23, you cannot miss an hour! This is unit tested, so if you do, it will fail.</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/affected_z_levels">affected_z_levels</a></th><td>The affected Z levels - Ideally, we will eventually be using a more robust system for loaded planets and such.</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/alpha_lookup_table">alpha_lookup_table</a></th><td>Lookup table for the alpha values for each hour, 24 hour format starting at 0.</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/area_cache">area_cache</a></th><td>A list of loaded areas, this is an assosicative list witht he area appearance attached.</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/color_lookup_table">color_lookup_table</a></th><td>Lookup table for the colors for each hour, 24 hour format starting at 0.</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/current_light_alpha">current_light_alpha</a></th><td>Our currently set light alpha</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/current_light_color">current_light_color</a></th><td>Our currently set light color</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/current_luminosity">current_luminosity</a></th><td>Our current luminosity</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/lightzone_cache">lightzone_cache</a></th><td>The lightzones that this preset has loaded</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/lightzones">lightzones</a></th><td>The lightzones that this preset should have</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/load_map_name">load_map_name</a></th><td>The maps that this preset should be loaded on</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/unaffected_area_cache">unaffected_area_cache</a></th><td>A list of areas that are not affected directly, but still have turf adjacency</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/after_shuttle_move">after_shuttle_move</a></th><td>Called after a shuttle moves from a registered area, checks to see if the new level is different from ours.</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/apply_effect_to_areas">apply_effect_to_areas</a></th><td>Applies the current mutable appearance to all of the affected areas overlays.</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/compile_transitions">compile_transitions</a></th><td>Compiles a lookup table using the loaded lightzones for each hour so we can reference it later when switching to said hour.</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/get_alpha_value">get_alpha_value</a></th><td>Gets the corresponding alpha table lookup value
+Arguments:
+hour - The hour to check
+Returns the alpha value</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/get_lightzone">get_lightzone</a></th><td>Gets the lightzone that relates to the given hour
+Arguments:</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/load_lightzones">load_lightzones</a></th><td>Creates all of the desired lightzone datums and caches them for later.</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/register_affected_area">register_affected_area</a></th><td>Registers an area with the controller for updating.
+Arguments:</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/register_areas">register_areas</a></th><td>Simple proc to register the areas that are affected by this controller</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/register_unaffected_area">register_unaffected_area</a></th><td>Registers an area that is not affected by the lighting updates, but will be checked for turf adjacency.
+Arguments:</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/remove_effect_from_areas">remove_effect_from_areas</a></th><td>Removes the current mutable appearance from all of the affected areas overlays.</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/set_area_luminosity">set_area_luminosity</a></th><td>Intelligently sets the luminosity of our areas providing the light alpha is above the minimum amount of light.
+Arguments:</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/unregister_affected_area">unregister_affected_area</a></th><td>Removes an affected area from the controller and clears up references.
+Arguments:</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/unregister_unaffected_area">unregister_unaffected_area</a></th><td>Removes an unaffected turf from the controller and clears up references.</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/update_area_appearance">update_area_appearance</a></th><td>Builds a new apppearance based off of the light color and alpha values for use later.
+Arguments:</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/update_lighting">update_lighting</a></th><td>The core proc that should always be used when updating the lighting of this day/night controller.</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/update_time">update_time</a></th><td>Applys the current lightzone to all of the areas according to the lookup tables and hour.
+Arguments:</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/affected_z_levels"><aside class="declaration">var </aside>affected_z_levels
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 18"/></a></h3>
+        <p>The affected Z levels - Ideally, we will eventually be using a more robust system for loaded planets and such.</p><h3 id="var/alpha_lookup_table"><aside class="declaration">var </aside>alpha_lookup_table
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 24"/></a></h3>
+        <p>Lookup table for the alpha values for each hour, 24 hour format starting at 0.</p><h3 id="var/area_cache"><aside class="declaration">var </aside>area_cache
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 14"/></a></h3>
+        <p>A list of loaded areas, this is an assosicative list witht he area appearance attached.</p><h3 id="var/color_lookup_table"><aside class="declaration">var </aside>color_lookup_table
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L22">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 22"/></a></h3>
+        <p>Lookup table for the colors for each hour, 24 hour format starting at 0.</p><h3 id="var/current_light_alpha"><aside class="declaration">var </aside>current_light_alpha
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 31"/></a></h3>
+        <p>Our currently set light alpha</p><h3 id="var/current_light_color"><aside class="declaration">var </aside>current_light_color
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 26"/></a></h3>
+        <p>Our currently set light color</p><h3 id="var/current_luminosity"><aside class="declaration">var </aside>current_luminosity
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 20"/></a></h3>
+        <p>Our current luminosity</p><h3 id="var/lightzone_cache"><aside class="declaration">var </aside>lightzone_cache
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 12"/></a></h3>
+        <p>The lightzones that this preset has loaded</p><h3 id="var/lightzones"><aside class="declaration">var </aside>lightzones
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 10"/></a></h3>
+        <p>The lightzones that this preset should have</p><h3 id="var/load_map_name"><aside class="declaration">var </aside>load_map_name
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 8"/></a></h3>
+        <p>The maps that this preset should be loaded on</p><h3 id="var/unaffected_area_cache"><aside class="declaration">var </aside>unaffected_area_cache
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 16"/></a></h3>
+        <p>A list of areas that are not affected directly, but still have turf adjacency</p><h2 id="proc">Proc Details</h2><h3 id="proc/after_shuttle_move"><aside class="declaration">proc </aside>after_shuttle_move<aside>(/<a href="area.html">area</a>/area_to_check) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L112">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 112"/></a></aside>
+        </h3>
+        <p>Called after a shuttle moves from a registered area, checks to see if the new level is different from ours.</p><h3 id="proc/apply_effect_to_areas"><aside class="declaration">proc </aside>apply_effect_to_areas<aside>() 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L199">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 199"/></a></aside>
+        </h3>
+        <p>Applies the current mutable appearance to all of the affected areas overlays.</p><h3 id="proc/compile_transitions"><aside class="declaration">proc </aside>compile_transitions<aside>() 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L218">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 218"/></a></aside>
+        </h3>
+        <p>Compiles a lookup table using the loaded lightzones for each hour so we can reference it later when switching to said hour.</p><h3 id="proc/get_alpha_value"><aside class="declaration">proc </aside>get_alpha_value<aside>(hour) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L242">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 242"/></a></aside>
+        </h3>
+        <p>Gets the corresponding alpha table lookup value
+Arguments:
+hour - The hour to check
+Returns the alpha value</p><h3 id="proc/get_lightzone"><aside class="declaration">proc </aside>get_lightzone<aside>(hour) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L134">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 134"/></a></aside>
+        </h3>
+        <p>Gets the lightzone that relates to the given hour
+Arguments:</p>
+<ul>
+<li>hour - The hour at which we will be checking our lightzones.
+Returns the lightzone datum.</li>
+</ul><h3 id="proc/load_lightzones"><aside class="declaration">proc </aside>load_lightzones<aside>() 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L124">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 124"/></a></aside>
+        </h3>
+        <p>Creates all of the desired lightzone datums and caches them for later.</p><h3 id="proc/register_affected_area"><aside class="declaration">proc </aside>register_affected_area<aside>(/<a href="area.html">area</a>/area_to_register) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L59">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 59"/></a></aside>
+        </h3>
+        <p>Registers an area with the controller for updating.
+Arguments:</p>
+<ul>
+<li>area_to_register - The area to register with the controller
+Returns TRUE if it was successfully registered, otherwise FALSE if not.</li>
+</ul><h3 id="proc/register_areas"><aside class="declaration">proc </aside>register_areas<aside>() 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 42"/></a></aside>
+        </h3>
+        <p>Simple proc to register the areas that are affected by this controller</p><h3 id="proc/register_unaffected_area"><aside class="declaration">proc </aside>register_unaffected_area<aside>(/<a href="area.html">area</a>/area_to_register) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 84"/></a></aside>
+        </h3>
+        <p>Registers an area that is not affected by the lighting updates, but will be checked for turf adjacency.
+Arguments:</p>
+<ul>
+<li>area_to_register - The area that is to be registered
+Returns TRUE if it was successfully registered, otherwise FALSE if not.</li>
+</ul><h3 id="proc/remove_effect_from_areas"><aside class="declaration">proc </aside>remove_effect_from_areas<aside>() 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L192">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 192"/></a></aside>
+        </h3>
+        <p>Removes the current mutable appearance from all of the affected areas overlays.</p><h3 id="proc/set_area_luminosity"><aside class="declaration">proc </aside>set_area_luminosity<aside>(light_alpha) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L209">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 209"/></a></aside>
+        </h3>
+        <p>Intelligently sets the luminosity of our areas providing the light alpha is above the minimum amount of light.
+Arguments:</p>
+<ul>
+<li>light_alpha - The new alpha that we are going to be setting.</li>
+</ul><h3 id="proc/unregister_affected_area"><aside class="declaration">proc </aside>unregister_affected_area<aside>(/<a href="area.html">area</a>/area_to_unregister) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L72">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 72"/></a></aside>
+        </h3>
+        <p>Removes an affected area from the controller and clears up references.
+Arguments:</p>
+<ul>
+<li>area_to_unregister - The area that is to be unregistered from this controller</li>
+</ul><h3 id="proc/unregister_unaffected_area"><aside class="declaration">proc </aside>unregister_unaffected_area<aside>(/<a href="area.html">area</a>/area_to_unregister) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L99">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 99"/></a></aside>
+        </h3>
+        <p>Removes an unaffected turf from the controller and clears up references.</p>
+<ul>
+<li>Arguments:</li>
+<li>area_to_unregister - The area that is to be unregistered from this controller</li>
+</ul><h3 id="proc/update_area_appearance"><aside class="declaration">proc </aside>update_area_appearance<aside>(light_color, light_alpha) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L177">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 177"/></a></aside>
+        </h3>
+        <p>Builds a new apppearance based off of the light color and alpha values for use later.
+Arguments:</p>
+<ul>
+<li>light_color - The color that we will set the mutable appearance to.</li>
+<li>light_alpha - The alpha that we will set the mutable appearance to.
+Note: We use mutable appearances as this is the most efficent way to render lighting effects onto areas, using the light update method
+is just not fast enough.</li>
+</ul><h3 id="proc/update_lighting"><aside class="declaration">proc </aside>update_lighting<aside>(light_color, light_alpha) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L159">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 159"/></a></aside>
+        </h3>
+        <p>The core proc that should always be used when updating the lighting of this day/night controller.</p><h3 id="proc/update_time"><aside class="declaration">proc </aside>update_time<aside>(hour) 
+        
+    
+            <a href="https://github.com/Lyroy/dustbowl-blues/blob/2cee6be40db0adff7bc9e372b5699a9239ffbc20/code/modules/day_night/day_night_controller.dm#L150">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;day_night&#x2F;day_night_controller.dm 150"/></a></aside>
+        </h3>
+        <p>Applys the current lightzone to all of the areas according to the lookup tables and hour.
+Arguments:</p>
+<ul>
+<li>hour - The index to use in our lookup tables.</li>
+</ul></main>
+<footer>
+    dustbowl-blues.dme
+    <a href="https://github.com/Lyroy/dustbowl-blues/tree/2cee6be40db0adff7bc9e372b5699a9239ffbc20">2cee6be</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>
