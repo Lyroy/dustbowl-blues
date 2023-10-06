@@ -14,6 +14,7 @@
 	max_w_class = ITEM_SIZE_NORMAL //We can fit anything smaller then us
 	max_storage_space = 18 //enough to hold all starting contents and then some
 	origin_tech = list(TECH_COMBAT = 1)
+	attack_type = CAN_SWING
 	attack_verb = list("robusted")
 	hitsound = 'sound/weapons/smash.ogg'
 

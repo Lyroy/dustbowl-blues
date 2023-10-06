@@ -24,7 +24,7 @@
 		weapon_sharp = 0
 		weapon_edge = 0
 
-	hit_impact(effective_force, get_step(user, src))
+	hit_impact(effective_force, get_step(user, src), hit_zone)
 	damage_through_armor(effective_force, I.damtype, hit_zone, ARMOR_MELEE, armour_pen = I.armor_penetration + (user.stats.getStat(SKILL_MEL) * 0.25), used_weapon = I, sharp = weapon_sharp, edge = weapon_edge, post_pen_mult = I.post_penetration_dammult)
 
 /*Its entirely possible that we were gibbed or dusted by the above. Check if we still exist before

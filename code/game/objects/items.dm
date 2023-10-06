@@ -111,6 +111,11 @@
 	//Used for stashes
 	var/start_hidden = FALSE
 
+	//Attack type vars
+	var/ready = FALSE
+	var/attack_type = NONE
+	var/missed_swing = TRUE
+
 	var/chameleon_type
 
 	var/has_alt_mode = FALSE

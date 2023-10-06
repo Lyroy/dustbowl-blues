@@ -10,6 +10,7 @@
 	origin_tech = list(TECH_ENGINEERING = 1)
 	matter = list(MATERIAL_STEEL = 4, MATERIAL_WOOD = 2)
 	price_tag = 30
+	attack_type = (DOUBLE_TACT | CAN_SWING)
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked","flattened","pulped")
 	tool_qualities = list(QUALITY_HAMMERING = 35, QUALITY_PRYING = 10)
 	effective_faction = list("spider") // Spiders are weak to crushing.

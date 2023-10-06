@@ -103,6 +103,11 @@ Fire delay 15 = 40 rounds per minute
 
 #define VIG_OVERCHARGE_GEN 0.05
 
+#define DOUBLE_TACT 1
+#define CAN_SWING 2
+#define CAN_BROAD 4
+#define FORCED_BROAD 8
+
 // recoil
 
 #define MAX_ACCURACY_OFFSET  50 //It's both how big gun recoil can build up, and how hard you can miss

@@ -43,6 +43,7 @@
 	worksound = WORKSOUND_HARD_SLASH
 	force = WEAPON_FORCE_PAINFUL
 	throwforce = WEAPON_FORCE_PAINFUL
+	attack_type = CAN_BROAD
 	w_class = ITEM_SIZE_SMALL
 	sharp = TRUE
 	edge = TRUE
@@ -67,6 +68,7 @@
 	slot_flags = SLOT_BACK
 	force = WEAPON_FORCE_BRUTAL
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
+	attack_type = (DOUBLE_TACT | CAN_SWING | CAN_BROAD | FORCED_BROAD)
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	structure_damage_factor = STRUCTURE_DAMAGE_BREACHING
 	embed_mult = 1.2 //Axes cut deep, and their hooked shape catches on things
@@ -154,6 +156,7 @@
 	w_class = ITEM_SIZE_BULKY
 	slot_flags = SLOT_BACK
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
+	attack_type = (DOUBLE_TACT | CAN_SWING | CAN_BROAD | FORCED_BROAD)
 	tool_qualities = list(QUALITY_CUTTING = 15, QUALITY_SAWING = 10)
 	item_icons = list(
 		slot_back_str = 'icons/inventory/back/mob.dmi')
@@ -182,6 +185,7 @@
 	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
+	attack_type = CAN_SWING
 	max_upgrades = 2
 	tool_qualities = list(QUALITY_HAMMERING = 5)
 
@@ -210,6 +214,7 @@
 
 	throwforce = WEAPON_FORCE_NORMAL
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_type = (CAN_SWING | CAN_BROAD)
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	tool_qualities = list(QUALITY_CUTTING = 10, QUALITY_SAWING = 10)
 	structure_damage_factor = STRUCTURE_DAMAGE_BLADE
